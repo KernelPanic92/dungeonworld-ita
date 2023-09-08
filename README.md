@@ -10,7 +10,7 @@ Guarda il file di [licenza](./LICENSE) per maggiori dettagli, ma ecco le nozioni
 Ciò che speriamo tu faccia con esso è creare nuove cose: creare classi, avventure, mosse e persino giochi completamente nuovi.
 
 ## Contributi
-Nel caso in cui tu sia un fanatico dei giochi di ruolo e desideri anche contribuire direttamente, siamo aperti a ricevere pull requests. Correzioni di errori di battitura e modifiche sarebbero meravigliosi.
+Nel caso in cui tu sia un fanatico dei giochi di ruolo e desideri anche contribuire direttamente, siamo aperti a ricevere pull requests. Correzioni di errori di battitura e modifiche sarebbero meravigliosi. Prima di apportare qualsiasi modifica leggere il documento di linee guida per i [contributi](./contributing.md).
 
 ## Citazioni
 
