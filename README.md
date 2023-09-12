@@ -7,7 +7,6 @@ In questo repository troverai i libretti standard e fanmade tradotti in italiano
 ### Standard
 WIP
 ### Community
-https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/berserker/berserker.pdf
 - Berserker [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/berserker/berserker.pdf)][[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/berserker/berserker.indd)]
 
 ## Licenza
