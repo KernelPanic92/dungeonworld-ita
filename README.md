@@ -3,6 +3,10 @@
 Dungeon World è un gioco di ruolo da tavolo. 
 In questo repository troverai i libretti standard e fanmade tradotti in italiano in formato PDF e i relativi file [InDesign](http://www.adobe.com/products/indesign.html).
 
+Supporta il progetto con una donazione 🥰
+
+[![](https://www.paypalobjects.com/it_IT/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/paypalme/kernelpanic92)
+
 ## Classi
 <!-- START_CLASSLIST -->
 - template_libretto [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/template_libretto.indd)]
@@ -20,6 +24,15 @@ Ciò che speriamo tu faccia con esso è creare nuove cose: creare classi, avvent
 ## Contributi
 Nel caso in cui tu sia un fanatico dei giochi di ruolo e desideri anche contribuire direttamente, siamo aperti a ricevere pull requests. Correzioni di errori di battitura e modifiche sarebbero meravigliosi. Prima di apportare qualsiasi modifica leggere il documento di linee guida per i [contributi](./contributing.md).
 
-## Citazioni
+## Crediti
 
 I materiali prodotti sono traduzioni e rielaborazioni dei [materiali](https://github.com/Sagelt/Dungeon-World) di [DungeonWorld](https://dungeon-world.com/) di Sage LaTorra e Adam Koebel.
+
+## I nostri contributori
+Un enorme grazie per tutti coloro che hanno dato il loro contributo per la crescita di questo repository ❤️
+
+<a href="https://github.com/KernelPanic92/dungeonworld-ita/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=KernelPanic92/dungeonworld-ita" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
