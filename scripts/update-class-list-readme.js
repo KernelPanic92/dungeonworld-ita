@@ -56,7 +56,7 @@ function createMarkdown(currentDirectory, relative, markdown, level) {
     let row = `${padding}- ${name}`;
     for (const [extension, filePath] of Object.entries(extensions)) {
       const url = encodeURI(`${githubBaseUrl}${filePath}`.replace(relative, ''));
-      row += ` [${extension}](${url})`;
+      row += ` [[${extension}](${url})]`;
     }
     markdown.push(row);
   }
