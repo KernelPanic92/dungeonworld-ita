@@ -19,7 +19,7 @@ jobs:
           node-version: 14
 
       - name: Run Node.js script
-        run: node update-class-list-readme.js
+        run: node scripts/update-class-list-readme.js
 
       - name: Commit changes
         uses: devops-infra/action-commit-push@master
