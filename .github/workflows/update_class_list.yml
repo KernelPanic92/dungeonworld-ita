@@ -23,6 +23,8 @@ jobs:
 
       - name: Commit changes
         run: |
+          git config --global user.email "iacopociao1992@gmail.com"
+          git config --global user.name "Iacopo Ciao"
           git add .
           git commit -m "docs(README): Update class list [skip ci]"
           git push origin master
