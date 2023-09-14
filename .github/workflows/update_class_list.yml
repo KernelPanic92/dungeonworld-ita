@@ -24,7 +24,7 @@ jobs:
       - name: Commit changes
         uses: devops-infra/action-commit-push@master
         with:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          github_token: "${{ secrets.ACTION_TOKEN }}"
           commit_prefix: "docs(README): "
           commit_message: "Update class list"
           force: false
