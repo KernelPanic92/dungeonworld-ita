@@ -2,12 +2,12 @@ const fs = require('fs');
 const path = require('path');
 
 const githubBaseUrl =
-  'https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi';
+  'https://github.com/KernelPanic92/dungeonworld-ita/raw/master';
 
 
 function calculate() {
   const directoryPath = process.env.GITHUB_WORKSPACE + '/classi';
-  const relative = process.env.GITHUB_WORKSPACE + '/classi';
+  const relative = process.env.GITHUB_WORKSPACE;
 
   const markdown = [];
   createMarkdown(directoryPath, relative,  markdown, 0);
