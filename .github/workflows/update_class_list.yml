@@ -22,9 +22,7 @@ jobs:
         run: node scripts/update-class-list-readme.js
 
       - name: Commit changes
-        uses: devops-infra/action-commit-push@master
-        with:
-          github_token: "${{ secrets.ACTION_TOKEN }}"
-          commit_prefix: "docs(README): "
-          commit_message: "Update class list"
-          force: false
+        run: |
+          git add .
+          git commit -m "docs(README): Update class list [skip ci]"
+          git push origin master
