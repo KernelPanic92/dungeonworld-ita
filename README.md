@@ -5,10 +5,12 @@ In questo repository troverai i libretti standard e fanmade tradotti in italiano
 
 ## Classi
 <!-- START_CLASSLIST -->
-- Peter Johansen
-  - Lore and Lords Pack
-    - Berserker [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/berserker/berserker.pdf)] [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/berserker/berserker.indd)]
-    - Trickster [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/trickster/trickster.pdf)] [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/trickster/trickster.indd)]
+- template_libretto [indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/template_libretto.indd)
+- community
+  - Peter Johansen
+    - Lore and Lords Pack
+      - berserker [indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/berserker.indd) [pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/berserker.pdf)
+      - trickster [indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/trickster.indd) [pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/trickster.pdf)
 <!-- END_CLASSLIST -->
 ## Licenza
 Guarda il file di [licenza](./LICENSE) per maggiori dettagli, ma ecco le nozioni di base: sei libero di utilizzare questo testo come preferisci purché citi gli autori.
