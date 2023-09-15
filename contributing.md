@@ -81,7 +81,24 @@ $ git push origin <nome-branch-tematico>
 - **PF:** Scrivere PF in MAIUSCOLO. Sarà formattato automaticamente con lo stile carattere `strong` quando utilizzato nei paragrafi.
 - **Esito dei dadi:** Quando stiamo descrivendo cosa succede in base all'esito del tiro dei dadi, cercare di seguire questa struttura `✴Con un [range valori], [cosa succede].`. I prefissi (es. `✴Con un 10+`) Saranno formattati automaticamente con lo stile carattere `strong` quando utilizzati nei paragrafi.
 - Non inventare esiti diversi da quelli standard: [✴Con un 10+, ✴Con un 7-9, ✴Con un 6-, ✴Con un 12+, ✴Con un 7+]
-- **Condizione di innesco:** Quando stiamo descrivendo la condizione di innesco di una mossa, il testo successivo al termine `Quando` dovrà essere formattato con lo stile carattere `strong`. Es. "Quando **ti metti in mostra con una prova di forza**, nomina uno dei presenti che
-hai impressionato e prendi *+1 al prossimo tiro* di parlamentare con lui".
-- **Nomi delle mosse:** Formattare i nomi delle mosse con lo stile carattere `em` (a esclusione di titoli e intestazioni). Questa regola prevale sulla precedente "Condizione di innesco".  Es. "Quando _tagli e spacchi_, con un 12+ infliggi i tuoi danni e scegli qualcosa di fisico che il tuo nemico ha (un'arma, la sua posizione, un'arto): lo perde.". 
+- **Nomi delle mosse:** Formattare i nomi delle mosse (mosse iniziali, mosse avanzate, mosse base) con lo stile carattere `em` (a esclusione di titoli e intestazioni). Questa regola prevale sulla precedente "Condizione di innesco".  Es. "Quando _tagli e spacchi_, con un 12+ infliggi i tuoi danni e scegli qualcosa di fisico che il tuo nemico ha (un'arma, la sua posizione, un'arto): lo perde.". 
 - **Nomi delle etichette:** Formattare i nomi delle etichette con lo stile carattere `strong` (a esclusione di titoli e intestazioni).
+
+### Stili carattere e di paragrafo da applicare
+`template_libretto.indd` possiede al suo interno dei formattatori pre confezionati per l'impaginazione:
+
+| Sezione                                        | Stile paragrafo | Stile carattere |
+|------------------------------------------------|-----------------|-----------------|
+| Titolo di una Mossa Iniziale                   | BasicMoveName   |                 |
+| Testo di una Mossa Iniziale                    | NoIndent        |                 |
+| Titolo di una Mossa Avanzata                   | MoveName        |                 |
+| Richiede/Sostituisce Mossa Avanzata            | Requirement     |                 |
+| Lista con checkbox                             | Option          |                 |
+| Testo di una Mossa Avanzata                    | NoIndent        |                 |
+| Titolo Opzione Razza/Allineamento              | MoveName        |                 |
+| Testo Opzione Razza/Allineamento               | NoIndent        |                 |
+| Istruzioni legami                              | NoIndent        |                 |
+| Legame                                         | p               |                 |
+| Elenco Puntato                                 | li              |                 |
+| Modificatori di caratteristica (for, des, ecc) |                 | stat            |
+| Riferimenti a portata, mosse, e tag nel testo  |                 | em              |
