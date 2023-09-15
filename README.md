@@ -18,6 +18,8 @@ Supporta il progetto con una donazione 🥰
       - Lore and Lords pack (original, EN) [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/Lore%20and%20Lords%20pack%20(original,%20EN).pdf)]
       - monaco [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/monaco.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/monaco.pdf)]
       - trickster [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/trickster.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/trickster.pdf)]
+    - War and Wonders Pack
+      - pistolero [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/pistolero.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/pistolero.pdf)]
 <!-- END_CLASSLIST -->
 ## Licenza
 Guarda il file di [licenza](./LICENSE) per maggiori dettagli, ma ecco le nozioni di base: sei libero di utilizzare questo testo come preferisci purché citi gli autori.
