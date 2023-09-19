@@ -82,7 +82,7 @@ $ git push origin <nome-branch-tematico>
 - **Esito dei dadi:** Quando stiamo descrivendo cosa succede in base all'esito del tiro dei dadi, cercare di seguire questa struttura `✴Con un [range valori], [cosa succede].`. I prefissi (es. `✴Con un 10+`) Saranno formattati automaticamente con lo stile carattere `strong` quando utilizzati nei paragrafi.
 - Non inventare esiti diversi da quelli standard: [✴Con un 10+, ✴Con un 7-9, ✴Con un 6-, ✴Con un 12+, ✴Con un 7+]
 - **Nomi delle mosse:** Formattare i nomi delle mosse (mosse iniziali, mosse avanzate, mosse base) con lo stile carattere `em` (a esclusione di titoli e intestazioni). Questa regola prevale sulla precedente "Condizione di innesco".  Es. "Quando _tagli e spacchi_, con un 12+ infliggi i tuoi danni e scegli qualcosa di fisico che il tuo nemico ha (un'arma, la sua posizione, un'arto): lo perde.". 
-- **Nomi delle etichette:** Formattare i nomi delle etichette con lo stile carattere `strong` (a esclusione di titoli e intestazioni).
+- **Nomi delle etichette:** Formattare i nomi delle etichette con lo stile carattere `em` (a esclusione di titoli e intestazioni).
 
 ### Stili carattere e di paragrafo da applicare
 `template_libretto.indd` possiede al suo interno dei formattatori pre confezionati per l'impaginazione:
