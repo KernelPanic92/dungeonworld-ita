@@ -1,0 +1,47 @@
+name: Segnalazione libretto
+description: Segnala il problema trovato in un libretto
+title: "[Bug]: "
+labels: ["bug", "triage", "libretto"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Grazie per aver dedicato del tempo per compilare questa segnalazione! ❤️
+  - type: input
+    id: contatto
+    attributes:
+      label: Contact Details
+      description: Come possiamo metterci in contatto con te se abbiamo bisogno di ulteriori informazioni?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+ - type: input
+    id: libretto
+    attributes:
+      label: Libretto
+      description: In quale libretto hai riscontrato la problematica?
+    validations:
+      required: true
+  - type: input
+    id: versione
+    attributes:
+      label: Versione
+      description: Che versione del libretto stai utilizzando?
+    validations:
+      required: true
+  - type: textarea
+    id: problematica
+    attributes:
+      label: Qual è la problematica riscontrata?
+      description: Inoltre, cosa ti saresti aspettato?
+      placeholder: Inserisci qui la problematica
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Codice di condotta
+      description: Inviando questa segnalazione, accetti di rispettare il nostro [codice di condotta](../CODE_OF_CONDUCT.md)
+      options:
+        - label: Accetto di seguire il codice di condotta di questo progetto
+          required: true
