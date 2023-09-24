@@ -9,10 +9,12 @@ Supporta il progetto con una donazione 🥰
 
 ## Classi
 <!-- START_CLASSLIST -->
+- template_compendio [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/template_compendio.indd)]
 - template_libretto [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/template_libretto.indd)]
 - community
   - Peter Johansen
     - Lore and Lords Pack
+      - [compendio] professionista [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/%5Bcompendio%5D%20professionista.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/%5Bcompendio%5D%20professionista.pdf)]
       - berserker [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/berserker.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/berserker.pdf)]
       - cacciatore [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/cacciatore.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/cacciatore.pdf)]
       - cavaliere nero [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/cavaliere%20nero.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/cavaliere%20nero.pdf)]
