@@ -14,6 +14,7 @@ Supporta il progetto con una donazione 🥰
   - Peter Johansen
     - Lore and Lords Pack
       - berserker [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/berserker.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/berserker.pdf)]
+      - cacciatore [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/cacciatore.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/cacciatore.pdf)]
       - cavaliere nero [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/cavaliere%20nero.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/cavaliere%20nero.pdf)]
       - Lore and Lords pack (original, EN) [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/Lore%20and%20Lords%20pack%20(original,%20EN).pdf)]
       - monaco [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/monaco.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/monaco.pdf)]
