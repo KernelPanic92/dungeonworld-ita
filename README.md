@@ -1,7 +1,7 @@
 # dungeonworld-ita
 
 Dungeon World è un gioco di ruolo da tavolo. 
-In questo repository troverai i libretti standard e fanmade tradotti in italiano in formato PDF e i relativi file [InDesign](http://www.adobe.com/products/indesign.html).
+In questo repository troverai i libretti standard e fanmade tradotti in italiano in formato PDF e i relativi file [InDesign](http://www.adobe.com/products/indesign.html). I libretti che sono stati verificati li trovi anche su [EPICentrum.it](https://www.epicentrum.it).
 
 Supporta il progetto con una donazione 🥰
 
@@ -46,4 +46,6 @@ Un enorme grazie per tutti coloro che hanno dato il loro contributo per la cresc
   <img src="https://contrib.rocks/image?repo=KernelPanic92/dungeonworld-ita" />
 </a>
 
-Made with [contrib.rocks](https://contrib.rocks).
+Made with [contrib.rocks](https://contrib.rocks). ❤️
+
+Un ringraziamento speciale a [EPICentrum.it](https://www.epicentrum.it) che ospita i nostri lavori nella sezione fan made per collaborare con noi a quattro mani sulle revisioni ❤️
