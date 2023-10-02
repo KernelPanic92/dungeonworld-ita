@@ -26,6 +26,7 @@ Supporta il progetto con una donazione 🥰
     - War and Wonders Pack
       - bestia [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/bestia.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/bestia.pdf)]
       - pistolero [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/pistolero.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/pistolero.pdf)]
+      - signore della guerra [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/signore%20della%20guerra.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/signore%20della%20guerra.pdf)]
       - War and Wonders pack (original, EN) [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/War%20and%20Wonders%20pack%20(original,%20EN).pdf)]
 <!-- END_CLASSLIST -->
 ## Licenza
