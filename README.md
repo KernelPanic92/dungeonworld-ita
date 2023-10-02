@@ -29,6 +29,7 @@ Supporta il progetto con una donazione 🥰
       - pistolero [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/pistolero.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/pistolero.pdf)]
       - signore della guerra [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/signore%20della%20guerra.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/signore%20della%20guerra.pdf)]
       - War and Wonders pack (original, EN) [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/War%20and%20Wonders%20pack%20(original,%20EN).pdf)]
+      - warlock [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/warlock.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/warlock.pdf)]
 <!-- END_CLASSLIST -->
 ## Licenza
 Guarda il file di [licenza](./LICENSE) per maggiori dettagli, ma ecco le nozioni di base: sei libero di utilizzare questo testo come preferisci purché citi gli autori.
