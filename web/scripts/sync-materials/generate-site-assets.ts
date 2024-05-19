@@ -73,6 +73,7 @@ export const generateSiteAssets = (repositoryPath: string, metadata: DungeonWorl
         }
     };
     
+    mkdirSync(path.join(repositoryPath, 'web/src/data'), { recursive: true });
     writeFileSync(path.join(repositoryPath, 'web/src/data/dungeon-world-data.json'), JSON.stringify(model), { encoding: 'utf8', flush: true });
 
     return model;
