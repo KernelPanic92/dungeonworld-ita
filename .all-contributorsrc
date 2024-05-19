@@ -1,5 +1,22 @@
 {
   "projectName": "dungeonworld-ita",
   "projectOwner": "KernelPanic92",
-  "files": ["README.md", "web/pages/altro/contributori.md"]
+  "files": [
+    "README.md",
+    "web/pages/altro/contributori.md"
+  ],
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "samlipa",
+      "name": "Samantha Liparota",
+      "avatar_url": "https://avatars.githubusercontent.com/u/113120713?v=4",
+      "profile": "https://www.behance.net/sliparota",
+      "contributions": [
+        "design"
+      ]
+    }
+  ]
 }
