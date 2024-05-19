@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.1",
   "description": "The site of dungeon-world.it",
+  "packageManager": "pnpm@9.0.5",
   "scripts": {
     "predev": "pnpm run sync-materials",
     "dev": "next dev",
-    "prebuild": "pnpm run sync-materials",
     "build": "rimraf .next && next build",
     "start": "next start",
     "sync-materials": "pnpm dlx ts-node scripts/sync-materials/index.ts"
