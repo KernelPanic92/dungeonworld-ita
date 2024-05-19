@@ -16,7 +16,18 @@
       "profile": "https://www.behance.net/sliparota",
       "contributions": [
         "design",
+        "translation",
+        "review"
+      ]
+    },
+    {
+      "login": "KernelPanic92",
+      "name": "Iacopo Ciao",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6616184?v=4",
+      "profile": "https://www.iacopociao.com",
+      "contributions": [
         "review",
+        "code",
         "translation"
       ]
     }
