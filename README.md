@@ -26,10 +26,13 @@ I materiali prodotti sono traduzioni e rielaborazioni dei [materiali](https://gi
 ## I nostri contributori
 Un enorme grazie per tutti coloro che hanno dato il loro contributo per la crescita di questo repository ❤️
 
-<a href="https://github.com/KernelPanic92/dungeonworld-ita/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=KernelPanic92/dungeonworld-ita" />
-</a>
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 
-Made with [contrib.rocks](https://contrib.rocks). ❤️
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 Un ringraziamento speciale a [EPICentrum.it](https://www.epicentrum.it) per collaborare con noi a quattro mani sulle revisioni ❤️
