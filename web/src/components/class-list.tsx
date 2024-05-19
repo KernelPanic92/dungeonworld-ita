@@ -12,7 +12,7 @@ export const ClassItem = ({clazz}: {clazz: StandardClass | HomebrewClass}) => {
         </p>
         <Link href={'classi/' + clazz.slug}>Vai alla scheda →</Link>
       </div>
-      <div className="w-20 h-36 md:w-28 md:h-48 relative aspect-square">
+      <div className="w-20 h-36 md:w-28 md:h-48 relative overflow-hidden">
         <Image className="object-cover object-center rounded-lg" src={clazz.showcase.imageUrl} alt={clazz.showcase.heroName} fill={true} />
       </div>
   </div>;
