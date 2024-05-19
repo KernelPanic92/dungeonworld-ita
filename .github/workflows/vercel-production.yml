@@ -20,6 +20,9 @@ jobs:
       - name: Pull Vercel Environment Information
         working-directory: ./web
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Install
+        working-directory: ./web
+        run: pnpm i
       - name: Sync Materials
         working-directory: ./web
         run: pnpm run sync-materials
