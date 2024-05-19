@@ -268,7 +268,7 @@ dungeonWorld:
           - name: Scheda Dello Spadaccino
             path: ./materiali/classi/homebrew/Jacob Randolph/The Dashing Hero/Spadaccino.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Jacob Randolph/The Dashing Hero/Spadaccino.jpeg
+          imagePath: ./materiali/classi/homebrew/Jacob Randolph/The Dashing Hero/spadaccino.jpeg
           heroName: Lo Spadaccino Umano Garinith
         credits:
           - kind: Traduzione
