@@ -53,9 +53,9 @@ const config: DocsThemeConfig = {
     const { asPath, defaultLocale, locale } = useRouter();
     const title = [frontMatter.title ?? baseTitle, 'Dungeon World in italiano'].filter(Boolean).join(' - ');
     const url =
-    'https://dungeon-world-ita-site.vercel.app' +
+    'https://dungeonworld-ita.vercel.app' +
     (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
-    const socialCard = frontMatter.image?.url ?? 'https://dungeon-world-ita-site.vercel.app/images/dungeon-world-cover.webp';
+    const socialCard = frontMatter.image?.url ?? 'https://dungeonworld-ita.vercel.app/images/dungeon-world-cover.webp';
     const description = frontMatter.description ?? 'Dungeon World in italiano';
 
     return (
@@ -77,7 +77,7 @@ const config: DocsThemeConfig = {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={socialCard} />
         <meta name="twitter:site:domain" content={title} />
-        <meta name="twitter:url" content="https://nextra.site" />
+        <meta name="twitter:url" content={url} />
         <meta
           name="og:title"
           content={title}
