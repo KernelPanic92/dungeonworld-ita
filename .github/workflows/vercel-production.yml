@@ -11,15 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Enable Corepack
+        working-directory: ./web
+        run:  corepack enable
       - name: Install Vercel CLI
         working-directory: ./web
-        run: npm install --global vercel@latest
+        run: corepack pnpm install --global vercel@latest
       - name: Pull Vercel Environment Information
         working-directory: ./web
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Sync Materials
+        working-directory: ./web
+        run: corepack pnpm run sync-materials
       - name: Build Project Artifacts
         working-directory: ./web
-        run: npm run sync-materials && vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
         working-directory: ./web
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
