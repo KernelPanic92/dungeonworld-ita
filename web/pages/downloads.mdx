@@ -1,0 +1,47 @@
+import { DownloadLink } from '@/components/download-link';
+import { useData } from 'nextra/data';
+import { dungeonWorldData, homebrewGroupedByAuthorsAndCollections } from '@/data/dungeon-world.ts';
+
+# Downloads
+
+Per comodo riferimento, vengono qui elencati tutti i materiali scaricabili e stampabili.
+
+## Materiale Base
+
+- <DownloadLink href={dungeonWorldData.standard.gameMasterSummary.url}>{dungeonWorldData.standard.gameMasterSummary.name}</DownloadLink>
+- <DownloadLink href={dungeonWorldData.standard.movesSummary.url}>{dungeonWorldData.standard.movesSummary.name}</DownloadLink>
+- <DownloadLink href={dungeonWorldData.standard.frontsSummary.url}>{dungeonWorldData.standard.frontsSummary.name}</DownloadLink>
+
+## Classi Base
+<br />
+<ul className="list-disc list-outside ml-6 rtl:mr-6">
+  {dungeonWorldData.standard.classes.flatMap((clazz) => clazz.assets).map((asset) => {
+    return <li className="my-2"><DownloadLink href={asset.url}>{asset.name}</DownloadLink></li>;
+  })}
+</ul>
+
+## Classi Homebrew
+<ul className="font-bold list-disc list-outside ml-6 rtl:mr-6">
+  {homebrewGroupedByAuthorsAndCollections.map((author) => {
+    return <li className="my-2">
+      {author.authors}
+      <ul className="font-bold list-disc list-outside ml-6 rtl:mr-6">
+      {author.collections.map((collection) => {
+          return <li className="my-2">
+          {collection.collection}
+            <ul className="font-bold list-disc list-outside ml-6 rtl:mr-6">
+              {collection.classes
+                .flatMap((clazz) => clazz.assets)
+                .map((asset) => <li className="my-2">
+                    <DownloadLink href={asset.url}>
+                      {asset.name}
+                    </DownloadLink>
+                  </li>
+                )}
+            </ul>
+          </li>;
+      })}
+      </ul>
+    </li>;
+  })}
+</ul>

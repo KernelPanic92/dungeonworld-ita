@@ -1,0 +1,31 @@
+{
+  "index": {
+    "type": "page",
+    "title": "Dungeon World",
+    "display": "hidden",
+    "theme": {
+      "layout": "full",
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false
+    }
+  },
+  "manuale": {
+    "type": "page",
+    "title": "Manuale"
+  },
+  "homebrew": {
+    "type": "page",
+    "title": "Homebrew"
+  },
+  "downloads": {
+    "type": "page",
+    "title": "Downloads"
+  },
+  "altro": {
+    "type": "page",
+    "title": "Altro"
+  }
+}

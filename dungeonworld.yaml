@@ -1,0 +1,954 @@
+dungeonWorld:
+  standard:
+    frontsSummary:
+      name: Scheda Dei Fronti
+      path: ./materiali/standard/fronti.pdf
+
+    gameMasterSummary:
+      name: Riassunto del GM
+      path: ./materiali/standard/gm.pdf
+
+    movesSummary:
+      name: Riassunto Delle Mosse
+      path: ./materiali/standard/mosse.pdf
+
+    classes:
+      - name: Barbaro
+        assets:
+          - name: Scheda Del Barbaro
+            path: materiali/classi/standard/Barbaro.pdf
+        shortDescription: I tuoi compagni d'avventura potranno trattarti come uno straniero rozzo e ignorante. Che lo pensino pure, che ti importa? Quando le cose si metteranno male piangeranno chiedendo il tuo aiuto. Perché nessuno di loro è forte come te. Nessuno.
+        description: |-
+          Guarda questa gente imbellettata. Ti osservano e hanno paura di te. Fanno bene, devono averne. Tu non sei come loro. Vieni da un luogo dove il valore di un uomo si misura dalla forza del suo pugno, non dalla capienza delle sue tasche. Mentre loro sono deboli, si nascondono dietro leggi fragili come le loro ossa; l'unica legge che conosci è quella del più forte. Ce ne sono altre?  
+
+          Tu insegui cose più succulente di una casa tranquilla o di una manciata di monete: tu vuoi la gloria, la fama e un mucchio di ricchezze, tante da non poterle contare. Perché tu non sai contare. C'è solo una cosa che sai fare bene: spaccare la testa di chi si mette tra te e i tuoi appetiti. I tuoi compagni d'avventura potranno trattarti come uno straniero rozzo e ignorante. Che lo pensino pure, che ti importa? Quando le cose si metteranno male piangeranno chiedendo il tuo aiuto.  
+
+          Perché nessuno di loro è forte come te. Nessuno.
+        credits:
+          - kind: Traduzione
+            contributors:
+              - dungeonworld.it
+          - kind: Immagine
+            contributors:
+              - deepai.org
+        showcase:
+          imagePath: ./materiali/classi/standard/khamisi-la-sfregiatrice-barbara.jpeg
+          heroName: La Barbara Khamisi La Sfregiatrice
+
+      - name: Bardo
+        assets:
+          - name: Scheda Del Bardo
+            path: materiali/classi/standard/Bardo.pdf
+        shortDescription: I poemi dicono che la vita di un avventuriero è fatta di mille strade aperte e della gloria di battaglie vinte e di ricchezze conquistate. Le storie che si raccontano in ogni taverna affollata di villici e braccianti dovranno pur avere una parvenza di verità, non è vero? Le canzoni che ispirano ugualmente nobili e pezzenti, per placare le bestie selvagge o spingere gli uomini alla furia, dovranno pur avere un'origine. È qui che arriva il bardo. Tu, con la tua lingua sciolta e il tuo acume. Tu, che racconti favole e canti canzoni. Un semplice menestrello può ripetere una storia, ma ci vuole un bardo per viverla.
+        description: |-
+          I poemi dicono che la vita di un avventuriero è fatta di mille strade aperte e della gloria di battaglie vinte e di ricchezze conquistate. Le storie che si raccontano in ogni taverna affollata di villici e braccianti dovranno pur avere una parvenza di verità, non è vero? Le canzoni che ispirano ugualmente nobili e pezzenti, per placare le bestie selvagge o spingere gli uomini alla furia, dovranno pur avere un'origine.  
+
+          È qui che arriva il bardo. Tu, con la tua lingua sciolta e il tuo acume. Tu, che racconti favole e canti canzoni. Un semplice menestrello può ripetere una storia, ma ci vuole un bardo per viverla. Metti gli stivali, nobile oratore. Affila la tua daga celata e rispondi all’appello. Qualcuno dev'essere lì, a lottare fianco a fianco con picchiatori e mercenari e futuri eroi. Chi meglio di te per scrivere la storia del tuo stesso eroismo?  
+
+          Nessuno. Dai inizio all'avventura.
+        credits:
+          - kind: Traduzione
+            contributors:
+              - dungeonworld.it
+          - kind: Immagine
+            contributors:
+              - deepai.org
+        showcase:
+          imagePath: ./materiali/classi/standard/cassandra-canto-del-vento-bardessa.jpeg
+          heroName: La Bardessa Cassandra Canto Del Vento
+
+      - name: Chierico
+        assets:
+          - name: Scheda Del Chierico
+            path: materiali/classi/standard/Chierico.pdf
+          - name: Incantesimi Del Chierico
+            path: materiali/classi/standard/chierico-incantesimi.pdf
+        shortDescription: Le terre di Dungeon World sono allo sbando, dimenticate dagli dèi. È un mondo orribile, con morti che camminano e bestie di ogni genere che si aggirano contro natura per le zone selvagge tra le città sicure e benedette dai templi. È un mondo senza religione quello là fuori. È per questo che ha bisogno di te.
+        description: |-
+          Le terre di Dungeon World sono allo sbando, dimenticate dagli dèi. È un mondo orribile, con morti che camminano e bestie di ogni genere che si aggirano contro natura per le zone selvagge tra le città sicure e benedette dai templi. È un mondo senza religione quello là fuori. È per questo che ha bisogno di te.
+
+          Portare la gloria degli dèi ai selvaggi non è solo la tua natura, è la tua missione. Sta a te diffondere il verbo con la spada, la mazza e la magia, fendere dritto nel barbaro cuore dei luoghi senza dio e piantarvi il seme della religione. Alcuni dicono che è meglio tenere gli dèi vicino al cuore. Sciocchezze. Il tuo dio vive sul filo di una lama.
+
+          Mostra al mondo chi è il suo signore.
+        credits:
+          - kind: Traduzione
+            contributors:
+              - dungeonworld.it
+          - kind: Immagine
+            contributors:
+              - deepai.org
+        showcase:
+          imagePath: ./materiali/classi/standard/hawthorn-chierico.jpeg
+          heroName: Il Chierico umano Hawthorn
+
+      - name: Druido
+        assets:
+          - name: Scheda Del Druido
+            path: materiali/classi/standard/Druido.pdf
+        shortDescription: Dai uno sguardo attorno al fuoco. Che cosa ti ha portato a viaggiare con questa gente, che puzza della polvere e del sudore della città? È una forma di bontà? Li proteggi forse come una mamma orso difende i suoi cuccioli? Sono loro il tuo branco, ora? Inconsueti sono i fratelli e sorelle che ti sei dato. Qualunque cosa ti abbia spinto ad aiutarli, certamente sarebbero perduti senza i tuoi sensi acuti e i tuoi artigli affilati.
+        description: |-
+          Dai uno sguardo attorno al fuoco. Che cosa ti ha portato a viaggiare con questa gente, che puzza della polvere e del sudore della città? È una forma di bontà? Li proteggi forse come una mamma orso difende i suoi cuccioli? Sono loro il tuo branco, ora? Inconsueti sono i fratelli e sorelle che ti sei dato. Qualunque cosa ti abbia spinto ad aiutarli, certamente sarebbero perduti senza i tuoi sensi acuti e i tuoi artigli affilati.
+
+          Tu appartieni agli ampi spazi consacrati, sei nato dalla terra e porti il marchio dei suoi spiriti sulla tua pelle. Forse avevi una vita prima, forse eri un abitante di città come loro, ma adesso non più. Hai rinunciato a quella forma statica. Ascolta i tuoi alleati pregare i loro dèi scolpiti nella pietra e guardali lucidare i loro simulacri d'argento. Parlano della gloria che troveranno in quella città marcia che vi siete lasciati alle spalle.
+
+          I loro dèi sono infanti, il loro acciaio non li proteggerà. Tu segui le vecchie vie, indossi la pelle della terra stessa. Prenderai certo la tua parte del tesoro, ma camminerai mai come uno di loro? Solo il tempo lo dirà.
+
+        credits:
+          - kind: Traduzione
+            contributors:
+              - dungeonworld.it
+          - kind: Immagine
+            contributors:
+              - deepai.org
+        showcase:
+          imagePath: ./materiali/classi/standard/ethanwe-elfo-druido.jpeg
+          heroName: Il Druido Elfo Ethanwe
+
+      - name: Guerriero
+        assets:
+          - name: Scheda Del Guerriero
+            path: materiali/classi/standard/Guerriero.pdf
+        shortDescription: "Sei una bestia di ferro. I tuoi amici impugneranno pure lame d'acciaio temprato ma tu, guerriero, tu sei acciaio. Mentre i tuoi compagni si lamentano delle ferite attorno al focolare nelle terre selvagge, tu porti le tue cicatrici con orgoglio. Tu sei la muraglia: lascia che ogni pericolo si sfracelli in polvere scontrandosi con te. Alla fine, sarai l'ultimo a stare in piedi."
+        description: |-
+          È un lavoro ingrato: sopravvivere giorno dopo giorno grazie alla tua armatura e alla forza del tuo braccio, tuffandoti con indifferenza nel pericolo. Non suoneranno corni d'oro per quel giorno in cui prendesti per loro una coltellata tra le costole in quella locanda di Bucksberg. Nessun coro d'angeli canterà della volta che li trascinasti, ancora urlanti, dal limitare delle Fosse della Follia, no.
+
+          Loro non contano.
+
+          Tu lo fai per il coraggio e la gloria, per il rumore della battaglia e per il caldo, caldo sangue che ti senti scorrere nelle vene quando vi prendi parte. Sei una bestia di ferro. I tuoi amici impugneranno pure lame d'acciaio temprato ma tu, guerriero, tu sei acciaio. Mentre i tuoi compagni si lamentano delle ferite attorno al focolare nelle terre selvagge, tu porti le tue cicatrici con orgoglio.
+
+          Tu sei la muraglia: lascia che ogni pericolo si sfracelli in polvere scontrandosi con te. Alla fine, sarai l'ultimo a stare in piedi.
+
+        credits:
+          - kind: Traduzione
+            contributors:
+              - dungeonworld.it
+          - kind: Immagine
+            contributors:
+              - deepai.org
+        showcase:
+          imagePath: ./materiali/classi/standard/stone-il-guerriero.jpeg
+          heroName: Stone l'umano guerriero
+
+      - name: Furfante
+        assets:
+          - name: Scheda Del Furfante
+            path: materiali/classi/standard/Ladro.pdf
+        shortDescription: "Li hai sentiti, seduti attorno al fuoco. Si vantano di questa o quella battaglia, o di come i loro dèi sorridano sulla vostra allegra compagnia. Tu conti le tue monete e sorridi a te stesso — questa è l'emozione più forte. Solo tu conosci il segreto di Dungeon World: sporco, sporco guadagno."
+        description: |-
+          Li hai sentiti, seduti attorno al fuoco. Si vantano di questa o quella battaglia, o di come i loro dèi sorridano sulla vostra allegra compagnia. Tu conti le tue monete e sorridi a te stesso — questa è l'emozione più forte. Solo tu conosci il segreto di Dungeon World: sporco, sporco guadagno.
+
+          Certo, ti insulteranno per tutte le volte che te ne sei scappato di nascosto, ma senza di te, ciascuno di loro sarebbe stato diviso in due da una ghigliottina, o avvelenato a morte da qualche antica trappola ad aghi. Perciò, lascia che si lagnino. Quando avrai finito con questa vita di esplorazione e saccheggio brinderai alle loro tombe da eroi.
+
+          Dal tuo castello. Pieno d'oro. Furfante che non sei altro.
+
+        credits:
+          - kind: Traduzione
+            contributors:
+              - dungeonworld.it
+          - kind: Immagine
+            contributors:
+              - deepai.org
+        showcase:
+          imagePath: ./materiali/classi/standard/felix-ladro-mezzelfo.jpeg
+          heroName: Il Furfante Mezzelfo Felix
+
+      - name: Mago
+        assets:
+          - name: Scheda Del Mago
+            path: materiali/classi/standard/Mago.pdf
+          - name: Incantesimi Del Mago
+            path: materiali/classi/standard/mago-incantesimi.pdf
+        shortDescription: Hai passato così tanto tempo chino sui tuoi tomi. Hai portato a termine esperimenti che ti hanno fatto quasi impazzire e hai evocato cose che mettevano in pericolo la tua stessa anima. Per cosa? Per il potere. Che altro c'è al mondo? Non si tratta del potere di un Re o di una Nazione, ma del potere di far bruciare il sangue di un uomo nelle sue vene. Di richiamare i fulmini del cielo e le scosse della terra turbolenta. Di ignorare le regole che al mondo sono così care.
+        description: |-
+          Dungeon World ha delle regole. Non sono le leggi degli uomini o la parola di un meschino tiranno. Regole più grandi, migliori. Lasci cadere qualcosa, in pochi attimi è per terra. Non si può creare la materia dal nulla. I morti restano morti, giusto?
+
+          Ah, le cose che ci diciamo per stare meglio durante le lunghe notti buie.
+
+          Hai passato così tanto tempo chino sui tuoi tomi. Hai portato a termine esperimenti che ti hanno fatto quasi impazzire e hai evocato cose che mettevano in pericolo la tua stessa anima. Per cosa? Per il potere. Che altro c'è al mondo? Non si tratta del potere di un Re o di una Nazione, ma del potere di far bruciare il sangue di un uomo nelle sue vene. Di richiamare i fulmini del cielo e le scosse della terra turbolenta. Di ignorare le regole che al mondo sono così care.
+
+          Lascia che ti guardino con occhi biechi. Lascia che ti chiamino stregone o negromante. Chi tra loro può lanciare palle di fuoco dagli occhi?
+
+          Esatto. Non avevo dubbi.
+        credits:
+          - kind: Traduzione
+            contributors:
+              - dungeonworld.it
+          - kind: Immagine
+            contributors:
+              - deepai.org
+        showcase:
+          imagePath: ./materiali/classi/standard/liliastre-maga.jpeg
+          heroName: La Maga Liliastre
+
+      - name: Paladino
+        assets:
+          - name: Scheda Del Paladino
+            path: materiali/classi/standard/Paladino.pdf
+        shortDescription: L'Inferno attende. Un'eternità di tormento nel fuoco o nel gelo o qualunque altra pena meglio rappresenti i peccati commessi dalle orde di dannati di Dungeon World. Sei l'unica cosa che si frappone tra la salvezza dell'anima e le cupe fosse della tortura. Sant'uomo, macchina da guerra in armatura, templare del Bene e della Luce, giusto? Il chierico potrà pregare di notte agli dei che abitano il cielo. Il guerriero potrà impugnare la sua spada affilata nel nome del bene ma tu sai. Solo tu sai. Tu sei gli occhi, le mani degli dèi, pietoso esecutore del loro giudizio di morte. Tuo è il dono della rettitudine e della virtù, della giustizia, anche della Vista. Una purezza d'intenti che ai tuoi compagni manca.
+        description: |-
+          L'Inferno attende. Un'eternità di tormento nel fuoco o nel gelo o qualunque altra pena meglio rappresenti i peccati commessi dalle orde di dannati di Dungeon World. Sei l'unica cosa che si frappone tra la salvezza dell'anima e le cupe fosse della tortura. Sant'uomo, macchina da guerra in armatura, templare del Bene e della Luce, giusto? Il chierico potrà pregare di notte agli dei che abitano il cielo. Il guerriero potrà impugnare la sua spada affilata nel nome del "bene" ma tu sai. Solo tu sai.
+
+          Tu sei gli occhi, le mani degli dèi, pietoso esecutore del loro giudizio di morte. Tuo è il dono della rettitudine e della virtù, della giustizia, anche della Vista. Una purezza d'intenti che ai tuoi compagni manca.
+
+          Perciò guida questi sciocchi, paladino. Imbraccia le armi per la tua nobile causa e porta la salvezza a questo mondo scellerato.
+
+          Vae victis, giusto?
+        credits:
+          - kind: Traduzione
+            contributors:
+              - dungeonworld.it
+          - kind: Immagine
+            contributors:
+              - deepai.org
+        showcase:
+          imagePath: ./materiali/classi/standard/adrian-paladino.jpeg
+          heroName: Il Paladino Umano Adrian
+
+      - name: Ramingo
+        assets:
+          - name: Scheda Del Ramingo
+            path: materiali/classi/standard/Ramingo.pdf
+        shortDescription: Guida. Cacciatore. Creatura selvaggia. Sei tutte queste cose e anche più. Hai vissuto nelle terre selvagge da solo fino a ora, ma il richiamo di qualcosa più grande, chiamalo destino se vuoi, ti ha unito a questa gente. Coraggiosi, certamente. Possenti e forti, anche. Ma solo tu conosci i segreti degli spazi inesplorati. Senza di te, sarebbero persi. Fai strada tra il sangue e l'oscurità, grampasso.
+        description: |-
+          Questa gente di città con cui viaggi. Hanno udito loro il richiamo del lupo? Hanno sentito i venti ululare nei tetri deserti dell'Est? Hanno cacciato la preda con l'arco e il coltello come te? Certo che no. È per questo che hanno bisogno di te.
+
+          Guida. Cacciatore. Creatura selvaggia. Sei tutte queste cose e anche più. Hai vissuto nelle terre selvagge da solo fino a ora, ma il richiamo di qualcosa più grande, chiamalo destino se vuoi, ti ha unito a questa gente. Coraggiosi, certamente. Possenti e forti, anche. Ma solo tu conosci i segreti degli spazi inesplorati.
+
+          Senza di te, sarebbero persi. Fai strada tra il sangue e l'oscurità, grampasso.
+        credits:
+          - kind: Traduzione
+            contributors:
+              - dungeonworld.it
+          - kind: Immagine
+            contributors:
+              - deepai.org
+        showcase:
+          imagePath: ./materiali/classi/standard/nora-raminga.jpeg
+          heroName: La raminga umana Nora e il suo lupo Garu
+
+  homebrew:
+    classes:
+      - name: Monaco
+        compendium: false
+        shortDescription: I Monaci provengono da monasteri isolati, dove trascorrono anni affinando le loro abilità in solitudine o sotto la guida di saggi mentori.
+        description: |-
+          Il Monaco è un maestro sia del corpo che della mente, addestrato in antiche tradizioni che gli conferiscono un controllo senza pari sul proprio essere fisico e spirituale.
+
+          I Monaci provengono da monasteri isolati, dove trascorrono anni affinando le loro abilità in solitudine o sotto la guida di saggi mentori.
+
+          Le loro capacità non si limitano al semplice combattimento; i Monaci sono anche noti per i loro poteri curativi, l'intuizione nella condizione umana e la capacità di trascendere il regno fisico.
+        collection: Raccolta Generale
+        authors: James Mendez Hodes
+        assets:
+          - name: Scheda Del Monaco
+            path: ./materiali/classi/homebrew/James Mendez Hodes/Monaco.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/James Mendez Hodes/korra-la-monaca.jpeg
+          heroName: "Korra Del Monastero del Drago Celeste"
+        credits:
+          - kind: Traduzione
+            contributors:
+              - dungeonworld.it
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Lo Spadaccino
+        compendium: false
+        shortDescription: Lo Spadaccino è un maestro del combattimento con la spada, dotato di agilità, precisione e stile. Con movimenti eleganti e tecniche raffinate, lo Spadaccino è in grado di affrontare qualsiasi avversario sul campo di battaglia, trasformando il combattimento in una danza mortale.
+        description: |-
+          Lo Spadaccino è un combattente raffinato che ha dedicato la sua vita a padroneggiare l'arte della spada.
+
+          Provenienti da scuole di scherma prestigiose o addestrati da maestri leggendari, gli Spadaccini combinano grazia e letalità in un unico, formidabile pacchetto.
+
+          La loro abilità non si limita alla pura forza bruta; sono strategici, intelligenti e sempre alla ricerca del colpo perfetto.
+        collection: The Dashing Hero
+        authors: Jacob Randolph
+        assets:
+          - name: Scheda Dello Spadaccino
+            path: ./materiali/classi/homebrew/Jacob Randolph/The Dashing Hero/Spadaccino.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Jacob Randolph/The Dashing Hero/Spadaccino.jpeg
+          heroName: Lo Spadaccino Umano Garinith
+        credits:
+          - kind: Traduzione
+            contributors:
+              - dungeonworld.it
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Mago
+        compendium: false
+        shortDescription: I suoi incantesimi aprono porte verso mondi oltre la comprensione umana e affrontano sfide che sfidano la logica e la ragione. Sei il Mago, e il tuo destino è tessuto con fili di magia e mistero.
+        description: |-
+          Il Mago incarna il potere del misticismo e dell'occulto, padroneggiando un vasto repertorio di incantesimi.
+
+          Nelle sue mani, il potere dell'arcana si manifesta in forme sorprendenti e spettacolari, plasmate secondo la sua volontà.
+
+          I suoi incantesimi aprono porte verso mondi oltre la comprensione umana e affrontano sfide che sfidano la logica e la ragione. Sei il Mago, e il tuo destino è tessuto con fili di magia e mistero.
+        collection: Alternative Playbook
+        authors: Jacob Randolph
+        assets:
+          - name: Scheda Del Mago
+            path: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/mago.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/lucius-mago.jpeg
+          heroName: Il Mago Umano Lucius
+        credits:
+          - kind: Traduzione
+            contributors:
+              - epicentrum.it
+              - Davide Timaco
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Sacerdote
+        compendium: false
+        shortDescription: Il Sacerdote incarna la forza spirituale e la devozione, canalizzando il potere divino per proteggere e guidare coloro che ne hanno bisogno.
+        description: |-
+          Il Sacerdote incarna la forza spirituale e la devozione, canalizzando il potere divino per proteggere e guidare coloro che ne hanno bisogno.
+
+          Con le tue preghiere e le tue benedizioni, porti conforto ai deboli e fai fronte alle forze oscure che minacciano la pace e l'armonia.
+          Il tuo rapporto con la divinità ti conferisce poteri e responsabilità unici, poiché sei chiamato a compiere la volontà del tuo dio nei mondi mortali.
+
+          Sei il Sacerdote, una luce di speranza nelle tenebre, pronto a combattere per la giustizia e la salvezza.
+
+        collection: Alternative Playbook
+        authors: Jacob Randolph
+        assets:
+          - name: Scheda Del Sacerdote
+            path: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/sacerdote.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/egidio-sacerdote.jpeg
+          heroName: Il Sacerdote Umano Egidio
+        credits:
+          - kind: Traduzione
+            contributors:
+              - epicentrum.it
+              - Carmine Alfano
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Templare
+        compendium: false
+        shortDescription: Il tuo giuramento ti guida nelle terre pericolose e nei regni sconosciuti, dove combatti per la gloria e l'onore del tuo ordine. Sei il Templare, un baluardo di luce nella lotta contro le tenebre, pronto a difendere la fede e la virtù con ogni mezzo necessario.
+        description: |-
+          Il Templare incarna la fedeltà e il coraggio, proteggendo la giustizia e l'ordine con la sua spada e il suo scudo.  
+
+          Impegnato nella crociata contro il male, sei un difensore implacabile della tua fede e dei tuoi ideali. Guidato dalla tua devozione e dalla tua disciplina, affronti le minacce oscure con determinazione e risolutezza, pronti a sacrificare tutto per il bene supremo.  
+          Il tuo giuramento ti guida nelle terre pericolose e nei regni sconosciuti, dove combatti per la gloria e l'onore del tuo ordine.
+
+          Sei il Templare, un baluardo di luce nella lotta contro le tenebre, pronto a difendere la fede e la virtù con ogni mezzo necessario.
+        collection: Alternative Playbook
+        authors: Jacob Randolph
+        assets:
+          - name: Scheda Del Templare
+            path: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/templare.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/arthur-templare.jpeg
+          heroName: Il Templare Umano Arthur
+        credits:
+          - kind: Traduzione
+            contributors:
+              - epicentrum.it
+              - Davide Timaco
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Strega
+        compendium: false
+        shortDescription: "La strega prepara pozioni, è dotata di arti oscure e magie proibite da lanciare al suo comando. Le sue abilità differiscono considerevolmente da quelle del suo compagno mago: mentre lui ha la sua piccola lista di incantesimi, la strega ha i suoi sortilegi, le sue pozioni e la sua scopa."
+        description: |-
+          > Doppi, doppi fatica e duolo;  
+          > fuoco brucia, bolli paiolo.  
+          > Un pizzico di coda di tritone  
+          > e  un sacchetto di piume di drago  
+          > e la tua nuova creazione sarà completa.  
+
+          Che cosa fa? Beh. Diccelo te, sei tu la Strega!
+
+          La strega prepara pozioni, è dotata di arti oscure e magie proibite da lanciare al suo comando. Le sue abilità differiscono considerevolmente da quelle del suo compagno mago: mentre lui ha la sua piccola lista di incantesimi, la strega ha i suoi sortilegi, le sue pozioni e la sua scopa.
+          Tu sei La Strega, e i tuoi poteri sono arcani ed eterni.
+        collection: A Dungeon World Playbook
+        authors: Jacob Randolph
+        assets:
+          - name: Scheda Della Strega
+            path: ./materiali/classi/homebrew/Jacob Randolph/A Dungeon World Playbook/strega.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Jacob Randolph/A Dungeon World Playbook/strega-amelia-fiamma-oscura.jpeg
+          heroName: La Strega Umana Amelia, La Fiamma Oscura
+        credits:
+          - kind: Traduzione
+            contributors:
+              - epicentrum.it
+              - Giuseppe Maisano
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: L'Immolatore
+        compendium: false
+        shortDescription: L'Immolatore è un incantatore che attinge al potere distruttivo del fuoco per dominare i suoi nemici e forgiare il proprio destino. Con un legame profondo con le fiamme e la capacità di controllarle a proprio piacimento, l'Immolatore è sia temuto che rispettato sul campo di battaglia.
+        description: |-
+          L'Immolatore è un individuo che ha stretto un patto con le forze del fuoco, ottenendo un potere che brucia dentro di lui e si manifesta in terribili esplosioni di fiamme e calore.
+          Questo legame con il fuoco gli conferisce abilità straordinarie, ma anche un grande rischio, poiché l'Immolatore deve costantemente bilanciare il proprio controllo per evitare di essere consumato dalle fiamme che lo alimentano.
+        collection: Dungeon World Playbooks
+        authors: Stefan Grambart
+        assets:
+          - name: Scheda Dell'Immolatore
+            path: ./materiali/classi/homebrew/Stefan Grambart/Dungeon World PLAYBOOKS/immolatore.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Stefan Grambart/Dungeon World PLAYBOOKS/immolatore.jpeg
+          heroName: L'immolatore Solomon della Fiamma Imperiale
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Professionista
+        compendium: true
+        shortDescription: Sei tornato da dove pochi uomini osano avventurarsi, portando ferite, tesori e storie. La gente di questa città sta cominciando a guardarti con ammirazione.
+        description: |-
+          Dunque, sei tornato.
+
+          Sei tornato da dove pochi uomini osano avventurarsi, portando ferite, tesori e storie. La gente di questa città sta cominciando a guardarti con ammirazione.
+          Alcuni persino ti seguirebbero. Beh, forse non di nuovo nel dungeon, ma per mettere tutto l’oro che hai guadagnato a buon uso.
+          Costruisci una nuova taverna o un tempio. Sai, un posto dove puoi stabilirti. Almeno per un po’.
+
+          Il Professionista è un omaggio ai giorni del vecchio Dungeons & Dragons, quando i personaggi di alto livello diventavano signori di castelli o gilde. Si basa fortemente sulla classe compendio Landed Gentry di Minimal Compendium Classes, anche se lo stile è stato modificato per rendere il personaggio un uomo d’affari invece di un signore, e le mosse sono ottimizzate per massimizzare sia le scelte del giocatore che gli spunti di trama. Gilde di ladri, taverne, templi e negozi possono essere creati utilizzando questa classe compendio.
+
+          Abbiamo incluso anche alcune semplici regole per la gestione di un insediamento, se questa è una direzione che ti potrebbe interessare. Queste regole prendono spunto dal percorso di campagna Kingmaker del gioco di ruolo Pathfinder.
+
+          Le abbiamo progettate per essere facili da implementare senza troppa contabilità o matematica pesante e per darti l’opportunità di far crescere il tuo insediamento.
+        collection: Lore And Lords Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Del Professionista
+            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/[compendio] professionista.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/[compendio] professionista.jpeg
+          heroName: Il Capo della Gilda dei Mercanti Leonil
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Vampiro
+        compendium: false
+        shortDescription: Il Vampiro trae ispirazione sia da storie classiche che moderne del genere horror. Predatore, manipolatore e creatura delle tenebre, il Vampiro porta con sé un’aria di minaccia con i suoi poteri soprannaturali legati al sangue e alla notte.
+        description: |-
+          Un tempo avevi una vita normale. Forse eri un comune contadino, o forse un nobile annoiato alla ricerca di avventure romantiche. Poi, una notte, hai incontrato uno sconosciuto pallido. In quella notte, tutto è cambiato. Ha preso la tua vita, ma ti ha dato qualcos’altro in cambio.
+          Ora i tuoi occhi sono aperti a un nuovo mondo. Un mondo di pericoli e segreti. Sei ora un cacciatore, e le persone sono le tue prede. Cosa farai? Se giochi d’astuzia, potresti vivere per sempre. Ti farai re, o sarai invece un fautore di re? Ma quanto a lungo puoi nascondere la tua vera natura ai tuoi amici? Cosa succederà se verrai scoperto? E cosa dire della fame che risiede profondamente nella tua anima... Quanto a lungo puoi tenerla a bada?
+
+          Fino a dove sarai disposto a spingerti per ottenere ciò che desideri?
+
+          Il Vampiro trae ispirazione sia da storie classiche che moderne del genere horror. Predatore, manipolatore e creatura delle tenebre, il Vampiro porta con sé un’aria di minaccia con i suoi poteri soprannaturali legati al sangue e alla notte.
+        collection: Lore And Lords Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Del Vampiro
+            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/vampiro.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/anton-vampiro.jpeg
+          heroName: Il Vampiro Anton
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Berserker
+        compendium: false
+        shortDescription: La forza del Berserker è la sua potente rabbia e la sete di sangue, che gli conferiscono una straordinaria potenza fisica a discapito della sua sanità mentale per un breve periodo. Cosa succederà quando richiamerà questa terribile furia?
+        description: |-
+          Troppi uomini in Dungeon World temono il pericolo e il combattimento. La vista del sangue versato li fa tremare e preferirebbero negoziare piuttosto che combattere. Ma per te, la guerra e la violenza sono tuoi amici. L’anticipazione della battaglia ti infiamma come nient’altro può.
+
+          Un fuoco brucia nel tuo cuore. Qualcosa nel tuo sangue ribolle. I tuoi muscoli si induriscono come il ferro, e una foschia rossa avvolge la tua visione. Quando le spade si scontrano, non c’è pensiero razionale dentro di te.
+
+          Solo furia.
+
+          Solo distruzione.
+
+          Il dungeon ti chiama.
+
+          Avversari feroci ti metteranno alla prova come una lama, temprata nelle fiamme della tua inesauribile rabbia. Non mostrerai pietà e non ne aspetterai in cambio. Ti getterai nell’abisso e emergerai dall’altro lato trionfante, bagnato del sangue di coloro che si opporrebbero a te...
+          O cadrai in una gloriosa battaglia, ancora aggrappato alla tua arma fino all’ultimo respiro.
+
+          La terra tremerà al tuo passaggio.  
+          Il Valhalla ti attende.  
+
+          La forza del Berserker è la sua potente rabbia e la sete di sangue, che gli conferiscono una straordinaria potenza fisica a discapito della sua sanità mentale per un breve periodo.
+
+          Cosa succederà quando richiamerà questa terribile furia?
+        collection: Lore And Lords Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Del Berserker
+            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/berserker.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/torben-il-guerriero-berserker.jpeg
+          heroName: Il Guerriero Berserker Torben
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Cacciatore
+        compendium: false
+        shortDescription: Il Cacciatore è una variante della classe del ranger, che rinuncia al classico compagno animale in favore di trappole e una maggiore focalizzazione sull’arco. Per avere successo, il cacciatore dovrà pianificare in anticipo e posizionare le sue trappole per catturare o indebolire la sua preda. Le sue abilità di caccia lo rendono esperto nella pianificazione e nella strategia per abbattere anche i mostri più temibili.
+        description: |-
+          Il dungeon è un luogo pericoloso per chi è sprovveduto. Bestie mortali si nascondono in ogni caverna e dietro ogni albero. Per gli altri, rappresentano minacce per le loro case e vite. Ma per te, questi mostri sono la tua preda.
+
+          Cosa significa cacciare qualcosa che ti caccia? Metterti contro mostri armati solo della tua astuzia e del tuo arco? Sai come pensano, come si muovono. Tendi le tue trappole, stringi il tuo corpo e prendi la mira. Quando verranno a cercarti, sarai pronto per loro.
+          Riesci sempre a colpire il tuo bersaglio.
+
+          Il Cacciatore è una variante della classe del ranger, che rinuncia al classico compagno animale in favore di trappole e una maggiore focalizzazione sull’arco. Per avere successo, il cacciatore dovrà pianificare in anticipo e posizionare le sue trappole per catturare o indebolire la sua preda. Le sue abilità di caccia lo rendono esperto nella pianificazione e nella strategia per abbattere anche i mostri più temibili.
+        collection: Lore And Lords Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Del Cacciatore
+            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/cacciatore.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/kargek-orco-cacciatore.jpeg
+          heroName: Il Cacciatore Orco Kargek
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Cavaliere Nero
+        compendium: false
+        shortDescription: Il Cavaliere Nero ha stretto un patto con la Morte per una delle sue terribili armi. Ha un grande potere, ma questo potere ha un prezzo.
+        description: |-
+          Ti ricordi quando la vita ti sorrideva. Avevi un vero amore, buoni amici, un senso di dovere e uno scopo. Facevi ciò che era giusto per il tuo signore, e in cambio ottenevi rispetto. Poi, un giorno, tutto si è sgretolato. La tua vita è stata frantumata, dalla violenza o dal tradimento.
+
+          Forse sei sopravvissuto alla caduta, o forse no.  
+          Ma non lascerai passare in silenzio questa ingiustizia.  
+          Nel tuo momento più buio, hai stretto un patto con la Morte.  
+          Lei ti avrebbe conferito il potere per riparare a questo terribile torto, ma ti ha avvertito che ne avresti pagato il prezzo, molte volte.  
+          Ma a te non importa. Nemmeno la Morte ti fermerà. Non ti fermerai. Non puoi farlo.  
+          Guai a chi si mette sulla tua strada.
+
+          Chi uscirà vincitore da questo accordo?  
+          Solo la tua coscienza e i tuoi nuovi alleati ti impediscono di oltrepassare il limite.  
+          Eri un eroe una volta. Lo sei ancora adesso?  
+          Il Cavaliere Nero è una variante del Guerriero: un temibile guerriero guidato da una passione ardente.  
+
+          Il Cavaliere Nero ha stretto un patto con la Morte per una delle sue terribili armi.
+
+          Ha un grande potere, ma questo potere ha un prezzo.  
+          Quando usi il potere della Morte, lei vorrà qualcosa in cambio.
+        collection: Lore And Lords Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Del Cavaliere Nero
+            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/cavaliere nero.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/horatio-il-cavaliere-nero.jpeg
+          heroName: Il Cavaliere Nero Horatio
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Monaco
+        compendium: false
+        shortDescription: Il tuo pugno colpisce con la forza di una mazza chiodata, e la tua rapidità è un’armatura più resistente di una corazza d’acciaio. Il tuo corpo scorre come l’acqua, allontanandosi dal pericolo, colpendo con la forza di un’onda per poi posarsi sereno come una pozza tranquilla.
+        description: |-
+          Molte persone credono che acciaio e magia siano ciò che serve per vincere una battaglia. Ma tu conosci di meglio. Senza concentrazione e disciplina, neanche la lama più affilata colpirà nel segno, e l’armatura più resistente non sarà che peso morto. È la chiarezza del tuo pensiero e l’attuazione della tua volontà che vincono una lotta.
+
+          Per tutta la vita ti sei addestrato fino a raggiungere la perfezione marziale. Il tuo corpo e la tua mente sono le tue armi. Li hai allenati fino a renderli affilati come qualsiasi coltello. Il tuo pugno colpisce con la forza di una mazza chiodata, e la tua rapidità è un’armatura più resistente di una corazza d’acciaio. Il tuo corpo scorre come l’acqua, allontanandosi dal pericolo, colpendo con la forza di un’onda per poi posarsi sereno come una pozza tranquilla.
+
+          Inspira, tranquillità. Espira, azione perfetta.
+
+          Mentre altri possono fare affidamento su acciaio o magia per sopravvivere nel dungeon, il monaco indurisce il suo corpo fino ad essere un’arma e affina le sue abilità per sopravvivere. Ma c’è di più nel monaco che semplicemente colpire le cose.
+
+          Il monaco può diventare un maestro della furtività e dell’infiltrazione, oppure le sue intuizioni possono portare la pace nei conflitti e svelare segreti che gli uomini hanno nascosto.
+
+        collection: Lore And Lords Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Del Monaco
+            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/monaco.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/chizu-il-panda-monaco.jpeg
+          heroName: Il Monaco Pandarien Chizu
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Sciamano
+        compendium: false
+        shortDescription: Lo Sciamano di Lore and Lords Pack di Peter Johansen è progettato per soddisfare il bisogno di un chierico più orientato alla natura o di un druido più orientato agli incantesimi. Mentre lo Sciamano attinge da entrambi, la sua abilità distintiva di parlare agli spiriti gli conferisce un proprio ruolo.
+        description: |-
+          Chiudi gli occhi. Senti la chiamata? Il desiderio che proviene dalla profonda foresta, dal mare aperto, dalle potenti montagne? Lo vedi quando sogni, ma sai che non è un sogno. Sei stato là, nelle terre ben oltre l’orizzonte. Le Nebbie si aprono a te, e i misteri dell’Altro Mondo ti attendono.
+          Ti rivolgi al mondo con il tuo cuore. Il mondo ha perso il suo equilibrio. Puoi sentirlo nella terra, odorarlo nell’aria. Le persone hanno bisogno di un difensore, qualcuno che possa parlare con gli spiriti. Qualcuno per portare la benedizione della natura a loro e allontanare le forze malvagie.
+
+          Apri gli occhi. Ristabilisci l’equilibrio.
+
+          Lo Sciamano è progettato per soddisfare il bisogno di un chierico più orientato alla natura o di un druido più orientato agli incantesimi. Mentre lo Sciamano attinge da entrambi, la sua abilità distintiva di parlare agli spiriti gli conferisce un proprio ruolo.
+
+          A seconda di come lo modelli, lo Sciamano può essere un guerriero mistico, un maestro degli elementi o un potente guaritore sia del corpo che dell’anima.
+        collection: Lore And Lords Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Dello Sciamano
+            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/sciamano.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/semil-mezzelfo-sciamano.jpeg
+          heroName: Lo Sciamano Mezzelfo Semil
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Trickster
+        compendium: false
+        shortDescription: Il Trickster è una variante della classe del furfante. Invece di usare il veleno e gli attacchi furtivi, il Trickster è un furfante più orientato socialmente. Le sue parole melliflue possono tirare fuori il gruppo dai momenti più difficili, o farli sprofondare ancora di più.
+        description: |-
+          Ci sono troppe regole nel mondo. Ovunque tu vada, le persone ti dicono cosa puoi e non puoi fare, facendo minacce vuote se non ti uniformi. Chi ha bisogno di tutto questo? Sei uno spirito libero. Non c’è mai stata una situazione da cui non hai potuto uscire con il tuo fascino. Stai meglio senza tutte quelle fastidiose regole.
+
+          L’astuzia è la tua spada, l’inganno la tua armatura. Ma quando questi falliscono, hai comunque degli amici con armatura in acciaio che possono difenderti. Brave persone, ma ancora vincolate a un mondo di regole. Hanno bisogno del tuo aiuto per risolvere le dispute che non possono essere vinte con la violenza. Alcune parole intelligenti e una manipolazione attenta possono aprire porte meglio di un ariete da sfondamento. Fidati di me.
+
+          Il Trickster è una variante della classe del ladro. Invece di usare il veleno e gli attacchi furtivi, il Trickster è un ladro più orientato socialmente. Le sue parole melliflue possono tirare fuori il gruppo dai momenti più difficili, o farli sprofondare ancora di più.
+          Inganno, manipolazione e trucchi sporchi sono l’arsenale del Trickster.
+        collection: Lore And Lords Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Del Trickster
+            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/trickster.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/lysa-trickster.jpeg
+          heroName: La Trickster Umana Lysa
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Cavaliere Dei Draghi
+        compendium: false
+        shortDescription: Il Cavaliere dei Draghi è il più impressionante dei guerrieri a cavallo, che cavalca in battaglia sopra un giovane drago. Il cavaliere e il suo destriero si influenzano a vicenda, e mantenere un legame di rispetto reciproco e fiducia tra i due è fondamentale per il loro successo.
+        description: |-
+          La relazione tra draghi e mortali è lunga e complessa. A volte venerati, spesso combattuti e sempre temuti, nessuna creatura è più iconica del potere e della maestà regale dei draghi.
+
+          Per coloro che si sono dimostrati degni di forgiare un legame con un drago, diventano i più impressionanti dei cavalieri. Che siano un tiranno sanguinario o un difensore del regno, qualcuno che cavalca un drago in battaglia è uno spettacolo che non sarà presto dimenticato.
+
+          Tu sei uno di questi pochi eletti, che portano l’onore di legare la loro anima immortale a quella di un drago. Il fuoco del drago scorre nelle tue vene, proprio come il tuo valore lega il tuo nuovo destriero a te per sempre. Lavori in tandem con il tuo drago per sconfiggere anche i più grandi nemici, ma il legame tra voi è tutto tranne che perfetto.
+
+          Dopotutto, i draghi non sono creature facilmente controllabili e hanno una loro volontà. Come imparerete a fidarvi l’uno dell’altro?
+
+          Il Cavaliere dei Draghi è il più impressionante dei guerrieri a cavallo, che cavalca in battaglia sopra un giovane drago. Il cavaliere e il suo destriero si influenzano a vicenda, e mantenere un legame di rispetto reciproco e fiducia tra i due è fondamentale per il loro successo.
+        collection: Secrets And Sorcery Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Del Cavaliere dei Draghi
+            path: ./materiali/classi/homebrew/Peter Johansen/Secrets and Sorcery Pack/il cavaliere dei draghi.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/Secrets and Sorcery Pack/il cavaliere dei draghi.jpeg
+          heroName: Mallory e il suo drago Aurion
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Abitante Del Villaggio
+        compendium: false
+        shortDescription: Eroe? Oh no, no. Non sei un eroe. Sei solo una persona normale. Ringraziando gli dèi. Le avventure sono cose terribili e pericolose. Le persone che partono per avventure tornano storpiate o con la testa sbagliata, e questo se tornano del tutto. Restare al villaggio è molto meglio. Hai una vita relativamente sicura, anche se non eccitante, qui.
+        description: |-
+          Eroe? Oh no, no. Non sei un eroe. Sei solo una persona normale. Ringraziando gli dèi.  
+          Le avventure sono cose terribili e pericolose. Le persone che partono per avventure tornano storpiate o con la testa sbagliata, e questo se tornano del tutto. Restare al villaggio è molto meglio. Hai una vita relativamente sicura, anche se non eccitante, qui.
+
+          Sei vissuto nel villaggio per tutta la tua vita, o almeno per la maggior parte. Hai radici qui; famiglia, amici, un lavoro stabile. Sai, responsabilità. Ci sono rape da piantare, una recinzione da riparare, una sorellina da badare, pasti da cucinare...
+
+          ... Ok, forse ti farebbe bene staccare un po’ ogni tanto.
+
+          L’Abitante del Villaggio è un eroe nascente o potenziale, adatto a un gioco prequel o a un’avventura di “livello zero”.
+
+          Un gruppo di abitanti del villaggio potrebbe maturare in un gruppo di avventurieri a tutti gli effetti. Sebbene sia debole all’inizio, l’Abitante del Villaggio è progettato per essere facile da imparare e veloce da giocare. Poiché la classe cresce insieme a te, è una buona introduzione a Dungeon World.
+
+          La classe si basa su una precedente edizione del Villager per Dungeon World di Jason Morningstar.
+        collection: War And Wonders Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Dell'Abitante Del Villaggio
+            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/abitante del villaggio.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/abitante del villaggio.jpeg
+          heroName: La Contadina Gwen e la sua mucca Sandy
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Bestia
+        compendium: false
+        shortDescription: La Bestia è una variante del barbaro, un personaggio inumano o semi-umano, il cui sangue è mescolato con quello di una razza di animale o mostro, come arakkoa, minotauri o mezzogre. La tua eredità è la fonte delle tue abilità, sotto forma di mosse ereditate dai tuoi antenati mostruosi.
+        description: |-
+          Le terre desolate e i luoghi lontani di Dungeon World sono infestati da bestie pericolose. Dovresti saperlo, sei una di loro.
+
+          Esseri umani e simili pensano che la loro sia l’unica civiltà che conta, dall’alto dei loro castelli altezzosi. Sono diventati deboli, intimoriti dall’ignoto e da ciò che è diverso dal loro piccolo mondo. Ti temono per ciò che rappresenti; le tue affilate zanne o i tuoi occhi da predatore, i segni di chi discende da una razza di mostri.
+
+          Per innumerevoli generazioni, il tuo popolo ha prosperato ben al di là della civiltà umana, in un posto dove i deboli muoiono e i forti sopravvivono. Il tuo istinto e i tuoi artigli sono affilati come qualsiasi lama e ti difendono meglio di qualsiasi armatura.
+
+          Che tu sia un nomade errante o un aspirante guerriero, hai lasciato la tua casa in cerca di qualcosa al di là delle terre ancestrali. Tra gli altri avventurieri, hai trovato una sorta di accettazione, un nuovo branco tra questi “civilizzati”. Quando tornerai, sarai una leggenda tra i tuoi simili, portando con te oro, saggezza e le zanne dei nemici sconfitti.
+
+          La Bestia è una variante del barbaro, un personaggio inumano o semi-umano, il cui sangue è mescolato con quello di una razza di animale o mostro, come arakkoa, minotauri o mezzogre. La tua eredità è la fonte delle tue abilità, sotto forma di mosse ereditate dai tuoi antenati mostruosi.
+        collection: War And Wonders Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Della Bestia
+            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/bestia.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/jagara-il-felinide.jpeg
+          heroName: la Bestia Felinide Jagara
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Maestro Delle Maschere
+        compendium: false
+        shortDescription: Un maestro della teatralità, del fascino e dell’imitazione, Il Maestro Delle Maschere nasconde la propria identità dietro le sue maschere magiche. Il Maestro Delle Maschere ha la capacità di duplicare le abilità dei propri alleati o di cambiare le proprie abilità secondo le maschere che indossa.
+        description: |-
+          Hai mai desiderato essere qualcun altro? E se potessi cambiare chi sei?
+
+          Una maschera è uno strumento molto utile nelle tue mani. Quando indossi una maschera, diventi una persona completamente diversa. La maschera ti rende forte. Ti dà fiducia, ti dà potere. Con la giusta maschera, potresti essere qualsiasi cosa... tranne te stesso, ovviamente.
+
+          Forse hai dimenticato chi eri una volta, o stai nascondendo qualcosa di terribile sotto quella maschera. Qualunque cosa sia, non sei disposto ad accontentarti di una vita di banalità. Forse hai bisogno di qualcosa in cui credere, forse desideri più fama e prestigio. Forse là fuori nel mondo, scoprirai la verità su te stesso.
+
+          Un maestro della teatralità, del fascino e dell’imitazione, Il Maestro Delle Maschere nasconde la propria identità dietro le sue maschere magiche. Il Maestro Delle Maschere ha la capacità di duplicare le abilità dei propri alleati o di cambiare le proprie abilità secondo le maschere che indossa.
+        collection: War And Wonders Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Del Maestro Delle Maschere
+            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/maestro delle maschere.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/percy-maestro-delle-maschere.jpeg
+          heroName: Il Maestro Delle Maschere Percy
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Pistolero
+        compendium: false
+        shortDescription: Il Pistolero è un combattente il cui arma di elezione è un’arma da fuoco. Un’arma potente di per sé, ma capace di ancora di più quando impugnata con convinzione e certezza. Il Pistolero si attiene a un codice d’onore per mantenere stabile la sua mira e compiere gesta straordinarie con la sua pistola.
+        description: |-
+          Ci sono leggende di armi di incredibile potenza e pericolosità perdute da tempo.
+
+          Alcuni dicono che evocano il tuono degli dei per abbattere persino i cavalieri più corazzati. Forse solo pochi maestri artigiani nel mondo sono in grado di crearle, oppure la tecnologia è stata dimenticata e le poche armi rimanenti sono ben nascoste. In ogni caso, hai scelto di rendere una di queste incredibili armi di tua proprietà. Come cambierai il mondo con la tua pistola? Come ti cambierà la tua pistola? Portare con sé una pistola non è solo un simbolo di potere, ma anche di responsabilità. Essere un pistolero richiede non solo una mente ferma, ma anche un cuore saldo. Chiunque può imparare a sparare con una pistola. Nelle tue mani, la tua pistola è più di un’arma. È uno stile di vita. Dominare te stesso significa dominare la tua pistola.
+
+          Il Pistolero è un combattente il cui arma di elezione è un’arma da fuoco. Un’arma potente di per sé, ma capace di ancora di più quando impugnata con convinzione e certezza. Il Pistolero si attiene a un codice d’onore per mantenere stabile la sua mira e compiere gesta straordinarie con la sua pistola.
+        collection: War And Wonders Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Del Maestro Delle Maschere
+            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/pistolero.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/vincent-pistolero.jpeg
+          heroName: Il Pistolero Umano Vincent
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Signore Della Guerra
+        compendium: false
+        shortDescription: Il Signore della Guerra è un abile combattente, competente nelle tattiche e nella strategia di combattimento. Sono leader sia sul campo di battaglia che al di fuori, incitando i loro seguaci a grandi atti di valore.
+        description: |-
+          Quante battaglie hai visto? Dieci? Cento? Probabilmente ne hai perso il conto.
+
+          Molti pensano che la guerra sia caotica o incontrollabile. Ma tu sai come funziona meglio di chiunque altro. Puoi percepire il fluire e rifluire del campo di battaglia tra le tue dita. Ti basta un singolo sguardo per capire chi avrà i nervi saldi e chi fuggirà all’infuriare della battaglia. Quando senti nell’aria il profumo del sangue e dell’acciaio, la tua voce rimbomba come il tuono per rinvigorire gli animi.
+
+          In tempi di guerra, puoi essere sicuro di mantenere la calma. Sei sopravvissuto a battaglie che chiunque altro avrebbe considerato perse. I tuoi consigli tattici e la tua presenza al comando hanno cambiato le sorti di una guerra. Non sei un generale da poltrona; guidi dall’avanguardia e dando l’esempio. Fare la guerra ti è naturale quanto il respiro.
+          Se la guerra è l’inferno, allora tu sei il diavolo in persona.
+
+          Il Signore della Guerra è un abile combattente, competente nelle tattiche e nella strategia di combattimento. Sono leader sia sul campo di battaglia che al di fuori, incitando i loro seguaci a grandi atti di valore.
+        collection: War And Wonders Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Del Signore Della Guerra
+            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/signore della guerra.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/darius-signore-della-guerra.jpeg
+          heroName: Il Signore Della Guerra Darius
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Stolto
+        compendium: false
+        shortDescription: Lo Stolto ha successo grazie alla fortuna, spesso suo malgrado. Ha grandi aspirazioni, ma il destino o le circostanze amano riservargli sorprese. Che sia un eroe per caso, un eroe riluttante o semplicemente un elemento comico, non puoi mai sottovalutare Lo Stolto. Sembra sempre trovare un modo per battere le probabilità.
+        description: |-
+          Tutto è iniziato come una grande barzelletta per te. “Vai a esplorare il mondo”, dicevano. “Sarà divertente”, dicevano. Hai lasciato la tua vita perfettamente tranquilla alle spalle per il rischio, e ora ti trovi nei guai fino al collo.  
+          Ma questo non ti demoralizza. Puoi ancora essere un eroe. Hai grandi sogni, la buona sorte e il coraggio per perseguirli. Forse non hai le abilità, ma hey, non si può avere tutto, giusto? Hai i tuoi amici che ti tengono d’occhio. Ti tengono lontano dai guai peggiori, e li aiuti a mantenere la giusta prospettiva sulle cose. Con un sorriso sul viso e una canzone nel cuore, le cose si risolveranno bene, prima o poi.
+
+          > "Ehi, cosa fa questa cosa?
+
+          Lo Stolto ha successo grazie alla fortuna, spesso suo malgrado. Ha grandi aspirazioni, ma il destino o le circostanze amano riservargli sorprese. Che sia un eroe per caso, un eroe riluttante o semplicemente un elemento comico, non puoi mai sottovalutare Lo Stolto. Sembra sempre trovare un modo per battere le probabilità.  
+
+          NdT: Lo Stolto è un personaggio più complesso di quanto possa sembrare a prima vista. Sebbene la traduzione letterale del termine “fool”, il suo nome originale, sia associata a parole come “scemo”, “stupido”, “idiota”, “matto” o “buffone”, questa classe non implica necessariamente una mancanza di intelligenza. Al contrario, denota una mancanza di maturità personale, un atteggiamento puerile, ingenuo e avventato che porta qualcuno a prendere la prima cosa che trova come arma prima di uscire di casa, dicendo: “Va beh, sai cosa? Voglio fare l’eroe”.
+          Lo Stolto, indipendentemente dalla sua personalità, non agisce con l’intenzione di diventare ridicolo. Lui ci mette davvero tutto il cuore, convinto seriamente che ciò che sta facendo sia la cosa giusta, ma finisce inevitabilmente per ritrovarsi circondato da persone che lo guardano con incredulità per l’ennesima figuraccia.
+        collection: War And Wonders Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Dello Stolto
+            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/stolto.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/stolto.jpeg
+          heroName: Lo Hobbit Peppino All'Avventura
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Luca Benci
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Warlock
+        compendium: false
+        shortDescription: Come il Chierico, il Warlock gode di un rapporto con un essere di potere divino o semidivino. A differenza del chierico, il rapporto tra il Warlock e il suo patrono è molto più intimo, tanto che il patrono può estendersi nel mondo attraverso di lui. Principi demoniaci, arcifolletti e antiche entità provenienti da oltre la realtà sono tutti potenziali patroni per il Warlock.
+        description: |-
+          Le tradizioni dimenticate abbondano In Dungeon World. Sette di antichi dèi o potenti entità provenienti da altre realtà si nascondono ovunque, finché non vengono repressi dalle forze della legge. Gli altari dedicati a questi antichi esseri sono dimenticati, ma sono ben lontani dall’essere impotenti.
+
+          Un ricco potere attende coloro che sono abbastanza audaci o folli da permettere a uno di questi esseri di entrare nelle loro anime. Tu sei il canale per uno di loro. Niente anni di studio o prostrazione davanti a un sacerdote mortale per te. Hai preso la situazione in mano. Sei gli occhi, la voce e le mani di un essere dal potere divino e, in cambio del tuo servizio, ti ha concesso un po’ di quel potere.
+
+          Gli antichi promettono molto per il tuo servizio, ma chiedono molto in cambio. Va bene comunque. Sei ancora tu ad avere il controllo della situazione.
+
+          ... Per ora.
+
+          Come il Chierico, il Warlock gode di un rapporto con un essere di potere divino o semidivino. A differenza del chierico, il rapporto tra il Warlock e il suo patrono è molto più intimo, tanto che il patrono può estendersi nel mondo attraverso di lui. Principi demoniaci, arcifolletti e antiche entità provenienti da oltre la realtà sono tutti potenziali patroni per il Warlock.
+        collection: War And Wonders Pack
+        authors: Peter Johansen
+        assets:
+          - name: Scheda Del Warlock
+            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/warlock.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/milena-la-warlock.jpeg
+          heroName: La Warlock Milena
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Iacopo Ciao
+              - Samantha Liparota
+          - kind: Impaginazione
+            contributors:
+              - Samantha Liparota
+          - kind: Immagine
+            contributors:
+              - deepai.org

@@ -1,45 +1,16 @@
 # dungeonworld-ita
 
-Dungeon World è un gioco di ruolo da tavolo. 
-In questo repository troverai i libretti standard e fanmade tradotti in italiano in formato PDF e i relativi file [InDesign](http://www.adobe.com/products/indesign.html). I libretti che sono stati verificati li trovi anche su [EPICentrum.it](https://www.epicentrum.it).
+Dungeon World è un gioco di ruolo da tavolo. Raccogli alcuni amici e intraprendi l'avventura. Gioca per scoprire cosa succede!
+
+In questo repository troverai:
+
+- **Sito Web**: i sorgenti del sito web
+- **Materiali**: i libretti standard e homebrew tradotti in italiano (sia in formato PDF sia i relativi file [InDesign](http://www.adobe.com/products/indesign.html) ).
 
 Supporta il progetto con una donazione 🥰
 
 [![](https://www.paypalobjects.com/it_IT/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/paypalme/kernelpanic92)
 
-## Classi
-<!-- START_CLASSLIST -->
-- template_compendio [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/template_compendio.indd)]
-- template_libretto [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/template_libretto.indd)]
-- community
-  - Peter Johansen
-    - Lore and Lords Pack
-      - [compendio] professionista [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/%5Bcompendio%5D%20professionista.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/%5Bcompendio%5D%20professionista.pdf)]
-      - berserker [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/berserker.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/berserker.pdf)]
-      - cacciatore [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/cacciatore.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/cacciatore.pdf)]
-      - cavaliere nero [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/cavaliere%20nero.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/cavaliere%20nero.pdf)]
-      - Lore and Lords pack (original, EN) [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/Lore%20and%20Lords%20pack%20(original,%20EN).pdf)]
-      - monaco [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/monaco.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/monaco.pdf)]
-      - sciamano [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/sciamano.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/sciamano.pdf)]
-      - trickster [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/trickster.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/trickster.pdf)]
-      - vampiro [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/vampiro.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Lore%20and%20Lords%20Pack/vampiro.pdf)]
-    - Secrets and Sorcery Pack
-      - il cavaliere dei draghi [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Secrets%20and%20Sorcery%20Pack/il%20cavaliere%20dei%20draghi.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Secrets%20and%20Sorcery%20Pack/il%20cavaliere%20dei%20draghi.pdf)]
-      - Secrets_and_Sorcery_pack_2016 [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/Secrets%20and%20Sorcery%20Pack/Secrets_and_Sorcery_pack_2016.pdf)]
-    - War and Wonders Pack
-      - abitante del villaggio [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/abitante%20del%20villaggio.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/abitante%20del%20villaggio.pdf)]
-      - bestia [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/bestia.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/bestia.pdf)]
-      - maestro delle maschere [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/maestro%20delle%20maschere.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/maestro%20delle%20maschere.pdf)]
-      - pistolero [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/pistolero.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/pistolero.pdf)]
-      - signore della guerra [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/signore%20della%20guerra.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/signore%20della%20guerra.pdf)]
-      - stolto [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/stolto.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/stolto.pdf)]
-      - War and Wonders pack (original, EN) [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/War%20and%20Wonders%20pack%20(original,%20EN).pdf)]
-      - warlock [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/warlock.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Peter%20Johansen/War%20and%20Wonders%20Pack/warlock.pdf)]
-  - Stefan Grambart
-    - Dungeon World PLAYBOOKS
-      - Dungeon_World_Play_Sheets [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Stefan%20Grambart/Dungeon%20World%20PLAYBOOKS/Dungeon_World_Play_Sheets.pdf)]
-      - immolatore [[indd](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Stefan%20Grambart/Dungeon%20World%20PLAYBOOKS/immolatore.indd)] [[pdf](https://github.com/KernelPanic92/dungeonworld-ita/raw/master/classi/community/Stefan%20Grambart/Dungeon%20World%20PLAYBOOKS/immolatore.pdf)]
-<!-- END_CLASSLIST -->
 ## Licenza
 Guarda il file di [licenza](./LICENSE) per maggiori dettagli, ma ecco le nozioni di base: sei libero di utilizzare questo testo come preferisci purché citi gli autori.
 
@@ -61,4 +32,4 @@ Un enorme grazie per tutti coloro che hanno dato il loro contributo per la cresc
 
 Made with [contrib.rocks](https://contrib.rocks). ❤️
 
-Un ringraziamento speciale a [EPICentrum.it](https://www.epicentrum.it) che ospita i nostri lavori nella sezione fan made per collaborare con noi a quattro mani sulle revisioni ❤️
+Un ringraziamento speciale a [EPICentrum.it](https://www.epicentrum.it) per collaborare con noi a quattro mani sulle revisioni ❤️

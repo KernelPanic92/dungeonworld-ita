@@ -1,0 +1,32 @@
+---
+title: "{{{name}}}"
+description: "{{{shortDescription}}}"
+---
+import { DownloadLink } from '@/components/download-link';
+
+# {{name}}{{#compendium}} [Compendio]{{/compendium}}
+{{#isHomebrewClass}}
+
+*{{{authors}}}, {{{collection}}}*
+
+{{/isHomebrewClass}}
+![{{{showcase.heroName}}}]({{{showcase.imageUrl}}})
+
+{{{description}}}
+
+## Downloads
+
+{{#assets}}
+    <br/>
+    <DownloadLink href="{{{url}}}">{{{name}}}</DownloadLink>
+{{/assets}}
+
+## Crediti
+
+{{#credits}}
+**{{{kind}}}**
+  {{#contributors}}
+- {{{.}}}
+  {{/contributors}}
+
+{{/credits}}

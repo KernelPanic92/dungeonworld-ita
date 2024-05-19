@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+      "./dungeonworld-schema.json": "dungeonworld.yaml"
+    }
+  }
