@@ -13,9 +13,9 @@ const metalMania = Metal_Mania({
 const config: DocsThemeConfig = {
   logo: <span className={metalMania.className} style={{fontSize: '1.5rem', color: '#73C482'}}>Dungeon World</span>,
   project: {
-    link: 'https://github.com/KernelPanic92/dungeon-world-ita-site',
+    link: 'https://github.com/KernelPanic92/dungeonworld-ita',
   },
-  docsRepositoryBase: 'https://github.com/KernelPanic92/dungeon-world-ita-site/tree/main',
+  docsRepositoryBase: 'https://github.com/KernelPanic92/dungeonworld-ita/tree/main',
   footer: {
     text: 'Dungeon World in italiano',
   },
