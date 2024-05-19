@@ -15,7 +15,7 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/KernelPanic92/dungeonworld-ita',
   },
-  docsRepositoryBase: 'https://github.com/KernelPanic92/dungeonworld-ita/tree/main',
+  docsRepositoryBase: 'https://github.com/KernelPanic92/dungeonworld-ita/tree/master/web',
   footer: {
     text: 'Dungeon World in italiano',
   },
