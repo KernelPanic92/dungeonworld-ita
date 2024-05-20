@@ -1,21 +1,34 @@
 import Link from "next/link";
 import Image from "next/image";
 import { HomebrewClass, StandardClass } from "src/models";
+import { isEmpty, negate, trim } from "lodash";
 
 export const ClassItem = ({clazz}: {clazz: StandardClass | HomebrewClass}) => {
-    return <div className="flex w-full align-top flex-row space-x-4 md:space-x-8">
-      <div className="flex flex-col space-y-2 md:space-y-2">
-        <h3 className="font-bold text-xl truncate">{clazz.name}{'compendium' in clazz && clazz.compendium && ' [Compendio]'}</h3>
-        {'collection' in clazz && <h4 className="text-slate-400 text-sm">{clazz.authors}, {clazz.collection}</h4>}
+    const tagList: Array<string> = [];
+    
+    if ('compendium' in clazz && clazz.compendium) {
+      tagList.push('Compendio');
+    }
+
+    if ('collection' in clazz) {
+      tagList.push(clazz.authors, clazz.collection);
+    }
+
+    const tagLabel = tagList.map(trim).filter(negate(isEmpty)).join(', ');
+
+
+    return <Link href={'classi/' + clazz.slug} aria-label={`Naviga alla pagina ${clazz.name}`}><div className="flex align-top flex-row space-x-4 md:space-x-8">
+      <div className="flex flex-col grow space-y-2">
+        <h3 className="font-bold text-xl truncate">{clazz.name}</h3>
+        
+        {tagLabel && <h4 className="text-slate-400 text-sm italic">{tagLabel}</h4>}
         <p className=" text-base line-clamp-2">
           {clazz.description}
         </p>
-        <Link href={'classi/' + clazz.slug}>Vai alla scheda →</Link>
+        <p className="pt-2">Vai alla scheda →</p>
       </div>
-      <div className="w-20 h-36 md:w-28 md:h-48 relative overflow-hidden">
-        <Image className="object-cover object-center rounded-lg" src={clazz.showcase.imageUrl} alt={clazz.showcase.heroName} fill={true} />
-      </div>
-  </div>;
+        <Image className="object-cover object-center rounded-lg" src={clazz.showcase.imageUrl} alt={clazz.showcase.heroName} width={90} height={160}/>
+  </div></Link>;
 }
 
 export const ClassList = ({classes}: {classes: Array<StandardClass | HomebrewClass>}) => {
