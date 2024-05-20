@@ -2,7 +2,6 @@ import React from 'react';
 import { DocsThemeConfig, useConfig } from 'nextra-theme-docs';
 import { useRouter } from 'next/router';
 import { Metal_Mania } from 'next/font/google';
-import clsx from 'clsx';
 
 const metalMania = Metal_Mania({
   weight: '400',
@@ -54,8 +53,9 @@ const config: DocsThemeConfig = {
     const title = [frontMatter.title ?? baseTitle, 'Dungeon World in italiano'].filter(Boolean).join(' - ');
     const url =
     'https://dungeonworld-ita.vercel.app' +
-    (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
-    const socialCard = frontMatter.image?.url ?? 'https://dungeonworld-ita.vercel.app/images/dungeon-world-cover.webp';
+    (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
+
+    const socialCard = frontMatter.image ? 'https://dungeonworld-ita.vercel.app' + frontMatter.image : 'https://dungeonworld-ita.vercel.app/images/dungeon-world-cover.webp';
     const description = frontMatter.description ?? 'Dungeon World in italiano';
 
     return (
