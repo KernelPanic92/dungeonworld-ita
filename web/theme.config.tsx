@@ -10,7 +10,7 @@ const metalMania = Metal_Mania({
 
 });
 const config: DocsThemeConfig = {
-  logo: <span className={metalMania.className} style={{fontSize: '1.5rem', color: '#73C482'}}>Dungeon World</span>,
+  logo: <span className={metalMania.className} style={{fontSize: '1.5rem', color: '#73C482'}}>Dungeon World.it</span>,
   project: {
     link: 'https://github.com/KernelPanic92/dungeonworld-ita',
   },

@@ -129,9 +129,9 @@ dungeonWorld:
           imagePath: ./materiali/classi/standard/stone-il-guerriero.jpeg
           heroName: Stone l'umano guerriero
 
-      - name: Furfante
+      - name: Ladro
         assets:
-          - name: Scheda Del Furfante
+          - name: Scheda Del Ladro
             path: materiali/classi/standard/Ladro.pdf
         shortDescription: "Li hai sentiti, seduti attorno al fuoco. Si vantano di questa o quella battaglia, o di come i loro dèi sorridano sulla vostra allegra compagnia. Tu conti le tue monete e sorridi a te stesso — questa è l'emozione più forte. Solo tu conosci il segreto di Dungeon World: sporco, sporco guadagno."
         description: |-
@@ -139,7 +139,7 @@ dungeonWorld:
 
           Certo, ti insulteranno per tutte le volte che te ne sei scappato di nascosto, ma senza di te, ciascuno di loro sarebbe stato diviso in due da una ghigliottina, o avvelenato a morte da qualche antica trappola ad aghi. Perciò, lascia che si lagnino. Quando avrai finito con questa vita di esplorazione e saccheggio brinderai alle loro tombe da eroi.
 
-          Dal tuo castello. Pieno d'oro. Furfante che non sei altro.
+          Dal tuo castello. Pieno d'oro. Ladro che non sei altro.
 
         credits:
           - kind: Traduzione
@@ -150,7 +150,7 @@ dungeonWorld:
               - deepai.org
         showcase:
           imagePath: ./materiali/classi/standard/felix-ladro-mezzelfo.jpeg
-          heroName: Il Furfante Mezzelfo Felix
+          heroName: Il Ladro Mezzelfo Felix
 
       - name: Mago
         assets:
@@ -664,7 +664,7 @@ dungeonWorld:
 
       - name: Trickster
         compendium: false
-        shortDescription: Il Trickster è una variante della classe del furfante. Invece di usare il veleno e gli attacchi furtivi, il Trickster è un furfante più orientato socialmente. Le sue parole melliflue possono tirare fuori il gruppo dai momenti più difficili, o farli sprofondare ancora di più.
+        shortDescription: Il Trickster è una variante della classe del Ladro. Invece di usare il veleno e gli attacchi furtivi, il Trickster è un furfante più orientato socialmente. Le sue parole melliflue possono tirare fuori il gruppo dai momenti più difficili, o farli sprofondare ancora di più.
         description: |-
           Ci sono troppe regole nel mondo. Ovunque tu vada, le persone ti dicono cosa puoi e non puoi fare, facendo minacce vuote se non ti uniformi. Chi ha bisogno di tutto questo? Sei uno spirito libero. Non c’è mai stata una situazione da cui non hai potuto uscire con il tuo fascino. Stai meglio senza tutte quelle fastidiose regole.
 
