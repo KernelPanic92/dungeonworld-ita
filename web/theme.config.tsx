@@ -1,23 +1,15 @@
 import React from 'react';
 import { DocsThemeConfig, useConfig } from 'nextra-theme-docs';
 import { useRouter } from 'next/router';
-import { Metal_Mania } from 'next/font/google';
+import { Footer } from '@/components/footer';
+import { Logo } from '@/components/logo';
 
-const metalMania = Metal_Mania({
-  weight: '400',
-  preload: true,
-  subsets: ['latin']
-
-});
 const config: DocsThemeConfig = {
-  logo: <span className={metalMania.className} style={{fontSize: '1.5rem', color: '#73C482'}}>Dungeon World.it</span>,
+  logo: Logo,
   project: {
     link: 'https://github.com/KernelPanic92/dungeonworld-ita',
   },
   docsRepositoryBase: 'https://github.com/KernelPanic92/dungeonworld-ita/tree/master/web',
-  footer: {
-    text: 'Dungeon World in italiano',
-  },
   sidebar: {
     defaultMenuCollapseLevel: 1
   },
@@ -93,6 +85,9 @@ const config: DocsThemeConfig = {
         />
       </>
     )
+  },
+  footer: {
+    component: Footer,
   }
 }
 
