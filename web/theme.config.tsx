@@ -3,6 +3,7 @@ import { DocsThemeConfig, useConfig } from 'nextra-theme-docs';
 import { useRouter } from 'next/router';
 import { Footer } from '@/components/footer';
 import { Logo } from '@/components/logo';
+import { Move } from '@/components/move';
 
 const config: DocsThemeConfig = {
   logo: Logo,
@@ -88,6 +89,9 @@ const config: DocsThemeConfig = {
   },
   footer: {
     component: Footer,
+  },
+  components: {
+    'Move': Move
   }
 }
 
