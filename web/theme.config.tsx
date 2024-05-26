@@ -90,9 +90,6 @@ const config: DocsThemeConfig = {
   footer: {
     component: Footer,
   },
-  components: {
-    'Move': Move
-  }
 }
 
 export default config
