@@ -2,15 +2,15 @@ dungeonWorld:
   standard:
     frontsSummary:
       name: Scheda Dei Fronti
-      path: ./materiali/standard/fronti.pdf
+      path: ./materiali/standard/fronti/fronti.pdf
 
     gameMasterSummary:
       name: Riassunto del GM
-      path: ./materiali/standard/gm.pdf
+      path: ./materiali/standard/GM/Riassunto GM.pdf
 
     movesSummary:
       name: Riassunto Delle Mosse
-      path: ./materiali/standard/mosse.pdf
+      path: ./materiali/standard/Mosse basilari/Mosse basilari.pdf
 
     classes:
       - name: Barbaro
