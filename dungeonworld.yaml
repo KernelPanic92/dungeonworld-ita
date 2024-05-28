@@ -33,7 +33,7 @@ dungeonWorld:
               - deepai.org
         showcase:
           imagePath: ./materiali/classi/standard/khamisi-la-sfregiatrice-barbara.jpeg
-          heroName: La Barbara Khamisi La Sfregiatrice
+          heroName: La Barbara Khamisi, La Sfregiatrice
 
       - name: Bardo
         assets:

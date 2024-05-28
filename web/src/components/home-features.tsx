@@ -1,4 +1,6 @@
-export const HomeFeatures = () => {
+import { FC } from "react";
+
+export const HomeFeatures: FC = () => {
   return (
     <div className="grid md:grid-cols-2 2xl:grid-cols-3 gap-8">
       <Feature
@@ -29,7 +31,7 @@ export const HomeFeatures = () => {
   );
 };
 
-const Feature = ({ title, description }) => {
+const Feature: FC<{ title: string, description: string }> = ({title, description}) => {
   return (
     <div className="max-w-sm max-h-sm aspect-square p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-center items-center text-center">
       <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">

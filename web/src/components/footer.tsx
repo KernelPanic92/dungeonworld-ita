@@ -1,8 +1,11 @@
 import { Link, useConfig } from "nextra-theme-docs";
-import cn from "clsx";
-import { Logo } from "./logo";
+import { FC } from "react";
 
-export const Footer = ({ menu }: { menu?: boolean }) => {
+export interface FooterProps {
+    menu?: boolean;
+}
+
+export const Footer: FC<FooterProps> = () => {
   const config = useConfig();
 
   return <footer className="bg-gray-100 shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 dark:bg-neutral-900 antialiased">

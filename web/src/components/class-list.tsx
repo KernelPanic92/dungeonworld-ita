@@ -2,8 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { HomebrewClass, StandardClass } from "src/models";
 import { isEmpty, negate, trim } from "lodash";
+import { FC } from "react";
 
-export const ClassItem = ({clazz}: {clazz: StandardClass | HomebrewClass}) => {
+export interface ClassItemProps {
+  clazz: StandardClass | HomebrewClass
+}
+
+export const ClassItem: FC<ClassItemProps> = ({clazz}) => {
     const tagList: Array<string> = [];
     
     if ('compendium' in clazz && clazz.compendium) {

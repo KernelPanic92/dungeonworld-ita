@@ -3,7 +3,10 @@ title: "{{{name}}}"
 description: "{{{shortDescription}}}"
 image: {{{showcase.imageUrl}}}
 ---
+
 import { DownloadLink } from '@/components/download-link';
+import { ClassDetail, Showcase, ClassDescription } from '@/components/class-detail';
+import { Tabs } from 'nextra/components'
 
 # {{name}}{{#compendium}} [Compendio]{{/compendium}}
 {{#isHomebrewClass}}
@@ -11,23 +14,33 @@ import { DownloadLink } from '@/components/download-link';
 *{{{authors}}}, {{{collection}}}*
 
 {{/isHomebrewClass}}
-![{{{showcase.heroName}}}]({{{showcase.imageUrl}}})
 
-{{{description}}}
+<ClassDetail>
+    <Showcase>
+        ![{{{showcase.heroName}}}]({{{showcase.imageUrl}}})
+        {{{showcase.heroName}}}
+    </Showcase>
+    <ClassDescription>
+        {{{description}}}
+    </ClassDescription>
+</ClassDetail>
 
-## Downloads
+<br/>
 
-{{#assets}}
-    <br/>
-    <DownloadLink href="{{{url}}}">{{{name}}}</DownloadLink>
-{{/assets}}
+<Tabs items={['DOWNLOADS', 'CREDITI']}>
+  <Tabs.Tab>
+     {{#assets}}
+      <br/>
+      <DownloadLink href="{{{url}}}">{{{name}}}</DownloadLink>
+    {{/assets}}
+  </Tabs.Tab>
+  <Tabs.Tab>
+    {{#credits}}
+    **{{{kind}}}**
+      {{#contributors}}
+    - {{{.}}}
+      {{/contributors}}
 
-## Crediti
-
-{{#credits}}
-**{{{kind}}}**
-  {{#contributors}}
-- {{{.}}}
-  {{/contributors}}
-
-{{/credits}}
+    {{/credits}}
+  </Tabs.Tab>
+</Tabs>
