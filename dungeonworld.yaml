@@ -253,7 +253,7 @@ dungeonWorld:
             contributors:
               - deepai.org
 
-      - name: Lo Spadaccino
+      - name: Spadaccino
         compendium: false
         shortDescription: Lo Spadaccino è un maestro del combattimento con la spada, dotato di agilità, precisione e stile. Con movimenti eleganti e tecniche raffinate, lo Spadaccino è in grado di affrontare qualsiasi avversario sul campo di battaglia, trasformando il combattimento in una danza mortale.
         description: |-
@@ -280,13 +280,23 @@ dungeonWorld:
 
       - name: Mago
         compendium: false
-        shortDescription: I suoi incantesimi aprono porte verso mondi oltre la comprensione umana e affrontano sfide che sfidano la logica e la ragione. Sei il Mago, e il tuo destino è tessuto con fili di magia e mistero.
+        shortDescription: Che sia il potere di un Drago o di una Maschera o di un qualcosa totalmente diverso, adesso tutti quei segreti sono celati in quella piccola bacchetta che hai trovato, e sono tutti al tuo comando.
         description: |-
-          Il Mago incarna il potere del misticismo e dell'occulto, padroneggiando un vasto repertorio di incantesimi.
+          Dungeon World custodisce molti segreti. Lo sai, perché ne hai trovato uno.
+          Hai trovato la fonte del potere, la magia, e l'hai fatta tua.
+          È tua, e con essa puoi compiere meraviglie.
+          Che sia il potere di un Drago o di una Maschera o di un qualcosa totalmente diverso,
+          adesso tutti quei segreti sono celati in quella piccola bacchetta che hai trovato,
+          e sono tutti al tuo comando.
+          
+          Hai trovato il tuo potere. Hai appena iniziato a vedere le altezze a cui puoi salire. 
+          Ma hai anche cominciato a trovare i tuoi limiti.
+          Per quanto tu desideri che sia così, la tua magia non è assoluta.
+          Non puoi fare tutto.
+          Hai bisogno dei tuoi miseri compagni per vincere la giornata.
+          Ma sai che loro non potrebbero farcela senza di te.
+          Perché tu sei il Mago, e nessuno regge il confronto con la tua potenza.
 
-          Nelle sue mani, il potere dell'arcana si manifesta in forme sorprendenti e spettacolari, plasmate secondo la sua volontà.
-
-          I suoi incantesimi aprono porte verso mondi oltre la comprensione umana e affrontano sfide che sfidano la logica e la ragione. Sei il Mago, e il tuo destino è tessuto con fili di magia e mistero.
         collection: Alternative Playbook
         authors: Jacob Randolph
         assets:
@@ -300,21 +310,69 @@ dungeonWorld:
             contributors:
               - epicentrum.it
               - Davide Timaco
+              - Iacopo Ciao
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Artefice
+        compendium: false
+        shortDescription: La vecchia tecnologia di Dungeon World è un vero disastro, ma tu puoi sistemarla. Nessun altro ci è riuscito, ma solo perché nessun altro è te.
+        description: |-
+          La vecchia tecnologia di Dungeon World è un vero disastro, ma tu puoi sistemarla.
+          Nessun altro ci è riuscito, ma solo perché nessun altro è te.
+          Prendi un po' di potere dai flussi di energia, genera un po' di interferenza ambarica attraverso la valvola del vapore,
+          stringi gli ingranaggi ed è come nuova. Beh, meglio che nuova, davvero.
+          Forse è un po' più complicata di prima e forse non aveva bisogno di così tanti quadranti e aggeggi.
+          Nelle tue mani esperte, ogni aggeggio extra è solo un altro piano di riserva.
+
+          Che vuol dire a cosa serve? Dovrebbe essere ovvio, no? È solo una bacchetta a matrice eterica. Non è che stavi costruendo un meccanismo di compensazione ambarico! Nessuno di loro apprezza le sottigliezze della scienza, ricordati le tue parole, non come te!
+          Ma glielo mostrerai. Sei la più grande mente scientifica che tu abbia mai incontrato!
+          Okay okay, forse non sai esattamente cosa faccia la bacchetta a matrice eterica, per così dire, ma hai un'ipotesi solida!
+          Tutto ciò di cui ha bisogno è un po' di test sul campo. Se sapessi cosa stai facendo, non lo chiameresti ricerca.
+        collection: Alternative Playbook
+        authors: Jacob Randolph
+        assets:
+          - name: Scheda Dell'Artefice
+            path: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/artefice.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/artefice.jpeg
+          heroName: L'Artefice Shaya e il suo Mutating Dynamic Magic Replicator a Isteresi
+        credits:
+          - kind: Traduzione
+            contributors:
+              - epicentrum.it
+              - Carmine Alfano
+              - Iacopo Ciao
           - kind: Immagine
             contributors:
               - deepai.org
 
       - name: Sacerdote
         compendium: false
-        shortDescription: Il Sacerdote incarna la forza spirituale e la devozione, canalizzando il potere divino per proteggere e guidare coloro che ne hanno bisogno.
+        shortDescription: Nessun dio cammina più su queste terre, non più. Ora queste terre sono un campo di battaglia tra i loro seguaci, i loro resti, i loro uomini di fede. Non è una battaglia sempre combattuta con le lame, ed è per questo che questo campo di battaglia ha bisogno di te.
         description: |-
-          Il Sacerdote incarna la forza spirituale e la devozione, canalizzando il potere divino per proteggere e guidare coloro che ne hanno bisogno.
-
-          Con le tue preghiere e le tue benedizioni, porti conforto ai deboli e fai fronte alle forze oscure che minacciano la pace e l'armonia.
-          Il tuo rapporto con la divinità ti conferisce poteri e responsabilità unici, poiché sei chiamato a compiere la volontà del tuo dio nei mondi mortali.
-
-          Sei il Sacerdote, una luce di speranza nelle tenebre, pronto a combattere per la giustizia e la salvezza.
-
+          Le terre di Dungeon World sono state abbandonate.
+          Nessun dio cammina più su queste terre, non più.
+          Ora queste terre sono un campo di battaglia tra i loro seguaci,
+          i loro resti, i loro uomini di fede.
+          Non è una battaglia sempre combattuta con le lame,
+          ed è per questo che questo campo di battaglia
+          ha bisogno di te.
+          
+          Con parole semplici, diffondi la fede del tuo dio a coloro che non crederebbero.
+          
+          Con parole umili, supplichi il tuo dio per un miracolo, e lui ti ascolta.
+          
+          Dove cammini, cammina anche il tuo dio, ed è attraverso la tua fede 
+          che questo potere si manifesta.
+          
+          Ovunque tu vada, il cielo ti segue.
+          
+          Il tuo dio osserva ogni tua mossa, e attraverso di lui,
+          il tuo successo è garantito.
+          
+          Diffondi la fede, Sacerdote, e sappi che nessuno oserà metterti le mani addosso.
         collection: Alternative Playbook
         authors: Jacob Randolph
         assets:
@@ -336,12 +394,21 @@ dungeonWorld:
         compendium: false
         shortDescription: Il tuo giuramento ti guida nelle terre pericolose e nei regni sconosciuti, dove combatti per la gloria e l'onore del tuo ordine. Sei il Templare, un baluardo di luce nella lotta contro le tenebre, pronto a difendere la fede e la virtù con ogni mezzo necessario.
         description: |-
-          Il Templare incarna la fedeltà e il coraggio, proteggendo la giustizia e l'ordine con la sua spada e il suo scudo.  
+          Eretici. Tutti eretici.
+          
+          Ovunque tu guardi in Dungeon World, trovi blasfemia.
+          
+          Tutti fingono di essere buoni e caritatevoli, ma tu non ci credi.
+          È solo una questione di diversi gradi di eresia.
+          Di fronte al male, non cedi.
+          Tu non ti arrendi, e ti assicuri che nessuno, neanche quei tipi più deboli, lo faccia.
+          Sei qui per fare un lavoro, e nessun uomo, nessuna bestia ti fermerà.
 
-          Impegnato nella crociata contro il male, sei un difensore implacabile della tua fede e dei tuoi ideali. Guidato dalla tua devozione e dalla tua disciplina, affronti le minacce oscure con determinazione e risolutezza, pronti a sacrificare tutto per il bene supremo.  
-          Il tuo giuramento ti guida nelle terre pericolose e nei regni sconosciuti, dove combatti per la gloria e l'onore del tuo ordine.
-
-          Sei il Templare, un baluardo di luce nella lotta contro le tenebre, pronto a difendere la fede e la virtù con ogni mezzo necessario.
+          Questi uomini e queste donne con cui viaggi, sono migliori della maggior parte delle persone,
+          ma sono ancora mortali. Sono ancora fallibili.
+          Tu no. Sei puro. La tua causa è assoluta.
+          Se c'è un fine che devi raggiungere, userai qualsiasi mezzo necessario per ottenerlo.
+          Perché tu sei Templare, e il fallimento non è un'opzione.
         collection: Alternative Playbook
         authors: Jacob Randolph
         assets:
@@ -390,7 +457,181 @@ dungeonWorld:
             contributors:
               - deepai.org
 
-      - name: L'Immolatore
+      - name: Mago delle Maschere
+        compendium: false
+        shortDescription: Il Mago delle Maschere è un illusionista di altissimo calibro. Può creare illusioni, rivelare verità nascoste sul mondo, e le persone tendono inconsciamente a fidarsi di lui.
+        description: |-
+          Il Mago delle Maschere è un illusionista di altissimo calibro.
+          Può creare illusioni, rivelare verità nascoste sul mondo,
+          e le persone tendono inconsciamente a fidarsi di lui.
+          
+          La meccanica unica del Mago delle Maschere è costituita dalle sue Maschere -
+          queste funzionano come mosse che sostituiscono la Razza, ma il Mago delle Maschere ne ha due,
+          e in base alle due maschere che sceglie  alterano drasticamente le sue capacità.
+
+          La Maschera dell'Inganno ti permette di nasconderti o evitare l'attenzione meglio della maggior parte delle persone.
+
+          La Maschera della Carne ti trasforma in un doppelganger, un ladro di volti.
+
+          La Maschera dell'Oro fa credere a tutti che tu sia ricco e benestante, e ti permette di spacciare qualsiasi cosa come preziosa e di valore.
+
+          La Maschera del Mito convince tutti che tu sia un eroe leggendario, con tutta la fama e gli onori che ne derivano.
+
+          La Maschera della Verità può essere usata per cancellare le tue bugie precedenti, ricostruendo la fiducia che hai rotto in passato.
+        collection: Mage Revised
+        authors: Jacob Randolph
+        assets:
+          - name: Scheda Del Mago delle Maschere
+            path: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/Mago delle Maschere.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/Mago delle Maschere.jpeg
+          heroName: Doopliss, la maschera dorata
+        credits:
+          - kind: Traduzione
+            contributors:
+              - epicentrum.it
+              - Marco Bartolini
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Mago di Stirpe Draconica
+        compendium: false
+        shortDescription: Un'altra rovina in fiamme è tutto ciò che rimane del tuo passaggio. Un altro che ha dubitato del tuo orgoglio, del tuo potere, è stato lasciato nelle ceneri. Tu sei il Drago, e nessuno dubiterà di te.
+        description: |-
+          Un'altra rovina in fiamme è tutto ciò che rimane del tuo passaggio.
+          Un altro che ha dubitato del tuo orgoglio, del tuo potere, è stato lasciato nelle ceneri.
+          Tu sei il Drago, e nessuno dubiterà di te.
+
+          Il Mago di Stirpe Draconica riguarda tutto il potere e la furia dei draghi.
+          Li emuli, li imiti e, in alcuni casi, potresti persino superarli.
+          Il Mago di Stirpe Draconica cede alla sua linea di sangue interiore,
+          alla sua eredità draconica, per ottenere Ardore, che spende per imitare
+          i draghi: ottenere le loro scaglie indurite, le loro potenti ali, o i loro
+          artigli possenti, solo per pochi istanti.
+          Man mano che avanza, ottiene nuove opzioni su cui spendere Ardore
+          e può persino ottenere alcune delle loro opzioni in modo permanente.
+          E, naturalmente, può incendiare qualsiasi cosa desideri,
+          ogni volta che ne ha bisogno.
+
+          Ma fai attenzione: il grande potere dei draghi è bilanciato da grandi desideri.
+          Il Mago ha potenti Desideri del Drago che possono portarlo nei guai,
+          per il potere e la ricchezza.
+        collection: Mage Revised
+        authors: Jacob Randolph
+        assets:
+          - name: Scheda Del Mago di Stirpe Draconica
+            path: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-draconico.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-draconico.jpeg
+          heroName: Kalistar, Figlia di Axstalrath
+        credits:
+          - kind: Traduzione
+            contributors:
+              - epicentrum.it
+              - Marco Bartolini
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Mago dell'Inverno
+        compendium: false
+        shortDescription: Il Mago dell'Inverno è duro come il ghiaccio, pungente come il vento e distante come le cime innevate delle montagne.
+        description: |-
+          Ne è arrivato un altro oggi, in cima alla tua montagna.
+          Un altro che cerca di superare dicembre, di sfidare il morso del ghiaccio.
+          Un altro che lo ha ricevuto, in pieno.
+          Tu sei l'Inverno - freddo, indifferente e intoccabile.
+
+          Il Mago dell'Inverno è duro come il ghiaccio, pungente come il vento e 
+          distante come le cime innevate delle montagne.
+          Con i tuoi punti gelo, hai una seconda riserva di punti ferita da cui attingere,
+          pari al tuo punteggio di Costituzione.
+          Puoi spenderli per ridurre i danni, ma puoi anche usarli per congelare
+          le cose sul posto, ricoprirle di armatura congelata o costruire un castello
+          di ghiaccio in cui vivere. La tua affinità per il freddo si estende anche
+          alla tua capacità di relazionarti con gli altri, però - scopri che non puoi
+          impegnarti con loro quanto vorresti, e li tieni a distanza.
+          Dopotutto, il tuo stesso tocco può provocare congelamento,
+          cosa di cui i tuoi nemici sicuramente si pentiranno.
+        collection: Mage Revised
+        authors: Jacob Randolph
+        assets:
+          - name: Scheda Del Mago dell'Inverno
+            path: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-inverno.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-inverno.jpeg
+          heroName: Elisia del Mare del Nord
+        credits:
+          - kind: Traduzione
+            contributors:
+              - epicentrum.it
+              - Marco Bartolini
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Mago dell'Orologio
+        compendium: false
+        shortDescription: L'eternità può passare in un battito di ciglia. Un momento può durare tutto il tempo necessario. Il tempo è qualcosa con cui gli altri devono fare i conti. Tu sei l'Orologio, e il tempo è il tuo strumento.
+        description: |-
+          L'eternità può passare in un battito di ciglia. Un momento può durare tutto il tempo necessario.
+          Il tempo è qualcosa con cui gli altri devono fare i conti.
+          Tu sei l'Orologio, e il tempo è il tuo strumento.
+
+          Il Mago dell'Orologio è costruito attorno al controllo del tempo.
+          Non hai magia se non la capacità di muoverti in modo diverso, vedere in modo diverso.
+          Mentre gli altri operano in tre dimensioni, tu operi in quattro -
+          il tempo è solo un'altra direzione in cui viaggiare per te.
+          Il Mago dell'Orologio utilizza un nuovo meccanismo Tic-Tac
+          per limitare il suo accesso alle mosse che può sfruttare in un dato momento,
+          passando il suo "mana" tra due diverse riserve statistiche -
+          una per accelerare e una per rallentare.
+        collection: Mage Revised
+        authors: Jacob Randolph
+        assets:
+          - name: Scheda Del Mago dell'Orologio
+            path: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-orologio.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-orologio.jpeg
+          heroName: Helena Tempusvero
+        credits:
+          - kind: Traduzione
+            contributors:
+              - epicentrum.it
+              - Marco Bartolini
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Mago Astrale
+        compendium: false
+        shortDescription: Manipoli lo spazio con facilità, creando piccoli buchi nel tessuto dello spazio. Raggiungere o saltare attraverso questi buchi ti conferisce una mobilità e una portata senza eguali
+        description: |-
+          Il Mago Astrale ti permette di giocare come una creatura proveniente da oltre le stelle,
+          con strani poteri magici che derivano dalla tua natura bizzarra.
+          Manipoli lo spazio con facilità, creando piccoli buchi nel tessuto dello spazio.
+          Raggiungere o saltare attraverso questi buchi ti conferisce una mobilità
+          e una portata senza eguali, che puoi anche concedere ai tuoi alleati.
+          Man mano che diventi più forte, le tue abilità diventano sempre più strane.
+        collection: Mage Revised
+        authors: Jacob Randolph
+        assets:
+          - name: Scheda Del Mago Astrale
+            path: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-astrale.pdf
+        showcase:
+          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-astrale.jpeg
+          heroName: Ariel Starweaver
+        credits:
+          - kind: Traduzione
+            contributors:
+              - epicentrum.it
+              - Marco Bartolini
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Immolatore
         compendium: false
         shortDescription: L'Immolatore è un incantatore che attinge al potere distruttivo del fuoco per dominare i suoi nemici e forgiare il proprio destino. Con un legame profondo con le fiamme e la capacità di controllarle a proprio piacimento, l'Immolatore è sia temuto che rispettato sul campo di battaglia.
         description: |-
