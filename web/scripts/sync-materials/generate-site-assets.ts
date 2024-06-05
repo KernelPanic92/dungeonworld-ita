@@ -5,6 +5,7 @@ import { isHomebrewClass } from "./utilis";
 import { DungeonWorld, HomebrewClass, StandardClass } from "./models";
 import { DungeonWorld as DungeonWorldModel , StandardClass as StandardClassModel, HomebrewClass as HomebrewClassModel, Asset as AssetModel, Showcase as ShowcaseModel } from "../../src/models";
 import { generateAsset } from "./generate-asset";
+import { orderBy } from "lodash";
 
 
 function generateClassSiteAsset(publicFolderPath: string, metadata: StandardClass): StandardClassModel;
@@ -60,13 +61,18 @@ function generateClassSiteAsset(publicFolderPath: string, metadata: StandardClas
 
 export const generateSiteAssets = (repositoryPath: string, metadata: DungeonWorld) => {
     const publicPath = path.join(repositoryPath, 'web/public');
+    let standardClasses = metadata.standard.classes.map((clazz) => generateClassSiteAsset(publicPath, clazz) as StandardClassModel);
+    standardClasses = orderBy(standardClasses, 'name', 'asc');
+    
+    let homebrewClasses = metadata.homebrew.classes.map((clazz) => generateClassSiteAsset(publicPath, clazz) as HomebrewClassModel);
+    homebrewClasses = orderBy(homebrewClasses, ['name', 'authors', 'collection'], 'asc');
 
     const model: DungeonWorldModel = {
         homebrew: {
-            classes: metadata.homebrew.classes.map((clazz) => generateClassSiteAsset(publicPath, clazz) as HomebrewClassModel),
+            classes: homebrewClasses,
         },
         standard: {
-            classes: metadata.standard.classes.map((clazz) => generateClassSiteAsset(publicPath, clazz) as StandardClassModel),
+            classes: standardClasses,
             frontsSummary: generateAsset(publicPath, '/assets/standard', metadata.standard.frontsSummary),
             gameMasterSummary: generateAsset(publicPath, '/assets/standard', metadata.standard.gameMasterSummary),
             movesSummary: generateAsset(publicPath, '/assets/standard', metadata.standard.movesSummary),
