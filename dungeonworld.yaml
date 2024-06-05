@@ -16,7 +16,7 @@ dungeonWorld:
       - name: Barbaro
         assets:
           - name: Scheda Del Barbaro
-            path: materiali/classi/standard/Barbaro.pdf
+            path: materiali/standard/classi/Barbaro.pdf
         shortDescription: I tuoi compagni d'avventura potranno trattarti come uno straniero rozzo e ignorante. Che lo pensino pure, che ti importa? Quando le cose si metteranno male piangeranno chiedendo il tuo aiuto. Perché nessuno di loro è forte come te. Nessuno.
         description: |-
           Guarda questa gente imbellettata. Ti osservano e hanno paura di te. Fanno bene, devono averne. Tu non sei come loro. Vieni da un luogo dove il valore di un uomo si misura dalla forza del suo pugno, non dalla capienza delle sue tasche. Mentre loro sono deboli, si nascondono dietro leggi fragili come le loro ossa; l'unica legge che conosci è quella del più forte. Ce ne sono altre?  
@@ -32,13 +32,13 @@ dungeonWorld:
             contributors:
               - deepai.org
         showcase:
-          imagePath: ./materiali/classi/standard/khamisi-la-sfregiatrice-barbara.jpeg
+          imagePath: ./materiali/standard/classi/khamisi-la-sfregiatrice-barbara.jpeg
           heroName: La Barbara Khamisi, La Sfregiatrice
 
       - name: Bardo
         assets:
           - name: Scheda Del Bardo
-            path: materiali/classi/standard/Bardo.pdf
+            path: materiali/standard/classi/Bardo.pdf
         shortDescription: I poemi dicono che la vita di un avventuriero è fatta di mille strade aperte e della gloria di battaglie vinte e di ricchezze conquistate. Le storie che si raccontano in ogni taverna affollata di villici e braccianti dovranno pur avere una parvenza di verità, non è vero? Le canzoni che ispirano ugualmente nobili e pezzenti, per placare le bestie selvagge o spingere gli uomini alla furia, dovranno pur avere un'origine. È qui che arriva il bardo. Tu, con la tua lingua sciolta e il tuo acume. Tu, che racconti favole e canti canzoni. Un semplice menestrello può ripetere una storia, ma ci vuole un bardo per viverla.
         description: |-
           I poemi dicono che la vita di un avventuriero è fatta di mille strade aperte e della gloria di battaglie vinte e di ricchezze conquistate. Le storie che si raccontano in ogni taverna affollata di villici e braccianti dovranno pur avere una parvenza di verità, non è vero? Le canzoni che ispirano ugualmente nobili e pezzenti, per placare le bestie selvagge o spingere gli uomini alla furia, dovranno pur avere un'origine.  
@@ -54,15 +54,15 @@ dungeonWorld:
             contributors:
               - deepai.org
         showcase:
-          imagePath: ./materiali/classi/standard/cassandra-canto-del-vento-bardessa.jpeg
+          imagePath: ./materiali/standard/classi/cassandra-canto-del-vento-bardessa.jpeg
           heroName: La Bardessa Cassandra Canto Del Vento
 
       - name: Chierico
         assets:
           - name: Scheda Del Chierico
-            path: materiali/classi/standard/Chierico.pdf
+            path: ./materiali/standard/classi/Chierico.pdf
           - name: Incantesimi Del Chierico
-            path: materiali/classi/standard/chierico-incantesimi.pdf
+            path: ./materiali/standard/classi/chierico-incantesimi.pdf
         shortDescription: Le terre di Dungeon World sono allo sbando, dimenticate dagli dèi. È un mondo orribile, con morti che camminano e bestie di ogni genere che si aggirano contro natura per le zone selvagge tra le città sicure e benedette dai templi. È un mondo senza religione quello là fuori. È per questo che ha bisogno di te.
         description: |-
           Le terre di Dungeon World sono allo sbando, dimenticate dagli dèi. È un mondo orribile, con morti che camminano e bestie di ogni genere che si aggirano contro natura per le zone selvagge tra le città sicure e benedette dai templi. È un mondo senza religione quello là fuori. È per questo che ha bisogno di te.
@@ -78,13 +78,13 @@ dungeonWorld:
             contributors:
               - deepai.org
         showcase:
-          imagePath: ./materiali/classi/standard/hawthorn-chierico.jpeg
+          imagePath: ./materiali/standard/classi/hawthorn-chierico.jpeg
           heroName: Il Chierico umano Hawthorn
 
       - name: Druido
         assets:
           - name: Scheda Del Druido
-            path: materiali/classi/standard/Druido.pdf
+            path: ./materiali/standard/classi/Druido.pdf
         shortDescription: Dai uno sguardo attorno al fuoco. Che cosa ti ha portato a viaggiare con questa gente, che puzza della polvere e del sudore della città? È una forma di bontà? Li proteggi forse come una mamma orso difende i suoi cuccioli? Sono loro il tuo branco, ora? Inconsueti sono i fratelli e sorelle che ti sei dato. Qualunque cosa ti abbia spinto ad aiutarli, certamente sarebbero perduti senza i tuoi sensi acuti e i tuoi artigli affilati.
         description: |-
           Dai uno sguardo attorno al fuoco. Che cosa ti ha portato a viaggiare con questa gente, che puzza della polvere e del sudore della città? È una forma di bontà? Li proteggi forse come una mamma orso difende i suoi cuccioli? Sono loro il tuo branco, ora? Inconsueti sono i fratelli e sorelle che ti sei dato. Qualunque cosa ti abbia spinto ad aiutarli, certamente sarebbero perduti senza i tuoi sensi acuti e i tuoi artigli affilati.
@@ -101,13 +101,13 @@ dungeonWorld:
             contributors:
               - deepai.org
         showcase:
-          imagePath: ./materiali/classi/standard/ethanwe-elfo-druido.jpeg
+          imagePath: ./materiali/standard/classi/ethanwe-elfo-druido.jpeg
           heroName: Il Druido Elfo Ethanwe
 
       - name: Guerriero
         assets:
           - name: Scheda Del Guerriero
-            path: materiali/classi/standard/Guerriero.pdf
+            path: ./materiali/standard/classi/Guerriero.pdf
         shortDescription: "Sei una bestia di ferro. I tuoi amici impugneranno pure lame d'acciaio temprato ma tu, guerriero, tu sei acciaio. Mentre i tuoi compagni si lamentano delle ferite attorno al focolare nelle terre selvagge, tu porti le tue cicatrici con orgoglio. Tu sei la muraglia: lascia che ogni pericolo si sfracelli in polvere scontrandosi con te. Alla fine, sarai l'ultimo a stare in piedi."
         description: |-
           È un lavoro ingrato: sopravvivere giorno dopo giorno grazie alla tua armatura e alla forza del tuo braccio, tuffandoti con indifferenza nel pericolo. Non suoneranno corni d'oro per quel giorno in cui prendesti per loro una coltellata tra le costole in quella locanda di Bucksberg. Nessun coro d'angeli canterà della volta che li trascinasti, ancora urlanti, dal limitare delle Fosse della Follia, no.
@@ -126,13 +126,13 @@ dungeonWorld:
             contributors:
               - deepai.org
         showcase:
-          imagePath: ./materiali/classi/standard/stone-il-guerriero.jpeg
+          imagePath: ./materiali/standard/classi/stone-il-guerriero.jpeg
           heroName: Stone l'umano guerriero
 
       - name: Ladro
         assets:
           - name: Scheda Del Ladro
-            path: materiali/classi/standard/Ladro.pdf
+            path: ./materiali/standard/classi/Ladro.pdf
         shortDescription: "Li hai sentiti, seduti attorno al fuoco. Si vantano di questa o quella battaglia, o di come i loro dèi sorridano sulla vostra allegra compagnia. Tu conti le tue monete e sorridi a te stesso — questa è l'emozione più forte. Solo tu conosci il segreto di Dungeon World: sporco, sporco guadagno."
         description: |-
           Li hai sentiti, seduti attorno al fuoco. Si vantano di questa o quella battaglia, o di come i loro dèi sorridano sulla vostra allegra compagnia. Tu conti le tue monete e sorridi a te stesso — questa è l'emozione più forte. Solo tu conosci il segreto di Dungeon World: sporco, sporco guadagno.
@@ -149,15 +149,15 @@ dungeonWorld:
             contributors:
               - deepai.org
         showcase:
-          imagePath: ./materiali/classi/standard/felix-ladro-mezzelfo.jpeg
+          imagePath: ./materiali/standard/classi/felix-ladro-mezzelfo.jpeg
           heroName: Il Ladro Mezzelfo Felix
 
       - name: Mago
         assets:
           - name: Scheda Del Mago
-            path: materiali/classi/standard/Mago.pdf
+            path: ./materiali/standard/classi/Mago.pdf
           - name: Incantesimi Del Mago
-            path: materiali/classi/standard/mago-incantesimi.pdf
+            path: ./materiali/standard/classi/mago-incantesimi.pdf
         shortDescription: Hai passato così tanto tempo chino sui tuoi tomi. Hai portato a termine esperimenti che ti hanno fatto quasi impazzire e hai evocato cose che mettevano in pericolo la tua stessa anima. Per cosa? Per il potere. Che altro c'è al mondo? Non si tratta del potere di un Re o di una Nazione, ma del potere di far bruciare il sangue di un uomo nelle sue vene. Di richiamare i fulmini del cielo e le scosse della terra turbolenta. Di ignorare le regole che al mondo sono così care.
         description: |-
           Dungeon World ha delle regole. Non sono le leggi degli uomini o la parola di un meschino tiranno. Regole più grandi, migliori. Lasci cadere qualcosa, in pochi attimi è per terra. Non si può creare la materia dal nulla. I morti restano morti, giusto?
@@ -177,13 +177,13 @@ dungeonWorld:
             contributors:
               - deepai.org
         showcase:
-          imagePath: ./materiali/classi/standard/liliastre-maga.jpeg
+          imagePath: ./materiali/standard/classi/liliastre-maga.jpeg
           heroName: La Maga Liliastre
 
       - name: Paladino
         assets:
           - name: Scheda Del Paladino
-            path: materiali/classi/standard/Paladino.pdf
+            path: ./materiali/standard/classi/Paladino.pdf
         shortDescription: L'Inferno attende. Un'eternità di tormento nel fuoco o nel gelo o qualunque altra pena meglio rappresenti i peccati commessi dalle orde di dannati di Dungeon World. Sei l'unica cosa che si frappone tra la salvezza dell'anima e le cupe fosse della tortura. Sant'uomo, macchina da guerra in armatura, templare del Bene e della Luce, giusto? Il chierico potrà pregare di notte agli dei che abitano il cielo. Il guerriero potrà impugnare la sua spada affilata nel nome del bene ma tu sai. Solo tu sai. Tu sei gli occhi, le mani degli dèi, pietoso esecutore del loro giudizio di morte. Tuo è il dono della rettitudine e della virtù, della giustizia, anche della Vista. Una purezza d'intenti che ai tuoi compagni manca.
         description: |-
           L'Inferno attende. Un'eternità di tormento nel fuoco o nel gelo o qualunque altra pena meglio rappresenti i peccati commessi dalle orde di dannati di Dungeon World. Sei l'unica cosa che si frappone tra la salvezza dell'anima e le cupe fosse della tortura. Sant'uomo, macchina da guerra in armatura, templare del Bene e della Luce, giusto? Il chierico potrà pregare di notte agli dei che abitano il cielo. Il guerriero potrà impugnare la sua spada affilata nel nome del "bene" ma tu sai. Solo tu sai.
@@ -201,13 +201,13 @@ dungeonWorld:
             contributors:
               - deepai.org
         showcase:
-          imagePath: ./materiali/classi/standard/adrian-paladino.jpeg
+          imagePath: ./materiali/standard/classi/adrian-paladino.jpeg
           heroName: Il Paladino Umano Adrian
 
       - name: Ramingo
         assets:
           - name: Scheda Del Ramingo
-            path: materiali/classi/standard/Ramingo.pdf
+            path: ./materiali/standard/classi/Ramingo.pdf
         shortDescription: Guida. Cacciatore. Creatura selvaggia. Sei tutte queste cose e anche più. Hai vissuto nelle terre selvagge da solo fino a ora, ma il richiamo di qualcosa più grande, chiamalo destino se vuoi, ti ha unito a questa gente. Coraggiosi, certamente. Possenti e forti, anche. Ma solo tu conosci i segreti degli spazi inesplorati. Senza di te, sarebbero persi. Fai strada tra il sangue e l'oscurità, grampasso.
         description: |-
           Questa gente di città con cui viaggi. Hanno udito loro il richiamo del lupo? Hanno sentito i venti ululare nei tetri deserti dell'Est? Hanno cacciato la preda con l'arco e il coltello come te? Certo che no. È per questo che hanno bisogno di te.
@@ -223,7 +223,7 @@ dungeonWorld:
             contributors:
               - deepai.org
         showcase:
-          imagePath: ./materiali/classi/standard/nora-raminga.jpeg
+          imagePath: ./materiali/standard/classi/nora-raminga.jpeg
           heroName: La raminga umana Nora e il suo lupo Garu
 
   homebrew:
@@ -241,9 +241,9 @@ dungeonWorld:
         authors: James Mendez Hodes
         assets:
           - name: Scheda Del Monaco
-            path: ./materiali/classi/homebrew/James Mendez Hodes/Monaco.pdf
+            path: ./materiali/homebrew/classi/James Mendez Hodes/Monaco.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/James Mendez Hodes/korra-la-monaca.jpeg
+          imagePath: ./materiali/homebrew/classi/James Mendez Hodes/korra-la-monaca.jpeg
           heroName: "Korra Del Monastero del Drago Celeste"
         credits:
           - kind: Traduzione
@@ -266,9 +266,9 @@ dungeonWorld:
         authors: Jacob Randolph
         assets:
           - name: Scheda Dello Spadaccino
-            path: ./materiali/classi/homebrew/Jacob Randolph/The Dashing Hero/Spadaccino.pdf
+            path: ./materiali/homebrew/classi/Jacob Randolph/The Dashing Hero/Spadaccino.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Jacob Randolph/The Dashing Hero/spadaccino.jpeg
+          imagePath: ./materiali/homebrew/classi/Jacob Randolph/The Dashing Hero/spadaccino.jpeg
           heroName: Lo Spadaccino Umano Garinith
         credits:
           - kind: Traduzione
@@ -301,9 +301,9 @@ dungeonWorld:
         authors: Jacob Randolph
         assets:
           - name: Scheda Del Mago
-            path: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/mago.pdf
+            path: ./materiali/homebrew/classi/Jacob Randolph/Alternative Playbook/mago.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/lucius-mago.jpeg
+          imagePath: ./materiali/homebrew/classi/Jacob Randolph/Alternative Playbook/lucius-mago.jpeg
           heroName: Il Mago Umano Lucius
         credits:
           - kind: Traduzione
@@ -334,9 +334,9 @@ dungeonWorld:
         authors: Jacob Randolph
         assets:
           - name: Scheda Dell'Artefice
-            path: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/artefice.pdf
+            path: ./materiali/homebrew/classi/Jacob Randolph/Alternative Playbook/artefice.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/artefice.jpeg
+          imagePath: ./materiali/homebrew/classi/Jacob Randolph/Alternative Playbook/artefice.jpeg
           heroName: L'Artefice Shaya e il suo Mutating Dynamic Magic Replicator a Isteresi
         credits:
           - kind: Traduzione
@@ -377,9 +377,9 @@ dungeonWorld:
         authors: Jacob Randolph
         assets:
           - name: Scheda Del Sacerdote
-            path: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/sacerdote.pdf
+            path: ./materiali/homebrew/classi/Jacob Randolph/Alternative Playbook/sacerdote.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/egidio-sacerdote.jpeg
+          imagePath: ./materiali/homebrew/classi/Jacob Randolph/Alternative Playbook/egidio-sacerdote.jpeg
           heroName: Il Sacerdote Umano Egidio
         credits:
           - kind: Traduzione
@@ -413,9 +413,9 @@ dungeonWorld:
         authors: Jacob Randolph
         assets:
           - name: Scheda Del Templare
-            path: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/templare.pdf
+            path: ./materiali/homebrew/classi/Jacob Randolph/Alternative Playbook/templare.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Alternative Playbook/arthur-templare.jpeg
+          imagePath: ./materiali/homebrew/classi/Jacob Randolph/Alternative Playbook/arthur-templare.jpeg
           heroName: Il Templare Umano Arthur
         credits:
           - kind: Traduzione
@@ -444,9 +444,9 @@ dungeonWorld:
         authors: Jacob Randolph
         assets:
           - name: Scheda Della Strega
-            path: ./materiali/classi/homebrew/Jacob Randolph/A Dungeon World Playbook/strega.pdf
+            path: ./materiali/homebrew/classi/Jacob Randolph/A Dungeon World Playbook/strega.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Jacob Randolph/A Dungeon World Playbook/strega-amelia-fiamma-oscura.jpeg
+          imagePath: ./materiali/homebrew/classi/Jacob Randolph/A Dungeon World Playbook/strega-amelia-fiamma-oscura.jpeg
           heroName: La Strega Umana Amelia, La Fiamma Oscura
         credits:
           - kind: Traduzione
@@ -482,9 +482,9 @@ dungeonWorld:
         authors: Jacob Randolph
         assets:
           - name: Scheda Del Mago delle Maschere
-            path: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/Mago delle Maschere.pdf
+            path: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/Mago delle Maschere.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/Mago delle Maschere.jpeg
+          imagePath: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/Mago delle Maschere.jpeg
           heroName: Doopliss, la maschera dorata
         credits:
           - kind: Traduzione
@@ -521,9 +521,9 @@ dungeonWorld:
         authors: Jacob Randolph
         assets:
           - name: Scheda Del Mago di Stirpe Draconica
-            path: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-draconico.pdf
+            path: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-draconico.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-draconico.jpeg
+          imagePath: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-draconico.jpeg
           heroName: Kalistar, Figlia di Axstalrath
         credits:
           - kind: Traduzione
@@ -558,9 +558,9 @@ dungeonWorld:
         authors: Jacob Randolph
         assets:
           - name: Scheda Del Mago dell'Inverno
-            path: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-inverno.pdf
+            path: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-inverno.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-inverno.jpeg
+          imagePath: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-inverno.jpeg
           heroName: Elisia del Mare del Nord
         credits:
           - kind: Traduzione
@@ -571,7 +571,7 @@ dungeonWorld:
             contributors:
               - deepai.org
 
-      - name: Mago dell'Orologio
+      - name: Mago del Tempo
         compendium: false
         shortDescription: L'eternità può passare in un battito di ciglia. Un momento può durare tutto il tempo necessario. Il tempo è qualcosa con cui gli altri devono fare i conti. Tu sei l'Orologio, e il tempo è il tuo strumento.
         description: |-
@@ -579,21 +579,21 @@ dungeonWorld:
           Il tempo è qualcosa con cui gli altri devono fare i conti.
           Tu sei l'Orologio, e il tempo è il tuo strumento.
 
-          Il Mago dell'Orologio è costruito attorno al controllo del tempo.
+          Il Mago del Tempo è costruito attorno al controllo del tempo.
           Non hai magia se non la capacità di muoverti in modo diverso, vedere in modo diverso.
           Mentre gli altri operano in tre dimensioni, tu operi in quattro -
           il tempo è solo un'altra direzione in cui viaggiare per te.
-          Il Mago dell'Orologio utilizza un nuovo meccanismo Tic-Tac
+          Il Mago del Tempo utilizza un nuovo meccanismo Tic-Tac
           per limitare il suo accesso alle mosse che può sfruttare in un dato momento,
           passando il suo "mana" tra due diverse riserve statistiche -
           una per accelerare e una per rallentare.
         collection: Mage Revised
         authors: Jacob Randolph
         assets:
-          - name: Scheda Del Mago dell'Orologio
-            path: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-orologio.pdf
+          - name: Scheda Del Mago del Tempo
+            path: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-tempo.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-orologio.jpeg
+          imagePath: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-tempo.jpeg
           heroName: Helena Tempusvero
         credits:
           - kind: Traduzione
@@ -618,9 +618,9 @@ dungeonWorld:
         authors: Jacob Randolph
         assets:
           - name: Scheda Del Mago Astrale
-            path: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-astrale.pdf
+            path: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-astrale.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Jacob Randolph/Mage Revised/mago-astrale.jpeg
+          imagePath: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-astrale.jpeg
           heroName: Ariel Starweaver
         credits:
           - kind: Traduzione
@@ -641,9 +641,9 @@ dungeonWorld:
         authors: Stefan Grambart
         assets:
           - name: Scheda Dell'Immolatore
-            path: ./materiali/classi/homebrew/Stefan Grambart/Dungeon World PLAYBOOKS/immolatore.pdf
+            path: ./materiali/homebrew/classi/Stefan Grambart/Dungeon World PLAYBOOKS/immolatore.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Stefan Grambart/Dungeon World PLAYBOOKS/immolatore.jpeg
+          imagePath: ./materiali/homebrew/classi/Stefan Grambart/Dungeon World PLAYBOOKS/immolatore.jpeg
           heroName: L'immolatore Solomon della Fiamma Imperiale
         credits:
           - kind: Traduzione
@@ -676,9 +676,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Del Professionista
-            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/[compendio] professionista.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/[compendio] professionista.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/[compendio] professionista.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/[compendio] professionista.jpeg
           heroName: Il Capo della Gilda dei Mercanti Leonil
         credits:
           - kind: Traduzione
@@ -706,9 +706,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Del Vampiro
-            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/vampiro.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/vampiro.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/anton-vampiro.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/anton-vampiro.jpeg
           heroName: Il Vampiro Anton
         credits:
           - kind: Traduzione
@@ -749,9 +749,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Del Berserker
-            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/berserker.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/berserker.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/torben-il-guerriero-berserker.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/torben-il-guerriero-berserker.jpeg
           heroName: Il Guerriero Berserker Torben
         credits:
           - kind: Traduzione
@@ -779,9 +779,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Del Cacciatore
-            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/cacciatore.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/cacciatore.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/kargek-orco-cacciatore.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/kargek-orco-cacciatore.jpeg
           heroName: Il Cacciatore Orco Kargek
         credits:
           - kind: Traduzione
@@ -821,9 +821,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Del Cavaliere Nero
-            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/cavaliere nero.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/cavaliere nero.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/horatio-il-cavaliere-nero.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/horatio-il-cavaliere-nero.jpeg
           heroName: Il Cavaliere Nero Horatio
         credits:
           - kind: Traduzione
@@ -855,9 +855,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Del Monaco
-            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/monaco.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/monaco.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/chizu-il-panda-monaco.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/chizu-il-panda-monaco.jpeg
           heroName: Il Monaco Pandarien Chizu
         credits:
           - kind: Traduzione
@@ -887,9 +887,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Dello Sciamano
-            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/sciamano.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/sciamano.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/semil-mezzelfo-sciamano.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/semil-mezzelfo-sciamano.jpeg
           heroName: Lo Sciamano Mezzelfo Semil
         credits:
           - kind: Traduzione
@@ -905,7 +905,7 @@ dungeonWorld:
 
       - name: Trickster
         compendium: false
-        shortDescription: Il Trickster è una variante della classe del Ladro. Invece di usare il veleno e gli attacchi furtivi, il Trickster è un furfante più orientato socialmente. Le sue parole melliflue possono tirare fuori il gruppo dai momenti più difficili, o farli sprofondare ancora di più.
+        shortDescription: Il Trickster è una variante della classe del Ladro. Invece di usare il veleno e gli attacchi furtivi, il Trickster è un ladro più orientato socialmente. Le sue parole melliflue possono tirare fuori il gruppo dai momenti più difficili, o farli sprofondare ancora di più.
         description: |-
           Ci sono troppe regole nel mondo. Ovunque tu vada, le persone ti dicono cosa puoi e non puoi fare, facendo minacce vuote se non ti uniformi. Chi ha bisogno di tutto questo? Sei uno spirito libero. Non c’è mai stata una situazione da cui non hai potuto uscire con il tuo fascino. Stai meglio senza tutte quelle fastidiose regole.
 
@@ -917,9 +917,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Del Trickster
-            path: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/trickster.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/trickster.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/Lore and Lords Pack/lysa-trickster.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/Lore and Lords Pack/lysa-trickster.jpeg
           heroName: La Trickster Umana Lysa
         credits:
           - kind: Traduzione
@@ -950,9 +950,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Del Cavaliere dei Draghi
-            path: ./materiali/classi/homebrew/Peter Johansen/Secrets and Sorcery Pack/il cavaliere dei draghi.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/Secrets and Sorcery Pack/il cavaliere dei draghi.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/Secrets and Sorcery Pack/il cavaliere dei draghi.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/Secrets and Sorcery Pack/il cavaliere dei draghi.jpeg
           heroName: Mallory e il suo drago Aurion
         credits:
           - kind: Traduzione
@@ -986,9 +986,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Dell'Abitante Del Villaggio
-            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/abitante del villaggio.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/abitante del villaggio.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/abitante del villaggio.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/abitante del villaggio.jpeg
           heroName: La Contadina Gwen e la sua mucca Sandy
         credits:
           - kind: Traduzione
@@ -1019,9 +1019,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Della Bestia
-            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/bestia.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/bestia.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/jagara-il-felinide.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/jagara-il-felinide.jpeg
           heroName: la Bestia Felinide Jagara
         credits:
           - kind: Traduzione
@@ -1050,9 +1050,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Del Maestro Delle Maschere
-            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/maestro delle maschere.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/maestro delle maschere.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/percy-maestro-delle-maschere.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/percy-maestro-delle-maschere.jpeg
           heroName: Il Maestro Delle Maschere Percy
         credits:
           - kind: Traduzione
@@ -1079,9 +1079,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Del Maestro Delle Maschere
-            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/pistolero.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/pistolero.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/vincent-pistolero.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/vincent-pistolero.jpeg
           heroName: Il Pistolero Umano Vincent
         credits:
           - kind: Traduzione
@@ -1111,9 +1111,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Del Signore Della Guerra
-            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/signore della guerra.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/signore della guerra.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/darius-signore-della-guerra.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/darius-signore-della-guerra.jpeg
           heroName: Il Signore Della Guerra Darius
         credits:
           - kind: Traduzione
@@ -1144,9 +1144,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Dello Stolto
-            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/stolto.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/stolto.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/stolto.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/stolto.jpeg
           heroName: Lo Hobbit Peppino All'Avventura
         credits:
           - kind: Traduzione
@@ -1178,9 +1178,9 @@ dungeonWorld:
         authors: Peter Johansen
         assets:
           - name: Scheda Del Warlock
-            path: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/warlock.pdf
+            path: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/warlock.pdf
         showcase:
-          imagePath: ./materiali/classi/homebrew/Peter Johansen/War and Wonders Pack/milena-la-warlock.jpeg
+          imagePath: ./materiali/homebrew/classi/Peter Johansen/War and Wonders Pack/milena-la-warlock.jpeg
           heroName: La Warlock Milena
         credits:
           - kind: Traduzione
