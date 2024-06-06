@@ -495,7 +495,7 @@ dungeonWorld:
             contributors:
               - deepai.org
 
-      - name: Mago di Stirpe Draconica
+      - name: Mago Draconico
         compendium: false
         shortDescription: Un'altra rovina in fiamme è tutto ciò che rimane del tuo passaggio. Un altro che ha dubitato del tuo orgoglio, del tuo potere, è stato lasciato nelle ceneri. Tu sei il Drago, e nessuno dubiterà di te.
         description: |-
@@ -505,7 +505,7 @@ dungeonWorld:
 
           Il Mago di Stirpe Draconica riguarda tutto il potere e la furia dei draghi.
           Li emuli, li imiti e, in alcuni casi, potresti persino superarli.
-          Il Mago di Stirpe Draconica cede alla sua linea di sangue interiore,
+          Il Mago Draconico cede alla sua linea di sangue interiore,
           alla sua eredità draconica, per ottenere Ardore, che spende per imitare
           i draghi: ottenere le loro scaglie indurite, le loro potenti ali, o i loro
           artigli possenti, solo per pochi istanti.
@@ -520,11 +520,11 @@ dungeonWorld:
         collection: Mage Revised
         authors: Jacob Randolph
         assets:
-          - name: Scheda Del Mago di Stirpe Draconica
+          - name: Scheda Del Mago Draconico
             path: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-draconico.pdf
         showcase:
           imagePath: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-draconico.jpeg
-          heroName: Kalistar, Figlia di Axstalrath
+          heroName: La Maga Draconica Kalistar, Figlia di Axstalrath
         credits:
           - kind: Traduzione
             contributors:
@@ -561,7 +561,7 @@ dungeonWorld:
             path: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-inverno.pdf
         showcase:
           imagePath: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-inverno.jpeg
-          heroName: Elisia del Mare del Nord
+          heroName: La Maga Dell'inverno Elfica Elisia
         credits:
           - kind: Traduzione
             contributors:
@@ -594,7 +594,7 @@ dungeonWorld:
             path: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-tempo.pdf
         showcase:
           imagePath: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-tempo.jpeg
-          heroName: Helena Tempusvero
+          heroName: La Maga Del Tempo Helena Tempusvero
         credits:
           - kind: Traduzione
             contributors:
@@ -621,7 +621,7 @@ dungeonWorld:
             path: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-astrale.pdf
         showcase:
           imagePath: ./materiali/homebrew/classi/Jacob Randolph/Mage Revised/mago-astrale.jpeg
-          heroName: Ariel Starweaver
+          heroName: La Maga Astrale Ariel Starweaver
         credits:
           - kind: Traduzione
             contributors:
@@ -1206,6 +1206,39 @@ dungeonWorld:
         showcase:
           imagePath: ./materiali/homebrew/classi/Victor Hurtado/A Dungeon World Playbook/cacciatore.jpeg
           heroName: La Cacciatrice Umana Akelia
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Carlo Zagagnoni
+              - Iacopo Ciao
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Psionico
+        compendium: false
+        shortDescription: Senza alzare un dito, puoi spostare oggetti, da piccole pietre a massi enormi, o schiacciare i corpi di coloro che ti farebbero del male o ti ostacolerebbero. Puoi trasmettere i tuoi pensieri a grandi distanze e farti strada nella mente degli altri.
+        description: |-
+          Chi ha detto "lavorare più intelligentemente, non più duramente" probabilmente non ti conosceva.
+
+          Senza alzare un dito, puoi spostare oggetti, da piccole pietre a massi enormi, o schiacciare i corpi di coloro che ti farebbero del male o ti ostacolerebbero.
+          Puoi trasmettere i tuoi pensieri a grandi distanze e farti strada nella mente degli altri.
+
+          E questo è solo l'inizio.
+
+          Con il tempo e l'esperienza potrai scagliare oggetti con grande forza e fare a pezzi le persone.
+          O forse preferisci scavare in profondità nei loro ricordi e reclamarli per te?
+          Chissà, potresti imparare uno o due trucchi.
+
+          Tutto dipende da ciò che hai in mente di fare.
+        collection: A Dungeon World Playbook
+        authors: David Guyll e Melissa Fisher
+        assets:
+          - name: Scheda Dello Psionico
+            path: ./materiali/homebrew/classi/David Guyll e Melissa Fisher/A Dungeon World Playbook/psionico.pdf
+        showcase:
+          imagePath: ./materiali/homebrew/classi/David Guyll e Melissa Fisher/A Dungeon World Playbook/psionico.jpeg
+          heroName: Lo Psionico Umano Nairu
         credits:
           - kind: Traduzione
             contributors:
