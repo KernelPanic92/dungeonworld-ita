@@ -53,12 +53,11 @@
   },
   "include": [
     "next-env.d.ts",
-    "src/classes-definition.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "tailwind.config.js"
-, "src/components/class-details.mdx", "pages/homebrew/classi/_meta.js" ],
+    "tailwind.config.js",
+    ".next/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
