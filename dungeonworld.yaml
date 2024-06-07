@@ -1247,3 +1247,52 @@ dungeonWorld:
           - kind: Immagine
             contributors:
               - deepai.org
+
+      - name: Bardo
+        compendium: false
+        shortDescription: Che sia sui libri o per bocca di altri, negli anni hai imparato il giusto di entrambi, come la differenza tra un puca e un kelpie, Le Tre Canzoni di Erui, gli effetti della luce del sole sui troll di Boscomago, Il Barghest di Ulfstir, le canzoni dei fabbri nanici, o le tetre poesie degli elfi di Ramo Argenteo.
+        description: |-
+          Storie e canzoni possono fare molto di più che intrattenere.
+          Una storia raccontata nel modo giusto può riunire una comunità, condividere esperienze e trasmettere lezioni di vita e
+          saggezza. Allo stesso modo, una canzone può risollevare un’anima e ispirare gli uomini a compiere grandi imprese, o può riempirti il
+          cuore di terrore e disperazione.
+          Che sia sui libri o per bocca di altri, negli anni hai imparato il giusto di entrambi, come la differenza tra un puca e un kelpie,
+          Le Tre Canzoni di Erui, gli effetti della luce del sole sui troll di Boscomago, Il Barghest di Ulfstir, le canzoni dei fabbri nanici, o le tetre
+          poesie degli elfi di Ramo Argenteo.
+          Ma tu sai che là fuori c’è ancora molto da scoprire. Storie da tempo dimenticate o ancora da raccontare, e non desideri altro
+          che scovarle o raccontarle tu stesso. Chi sa quante cose potresti imparare, quali insegnamenti potrebbero racchiudere, e quante persone
+          potrebbero ispirare?
+
+          ## Introduzione dell'autore
+
+          Gioco a Dungeons & Dragons da più di vent’anni, e fino alla Quarta Edizione ho sempre odiato il Bardo.
+          Non solo perché al di fuori di un tiro in Diplomazia era meccanicamente incapace, o perché - come virtualmente ogni altra
+          classe magica - faceva affidamento su un assurdo sistema magico pseudo-Vanciano, o perché la sua mossa di Classe distintiva - musica
+          bardica - semplicemente non ha senso.
+          No, la cosa peggiore è pensare a quanto sia stupido un personaggio che saltella per il campo di battaglia strimpellando un
+          liuto, proprio nel bel mezzo di un’ondata di predoni orcheschi.
+          Qui è dove entra in gioco la nostra versione di questa Classe: un Bardo che non faccia affidamento sulle assurde meccaniche
+          di gioco del Bardo di Dungeons & Dragons. Che non saltelli in qua e in là durante i combattimenti spargendo bonus agli alleati, cantando
+          per guarire le ferite o uccidendo i nemici urlandogli in faccia.
+          Questo Bardo può sfruttare al meglio ciò che sa. Può dire la sua in battaglia e può specializzarsi ulteriormente, scegliendo se
+          diventare un aggraziato spadaccino o uno scaldo guerriero che si lancia in battaglia a testa bassa. Può attirare ed intrattenere le folle. La
+          musica del Bardo di solito è più discreta, utile al di fuori dei combattimenti per prevenire un conflitto prima ancora che questo abbia
+          luogo, o tutt’al più per donare un vantaggio iniziale ai suoi alleati.
+          Questa non è una pigra riproposizione del Bardo, con qualche modifica e un paio di nuove mosse: è un’interpretazione
+          completamente nuova dell’idea del Bardo. Quindi metti via quel liuto: non ti sarà di alcun aiuto quando un orco ti correrà addosso, la
+          brama di sangue visibile nei suoi occhi. No: ti servirà la tua spada, e una mente sveglia ti sarà di grande aiuto.
+        collection: A Dungeon World Playbook
+        authors: David Guyll e Melissa Fisher
+        assets:
+          - name: Scheda Del Bardo
+            path: ./materiali/homebrew/classi/David Guyll e Melissa Fisher/A Dungeon World Playbook/bardo.pdf
+        showcase:
+          imagePath: ./materiali/homebrew/classi/David Guyll e Melissa Fisher/A Dungeon World Playbook/bardo.jpeg
+          heroName: Lo Psionico Umano Nairu
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Carlo Zagagnoni
+          - kind: Immagine
+            contributors:
+              - deepai.org
