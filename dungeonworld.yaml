@@ -1194,27 +1194,6 @@ dungeonWorld:
             contributors:
               - deepai.org
 
-      - name: Cacciatore
-        compendium: false
-        shortDescription: Un cacciatore sceglie o riceve un bersaglio e con occhi acuti lo rintraccia, con astuzia lo attira, e con una trappola ben piazzata lo cattura.
-        description: Ragazzo, questo non è un lavoro per prendersi cura della natura né per guidare un compagno smarrito verso la salvezza. Un cacciatore sceglie o riceve un bersaglio e con occhi acuti lo rintraccia, con astuzia lo attira, e con una trappola ben piazzata lo cattura. Ora, prepara le valigie e prendi quella balestra, ragazzo, abbiamo una bestia da catturare!
-        collection: A Dungeon World Playbook
-        authors: Victor Hurtado
-        assets:
-          - name: Scheda Del Cacciatore
-            path: ./materiali/homebrew/classi/Victor Hurtado/A Dungeon World Playbook/cacciatore.pdf
-        showcase:
-          imagePath: ./materiali/homebrew/classi/Victor Hurtado/A Dungeon World Playbook/cacciatore.jpeg
-          heroName: La Cacciatrice Umana Akelia
-        credits:
-          - kind: Traduzione
-            contributors:
-              - Carlo Zagagnoni
-              - Iacopo Ciao
-          - kind: Immagine
-            contributors:
-              - deepai.org
-
       - name: Psionico
         compendium: false
         shortDescription: Senza alzare un dito, puoi spostare oggetti, da piccole pietre a massi enormi, o schiacciare i corpi di coloro che ti farebbero del male o ti ostacolerebbero. Puoi trasmettere i tuoi pensieri a grandi distanze e farti strada nella mente degli altri.
