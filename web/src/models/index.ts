@@ -5,3 +5,4 @@ export * from './homebrew';
 export * from './showcase';
 export * from './standard-class';
 export * from './standard';
+export * from './license';

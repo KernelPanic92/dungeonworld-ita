@@ -14,6 +14,9 @@ dungeonWorld:
 
     classes:
       - name: Barbaro
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         assets:
           - name: Scheda Del Barbaro
             path: materiali/standard/classi/Barbaro.pdf
@@ -36,6 +39,9 @@ dungeonWorld:
           heroName: La Barbara Khamisi, La Sfregiatrice
 
       - name: Bardo
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         assets:
           - name: Scheda Del Bardo
             path: materiali/standard/classi/Bardo.pdf
@@ -58,6 +64,9 @@ dungeonWorld:
           heroName: La Bardessa Cassandra Canto Del Vento
 
       - name: Chierico
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         assets:
           - name: Scheda Del Chierico
             path: ./materiali/standard/classi/Chierico.pdf
@@ -82,6 +91,9 @@ dungeonWorld:
           heroName: Il Chierico umano Hawthorn
 
       - name: Druido
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         assets:
           - name: Scheda Del Druido
             path: ./materiali/standard/classi/Druido.pdf
@@ -105,6 +117,9 @@ dungeonWorld:
           heroName: Il Druido Elfo Ethanwe
 
       - name: Guerriero
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         assets:
           - name: Scheda Del Guerriero
             path: ./materiali/standard/classi/Guerriero.pdf
@@ -130,6 +145,9 @@ dungeonWorld:
           heroName: Stone l'umano guerriero
 
       - name: Ladro
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         assets:
           - name: Scheda Del Ladro
             path: ./materiali/standard/classi/Ladro.pdf
@@ -153,6 +171,9 @@ dungeonWorld:
           heroName: Il Ladro Mezzelfo Felix
 
       - name: Mago
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         assets:
           - name: Scheda Del Mago
             path: ./materiali/standard/classi/Mago.pdf
@@ -181,6 +202,9 @@ dungeonWorld:
           heroName: La Maga Liliastre
 
       - name: Paladino
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         assets:
           - name: Scheda Del Paladino
             path: ./materiali/standard/classi/Paladino.pdf
@@ -205,6 +229,9 @@ dungeonWorld:
           heroName: Il Paladino Umano Adrian
 
       - name: Ramingo
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         assets:
           - name: Scheda Del Ramingo
             path: ./materiali/standard/classi/Ramingo.pdf
@@ -229,6 +256,11 @@ dungeonWorld:
   homebrew:
     classes:
       - name: Monaco
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
+        collection: Raccolta Generale
+        authors: James Mendez Hodes
         compendium: false
         shortDescription: I Monaci provengono da monasteri isolati, dove trascorrono anni affinando le loro abilità in solitudine o sotto la guida di saggi mentori.
         description: |-
@@ -237,8 +269,6 @@ dungeonWorld:
           I Monaci provengono da monasteri isolati, dove trascorrono anni affinando le loro abilità in solitudine o sotto la guida di saggi mentori.
 
           Le loro capacità non si limitano al semplice combattimento; i Monaci sono anche noti per i loro poteri curativi, l'intuizione nella condizione umana e la capacità di trascendere il regno fisico.
-        collection: Raccolta Generale
-        authors: James Mendez Hodes
         assets:
           - name: Scheda Del Monaco
             path: ./materiali/homebrew/classi/James Mendez Hodes/Monaco.pdf
@@ -254,6 +284,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Spadaccino
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Lo Spadaccino è un maestro del combattimento con la spada, dotato di agilità, precisione e stile. Con movimenti eleganti e tecniche raffinate, lo Spadaccino è in grado di affrontare qualsiasi avversario sul campo di battaglia, trasformando il combattimento in una danza mortale.
         description: |-
@@ -279,6 +312,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Mago
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Che sia il potere di un Drago o di una Maschera o di un qualcosa totalmente diverso, adesso tutti quei segreti sono celati in quella piccola bacchetta che hai trovato, e sono tutti al tuo comando.
         description: |-
@@ -316,6 +352,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Artefice
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: La vecchia tecnologia di Dungeon World è un vero disastro, ma tu puoi sistemarla. Nessun altro ci è riuscito, ma solo perché nessun altro è te.
         description: |-
@@ -349,6 +388,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Sacerdote
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Nessun dio cammina più su queste terre, non più. Ora queste terre sono un campo di battaglia tra i loro seguaci, i loro resti, i loro uomini di fede. Non è una battaglia sempre combattuta con le lame, ed è per questo che questo campo di battaglia ha bisogno di te.
         description: |-
@@ -391,6 +433,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Templare
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Il tuo giuramento ti guida nelle terre pericolose e nei regni sconosciuti, dove combatti per la gloria e l'onore del tuo ordine. Sei il Templare, un baluardo di luce nella lotta contro le tenebre, pronto a difendere la fede e la virtù con ogni mezzo necessario.
         description: |-
@@ -427,6 +472,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Strega
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: "La strega prepara pozioni, è dotata di arti oscure e magie proibite da lanciare al suo comando. Le sue abilità differiscono considerevolmente da quelle del suo compagno mago: mentre lui ha la sua piccola lista di incantesimi, la strega ha i suoi sortilegi, le sue pozioni e la sua scopa."
         description: |-
@@ -458,6 +506,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Mago delle Maschere
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Il Mago delle Maschere è un illusionista di altissimo calibro. Può creare illusioni, rivelare verità nascoste sul mondo, e le persone tendono inconsciamente a fidarsi di lui.
         description: |-
@@ -496,6 +547,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Mago Draconico
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Un'altra rovina in fiamme è tutto ciò che rimane del tuo passaggio. Un altro che ha dubitato del tuo orgoglio, del tuo potere, è stato lasciato nelle ceneri. Tu sei il Drago, e nessuno dubiterà di te.
         description: |-
@@ -535,6 +589,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Mago dell'Inverno
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Il Mago dell'Inverno è duro come il ghiaccio, pungente come il vento e distante come le cime innevate delle montagne.
         description: |-
@@ -572,6 +629,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Mago del Tempo
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: L'eternità può passare in un battito di ciglia. Un momento può durare tutto il tempo necessario. Il tempo è qualcosa con cui gli altri devono fare i conti. Tu sei l'Orologio, e il tempo è il tuo strumento.
         description: |-
@@ -605,6 +665,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Mago Astrale
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Manipoli lo spazio con facilità, creando piccoli buchi nel tessuto dello spazio. Raggiungere o saltare attraverso questi buchi ti conferisce una mobilità e una portata senza eguali
         description: |-
@@ -632,6 +695,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Immolatore
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: L'Immolatore è un incantatore che attinge al potere distruttivo del fuoco per dominare i suoi nemici e forgiare il proprio destino. Con un legame profondo con le fiamme e la capacità di controllarle a proprio piacimento, l'Immolatore è sia temuto che rispettato sul campo di battaglia.
         description: |-
@@ -658,6 +724,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Professionista
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: true
         shortDescription: Sei tornato da dove pochi uomini osano avventurarsi, portando ferite, tesori e storie. La gente di questa città sta cominciando a guardarti con ammirazione.
         description: |-
@@ -693,6 +762,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Vampiro
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Il Vampiro trae ispirazione sia da storie classiche che moderne del genere horror. Predatore, manipolatore e creatura delle tenebre, il Vampiro porta con sé un’aria di minaccia con i suoi poteri soprannaturali legati al sangue e alla notte.
         description: |-
@@ -723,6 +795,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Berserker
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: La forza del Berserker è la sua potente rabbia e la sete di sangue, che gli conferiscono una straordinaria potenza fisica a discapito della sua sanità mentale per un breve periodo. Cosa succederà quando richiamerà questa terribile furia?
         description: |-
@@ -766,6 +841,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Cacciatore
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Il Cacciatore è una variante della classe del ranger, che rinuncia al classico compagno animale in favore di trappole e una maggiore focalizzazione sull’arco. Per avere successo, il cacciatore dovrà pianificare in anticipo e posizionare le sue trappole per catturare o indebolire la sua preda. Le sue abilità di caccia lo rendono esperto nella pianificazione e nella strategia per abbattere anche i mostri più temibili.
         description: |-
@@ -796,6 +874,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Cavaliere Nero
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Il Cavaliere Nero ha stretto un patto con la Morte per una delle sue terribili armi. Ha un grande potere, ma questo potere ha un prezzo.
         description: |-
@@ -838,6 +919,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Monaco
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Il tuo pugno colpisce con la forza di una mazza chiodata, e la tua rapidità è un’armatura più resistente di una corazza d’acciaio. Il tuo corpo scorre come l’acqua, allontanandosi dal pericolo, colpendo con la forza di un’onda per poi posarsi sereno come una pozza tranquilla.
         description: |-
@@ -872,6 +956,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Sciamano
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Lo Sciamano di Lore and Lords Pack di Peter Johansen è progettato per soddisfare il bisogno di un chierico più orientato alla natura o di un druido più orientato agli incantesimi. Mentre lo Sciamano attinge da entrambi, la sua abilità distintiva di parlare agli spiriti gli conferisce un proprio ruolo.
         description: |-
@@ -904,6 +991,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Trickster
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Il Trickster è una variante della classe del Ladro. Invece di usare il veleno e gli attacchi furtivi, il Trickster è un ladro più orientato socialmente. Le sue parole melliflue possono tirare fuori il gruppo dai momenti più difficili, o farli sprofondare ancora di più.
         description: |-
@@ -934,6 +1024,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Cavaliere Dei Draghi
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Il Cavaliere dei Draghi è il più impressionante dei guerrieri a cavallo, che cavalca in battaglia sopra un giovane drago. Il cavaliere e il suo destriero si influenzano a vicenda, e mantenere un legame di rispetto reciproco e fiducia tra i due è fondamentale per il loro successo.
         description: |-
@@ -967,6 +1060,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Abitante Del Villaggio
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Eroe? Oh no, no. Non sei un eroe. Sei solo una persona normale. Ringraziando gli dèi. Le avventure sono cose terribili e pericolose. Le persone che partono per avventure tornano storpiate o con la testa sbagliata, e questo se tornano del tutto. Restare al villaggio è molto meglio. Hai una vita relativamente sicura, anche se non eccitante, qui.
         description: |-
@@ -1003,6 +1099,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Bestia
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: La Bestia è una variante del barbaro, un personaggio inumano o semi-umano, il cui sangue è mescolato con quello di una razza di animale o mostro, come arakkoa, minotauri o mezzogre. La tua eredità è la fonte delle tue abilità, sotto forma di mosse ereditate dai tuoi antenati mostruosi.
         description: |-
@@ -1036,6 +1135,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Maestro Delle Maschere
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Un maestro della teatralità, del fascino e dell’imitazione, Il Maestro Delle Maschere nasconde la propria identità dietro le sue maschere magiche. Il Maestro Delle Maschere ha la capacità di duplicare le abilità dei propri alleati o di cambiare le proprie abilità secondo le maschere che indossa.
         description: |-
@@ -1067,6 +1169,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Pistolero
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Il Pistolero è un combattente il cui arma di elezione è un’arma da fuoco. Un’arma potente di per sé, ma capace di ancora di più quando impugnata con convinzione e certezza. Il Pistolero si attiene a un codice d’onore per mantenere stabile la sua mira e compiere gesta straordinarie con la sua pistola.
         description: |-
@@ -1096,6 +1201,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Signore Della Guerra
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Il Signore della Guerra è un abile combattente, competente nelle tattiche e nella strategia di combattimento. Sono leader sia sul campo di battaglia che al di fuori, incitando i loro seguaci a grandi atti di valore.
         description: |-
@@ -1128,6 +1236,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Stolto
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Lo Stolto ha successo grazie alla fortuna, spesso suo malgrado. Ha grandi aspirazioni, ma il destino o le circostanze amano riservargli sorprese. Che sia un eroe per caso, un eroe riluttante o semplicemente un elemento comico, non puoi mai sottovalutare Lo Stolto. Sembra sempre trovare un modo per battere le probabilità.
         description: |-
@@ -1162,6 +1273,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Warlock
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Come il Chierico, il Warlock gode di un rapporto con un essere di potere divino o semidivino. A differenza del chierico, il rapporto tra il Warlock e il suo patrono è molto più intimo, tanto che il patrono può estendersi nel mondo attraverso di lui. Principi demoniaci, arcifolletti e antiche entità provenienti da oltre la realtà sono tutti potenziali patroni per il Warlock.
         description: |-
@@ -1195,6 +1309,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Psionico
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Senza alzare un dito, puoi spostare oggetti, da piccole pietre a massi enormi, o schiacciare i corpi di coloro che ti farebbero del male o ti ostacolerebbero. Puoi trasmettere i tuoi pensieri a grandi distanze e farti strada nella mente degli altri.
         description: |-
@@ -1228,6 +1345,9 @@ dungeonWorld:
               - deepai.org
 
       - name: Bardo
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
         compendium: false
         shortDescription: Che sia sui libri o per bocca di altri, negli anni hai imparato il giusto di entrambi, come la differenza tra un puca e un kelpie, Le Tre Canzoni di Erui, gli effetti della luce del sole sui troll di Boscomago, Il Barghest di Ulfstir, le canzoni dei fabbri nanici, o le tetre poesie degli elfi di Ramo Argenteo.
         description: |-

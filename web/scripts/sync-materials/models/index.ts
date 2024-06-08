@@ -6,3 +6,4 @@ export * from './showcase';
 export * from './standard-class';
 export * from './standard';
 export * from './dungeon-world';
+export * from './license';

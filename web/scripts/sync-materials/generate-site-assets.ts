@@ -38,6 +38,7 @@ function generateClassSiteAsset(publicFolderPath: string, metadata: StandardClas
     
     const result: StandardClassModel = {
         name,
+        license: metadata.license,
         slug: Case.kebab(name),
         description: metadata.description,
         shortDescription: metadata.shortDescription,

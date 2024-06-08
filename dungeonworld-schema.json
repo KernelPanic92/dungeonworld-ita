@@ -1,158 +1,334 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
-    "description": "Schema per Dungeon World in Italiano",
-    "properties": {
-      "dungeonWorld": {
-        "type": "object",
-        "description": "Oggetto principale che contiene le sezioni 'homebrew' e 'standard'.",
-        "properties": {
-          "homebrew": {
-            "type": "object",
-            "description": "Contiene le classi homebrew create dalla community.",
-            "properties": {
-              "classes": {
-                "type": "array",
-                "description": "Elenco delle classi homebrew.",
-                "items": {
-                  "type": "object",
-                  "description": "Una classe homebrew.",
-                  "properties": {
-                    "compendium": { "type": "boolean", "description": "Indica se la classe è di tipo compendio" },
-                    "authors": { "type": "string", "description": "Autori della classe homebrew." },
-                    "collection": { "type": "string", "description": "Collezione a cui appartiene la classe homebrew." },
-                    "name": { "type": "string", "description": "Nome della classe homebrew." },
-                    "assets": {
-                      "type": "array",
-                      "description": "Elenco delle risorse associate alla classe.",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "name": { "type": "string", "description": "Nome della risorsa." },
-                          "path": { "type": "string", "format": "uri", "description": "Percorso della risorsa." }
-                        },
-                        "required": ["name", "path"]
-                      }
-                    },
-                    "shortDescription": { "type": "string", "description": "Breve descrizione della classe homebrew." },
-                    "description": { "type": "string", "description": "Descrizione dettagliata della classe homebrew." },
-                    "credits": {
-                      "type": "array",
-                      "description": "Crediti delle persone che hanno contribuito alla classe.",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "kind": { "type": "string", "description": "Tipo di contributo (es. Designer, Illustratore)." },
-                          "contributors": {
-                            "type": "array",
-                            "description": "Elenco dei contributori.",
-                            "items": { "type": "string" }
-                          }
-                        },
-                        "required": ["kind", "contributors"]
-                      }
-                    },
-                    "showcase": {
-                      "type": "object",
-                      "description": "Esempio di personaggio per ispirare i lettori.",
-                      "properties": {
-                        "imagePath": { "type": "string", "format": "uri", "description": "Percorso dell'immagine del personaggio." },
-                        "heroName": { "type": "string", "description": "Nome del personaggio." }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "description": "Schema per Dungeon World in Italiano",
+  "properties": {
+    "dungeonWorld": {
+      "type": "object",
+      "description": "Oggetto principale che contiene le sezioni 'homebrew' e 'standard'.",
+      "properties": {
+        "homebrew": {
+          "type": "object",
+          "description": "Contiene le classi homebrew create dalla community.",
+          "properties": {
+            "classes": {
+              "type": "array",
+              "description": "Elenco delle classi homebrew.",
+              "items": {
+                "type": "object",
+                "description": "Una classe homebrew.",
+                "properties": {
+                  "compendium": {
+                    "type": "boolean",
+                    "description": "Indica se la classe è di tipo compendio"
+                  },
+                  "authors": {
+                    "type": "string",
+                    "description": "Autori della classe homebrew."
+                  },
+                  "collection": {
+                    "type": "string",
+                    "description": "Collezione a cui appartiene la classe homebrew."
+                  },
+                  "license": {
+                    "type": "object",
+                    "description": "La licenza con cui viene rilasciata",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Il nome della licenza"
                       },
-                      "required": ["imagePath", "heroName"]
+                      "url": {
+                        "type": "string",
+                        "description": "Url alla licenza"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "url"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Nome della classe homebrew."
+                  },
+                  "assets": {
+                    "type": "array",
+                    "description": "Elenco delle risorse associate alla classe.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "Nome della risorsa."
+                        },
+                        "path": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "Percorso della risorsa."
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "path"
+                      ]
                     }
                   },
-                  "required": ["name", "compendium", "authors", "collection", "assets", "shortDescription", "description", "credits", "showcase"]
-                }
+                  "shortDescription": {
+                    "type": "string",
+                    "description": "Breve descrizione della classe homebrew."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Descrizione dettagliata della classe homebrew."
+                  },
+                  "credits": {
+                    "type": "array",
+                    "description": "Crediti delle persone che hanno contribuito alla classe.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "type": "string",
+                          "description": "Tipo di contributo (es. Designer, Illustratore)."
+                        },
+                        "contributors": {
+                          "type": "array",
+                          "description": "Elenco dei contributori.",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "kind",
+                        "contributors"
+                      ]
+                    }
+                  },
+                  "showcase": {
+                    "type": "object",
+                    "description": "Esempio di personaggio per ispirare i lettori.",
+                    "properties": {
+                      "imagePath": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Percorso dell'immagine del personaggio."
+                      },
+                      "heroName": {
+                        "type": "string",
+                        "description": "Nome del personaggio."
+                      }
+                    },
+                    "required": [
+                      "imagePath",
+                      "heroName"
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "license",
+                  "compendium",
+                  "authors",
+                  "collection",
+                  "assets",
+                  "shortDescription",
+                  "description",
+                  "credits",
+                  "showcase"
+                ]
               }
-            },
-            "required": ["classes"]
+            }
           },
-          "standard": {
-            "type": "object",
-            "description": "Contiene le classi standard tradotte in italiano.",
-            "properties": {
-              "classes": {
-                "type": "array",
-                "description": "Elenco delle classi standard.",
-                "items": {
-                  "type": "object",
-                  "description": "Una classe standard.",
-                  "properties": {
-                    "name": { "type": "string", "description": "Il nome della classe standard." },
-                    "assets": {
-                      "type": "array",
-                      "description": "Elenco delle risorse associate alla classe.",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "name": { "type": "string", "description": "Nome della risorsa." },
-                          "path": { "type": "string", "format": "uri", "description": "Percorso della risorsa." }
-                        },
-                        "required": ["name", "path"]
-                      }
-                    },
-                    "shortDescription": { "type": "string", "description": "Breve descrizione della classe standard." },
-                    "description": { "type": "string", "description": "Descrizione dettagliata della classe standard." },
-                    "credits": {
-                      "type": "array",
-                      "description": "Crediti delle persone che hanno contribuito alla classe.",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "kind": { "type": "string", "description": "Tipo di contributo (es. Designer, Illustratore)." },
-                          "contributors": {
-                            "type": "array",
-                            "description": "Elenco dei contributori.",
-                            "items": { "type": "string" }
-                          }
-                        },
-                        "required": ["kind", "contributors"]
-                      }
-                    },
-                    "showcase": {
-                      "type": "object",
-                      "description": "Esempio di personaggio per ispirare i lettori.",
-                      "properties": {
-                        "imagePath": { "type": "string", "format": "uri", "description": "Percorso dell'immagine del personaggio." },
-                        "heroName": { "type": "string", "description": "Nome del personaggio." }
+          "required": [
+            "classes"
+          ]
+        },
+        "standard": {
+          "type": "object",
+          "description": "Contiene le classi standard tradotte in italiano.",
+          "properties": {
+            "classes": {
+              "type": "array",
+              "description": "Elenco delle classi standard.",
+              "items": {
+                "type": "object",
+                "description": "Una classe standard.",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Il nome della classe standard."
+                  },
+                  "license": {
+                    "type": "object",
+                    "description": "La licenza con cui viene rilasciata",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Il nome della licenza"
                       },
-                      "required": ["imagePath", "heroName"]
+                      "url": {
+                        "type": "string",
+                        "description": "Url alla licenza"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "url"
+                    ]
+                  },
+                  "assets": {
+                    "type": "array",
+                    "description": "Elenco delle risorse associate alla classe.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "Nome della risorsa."
+                        },
+                        "path": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "Percorso della risorsa."
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "path"
+                      ]
                     }
                   },
-                  "required": ["name", "assets", "shortDescription", "description", "credits", "showcase"]
-                }
-              },
-             "gameMasterSummary": {
-                "type": "object",
-                "properties": {
-                  "name": { "type": "string", "description": "Nome della risorsa." },
-                  "path": { "type": "string", "format": "uri", "description": "Percorso della risorsa." }
+                  "shortDescription": {
+                    "type": "string",
+                    "description": "Breve descrizione della classe standard."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Descrizione dettagliata della classe standard."
+                  },
+                  "credits": {
+                    "type": "array",
+                    "description": "Crediti delle persone che hanno contribuito alla classe.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "type": "string",
+                          "description": "Tipo di contributo (es. Designer, Illustratore)."
+                        },
+                        "contributors": {
+                          "type": "array",
+                          "description": "Elenco dei contributori.",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "kind",
+                        "contributors"
+                      ]
+                    }
+                  },
+                  "showcase": {
+                    "type": "object",
+                    "description": "Esempio di personaggio per ispirare i lettori.",
+                    "properties": {
+                      "imagePath": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Percorso dell'immagine del personaggio."
+                      },
+                      "heroName": {
+                        "type": "string",
+                        "description": "Nome del personaggio."
+                      }
+                    },
+                    "required": [
+                      "imagePath",
+                      "heroName"
+                    ]
+                  }
                 },
-                "required": ["name", "path"]
-              },
-              "frontsSummary": {
-                "type": "object",
-                "properties": {
-                  "name": { "type": "string", "description": "Nome della risorsa." },
-                  "path": { "type": "string", "format": "uri", "description": "Percorso della risorsa." }
-                },
-                "required": ["name", "path"]
-              },
-              "movesSummary": {
-                "type": "object",
-                "properties": {
-                  "name": { "type": "string", "description": "Nome della risorsa." },
-                  "path": { "type": "string", "format": "uri", "description": "Percorso della risorsa." }
-                },
-                "required": ["name", "path"]
+                "required": [
+                  "name",
+                  "license",
+                  "assets",
+                  "shortDescription",
+                  "description",
+                  "credits",
+                  "showcase"
+                ]
               }
             },
-            "required": ["classes", "gameMasterSummary", "frontsSummary", "movesSummary"]
-          }
+            "gameMasterSummary": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Nome della risorsa."
+                },
+                "path": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Percorso della risorsa."
+                }
+              },
+              "required": [
+                "name",
+                "path"
+              ]
+            },
+            "frontsSummary": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Nome della risorsa."
+                },
+                "path": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Percorso della risorsa."
+                }
+              },
+              "required": [
+                "name",
+                "path"
+              ]
+            },
+            "movesSummary": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Nome della risorsa."
+                },
+                "path": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Percorso della risorsa."
+                }
+              },
+              "required": [
+                "name",
+                "path"
+              ]
+            }
+          },
+          "required": [
+            "classes",
+            "gameMasterSummary",
+            "frontsSummary",
+            "movesSummary"
+          ]
         }
       }
-    },
-    "required": ["dungeonWorld"]
-  }
-  
+    }
+  },
+  "required": [
+    "dungeonWorld"
+  ]
+}

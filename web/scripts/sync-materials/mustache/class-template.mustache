@@ -27,7 +27,7 @@ import { Tabs } from 'nextra/components'
 
 <br/>
 
-<Tabs items={['DOWNLOADS', 'CREDITI']}>
+<Tabs items={['DOWNLOADS', 'CREDITI', 'LICENZA']}>
   <Tabs.Tab>
      {{#assets}}
       <br/>
@@ -42,5 +42,8 @@ import { Tabs } from 'nextra/components'
       {{/contributors}}
 
     {{/credits}}
+  </Tabs.Tab>
+  <Tabs.Tab>
+    [{{{license.name}}}]({{{license.url}}})
   </Tabs.Tab>
 </Tabs>
