@@ -12,7 +12,7 @@ const metalMania = Metal_Mania({
 
 export const Cover: FC = () => {
   return (
-    <div className="max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
+    <div className="max-w-[90rem] md:pl-[max(env(safe-area-inset-left),1.5rem)] md:pr-[max(env(safe-area-inset-right),1.5rem)]">
       <div className="relative h-96 md:h-[41rem]">
         <Image
           priority
@@ -22,10 +22,10 @@ export const Cover: FC = () => {
           fill
         ></Image>
         <div className="absolute flex flex-col justify-center p-5 md:p-20 inset-0">
-          <h1 className={clsx(metalMania.className, "text-2xl sm:text-4xl md:text-6xl text-dw drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]")}>
+          <h1 className={clsx(metalMania.className, "text-3xl sm:text-4xl md:text-6xl text-dw drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]")}>
             Dungeon World
           </h1>
-          <h2 className={clsx(metalMania.className, "text-1xl sm:text-2xl md:text-4xl md:pt-4 text-dw drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]")}>
+          <h2 className={clsx(metalMania.className, "text-2xl sm:text-3xl md:text-4xl md:pt-4 text-dw drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]")}>
             Gioca Per Scoprire Cosa Succede
           </h2>
           <Link href="/manuale">
@@ -45,7 +45,7 @@ export const HomePageSection: FC<
   return (
     <div
       className={clsx(
-        "flex flex-col gap-y-5 max-w-[90rem] items-center justify-center py-[1.5rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)] sm:pl-[max(env(safe-area-inset-left),5.5rem)] sm:pr-[max(env(safe-area-inset-right),5.5rem)]",
+        "flex flex-col gap-y-5 max-w-[90rem] items-start justify-start py-[1.5rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)] sm:pl-[max(env(safe-area-inset-left),5.5rem)] sm:pr-[max(env(safe-area-inset-right),5.5rem)]",
         [{ "dark:bg-neutral-900 bg-gray-100": alternative }]
       )}
     >
@@ -56,7 +56,7 @@ export const HomePageSection: FC<
 
 export const HomePage: FC = () => {
   return (
-    <div className="flex flex-col gap-y-10 pt-10 pb-10">
+    <div className="flex flex-col gap-y-10 md:pt-10 pb-10">
       <Cover />
       <HomePageSection>
         <p className="text-center">
@@ -65,7 +65,7 @@ export const HomePage: FC = () => {
         </p>
       </HomePageSection>
       <HomePageSection>
-        <h3 className="text-4xl font-bold text-dw uppercase">La traduzione italiana</h3>
+        <h3 className="text-xl sm:2xl md:text-3xl font-bold text-dw uppercase">La traduzione italiana</h3>
         <p>
           Benvenuti alla{" "}
           <b>
@@ -106,7 +106,7 @@ export const HomePage: FC = () => {
           un gioco che vi dà queste sensazioni <b>anche durante la partita</b>,
           e non solo dopo?» e da lì è una strada in discesa.
         </blockquote>
-        <h4 className="text-3xl font-bold text-dw uppercase">Perché una traduzione?</h4>
+        <h4 className="text-xl sm:2xl md:text-3xl font-bold text-dw uppercase">Perché una traduzione?</h4>
         <p>
           Ho deciso di fare questa traduzione per aiutare a diffondere Dungeon
           World nel mio paese natìo, l'Italia. Il lavoro è indipendente e
