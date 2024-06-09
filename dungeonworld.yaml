@@ -1395,3 +1395,305 @@ dungeonWorld:
           - kind: Immagine
             contributors:
               - deepai.org
+
+
+      - name: Witcher
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
+        compendium: false
+        shortDescription: |-
+          il Witcher è a tutti gli effetti un cacciatore di mostri su
+          commissione: le sue armi, una spada d’argento ed una d’acciaio, sono rispettivamente rivolte a mostri
+          ed umanoidi. A queste, il Witcher aggiunge una conoscenza scientifica delle caratteristiche dei suoi
+          nemici frutto di bestiari e compendi redatti nei secoli nonché una conoscenza alchemica di tutto rispetto
+          e la padronanza di semplici ma efficaci segni magici adoperati nel mentre della battaglia.
+        description: |-
+          Dietro ogni Witcher c’è una storia di solitudine e sofferenza. Soprattutto sofferenza. Additati come
+          mostri, mutanti o creature immorali, i Witcher sono essenzialmente persone alle quali il Destino ha
+          riservato un percorso unico. Tortuoso e controcorrente, sì. Ma anche unico e irripetibile. Stando a
+          sentire le leggende che avvolgono questi esseri misteriosi, quando un Witcher salva la vita ad un uomo
+          può appellarsi, come ricompensa, alla Legge della Sorpresa, espressa con la formula seguente: «Mi
+          darai ciò che trovi a casa e non ti aspetti». Solitamente si trattava di un figlio nato mentre il padre era
+          in viaggio o di qualche bambino salvato dalla strada. Nel momento in cui questi veniva trovato
+          diventava il Figlio del Destino del Witcher il quale lo portava nella Fortezza dei Witcher, Kaer Morhen,
+          per essere addestrato a diventare un Witcher anch’egli. Nella fattispecie, si tratta di niente più che una
+          leggenda. Solitamente bambini orfani e simili vengono portati a Kaer Morhen semplicemente perché
+          non appartengono a nessun altro posto. Qui sono sottoposti ad un addestramento durissimo che culmina
+          nella Prova delle Erbe, una lenta somministrazione di sostanze mutagene e tossiche che uccidono
+          mediamente sette bambini su dieci. Quelli che sopravvivono però, ottengono con il tempo riflessi fuori
+          dal comune nonché un invecchiamento rallentato. Tuttavia, questi decotti lasciano conseguenze terribili
+          tra cui l’impossibilità di esprimere emozioni (ma non di provarle). Punto, quest’ultimo, che spiega la
+          freddezza con cui vengono trattati dalla popolazione.
+          Al termine di questo addestramento, il Witcher è a tutti gli effetti un cacciatore di mostri su
+          commissione: le sue armi, una spada d’argento ed una d’acciaio, sono rispettivamente rivolte a mostri
+          ed umanoidi. A queste, il Witcher aggiunge una conoscenza scientifica delle caratteristiche dei suoi
+          nemici frutto di bestiari e compendi redatti nei secoli nonché una conoscenza alchemica di tutto rispetto
+          e la padronanza di semplici ma efficaci segni magici adoperati nel mentre della battaglia. Solitamente,
+          ciò che rappresenta il Codice dei Witcher è essenzialmente la loro neutralità: l’Ordine è fondato
+          come baluardo degli uomini a difesa di creature che minacciano la loro esistenza. Intrighi politici,
+          guerre e rivalità sono cose dalle quali uno Witcher dovrebbe star fuori, senza esprimere giudizi o
+          preferenze. Ma quanto è facile restare impassibili in mezzo al mare delle emozioni umane?
+          Se dovessi descrivere il Witcher con una frase, probabilmente userei questa: «In un mondo dove i mostri
+          rappresentano la quotidianità, più che di un eroe, c’è bisogno di un professionista.»
+        collection: A Dungeon World Playbook
+        authors: PrimarchtheMage
+        assets:
+          - name: Scheda Del Witcher
+            path: ./materiali/homebrew/classi/PrimarchtheMage/A Dungeon World Playbook/witcher.pdf
+        showcase:
+          imagePath: ./materiali/homebrew/classi/PrimarchtheMage/A Dungeon World Playbook/witcher.jpeg
+          heroName: La Witcher Rayla e il suo cavallo Rufen
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Andrea di Stefano
+          - kind: Impaginazione
+            contributors:
+              - Giulia Avola
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Necromante
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
+        compendium: false
+        shortDescription: |-
+          Nascosto nelle tenebre e temuto da tutti, il Necromante è il vero maestro della necromanzia,
+          l'arte oscura di controllare i morti. Con occhi che brillano di un'energia innaturale e vesti
+          nere adornate da simboli arcani, incarna il potere e il mistero delle forze ultraterrene. 
+          La sua presenza fredda e l'odore della decomposizione che lo accompagna suscitano timore in chiunque osi avvicinarsi.
+        description: |-
+          Nascosto nelle tenebre e temuto da tutti, il Necromante è il vero maestro della necromanzia,
+          l'arte oscura di controllare i morti. Con occhi che brillano di un'energia innaturale e vesti
+          nere adornate da simboli arcani, incarna il potere e il mistero delle forze ultraterrene. 
+          La sua presenza fredda e l'odore della decomposizione che lo accompagna suscitano timore in chiunque osi avvicinarsi.
+
+          I Necromanti trascorrono la loro vita immersi nello studio di antichi tomi e proibiti rituali,
+          sempre alla ricerca di segreti dimenticati e poteri nascosti. Con abilità senza pari,
+          evocano scheletri e spiriti inquieti, piegandoli alla loro volontà. Ogni incantesimo lanciato
+          è un passo più vicino alla comprensione completa della linea sottile che separa la vita dalla morte.
+
+          Ma il potere del Necromante non si limita solo ai morti. Con un solo tocco, possono drenare
+          l'energia vitale dai vivi, guarendo le proprie ferite e indebolendo i loro nemici.
+          Le maledizioni che pronunciano portano malattia e sfortuna, trasformando i più coraggiosi
+          in vittime terrorizzate. Tuttavia, l'uso costante di questi poteri ha un prezzo:
+          l'oscurità insidiosa corrompe la loro anima, avvicinandoli sempre di più all'abbraccio eterno della morte.
+
+          I Necromanti sono solitari, evitati e temuti, sempre in bilico tra il mondo dei vivi e quello dei morti.
+          Sono mossi da un desiderio insaziabile di conoscenza e potere, disposti a sacrificare qualsiasi cosa
+          pur di raggiungere i loro obiettivi. Alcuni scelgono di usare le loro capacità per il bene, proteggendo
+          i vivi dalle minacce dei morti, mentre altri abbracciano completamente l'oscurità, dominando
+          e controllando senza pietà.
+        collection: Grim World
+        authors: Trenton Kennedy Greyoak e Deanna Nygren Greyoak
+        assets:
+          - name: Scheda Del Necromante
+            path: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/necromante.pdf
+        showcase:
+          imagePath: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/necromante.jpeg
+          heroName: Il Necromante umano Melekai, il becchino.
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Nicolas d’Arco
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Maestro della Battaglia
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
+        compendium: false
+        shortDescription: |-
+          Nel caos del campo di battaglia, dove ogni mossa può segnare la vita o la morte, emerge la figura imponente
+          del Maestro della Battaglia. Con un'intelligenza affilata come la sua spada e una presenza che ispira
+          e intimorisce allo stesso tempo, il Maestro della Battaglia è il vero condottiero, capace di trasformare
+          anche il più disordinato dei gruppi in un'armata letale e coordinata.
+        description: |-
+          Nel caos del campo di battaglia, dove ogni mossa può segnare la vita o la morte, emerge la figura imponente
+          del Maestro della Battaglia. Con un'intelligenza affilata come la sua spada e una presenza che ispira
+          e intimorisce allo stesso tempo, il Maestro della Battaglia è il vero condottiero, capace di trasformare
+          anche il più disordinato dei gruppi in un'armata letale e coordinata.
+
+          Il Maestro della Battaglia non è solo un guerriero; è un genio tattico.
+          Ogni sua decisione è calcolata, ogni sua azione studiata. Con uno sguardo, riesce a leggere il flusso della battaglia,
+          anticipando le mosse del nemico e adattando le sue strategie in un battito di ciglia.
+          Le sue comandi risuonano chiari sopra il clangore delle armi, e sotto la sua guida, i compagni diventano
+          un'unità invincibile, ognuno consapevole del proprio ruolo e del momento giusto per agire.
+
+          Sia che si tratti di orchestrare un assalto devastante, organizzare una difesa impenetrabile,
+          o sfruttare al meglio il terreno e le risorse a disposizione, il Maestro della Battaglia sa sempre
+          come ottenere il massimo vantaggio. La sua presenza sul campo di battaglia è una promessa di vittoria,
+          un faro di speranza per i suoi alleati e una fonte di terrore per i suoi nemici.
+        collection: Grim World
+        authors: Trenton Kennedy Greyoak e Deanna Nygren Greyoak
+        assets:
+          - name: Scheda Del Maestro della Battaglia
+            path: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/maestro-della-battaglia.pdf
+        showcase:
+          imagePath: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/maestro-della-battaglia.jpeg
+          heroName: Il Maestro della Battaglia Umano Napoleon
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Nicolas d’Arco
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+
+      - name: Canalizzatore
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
+        compendium: false
+        shortDescription: |-
+          Il Canalizzatore non è semplicemente un mago; è un ponte tra mondi. Attraverso concentrazione e volontà,
+          riesce a canalizzare energie devastanti, manipolando gli elementi, invocando spiriti ancestrali e piegando
+          le leggi della natura al suo volere. La sua comprensione delle forze arcane gli permette di attingere a
+          poteri che pochi osano anche solo sognare, trasformando l'etere in armi di precisione e scudi di difesa.
+        description: |-
+          In un mondo dove la magia scorre invisibile attraverso ogni fibra della realtà, 
+          il Canalizzatore si erge come il supremo conduttore di queste energie arcane e forze primordiali.
+          Con uno sguardo intenso e mani che emanano potere, il Canalizzatore incarna il legame vivente tra il regno mortale
+          e le dimensioni mistiche. Ogni sua azione è intrisa di un'aura soprannaturale,
+          ogni suo incantesimo un'esplosione di pura magia.
+
+          Il Canalizzatore non è semplicemente un mago; è un ponte tra mondi. Attraverso concentrazione e volontà,
+          riesce a canalizzare energie devastanti, manipolando gli elementi, invocando spiriti ancestrali e piegando
+          le leggi della natura al suo volere. La sua comprensione delle forze arcane gli permette di attingere a
+          poteri che pochi osano anche solo sognare, trasformando l'etere in armi di precisione e scudi di difesa.
+
+          Ma il potere del Canalizzatore non è privo di costi. Canalizzare tali forze può essere estenuante e pericoloso,
+          richiedendo una disciplina ferrea e una mente acuta. Ogni incantesimo lanciato è un atto di equilibrio
+          tra il controllo e il caos, un gioco di precisione dove un solo errore può portare a conseguenze devastanti.
+        collection: Grim World
+        authors: Trenton Kennedy Greyoak e Deanna Nygren Greyoak
+        assets:
+          - name: Scheda Del Canalizzatore
+            path: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/canalizzatore.pdf
+        showcase:
+          imagePath: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/canalizzatore.jpeg
+          heroName: La canalizzatrice umana Ordelia
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Nicolas d’Arco
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Schermagliatore
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
+        compendium: false
+        shortDescription: |-
+          Con movimenti fulminei e un'intuizione istintiva del campo di battaglia, lo Schermagliatore
+          è l'incarnazione della guerra dinamica, sempre un passo avanti ai suoi nemici.
+        description: |-
+          Con movimenti fulminei e un'intuizione istintiva del campo di battaglia, lo Schermagliatore
+          è l'incarnazione della guerra dinamica, sempre un passo avanti ai suoi nemici.
+
+          Dotato di una destrezza senza pari e di un'intelligenza acuta, sa come sfruttare ogni vantaggio, trasformando anche il terreno più ostile in un'arma a suo favore. 
+           Ogni suo movimento è studiato, ogni attacco calcolato per massimizzare l'efficacia e minimizzare i rischi. La sua presenza è una danza mortale, un balletto di agilità e ferocia che lascia una scia di avversari sconfitti.
+
+          lo Schermagliatore non combatte solo con la forza fisica, ma con l'astuzia e la strategia.
+          Sa come sfruttare la confusione, usando tattiche di guerriglia per sovrastare avversari più lenti e meno preparati. 
+          Con una comprensione intuitiva del terreno e una mente sempre all'erta, lo Schermagliatore trasforma ogni scontro in un gioco di scacchi mortale,
+          dove ogni mossa è decisiva.
+        collection: Grim World
+        authors: Trenton Kennedy Greyoak e Deanna Nygren Greyoak
+        assets:
+          - name: Scheda Del Canalizzatore
+            path: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/schermagliatore.pdf
+        showcase:
+          imagePath: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/schermagliatore.jpeg
+          heroName: Lo schermagliatore umano Godrik
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Nicolas d’Arco
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+
+      - name: Cacciatore
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
+        compendium: false
+        shortDescription: |-
+          Nel cuore della notte, quando le creature dell'oscurità emergono dalle ombre, il Cacciatore si muove con letale precisione.
+          Il Cacciatore è il nemico giurato di ogni mostro che minaccia il mondo mortale.
+          Con un sorriso spavaldo e occhi che hanno visto troppi orrori, il Cacciatore trova un piacere oscuro nella sua missione,
+          combattendo costantemente contro la sete di uccidere che lo consuma.
+        description: |-
+          Nel cuore della notte, quando le creature dell'oscurità emergono dalle ombre, il Cacciatore si muove con letale precisione.
+          Il Cacciatore è il nemico giurato di ogni mostro che minaccia il mondo mortale.
+          Con un sorriso spavaldo e occhi che hanno visto troppi orrori, il Cacciatore trova un piacere oscuro nella sua missione,
+          combattendo costantemente contro la sete di uccidere che lo consuma.
+
+          Il Cacciatore non è solo un guerriero solitario; quando la caccia è particolarmente difficile, ricorre alla sua cerchia fidata di cacciatori,
+          creando una forza inarrestabile contro le creature della notte. Equipaggiato con armi speciali e conoscenze arcane,
+          il Cacciatore sa come affrontare ogni tipo di mostro, adattando le sue tattiche e i suoi strumenti a seconda della preda.
+
+          Ma la vita del Cacciatore è una costante battaglia contro i propri demoni interiori.
+          Quando non è impegnato nella caccia, una sete oscura comincia a crescere dentro di lui,
+          un bisogno quasi fisico di uccidere che deve essere soddisfatto.
+          Questo lato oscuro lo rende una figura tragica e complessa, costantemente in bilico tra l'eroismo e la follia.
+        collection: Grim World
+        authors: Trenton Kennedy Greyoak e Deanna Nygren Greyoak
+        assets:
+          - name: Scheda Del Cacciatore
+            path: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/cacciatore.pdf
+        showcase:
+          imagePath: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/cacciatore.jpeg
+          heroName: I Cacciatori umani Solomon e Dino Winchester
+        credits:
+          - kind: Traduzione
+            contributors:
+              - Nicolas d’Arco
+          - kind: Immagine
+            contributors:
+              - deepai.org
+
+      - name: Ingannatore
+        license:
+          name: Creative Commons Attribution 3.0 Unported License
+          url: https://creativecommons.org/licenses/by/3.0/deed.it
+        compendium: false
+        shortDescription: |-
+          L'ingannatore è un maestro della manipolazione e dell'inganno, che ama tessere intricate trame di inganni e illusioni.
+          Un vero doppiogiochista, l'Ingannatore combina un carisma irresistibile con abilità magiche in grado di confondere e
+          dominare la mente altrui.
+        description: |-
+          L'ingannatore è un maestro della manipolazione e dell'inganno, che ama tessere intricate trame di inganni e illusioni.
+          Un vero doppiogiochista, l'Ingannatore combina un carisma irresistibile con abilità magiche in grado di confondere e
+          dominare la mente altrui.
+
+          Con illusioni che ingannano i sensi e un talento naturale per la persuasione, puoi piegare la realtà al tuo volere e
+          ottenere ciò che desideri senza mai sporcarti le mani.
+        collection: A Dungeon World Playbook
+        authors: Nemo Hana
+        assets:
+          - name: Scheda Dell'Ingannatore
+            path: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/ingannatore.pdf
+        showcase:
+          imagePath: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/ingannatore.jpeg
+          heroName: L'ingannatore Mezz'Elfo Fergus
+        credits:
+          - kind: Traduzione
+            contributors:
+              -  Marco Trentacosti
+          - kind: Impaginazione
+            contributors:
+              -  Marco Trentacosti
+          - kind: Immagine
+            contributors:
+              - deepai.org
