@@ -4,7 +4,7 @@
     "title": "Dungeon World",
     "display": "hidden",
     "theme": {
-      "layout": "full",
+      "layout": "raw",
       "breadcrumb": false,
       "footer": true,
       "sidebar": false,

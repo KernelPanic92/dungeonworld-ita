@@ -1,4 +1,4 @@
-import { Link, useConfig } from "nextra-theme-docs";
+import { Link, ThemeSwitch, useConfig } from "nextra-theme-docs";
 import { FC } from "react";
 
 export interface FooterProps {
@@ -11,7 +11,7 @@ export const Footer: FC<FooterProps> = () => {
   return (
     <footer className="bg-gray-100 shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 dark:bg-neutral-900 antialiased">
       <p className="mb-4 text-sm text-center text-gray-500 dark:text-gray-400 sm:mb-0">
-        Dungeon World Italiano &copy;{" "}
+        Dungeon World Italia &copy;{" "}
         <Link
           href="https://creativecommons.org/licenses/by-sa/4.0/deed.it"
           target="_blank"
@@ -49,6 +49,7 @@ export const Footer: FC<FooterProps> = () => {
           Star us on GitHub
           <div className="tooltip-arrow" data-popper-arrow></div>
         </div>
+        <ThemeSwitch />
       </div>
     </footer>
   );

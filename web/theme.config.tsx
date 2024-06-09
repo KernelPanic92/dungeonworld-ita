@@ -32,23 +32,23 @@ const config: DocsThemeConfig = {
  },
   useNextSeoProps: () => {
     const { frontMatter , title: baseTitle} = useConfig();
-    const description = frontMatter.description ?? 'Dungeon World in italiano';
+    const description = frontMatter.description ?? 'Dungeon World Italia';
     
     return {
-      title: [frontMatter.title ?? baseTitle, 'Dungeon World in italiano'].filter(Boolean).join(' - '),
+      title: [frontMatter.title ?? baseTitle, 'Dungeon World Italia'].filter(Boolean).join(' - '),
       description
     }
   },
   head: () => {
     const { frontMatter, title: baseTitle } = useConfig();
     const { asPath, defaultLocale, locale } = useRouter();
-    const title = [frontMatter.title ?? baseTitle, 'Dungeon World in italiano'].filter(Boolean).join(' - ');
+    const title = [frontMatter.title ?? baseTitle, 'Dungeon World Italia'].filter(Boolean).join(' - ');
     const url =
     'https://dungeonworld-ita.vercel.app' +
     (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
 
-    const socialCard = frontMatter.image ? 'https://dungeonworld-ita.vercel.app' + frontMatter.image : 'https://dungeonworld-ita.vercel.app/images/dungeon-world-cover.webp';
-    const description = frontMatter.description ?? 'Dungeon World in italiano';
+    const socialCard = frontMatter.image ? 'https://dungeonworld-ita.vercel.app' + frontMatter.image : 'https://dungeonworld-ita.vercel.app/images/dungeon-world-cover.jpeg';
+    const description = frontMatter.description ?? 'Dungeon World Italia';
 
     return (
       <>
@@ -88,7 +88,7 @@ const config: DocsThemeConfig = {
   },
   footer: {
     component: Footer,
-  },
+  }
 }
 
 export default config

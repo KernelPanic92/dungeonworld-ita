@@ -6,7 +6,11 @@ module.exports = {
         './src/**/*.{js,jsx,ts,tsx,md,mdx}'
     ],
     theme: {
-        extend: {}
+        extend: {
+            colors: {
+                'dw': '#73C482',
+              },
+        }
     },
     plugins: [
         require('@tailwindcss/container-queries'),

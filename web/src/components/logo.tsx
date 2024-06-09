@@ -7,4 +7,4 @@ const metalMania = Metal_Mania({
     subsets: ['latin']
 });
 
-export const Logo: FC = () => <span className={metalMania.className} style={{fontSize: '1.5rem', color: '#73C482'}}>Dungeon World Italiano</span>
+export const Logo: FC = () => <span className={metalMania.className} style={{fontSize: '1.5rem', color: '#73C482'}}>Dungeon World Italia</span>
