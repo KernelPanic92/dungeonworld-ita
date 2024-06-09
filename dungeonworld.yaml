@@ -1683,9 +1683,9 @@ dungeonWorld:
         authors: Nemo Hana
         assets:
           - name: Scheda Dell'Ingannatore
-            path: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/ingannatore.pdf
+            path: ./materiali/homebrew/classi/Nemo Hana/A Dungeon World Playbook/ingannatore.pdf
         showcase:
-          imagePath: ./materiali/homebrew/classi/Trenton Kennedy Greyoak e Deanna Nygren Greyoak/grim world/ingannatore.jpeg
+          imagePath: ./materiali/homebrew/classi/Nemo Hana/A Dungeon World Playbook/ingannatore.jpeg
           heroName: L'ingannatore Mezz'Elfo Fergus
         credits:
           - kind: Traduzione
