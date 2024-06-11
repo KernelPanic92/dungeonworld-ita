@@ -1,5 +1,9 @@
 import { FC } from "react";
-import { Cover, HomePageTraduction } from "./home-page-components";
+import {
+  Cover,
+  HomePageHomebrew,
+  HomePageTraduction,
+} from "./home-page-components";
 import { HomePageAbout } from "./home-page-components/home-page-about";
 
 export const HomePage: FC = () => {
@@ -7,6 +11,7 @@ export const HomePage: FC = () => {
     <div className="flex flex-col gap-y-10 md:pt-10 pb-10">
       <Cover />
       <HomePageAbout />
+      <HomePageHomebrew />
       <HomePageTraduction />
     </div>
   );

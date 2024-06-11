@@ -3,7 +3,6 @@ import { HomePageSection } from "./home-page-section";
 import {
   faDragon,
   faToolbox,
-  faShield,
   faComments,
   faRotate,
   faTrophy,
@@ -25,7 +24,7 @@ export const HomePageAboutItem: FC<HomePageAboutItemProps> = ({
 }) => {
   return (
     <div className="flex flex-col p-10 gap-y-6 items-center">
-      <FontAwesomeIcon icon={icon} className="w-16 h-16" />
+      <FontAwesomeIcon icon={icon} className="w-16 h-16" color="#73C482" />
       <h4 className="text-center text-2xl font-bold text-dw">{title}</h4>
       <p className="text-center">{description}</p>
     </div>
