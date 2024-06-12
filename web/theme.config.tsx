@@ -47,7 +47,7 @@ const config: DocsThemeConfig = {
     'https://dungeonworld-ita.vercel.app' +
     (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
 
-    const socialCard = frontMatter.image ? 'https://dungeonworld-ita.vercel.app' + frontMatter.image : 'https://dungeonworld-ita.vercel.app/images/dungeon-world-cover.jpeg';
+    const socialCard = frontMatter.image ? 'https://dungeonworld-ita.vercel.app' + frontMatter.image : 'https://dungeonworld-ita.vercel.app/images/dungeon-world-cover.webp';
     const description = frontMatter.description ?? 'Dungeon World Italia';
 
     return (

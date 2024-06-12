@@ -3,6 +3,7 @@ import { Link } from "nextra-theme-docs";
 import { FC } from "react";
 import Image from "next/image";
 import { Metal_Mania } from "next/font/google";
+import cover from "../../../public/images/dungeon-world-cover.webp";
 
 const metalMania = Metal_Mania({
     weight: "400",
@@ -13,10 +14,10 @@ const metalMania = Metal_Mania({
 export const Cover: FC = () => {
     return (
       <div className="w-full mx-auto max-w-[90rem] md:pl-[max(env(safe-area-inset-left),1.5rem)] md:pr-[max(env(safe-area-inset-right),1.5rem)]">
-        <div className="relative h-96 md:h-[41rem]">
+        <div className="relative h-96 md:h-[832px]">
           <Image
             priority
-            src="/images/dungeon-world-cover.jpeg"
+            src={cover}
             className="object-center object-cover"
             alt="Immagine di sfondo"
             fill

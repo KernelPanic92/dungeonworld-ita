@@ -25,11 +25,10 @@ export const HomePageHomebrew = () => {
       <div className="flex overflow-x-scroll pt-2 hide-scroll-bar w-full">
         <div className="flex flex-nowrap">
           {firstClasses.map((clazz) => (
-            <div className="inline-block px-3">
+            <div className="inline-block px-3" key={clazz.name + clazz.collection}>
               <ClassCard
                 collection={clazz.collection}
                 image={clazz.showcase.imageUrl}
-                key={clazz.name + clazz.collection}
                 name={clazz.name}
                 link={`/homebrew/classi/${clazz.slug}`}
               />
