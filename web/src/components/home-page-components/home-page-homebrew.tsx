@@ -21,7 +21,7 @@ export const HomePageHomebrew = () => {
         disponibile e inizia la tua avventura con Dungeon World!
       </p>
       
-      <p className="font-bold">Ecco alcune delle classi che potrai trovare:</p>
+      <h4 className="font-bold">Ecco alcune delle classi che potrai trovare:</h4>
       <div className="flex overflow-x-scroll pt-2 hide-scroll-bar w-full">
         <div className="flex flex-nowrap">
           {firstClasses.map((clazz) => (
@@ -45,8 +45,8 @@ export const HomePageHomebrew = () => {
         </div>
       </div>
       <Link href={"/homebrew"}>
-        <button className="bg-dw drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] hover:bg-dw-700 text-white font-bold py-2 px-4 mt-5 rounded-full text-sm uppercase">
-          Scopri la sezione homebrew
+        <button className="flex flex-row gap-x-2 items-center bg-dw hover:bg-dw-700 text-on-dw font-bold py-4 px-4 mt-5 rounded-full text-sm uppercase">
+          Scopri la sezione homebrew <FontAwesomeIcon icon={faArrowRight} width={12}/>
         </button>
       </Link>
     </HomePageSection>

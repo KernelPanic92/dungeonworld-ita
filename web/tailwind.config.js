@@ -9,6 +9,7 @@ module.exports = {
         extend: {
             colors: {
                 'dw': '#73C482',
+                'on-dw': '#262626'
               },
         }
     },

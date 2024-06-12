@@ -20,9 +20,10 @@ export const Cover: FC = () => {
             src={cover}
             className="object-center object-cover"
             alt="Immagine di sfondo"
+            
             fill
           ></Image>
-          <div className="absolute flex flex-col justify-center items-center inset-0 bg-gradient-to-t from-[#4d060680] from-60%">
+          <div className="absolute flex flex-col justify-center items-center inset-0 bg-red-900 bg-opacity-10">
             <h1 className={clsx(metalMania.className, "text-center text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]")}>
               Dungeon World
             </h1>
@@ -30,7 +31,7 @@ export const Cover: FC = () => {
               Gioca Per Scoprire Cosa Succede
             </h2>
             <Link href="/manuale">
-              <button className="bg-dw drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] hover:bg-dw-700 text-white font-bold py-2 px-4 w-28 h-10 mt-5 rounded-full text-sm uppercase">
+              <button className="bg-dw drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] hover:bg-dw-700 text-on-dw font-bold py-2 px-4 w-28 h-10 mt-5 rounded-full text-sm uppercase">
                 Iniziamo!
               </button>
             </Link>
