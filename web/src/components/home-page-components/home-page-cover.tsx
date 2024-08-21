@@ -1,42 +1,49 @@
 import clsx from "clsx";
-import { Link } from "nextra-theme-docs";
 import { FC } from "react";
 import Image from "next/image";
 import { Metal_Mania } from "next/font/google";
-import cover from "../../../public/images/dungeon-world-cover.webp";
+import sciamano from "../../../public/images/pages/homepage/sciamano.webp";
 
 const metalMania = Metal_Mania({
-    weight: "400",
-    preload: true,
-    subsets: ["latin"],
+  weight: "400",
+  preload: true,
+  subsets: ["latin"],
 });
-  
+
 export const Cover: FC = () => {
-    return (
-      <div className="w-full mx-auto max-w-[90rem] md:pl-[max(env(safe-area-inset-left),1.5rem)] md:pr-[max(env(safe-area-inset-right),1.5rem)]">
-        <div className="relative h-96 md:h-[832px]">
-          <Image
-            priority
-            src={cover}
-            className="object-center object-cover"
-            alt="Immagine di sfondo"
-            
-            fill
-          ></Image>
-          <div className="absolute flex flex-col justify-center items-center inset-0 bg-red-900 bg-opacity-10">
-            <h1 className={clsx(metalMania.className, "text-center text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]")}>
-              Dungeon World
-            </h1>
-            <h2 className={clsx(metalMania.className, "text-center text-xl sm:text-xl md:text-2xl lg:text-4xl md:pt-4 text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]")}>
-              Gioca Per Scoprire Cosa Succede
-            </h2>
-            <Link href="/manuale">
-              <button className="bg-dw drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] hover:bg-dw-700 text-on-dw font-bold py-2 px-4 w-28 h-10 mt-5 rounded-full text-sm uppercase">
-                Iniziamo!
-              </button>
-            </Link>
-          </div>
+  return (
+    <div className="flex flex-col justify-center lg:justify-end relative w-full mx-auto max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)] md:pl-40 md:pr-40 space-y-10">
+      <div className="flex flex-row justify-center lg:justify-end relative w-full">
+        <div className="absolute flex flex-col justify-center items-center lg:items-start inset-0">
+          <h1 lang="en"  
+            className={clsx(
+              metalMania.className,
+              "text-5xl sm:text-6xl text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]"
+            )}
+          >
+            Dungeon World
+          </h1>
+          <h2
+            className={clsx(
+              metalMania.className,
+              "text-xl sm:text-2xl lg:text-4xl md:pt-4 text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]"
+            )}
+          >
+            Gioca Per Scoprire Cosa Succede
+          </h2>
         </div>
+        <Image
+          priority
+          src={sciamano}
+          alt=""
+          height={600}
+          width={421}
+        ></Image>
       </div>
-    );
-  };
+      <h3 className="text-center mx-auto text-lg font-bold">
+        <span lang="en">Dungeon World</span> è un gioco di ruolo da tavolo. Raccogli alcuni amici e
+        intraprendi l'avventura. Gioca per scoprire cosa succede!
+      </h3>
+    </div>
+  );
+};

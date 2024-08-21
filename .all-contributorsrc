@@ -3,7 +3,7 @@
   "projectOwner": "KernelPanic92",
   "files": [
     "README.md",
-    "web/pages/altro/contributori.md"
+    "web/pages/altro/progetto.md"
   ],
   "commitType": "docs",
   "commitConvention": "angular",

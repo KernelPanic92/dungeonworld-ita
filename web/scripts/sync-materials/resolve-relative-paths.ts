@@ -14,7 +14,10 @@ export const resolveRelativePaths = (basePath: string, metadata: DungeonWorld): 
         }
     }
 
-    metadata.standard.frontsSummary.path = path.join(basePath, metadata.standard.frontsSummary.path)
-    metadata.standard.gameMasterSummary.path = path.join(basePath, metadata.standard.gameMasterSummary.path)
-    metadata.standard.movesSummary.path = path.join(basePath, metadata.standard.movesSummary.path)
+    metadata.standard.frontsSummary.path = path.join(basePath, metadata.standard.frontsSummary.path);
+
+    metadata.standard.gameMasterSummary.path = path.join(basePath, metadata.standard.gameMasterSummary.path);
+    
+    metadata.standard.movesSummary.path = path.join(basePath, metadata.standard.movesSummary.path);
+
 };

@@ -13,7 +13,7 @@ export const generateClassPages = (repositoryPath: string, data: DungeonWorld) =
 function generateClassPage(repositoryPath: string, data: StandardClass, isStandardClass: true);
 function generateClassPage(repositoryPath: string, data: HomebrewClass, isStandardClass: false);
 function generateClassPage(repositoryPath: string, data: StandardClass, isStandardClass: boolean) {
-    const rendered = render(template, {...data, isStandardClass, isHomebrewClass: !isStandardClass});
+    const rendered = render(template, {...data, isStandardClass, isHomebrewClass: !isStandardClass, openbrace: '{{', closebrace: '}}'});
     const filePath = isStandardClass ? 
         path.join(repositoryPath, 'web/pages/manuale/classi', data.slug + '.mdx'): 
         path.join(repositoryPath, 'web/pages/homebrew/classi', data.slug + '.mdx');

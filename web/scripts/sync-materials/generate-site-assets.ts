@@ -1,25 +1,25 @@
 import Case from "case";
 import { copyFileSync, mkdirSync, writeFileSync } from "fs";
 import path from "path";
-import { isHomebrewClass } from "./utilis";
+import { isHomebrewClass } from "./utils";
 import { DungeonWorld, HomebrewClass, StandardClass } from "./models";
 import { DungeonWorld as DungeonWorldModel , StandardClass as StandardClassModel, HomebrewClass as HomebrewClassModel, Asset as AssetModel, Showcase as ShowcaseModel } from "../../src/models";
 import { generateAsset } from "./generate-asset";
 import { orderBy } from "lodash";
 
 
-function generateClassSiteAsset(publicFolderPath: string, metadata: StandardClass): StandardClassModel;
-function generateClassSiteAsset(publicFolderPath: string, metadata: HomebrewClass): HomebrewClassModel;
-function generateClassSiteAsset(publicFolderPath: string, metadata: StandardClass | HomebrewClass): StandardClassModel | HomebrewClassModel {
+function generateClassSiteAsset(publicFolderPath: string, metadata: StandardClass): Promise<StandardClassModel>;
+function generateClassSiteAsset(publicFolderPath: string, metadata: HomebrewClass): Promise<HomebrewClassModel>;
+async function generateClassSiteAsset(publicFolderPath: string, metadata: StandardClass | HomebrewClass): Promise<StandardClassModel | HomebrewClassModel> {
     const name = Case.title(metadata.name);
 
-    const assets: Array<AssetModel> = metadata.assets.map((asset) => {
+    const assets: Array<AssetModel> = await Promise.all(metadata.assets.map((asset) => {
         const assetPath = isHomebrewClass(metadata) ? 
             path.join('/assets', 'classi', 'homebrew', Case.kebab(metadata.authors), Case.kebab(metadata.collection), Case.kebab(name)):
             path.join('/assets', 'classi', 'standard', Case.kebab(name));
 
         return generateAsset(publicFolderPath, assetPath, asset);
-    });
+    }));
 
     const showcaseExt = path.extname(metadata.showcase.imagePath);
     const showcaseHeroPath = isHomebrewClass(metadata) ? 
@@ -60,12 +60,12 @@ function generateClassSiteAsset(publicFolderPath: string, metadata: StandardClas
     return result;
 };
 
-export const generateSiteAssets = (repositoryPath: string, metadata: DungeonWorld) => {
+export const generateSiteAssets = async (repositoryPath: string, metadata: DungeonWorld): Promise<DungeonWorldModel> => {
     const publicPath = path.join(repositoryPath, 'web/public');
-    let standardClasses = metadata.standard.classes.map((clazz) => generateClassSiteAsset(publicPath, clazz) as StandardClassModel);
+    let standardClasses = await Promise.all(metadata.standard.classes.map((clazz) => generateClassSiteAsset(publicPath, clazz) as Promise<StandardClassModel>));
     standardClasses = orderBy(standardClasses, 'name', 'asc');
     
-    let homebrewClasses = metadata.homebrew.classes.map((clazz) => generateClassSiteAsset(publicPath, clazz) as HomebrewClassModel);
+    let homebrewClasses =await Promise.all(metadata.homebrew.classes.map((clazz) => generateClassSiteAsset(publicPath, clazz) as Promise<HomebrewClassModel>));
     homebrewClasses = orderBy(homebrewClasses, ['name', 'authors', 'collection'], 'asc');
 
     const model: DungeonWorldModel = {
@@ -74,9 +74,9 @@ export const generateSiteAssets = (repositoryPath: string, metadata: DungeonWorl
         },
         standard: {
             classes: standardClasses,
-            frontsSummary: generateAsset(publicPath, '/assets/standard', metadata.standard.frontsSummary),
-            gameMasterSummary: generateAsset(publicPath, '/assets/standard', metadata.standard.gameMasterSummary),
-            movesSummary: generateAsset(publicPath, '/assets/standard', metadata.standard.movesSummary),
+            frontsSummary: await generateAsset(publicPath, '/assets/standard', metadata.standard.frontsSummary),
+            gameMasterSummary: await generateAsset(publicPath, '/assets/standard', metadata.standard.gameMasterSummary),
+            movesSummary: await generateAsset(publicPath, '/assets/standard', metadata.standard.movesSummary),
         }
     };
     

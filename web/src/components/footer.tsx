@@ -9,14 +9,14 @@ export const Footer: FC<FooterProps> = () => {
   const config = useConfig();
 
   return (
-    <footer className="bg-gray-100 shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 dark:bg-neutral-900 antialiased">
-      <p className="mb-4 text-sm text-center text-gray-500 dark:text-gray-400 sm:mb-0">
+    <footer className="shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 bg-neutral-900 antialiased">
+      <p className="mb-4 text-sm text-center text-gray-400 sm:mb-0">
         Dungeon World Italia &copy;{" "}
-        <Link
+        <Link className="text-dw"
           href="https://creativecommons.org/licenses/by-sa/4.0/deed.it"
           target="_blank"
         >
-          CC BY-SA 4.0 {new Date().getFullYear()}
+          CC BY-SA 4.0 2024
         </Link>
       </p>
       <div className="flex justify-center items-center space-x-1">
@@ -24,7 +24,7 @@ export const Footer: FC<FooterProps> = () => {
           href={config.project.link}
           data-tooltip-target="tooltip-github"
           target="_blank"
-          className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+          className="inline-flex justify-center p-2 rounded-lg cursor-pointer text-gray-400 nx-dark:hover:text-white hover:text-gray-900 hover:bg-gray-600"
         >
           <svg
             className="w-4 h-4"
@@ -44,12 +44,11 @@ export const Footer: FC<FooterProps> = () => {
         <div
           id="tooltip-github"
           role="tooltip"
-          className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+          className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip bg-gray-700"
         >
           Star us on GitHub
           <div className="tooltip-arrow" data-popper-arrow></div>
         </div>
-        <ThemeSwitch />
       </div>
     </footer>
   );

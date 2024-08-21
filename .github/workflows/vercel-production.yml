@@ -14,6 +14,9 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9.1.2
+      - name: Install magick
+        working-directory: ./web
+        run: apt install imagemagick graphicsmagick
       - name: Install Vercel CLI
         working-directory: ./web
         run: pnpm install --global vercel@latest

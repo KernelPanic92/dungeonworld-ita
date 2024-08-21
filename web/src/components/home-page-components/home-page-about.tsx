@@ -23,10 +23,10 @@ export const HomePageAboutItem: FC<HomePageAboutItemProps> = ({
   description,
 }) => {
   return (
-    <div className="flex flex-col p-10 gap-y-6 items-center">
-      <FontAwesomeIcon icon={icon} className="w-16 h-16" color="#73C482" />
+    <div className="flex flex-col gap-y-5 items-center">
+      <FontAwesomeIcon icon={icon} className="w-[3.75rem] h-[3.75rem] text-dw" />
       <h4 className="text-center text-2xl font-bold text-dw">{title}</h4>
-      <p className="text-center">{description}</p>
+      <p className="text-center text-xl">{description}</p>
     </div>
   );
 };
@@ -34,14 +34,10 @@ export const HomePageAboutItem: FC<HomePageAboutItemProps> = ({
 export const HomePageAbout = () => {
   return (
     <HomePageSection>
-      <h3 className="text-center mx-auto text-lg italic">
-        Dungeon World è un gioco di ruolo da tavolo. Raccogli alcuni amici e
-        intraprendi l'avventura. Gioca per scoprire cosa succede!
-      </h3>
-      <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 mt-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-x-24 gap-y-20">
         <HomePageAboutItem
           title="Classica Avventura Fantasy"
-          description="Esplora una terra di magia e pericolo nei panni di avventurieri alla ricerca di fama, oro e gloria. Dungeon World prende il fantasy classica e si avvicina con nuove regole."
+          description="Esplora una terra di magia e pericolo nei panni di avventurieri alla ricerca di fama, oro e gloria. Dungeon World prende il fantasy classico e si avvicina con nuove regole."
           icon={faDragon}
         />
         <HomePageAboutItem

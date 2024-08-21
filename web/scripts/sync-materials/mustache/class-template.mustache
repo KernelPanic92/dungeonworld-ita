@@ -6,6 +6,8 @@ image: {{{showcase.imageUrl}}}
 
 import { DownloadLink } from '@/components/download-link';
 import { ClassDetail, Showcase, ClassDescription } from '@/components/class-detail';
+import { Asset } from '@/components/asset';
+import { Assets } from '@/components/assets';
 import { Tabs } from 'nextra/components'
 
 # {{name}}{{#compendium}} [Compendio]{{/compendium}}
@@ -29,10 +31,11 @@ import { Tabs } from 'nextra/components'
 
 <Tabs items={['DOWNLOADS', 'CREDITI', 'LICENZA']}>
   <Tabs.Tab>
+    <Assets>
      {{#assets}}
-      <br/>
-      <DownloadLink href="{{{url}}}">{{{name}}}</DownloadLink>
+      <Asset asset={{openbrace}} url: "{{{url}}}", name: "{{{name}}}", thumbnail: "{{{thumbnail}}}" {{closebrace}}>{{{name}}}</Asset>
     {{/assets}}
+    </Assets>
   </Tabs.Tab>
   <Tabs.Tab>
     {{#credits}}
