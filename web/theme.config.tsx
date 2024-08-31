@@ -3,11 +3,15 @@ import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
 import { Footer } from "@/components/footer";
 import { Logo } from "@/components/logo";
+import Star from "@/components/star";
 
 const config: DocsThemeConfig = {
   logo: Logo,
   project: {
     link: "https://github.com/KernelPanic92/dungeonworld-ita",
+  },
+  components: {
+    'Star': Star,
   },
   nextThemes: {
     defaultTheme: "dark",
@@ -55,6 +59,7 @@ const config: DocsThemeConfig = {
     placeholder: "Cerca nel sito",
     loading: "Ricerca...",
     error: "Qualcosa è andato storto nella ricerca 😵",
+    emptyResult: "Nessun risultato trovato 🥲",
   },
   editLink: {
     text: "Modifica questa pagina",
