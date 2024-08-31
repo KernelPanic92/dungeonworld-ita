@@ -28,7 +28,7 @@ export const HomePageHomebrew: FC = () => {
           </p>
 
           <p>
-            Nella sezione Homebrew ci sono <b>Classi</b>, <b>Ambientazioni</b>, <b>Campagne</b>, <b>One Shot</b>, <b>Equipaggiamenti</b> e <b>Mostri</b> per arricchire le tue avventure. Ogni contributo è tradotto in italiano per garantire accessibilità a tutti.
+            Nella sezione Homebrew ci sono <b>Classi</b>, <b>Ambientazioni</b>, <b>Campagne</b>, <b>One Shot</b>, <b>Equipaggiamenti</b> e <b>Mostri</b> per arricchire le tue avventure. Ogni contributo è tradotto in italiano per garantirne l'accessibilità a tutti.
           </p>
 
           <p className="pb-10">
