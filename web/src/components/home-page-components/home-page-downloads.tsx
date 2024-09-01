@@ -1,6 +1,5 @@
 import { dungeonWorldData } from "@/data/dungeon-world";
 import { HomePageSection } from "./home-page-section";
-import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Asset } from "../asset";
