@@ -1,7 +1,5 @@
 import { HomePageSection } from "./home-page-section";
 import { ButtonLink } from "../button-link";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const HomePageProject = () => {
   return (
@@ -21,7 +19,7 @@ export const HomePageProject = () => {
           alla comunità.
         </p>
         <ButtonLink href={"/altro/progetto"}>
-          Scopri il progetto <FontAwesomeIcon icon={faArrowRight} width={12} />
+          Scopri il progetto
         </ButtonLink>
       </div>
     </HomePageSection>

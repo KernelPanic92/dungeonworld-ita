@@ -3,8 +3,6 @@ import { FC } from "react";
 import Image from "next/image";
 import liliastre from "../../../public/images/pages/homepage/maga.webp";
 import { ButtonLink } from "../button-link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "nextra-theme-docs";
 
 export const HomePageManual: FC = () => {
@@ -29,8 +27,7 @@ export const HomePageManual: FC = () => {
           </p>
 
           <ButtonLink href={"/manuale"}>
-            Vai al manuale {" "}
-            <FontAwesomeIcon icon={faArrowRight} width={12} />
+            Vai al manuale
           </ButtonLink>
         </div>
         <Image

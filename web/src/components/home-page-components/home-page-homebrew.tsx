@@ -36,8 +36,7 @@ export const HomePageHomebrew: FC = () => {
           </p>
           <div className="flex flex-row xl:flex-row-reverse">
             <ButtonLink href={"/homebrew"}>
-              Vai alla Homebrew {" "}
-              <FontAwesomeIcon icon={faArrowRight} width={12} />
+              Vai alla Homebrew
             </ButtonLink>
           </div>
         </div>
