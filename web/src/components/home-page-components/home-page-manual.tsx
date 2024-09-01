@@ -5,6 +5,7 @@ import liliastre from "../../../public/images/pages/homepage/maga.webp";
 import { ButtonLink } from "../button-link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "nextra-theme-docs";
 
 export const HomePageManual: FC = () => {
   return (
@@ -15,16 +16,12 @@ export const HomePageManual: FC = () => {
             Manuale in italiano
           </h3>
           <p>
-            Consulta il <strong>Manuale di Dungeon World in italiano</strong>, la
-            risorsa definitiva per i giocatori di ruolo italiani, con
-            una guida al gioco che copre tutte le regole fondamentali per
-            iniziare subito a giocare.
-          </p>
-
-          <p>
-            Sfrutta le appendici e gli indici, approfondisci le descrizioni delle classi di personaggi, consulta
-            il bestiario per creare sfide emozionanti e arricchisci il tuo gioco
-            con equipaggiamenti vari.
+          Consulta il <strong>Manuale di Dungeon World in italiano</strong>,
+          la risorsa definitiva per i giocatori di ruolo.
+          Se sei un giocatore, puoi limitarti a leggere <Link href='/manuale/come-giocare'>Come Giocare</Link>:
+          la maggior parte delle cose saranno nella tua scheda personaggio.
+          Come GM, leggi tutto, ma puoi rimandare la lettura dei mostri e del capitolo
+          Avventure Avanzate a quando sarà necessario.
           </p>
 
           <p className="pb-10">
