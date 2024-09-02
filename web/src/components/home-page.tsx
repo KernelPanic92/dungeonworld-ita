@@ -2,6 +2,7 @@ import { FC } from "react";
 import {
   Cover,
   HomePageDownloads,
+  HomePageFAQ,
   HomePageHomebrew,
   HomePageManual,
   HomePageProject,
@@ -17,6 +18,7 @@ export const HomePage: FC = () => {
       <HomePageHomebrew />
       <HomePageDownloads />
       <HomePageProject />
+      <HomePageFAQ />
     </div>
   );
 };
