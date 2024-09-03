@@ -98,7 +98,7 @@ export const HomePageFAQ = () => (
         <AccordionItem title="Dungeon World è compatibile con altri giochi di ruolo?">
             Dungeon World ha un sistema unico basato sulle mosse,
             ma puoi adattare o integrare contenuti da altri giochi di ruolo,
-            puoi trovare un'intera sezione a riguardo in{" "}<Link href="/manuale/game-master/avventure-avanzate">Avventure Avanzate</Link>!
+            puoi trovare un'intera appendice a riguardo in{" "}<Link href="/manuale/appendici/adattare-avventure">Adattare Avventure</Link>!
         </AccordionItem>
       </Accordion>
       </div>
