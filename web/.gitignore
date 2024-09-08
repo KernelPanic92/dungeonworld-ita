@@ -5,5 +5,7 @@ public/images/classi
 pages/manuale/classi/
 pages/homebrew/classi/
 public/assets/standard
+public/robots.txt
+public/sitemap*.xml
 .vercel
 src/data/dungeon-world-data.json

@@ -105,6 +105,9 @@ importers:
       eslint-config-next:
         specifier: 14.1.0
         version: 14.1.0(eslint@8.57.0)(typescript@4.9.3)
+      next-sitemap:
+        specifier: ^4.2.3
+        version: 4.2.3(next@14.2.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       postcss:
         specifier: ^8
         version: 8.4.31
@@ -134,6 +137,9 @@ packages:
 
   '@braintree/sanitize-url@6.0.4':
     resolution: {integrity: sha512-s3jaWicZd0pkP0jf5ysyHUI/RE7MHos6qlToFcGWXVp+ykHOy77OUMrfbgJ9it2C5bow7OIQwYYaHjk9XlBQ2A==}
+
+  '@corex/deepmerge@4.0.43':
+    resolution: {integrity: sha512-N8uEMrMPL0cu/bdboEWpQYb/0i2K5Qn8eCsxzOmxSggJbbQte7ljMRoXm917AbntqTGOzdTu+vP3KOOzoC70HQ==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -415,6 +421,9 @@ packages:
   '@napi-rs/simple-git@0.1.16':
     resolution: {integrity: sha512-C5wRPw9waqL2jk3jEDeJv+f7ScuO3N0a39HVdyFLkwKxHH4Sya4ZbzZsu2JLi6eEqe7RuHipHL6mC7B2OfYZZw==}
     engines: {node: '>= 10'}
+
+  '@next/env@13.5.6':
+    resolution: {integrity: sha512-Yac/bV5sBGkkEXmAX5FWPS9Mmo2rthrOPRQQNfycJPkjUAUclomCPH7QFVCDQ4Mp2k2K1SSM6m0zrxYrOwtFQw==}
 
   '@next/env@14.2.3':
     resolution: {integrity: sha512-W7fd7IbkfmeeY2gXrzJYDx8D2lWKbVoTIj1o1ScPHNzvp30s1AuoEFSdr39bC5sjxJaxTtq3OTCZboNp0lNWHA==}
@@ -2196,6 +2205,13 @@ packages:
       react: '>=16.0.0'
       react-dom: '>=16.0.0'
 
+  next-sitemap@4.2.3:
+    resolution: {integrity: sha512-vjdCxeDuWDzldhCnyFCQipw5bfpl4HmZA7uoo3GAaYGjGgfL4Cxb1CiztPuWGmS+auYs7/8OekRS8C2cjdAsjQ==}
+    engines: {node: '>=14.18'}
+    hasBin: true
+    peerDependencies:
+      next: '*'
+
   next-themes@0.2.1:
     resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
     peerDependencies:
@@ -3057,6 +3073,8 @@ snapshots:
 
   '@braintree/sanitize-url@6.0.4': {}
 
+  '@corex/deepmerge@4.0.43': {}
+
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
@@ -3308,6 +3326,8 @@ snapshots:
       '@napi-rs/simple-git-linux-x64-musl': 0.1.16
       '@napi-rs/simple-git-win32-arm64-msvc': 0.1.16
       '@napi-rs/simple-git-win32-x64-msvc': 0.1.16
+
+  '@next/env@13.5.6': {}
 
   '@next/env@14.2.3': {}
 
@@ -5604,6 +5624,14 @@ snapshots:
       next: 14.2.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+
+  next-sitemap@4.2.3(next@14.2.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
+    dependencies:
+      '@corex/deepmerge': 4.0.43
+      '@next/env': 13.5.6
+      fast-glob: 3.3.2
+      minimist: 1.2.8
+      next: 14.2.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
   next-themes@0.2.1(next@14.2.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
