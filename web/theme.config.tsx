@@ -82,12 +82,12 @@ const config: DocsThemeConfig = {
       .filter(Boolean)
       .join(" - ");
     const url =
-      "https://dungeonworld-ita.vercel.app" +
+      "https://www.dungeonworld-italia.it" +
       (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
 
     const socialCard = frontMatter.image
-      ? "https://dungeonworld-ita.vercel.app" + frontMatter.image
-      : "https://dungeonworld-ita.vercel.app/images/dungeon-world-cover.webp";
+      ? "https://www.dungeonworld-italia.it" + frontMatter.image
+      : "https://www.dungeonworld-italia.it/images/dungeon-world-cover.webp";
     const description = frontMatter.description ?? "Dungeon World Italia";
 
     return (
