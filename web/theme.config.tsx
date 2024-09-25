@@ -6,6 +6,7 @@ import { Logo } from "@/components/logo";
 import Star from "@/components/star";
 
 const config: DocsThemeConfig = {
+  faviconGlyph: '🔥',
   logo: Logo,
   project: {
     link: "https://github.com/KernelPanic92/dungeonworld-ita",
