@@ -50,9 +50,14 @@ Un enorme grazie per tutti coloro che hanno dato il loro contributo per la cresc
 
 Un ringraziamento speciale a [EPICentrum.it](https://www.epicentrum.it) per collaborare con noi a quattro mani sulle revisioni ❤️
 
+## Crediti Dungeon World
+
+Libera traduzione del [lavoro originale](https://book.dwgazetteer.com) di **[Adam Koebel][adam]** e **[Sage LaTorra][sage]**.
+Libera traduzione e impaginazione del [lavoro originale](https://github.com/Sagelt/Dungeon-World) di **[Adam Koebel][adam]** e **[Sage LaTorra][sage]**.
+
 ## Crediti dungeonworld.it
 
-Libera traduzione del [lavoro originale](book.dwgazetteer.com) di **[Adam Koebel][adam]** e **[Sage LaTorra][sage]**.
+Libera traduzione del [lavoro originale](https://book.dwgazetteer.com) di **[Adam Koebel][adam]** e **[Sage LaTorra][sage]**.
 
 **Da un'idea di [Claudio Freda][]**
 
@@ -76,6 +81,27 @@ Tutti i contenuti disponibili su questo sito sono distribuiti con licenza **[Cre
 
 Puoi trovare questi crediti anche alla pagina [crediti di dungeonworld.it](https://dungeonworld.it/crediti)
 
+## Crediti epicentrum.it
+
+CEO – Giuseppe Maisano
+
+Autore – Andrea Ingenito
+
+### Collaboratori
+
+Francesco Ingenito
+
+Caterina Madaffari
+
+### Traduttori
+
+Davide Timaco
+
+Carmine Alfano
+
+Libero Andrea Serafini
+
+
 [adam]: https://plus.google.com/112484087750169360510
 [sage]: https://plus.google.com/117415966179711277938
 [Alex D. Guerrieri]: https://plus.google.com/+AlexDGuerrieri/
@@ -98,23 +124,3 @@ Puoi trovare questi crediti anche alla pagina [crediti di dungeonworld.it](https
 [Pawel Longoni]: https://plus.google.com/115757078838960100730
 [Stefano Franzini]: https://www.facebook.com/stefano.v.franzini
 [cc]: https://creativecommons.org/licenses/by-sa/4.0/deed.it
-
-## Crediti epicentrum.it
-
-CEO – Giuseppe Maisano
-
-Autore – Andrea Ingenito
-
-### Collaboratori
-
-Francesco Ingenito
-
-Caterina Madaffari
-
-### Traduttori
-
-Davide Timaco
-
-Carmine Alfano
-
-Libero Andrea Serafini

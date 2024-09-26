@@ -36,10 +36,10 @@ Crediamo che ogni appassionato meriti di avere accesso a strumenti di gioco ben 
 
 ## Origine del Progetto
   
-Questo progetto è un fork di [dungeonworld.it](https://www.dungeonworld.it) con le traduzioni complete del sito [dwgazetteer](https://www.book.dwgazetteer.com) e il lavoro di [EPICentrum.it](https://www.epicentrum.it).
-La piattaforma offre una traduzione completa di **[Dungeon World](https://www.dungeonworld.com)** di **Adam Koebel** e **[Sage LaTorra](https://www.latorra.org)**, sviluppata con l'intento di fornire una risorsa gratuita e accessibile a tutti.
+Questo progetto è un fork di [dungeonworld.it][] con le traduzioni complete del sito [originale][lavoro originale] e il lavoro di [EPICentrum.it][].
+La piattaforma offre una traduzione completa di **[Dungeon World][]** di **[Adam Koebel][adam]** e **[Sage LaTorra][sage]**, sviluppata con l'intento di fornire una risorsa gratuita e accessibile a tutti.
 
-Non siamo affiliati con [Narrattiva](https://www.narrativa.it) né con altri enti o associazioni. La nostra piattaforma è completamente gratuita e liberamente consultabile online, offrendo un'alternativa alle risorse esistenti.
+Non siamo affiliati con [Narrattiva][] né con altri enti o associazioni. La nostra piattaforma è completamente gratuita e liberamente consultabile online, offrendo un'alternativa alle risorse esistenti.
 
 [Qui il glossario delle differenze con le varie versioni di traduzione di Dungeon World.](/altro/glossario-differenze)
 
@@ -54,13 +54,18 @@ Non siamo affiliati con [Narrattiva](https://www.narrativa.it) né con altri ent
 
 ## Licenze
 
-Il sito è rilasciato sotto licenza [CC BY-SA 4.0 2024](https://creativecommons.org/licenses/by-sa/4.0/deed.it).
-I contenuti del sito, comprensivi di dati, notizie, informazioni, immagini, grafici, disegni, marchi e nomi a dominio, sono di proprietà dei rispettivi autori e, se non diversamente indicato, coperti da [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.it).
+Il sito è rilasciato sotto licenza [CC BY-SA 4.0][cc].
+I contenuti del sito, comprensivi di dati, notizie, informazioni, immagini, grafici, disegni, marchi e nomi a dominio, sono di proprietà dei rispettivi autori e, se non diversamente indicato, coperti da [CC BY-SA 4.0][cc].
 Molti contenuti sono reperiti da internet, ma tutti i relativi diritti rimangono dei rispettivi autori. Se l’uso di questi contenuti avesse involontariamente violato le norme in materia di diritto d’autore, avvisateci e noi li disintegreremo all’istante.
+
+## Crediti Dungeon World
+
+Libera traduzione del [lavoro originale][] di **[Adam Koebel][adam]** e **[Sage LaTorra][sage]**.
+Libera traduzione e impaginazione dei [materiali originali][] di **[Adam Koebel][adam]** e **[Sage LaTorra][sage]**.
 
 ## Crediti dungeonworld.it
 
-Libera traduzione del [lavoro originale](book.dwgazetteer.com) di **[Adam Koebel][adam]** e **[Sage LaTorra][sage]**.
+Libera traduzione del [lavoro originale][] di **[Adam Koebel][adam]** e **[Sage LaTorra][sage]**.
 
 **Da un'idea di [Claudio Freda][]**
 
@@ -84,8 +89,34 @@ Tutti i contenuti disponibili su questo sito sono distribuiti con licenza **[Cre
 
 Puoi trovare questi crediti anche alla pagina [crediti di dungeonworld.it](https://dungeonworld.it/crediti)
 
+## Crediti epicentrum.it
+
+CEO – Giuseppe Maisano
+
+Autore – Andrea Ingenito
+
+### Collaboratori
+
+Francesco Ingenito
+
+Caterina Madaffari
+
+### Traduttori
+
+Davide Timaco
+
+Carmine Alfano
+
+Libero Andrea Serafini
+
+[Narrattiva]: https://www.narrativa.it
+[EPICentrum.it]: https://www.epicentrum.it
+[Dungeon World]: https://www.dungeonworld.com
+[materiali originali]: https://github.com/Sagelt/Dungeon-World
+[lavoro originale]: https://book.dwgazetteer.com
+[dungeonworld.it]: https://www.dungeonworld.it
 [adam]: https://plus.google.com/112484087750169360510
-[sage]: https://plus.google.com/117415966179711277938
+[sage]: https://www.latorra.org
 [Alex D. Guerrieri]: https://plus.google.com/+AlexDGuerrieri/
 [Antonio Amato]: https://plus.google.com/107667343404799785520
 [Claudio Freda]: https://plus.google.com/112991578095647299350
@@ -106,23 +137,3 @@ Puoi trovare questi crediti anche alla pagina [crediti di dungeonworld.it](https
 [Pawel Longoni]: https://plus.google.com/115757078838960100730
 [Stefano Franzini]: https://www.facebook.com/stefano.v.franzini
 [cc]: https://creativecommons.org/licenses/by-sa/4.0/deed.it
-
-## Crediti epicentrum.it
-
-CEO – Giuseppe Maisano
-
-Autore – Andrea Ingenito
-
-### Collaboratori
-
-Francesco Ingenito
-
-Caterina Madaffari
-
-### Traduttori
-
-Davide Timaco
-
-Carmine Alfano
-
-Libero Andrea Serafini
