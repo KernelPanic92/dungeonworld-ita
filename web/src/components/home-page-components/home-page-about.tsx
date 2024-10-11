@@ -62,7 +62,7 @@ export const HomePageAbout = () => {
         />
         <HomePageAboutItem
           title="Creative Commons"
-          description="Il testo di Dungeon World è rilasciato sotto licenza Creative Commons Attribution. Puoi creare, distribuire e persino vendere tutto ciò che vuoi che sia basato su Dungeon World."
+          description="Il manuale originale di Dungeon World è rilasciato sotto licenza Creative Commons Attribution. Puoi creare, distribuire e persino vendere tutto ciò che vuoi che sia basato su Dungeon World."
           icon={faCreativeCommons}
         />
       </div>
