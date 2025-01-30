@@ -8,6 +8,7 @@ import {
   HomePageProject,
 } from "./home-page-components";
 import { HomePageAbout } from "./home-page-components/home-page-about";
+import { HomePagePbta } from "./home-page-components/home-page-pbta";
 
 export const HomePage: FC = () => {
   return (
@@ -17,6 +18,7 @@ export const HomePage: FC = () => {
       <HomePageManual />
       <HomePageHomebrew />
       <HomePageDownloads />
+      <HomePagePbta />
       <HomePageProject />
       <HomePageFAQ />
     </div>
