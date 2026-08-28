@@ -7,7 +7,6 @@ import Star from "@/components/star";
 import Link from "next/link";
 
 const config: DocsThemeConfig = {
-  faviconGlyph: '🔥',
   logo: Logo,
   banner: {dismissible: true, key: 'guida-a-dungeon-world-1', text: () => <Link href={'/homebrew/approfondimenti/guida-a-dungeon-world'}> 🎉 <strong>Nuovo contenuto disponibile</strong>: leggi la Guida a Dungeon World, l'approfondimento della community su mosse, combattimento e spirito del gioco.</Link>},
   project: {
