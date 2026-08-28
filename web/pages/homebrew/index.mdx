@@ -6,7 +6,7 @@ image: /images/pages/homebrew/homebrew.jpeg
 
 import { Cards, Card } from 'nextra/components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFlag, faChessKnight, faGlobe, faDragon, faScroll, faShield } from '@fortawesome/free-solid-svg-icons';
+import { faFlag, faChessKnight, faGlobe, faDragon, faScroll, faShield, faBookOpen } from '@fortawesome/free-solid-svg-icons';
 
 # Homebrew
 
@@ -21,6 +21,7 @@ Che tu sia un giocatore alla ricerca di nuove avventure o un Master desideroso d
 Naviga attraverso le diverse categorie per trovare esattamente ciò che cerchi. Trova nuove idee per la tua campagna, scopri nuove mosse speciali per i tuoi personaggi o immergiti in avventure epiche create dalla comunità. Ogni elemento è stato categorizzato per facilitare la ricerca, quindi non dovrai fare altro che esplorare e lasciarti ispirare.
 
 <Cards>
+  <Card icon={<FontAwesomeIcon icon={faBookOpen} />} title="Approfondimenti" href="/homebrew/approfondimenti" />
   <Card icon={<FontAwesomeIcon icon={faScroll} />} title="Classi" href="/homebrew/classi" />
   <Card icon={<FontAwesomeIcon icon={faGlobe} />} title="Ambientazioni" href="/homebrew/ambientazioni" />
   <Card icon={<FontAwesomeIcon icon={faFlag} />} title="Campagne" href="/homebrew/campagne" />
