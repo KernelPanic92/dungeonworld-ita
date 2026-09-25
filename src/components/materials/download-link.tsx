@@ -13,6 +13,9 @@ import {
 import { cn } from "cn";
 import { KOFI_PAGE_URL } from "@/lib/kofi";
 
+/** localStorage key storing the last day the donation modal was shown. */
+const STORAGE_KEY = "dwi-download-modal";
+
 interface DownloadLinkProps {
   href: string;
   name: string;
@@ -23,20 +26,43 @@ interface DownloadLinkProps {
 /**
  * A download link for /files/... assets. The route serves them as
  * attachments, so the browser downloads without navigating; on click we
- * also open a support/donation notice.
+ * open the support/donation notice at most once a day and only for ~30%
+ * of downloads.
  */
 export function DownloadLink({ href, name, className, children }: DownloadLinkProps) {
   const [open, setOpen] = useState(false);
+
+  const maybeOpenModal = () => {
+    try {
+      // already opened today: skip
+      if (window.localStorage.getItem(STORAGE_KEY) === new Date().toDateString()) {
+        return;
+      }
+    } catch {
+      // localStorage unavailable: the random gate below still applies
+    }
+
+    // show the modal on 30% of downloads
+    if (Math.random() > 0.3) return;
+
+    try {
+      window.localStorage.setItem(STORAGE_KEY, new Date().toDateString());
+    } catch {
+      // ignore
+    }
+    setOpen(true);
+  };
 
   return (
     <Dialog
       open={open}
       onOpenChange={(nextOpen) => setOpen(nextOpen)}
+      disablePointerDismissal
     >
       <a
         href={href}
         download={name}
-        onClick={() => setOpen(true)}
+        onClick={maybeOpenModal}
         className={cn(buttonVariants({ variant: "outline" }), "justify-start gap-2", className)}
       >
         {children}
@@ -54,7 +80,7 @@ export function DownloadLink({ href, name, className, children }: DownloadLinkPr
           infrastrutture da sostenere ogni mese.
           <br />
           <br />
-          Se le nostre avventure ti divertono, considera una piccola donazione:
+          Se trovi utili le nostre risorse, considera una piccola donazione:
           anche il prezzo di una pozione di cura aiuta a tenere aperte le porte
           della taverna.
         </DialogDescription>
@@ -71,7 +97,7 @@ export function DownloadLink({ href, name, className, children }: DownloadLinkPr
           <DialogClose
             className={cn(buttonVariants({ variant: "outline" }))}
           >
-            Continua a giocare
+            Continua a esplorare
           </DialogClose>
         </div>
       </DialogContent>
