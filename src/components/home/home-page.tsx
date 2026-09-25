@@ -6,6 +6,7 @@ import { HomeHomebrew } from "./home-homebrew";
 import { HomeManual } from "./home-manual";
 import { HomePbta } from "./home-pbta";
 import { HomeProject } from "./home-project";
+import { HomeSupport } from "./home-support";
 
 export function HomePage() {
   return (
@@ -17,6 +18,7 @@ export function HomePage() {
       <HomeDownloads />
       <HomePbta />
       <HomeProject />
+      <HomeSupport />
       <HomeFaq />
     </div>
   );
