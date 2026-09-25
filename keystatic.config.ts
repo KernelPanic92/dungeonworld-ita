@@ -46,9 +46,9 @@ export default config({
   collections: {
     // Registry of manual versions (drives the [manual-version] URL segment).
     // Entry slug = version slug (e.g. "1.0", "2.0-beta").
-    manuals: collection({
-      label: "Manuali (versioni)",
-      path: "docs/manuali/*/",
+    manualVersions: collection({
+      label: "Manuale — Versioni",
+      path: "docs/manuale/versioni/*/",
       slugField: "name",
       format: { data: "yaml" },
       schema: {
@@ -64,9 +64,9 @@ export default config({
       },
     }),
     // Manual pages. Entry slug = "<version>/<path>" (e.g. "1.0/classi/barbaro").
-    manual: collection({
-      label: "Pagine del manuale",
-      path: "docs/manuale/**/",
+    manualPages: collection({
+      label: "Manuale — Pagine",
+      path: "docs/manuale/pagine/**/",
       slugField: "title",
       format: { data: "yaml", contentField: "content" },
       schema: {

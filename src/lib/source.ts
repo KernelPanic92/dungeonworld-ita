@@ -5,6 +5,7 @@ import {
   getManualFolderMetas,
   getManualPages,
   isValidManualVersion,
+  reader,
 } from "./keystatic";
 
 export interface ManualPageData {

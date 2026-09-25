@@ -41,9 +41,9 @@ async function main() {
     contentType: typeof (sample as any)?.content,
   }, null, 1).slice(0, 2500));
 
-  const manual = await reader.collections.manual.all();
-  console.log(`\nmanual: ${manual.length}`);
-  for (const p of manual) {
+  const manualPages = await reader.collections.manualPages.all();
+  console.log(`\nmanualPages: ${manualPages.length}`);
+  for (const p of manualPages) {
     const e = p.entry as any;
     if (!e.title) console.log(`  [ISSUE] ${p.slug}: no title`);
   }
@@ -51,8 +51,8 @@ async function main() {
   const authors = await reader.collections.authors.all();
   console.log(`authors: ${authors.length}`);
 
-  const manuals = await reader.collections.manuals.all();
-  console.log(`manuals (versions): ${manuals.length}`);
+  const manualVersions = await reader.collections.manualVersions.all();
+  console.log(`manualVersions: ${manualVersions.length}`);
 }
 
 main().catch((err) => {

@@ -3,6 +3,7 @@ import { isValidManualVersion } from "@/lib/keystatic";
 import { getManualSource } from "@/lib/source";
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import { GithubIcon } from "@/components/site/github-icon";
+import { Logo } from "@/components/site/logo";
 
 interface Props {
   children: React.ReactNode;
@@ -21,10 +22,11 @@ export default async function ManualLayout({ children, params }: Props) {
     <DocsLayout
       tree={tree}
       githubUrl="https://github.com/KernelPanic92/dungeonworld-ita"
-      nav={{ enabled: false }}
+      nav={{ enabled: true, transparentMode: "none", title: <Logo />}}
       sidebar={{ enabled: true, collapsible: true }}
-      themeSwitch={{ enabled: false }}
-      searchToggle={{ enabled: false }}
+      themeSwitch={{ enabled: true }}
+      searchToggle={{ enabled: true }}
+      tabMode="top"
     >
       {children}
     </DocsLayout>

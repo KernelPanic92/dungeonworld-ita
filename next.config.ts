@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 // Default manual version: served without the version segment in the URL.
-// Kept in sync with docs/manuali/1.0 (isDefault: true).
+// Kept in sync with docs/manuale/versioni/1.0 (isDefault: true).
 const DEFAULT_MANUAL_VERSION = "1.0";
 
 const nextConfig: NextConfig = {

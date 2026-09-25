@@ -41,8 +41,8 @@ export interface ManualVersion {
 }
 
 export function getManualVersions(): Promise<ManualVersion[]> {
-  return memoized("manuals", async () => {
-    const entries = await reader.collections.manuals.all();
+  return memoized("manualVersions", async () => {
+    const entries = await reader.collections.manualVersions.all();
     return entries
       .map((e) => ({
         slug: e.slug,
@@ -81,7 +81,7 @@ export interface ManualPage {
 
 export function getManualPages(version: string): Promise<ManualPage[]> {
   return memoized(`manual:${version}`, async () => {
-    const entries = await reader.collections.manual.all();
+    const entries = await reader.collections.manualPages.all();
     return Promise.all(
       entries
         .filter((e) => e.slug.startsWith(`${version}/`))
@@ -94,7 +94,7 @@ export function getManualPages(version: string): Promise<ManualPage[]> {
             title: e.entry.title,
             description: e.entry.description ?? "",
             order: e.entry.order,
-            content: await readMdocBody(`docs/manuale/${e.slug}/index.mdoc`),
+            content: await readMdocBody(`docs/manuale/pagine/${e.slug}/index.mdoc`),
           };
         }),
     );
@@ -275,7 +275,7 @@ export interface FolderMeta {
 
 export async function getManualFolderMetas(version: string): Promise<FolderMeta[]> {
   return memoized(`manual-meta:${version}`, async () => {
-    const rootDir = path.join(process.cwd(), "docs", "manuale", version);
+    const rootDir = path.join(process.cwd(), "docs", "manuale", "pagine", version);
     const result: FolderMeta[] = [];
 
     async function walk(dir: string, rel: string) {

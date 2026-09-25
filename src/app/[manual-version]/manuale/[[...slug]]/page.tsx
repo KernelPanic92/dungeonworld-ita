@@ -39,7 +39,7 @@ export default async function ManualPage({ params }: Props) {
 
   const { body: MdxContent, toc } = await compiler.compile({
     source: markdocToMdx(manualPage?.content ?? ""),
-    filePath: `docs/manuale/${version}/${(slug ?? []).join("/")}/index.mdoc`,
+    filePath: `docs/manuale/pagine/${version}/${(slug ?? []).join("/")}/index.mdoc`,
   });
 
   return (

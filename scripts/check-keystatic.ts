@@ -4,20 +4,20 @@ import config from "../keystatic.config";
 async function main() {
   const reader = createReader(".", config);
 
-  const manuals = await reader.collections.manuals.all();
+  const manualVersions = await reader.collections.manualVersions.all();
   console.log(
-    "manuals:",
-    manuals.map((m) => ({
+    "manualVersions:",
+    manualVersions.map((m) => ({
       slug: m.slug,
       name: m.entry.name,
       isDefault: m.entry.isDefault,
     })),
   );
 
-  const manual = await reader.collections.manual.all();
+  const manualPages = await reader.collections.manualPages.all();
   console.log(
-    "manual:",
-    manual.map((m) => ({
+    "manualPages:",
+    manualPages.map((m) => ({
       slug: m.slug,
       title: m.entry.title,
       order: m.entry.order,
