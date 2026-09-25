@@ -9,8 +9,9 @@ import {
 } from "@/lib/keystatic";
 import { getManualNavPages, manualBaseUrl } from "@/lib/source";
 import { compiler, markdocToMdx, mdxComponents } from "@/components/mdx";
-import { AdSenseAd } from "@/components/ads/adsense";
-import { KoFiButton } from "@/components/site/kofi";
+import { AdSenseAd, ManualAdSlot } from "@/components/ads/adsense";
+import { ADSENSE_SLOT_BANNER } from "@/lib/consent";
+import { injectManualAdSlots } from "@/lib/manual-ads";
 import { JsonLd } from "@/components/site/json-ld";
 import { breadcrumbJsonLd, manualPageJsonLd } from "@/lib/schema-org";
 import {
@@ -144,18 +145,19 @@ export default async function ManualPage({ params }: Props) {
     : null;
 
   const { body: MdxContent, toc } = await compiler.compile({
-    source: markdocToMdx(manualPage.content),
+    source: markdocToMdx(injectManualAdSlots(manualPage.content)),
     filePath: `docs/manuale/pagine/${version}/${rest.join("/")}/index.mdoc`,
   });
 
   return (
     <DocsPage
       toc={toc}
-      // support button + ad unit at the top of the table of contents
+      // ad unit at the top of the table of contents, with reserved height
+      // to avoid layout shift while the unit loads
       tableOfContent={{
         header: (
           <div className="flex flex-col items-start gap-4 pb-4">
-            <AdSenseAd />
+            <AdSenseAd containerClassName="w-full min-h-[250px]" />
           </div>
         ),
       }}
@@ -187,8 +189,14 @@ export default async function ManualPage({ params }: Props) {
         />
       ) : null}
       <DocsBody>
-        <MdxContent components={mdxComponents} />
+        <MdxContent components={{ ...mdxComponents, ManualAdSlot }} />
       </DocsBody>
+      {/* horizontal banner between the manual body and the prev/next footer */}
+      <AdSenseAd
+        slot={ADSENSE_SLOT_BANNER}
+        format="horizontal"
+        containerClassName="mt-8 min-h-[90px]"
+      />
     </DocsPage>
   );
 }
