@@ -12,7 +12,6 @@ import {
   DocsBody,
   DocsPage,
 } from "fumadocs-ui/layouts/docs/page";
-import { ManualSearch } from "@/components/materials/manual-search";
 
 interface Props {
   params: Promise<{
@@ -80,14 +79,7 @@ export default async function ManualPage({ params }: Props) {
       if (entry) {
         return (
           <DocsPage>
-            <DocsBody>
-              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                {entry.name}
-              </h1>
-              {entry.description ? (
-                <p className="text-lg text-muted-foreground">{entry.description}</p>
-              ) : null}
-            </DocsBody>
+            <DocsBody />
           </DocsPage>
         );
       }
@@ -121,16 +113,7 @@ export default async function ManualPage({ params }: Props) {
         },
       }}
     >
-      <div className="mb-6 flex justify-end">
-        <ManualSearch />
-      </div>
       <DocsBody>
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          {manualPage.title}
-        </h1>
-        {manualPage.description ? (
-          <p className="text-lg text-muted-foreground">{manualPage.description}</p>
-        ) : null}
         <MdxContent components={mdxComponents} />
       </DocsBody>
     </DocsPage>

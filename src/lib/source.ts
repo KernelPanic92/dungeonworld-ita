@@ -1,4 +1,12 @@
 import { dynamicLoader, llms } from "fumadocs-core/source";
+import type {
+  DynamicSource,
+  LoaderOutput,
+  Meta,
+  MetaData,
+  Page,
+  VirtualFile,
+} from "fumadocs-core/source";
 import type * as PageTree from "fumadocs-core/page-tree";
 import { structure } from "fumadocs-core/mdx-plugins";
 import {
@@ -239,4 +247,95 @@ export async function getLlms(version: string) {
       },
     }),
   );
+}
+
+// ---------------------------------------------------------------------------
+// Unified search source
+// ---------------------------------------------------------------------------
+
+export interface ManualSearchPageData {
+  title: string;
+  description: string;
+  structuredData: ReturnType<typeof structure>;
+  /** Public URL (versionless for the default version) */
+  url: string;
+  /** Version slug; used as the search `tag` so results can be scoped per version */
+  version: string;
+  /** Version display name */
+  versionName: string;
+  /** navGroups group of the page ("" for root-level pages) */
+  group: string;
+}
+
+type ManualSearchSourceConfig = {
+  pageData: ManualSearchPageData;
+  metaData: MetaData;
+};
+
+type ManualSearchLoaderConfig = {
+  i18n: undefined;
+  meta: Meta<undefined, MetaData>;
+  page: Page<undefined, ManualSearchPageData>;
+  source: undefined;
+};
+
+/**
+ * One Fumadocs source covering every version, used by the search endpoint
+ * (`createFromSource`). Only nav-referenced pages are indexed (orphan drafts
+ * stay out of search), and each page is tagged with its version so the
+ * client can scope results to the current version.
+ */
+let searchSource: LoaderOutput<ManualSearchLoaderConfig> | undefined;
+
+async function createManualSearchLoader() {
+  const input: DynamicSource<ManualSearchSourceConfig> = {
+    async files(): Promise<VirtualFile<ManualSearchSourceConfig>[]> {
+      const versions = await getManualVersions();
+      const pageFiles: VirtualFile<ManualSearchSourceConfig>[] = [];
+
+      for (const version of versions) {
+        const [navPages, pages] = await Promise.all([
+          getManualNavPages(version.slug),
+          getManualPages(version.slug),
+        ]);
+        const pageBySlug = new Map(pages.map((p) => [p.entrySlug, p]));
+
+        for (const nav of navPages) {
+          const page = pageBySlug.get(nav.entrySlug);
+          if (!page) continue;
+          pageFiles.push({
+            type: "page",
+            path:
+              page.slugs.length === 0
+                ? `${version.slug}/index.mdoc`
+                : `${version.slug}/${page.slugs.join("/")}/index.mdoc`,
+            data: {
+              title: page.title,
+              description: page.description,
+              structuredData: structure(page.content),
+              url: nav.url,
+              version: version.slug,
+              versionName: version.name,
+              group: nav.group,
+            },
+          });
+        }
+      }
+      return pageFiles;
+    },
+  };
+  return dynamicLoader(input, { baseUrl: "/manuale" });
+}
+
+/**
+ * The unified search source. Memoised: `createFromSource` keeps the built
+ * search server per loader instance, so returning the same instance avoids
+ * re-indexing on every request.
+ */
+export async function getManualSearchSource() {
+  if (!searchSource) {
+    const loader = await createManualSearchLoader();
+    searchSource = await loader.get();
+  }
+  return searchSource;
 }

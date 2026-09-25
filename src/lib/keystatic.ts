@@ -64,6 +64,21 @@ export async function isValidManualVersion(version: string): Promise<boolean> {
   return versions.some((v) => v.slug === version);
 }
 
+/**
+ * The version a manual URL belongs to. The default version is versionless:
+ * a leading segment that matches a version is the version, anything else
+ * (or nothing) resolves to the default version.
+ */
+export async function resolveManualVersion(slug?: string[]): Promise<string> {
+  const segments = slug ?? [];
+  const defaultVersion = await getDefaultManualVersion();
+  if (segments.length === 0) return defaultVersion;
+  const [first] = segments;
+  if (first === defaultVersion) return defaultVersion;
+  if (await isValidManualVersion(first)) return first;
+  return defaultVersion;
+}
+
 // ---------------------------------------------------------------------------
 // Manual pages (per version)
 // ---------------------------------------------------------------------------
