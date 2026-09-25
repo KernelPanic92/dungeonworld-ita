@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/llms.mdx/manuali/:path*",
-        destination: `/${DEFAULT_MANUAL_VERSION}/llms.mdx/manuali/:path*`,
+        destination: `/llms.mdx/${DEFAULT_MANUAL_VERSION}/:path*`,
       },
     ];
   },
