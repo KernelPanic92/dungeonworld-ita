@@ -6,7 +6,9 @@ import sciamano from "../../../public/images/pages/homepage/sciamano.webp";
 export function Cover() {
   return (
     <section className="w-full bg-background">
-      <div className="mx-auto flex w-full max-w-[90rem] flex-col items-center gap-8 px-4 py-10 sm:px-8 md:flex-row md:justify-between">
+      {/* same horizontal gutters as HomePageSection so the hero doesn't
+          extend beyond the other sections */}
+      <div className="mx-auto flex w-full max-w-[90rem] flex-col items-center gap-8 py-10 pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)] sm:pl-[max(env(safe-area-inset-left),5.5rem)] sm:pr-[max(env(safe-area-inset-right),5.5rem)] md:flex-row md:justify-between">
         <div className="flex flex-col items-center gap-3 text-center md:items-start md:text-left">
           <h1
             lang="en"
@@ -35,7 +37,7 @@ export function Cover() {
           className="w-full max-w-xs md:max-w-sm"
         />
       </div>
-      <h3 className="pb-8 text-center text-lg font-bold text-foreground">
+      <h3 className="mx-auto max-w-[90rem] px-4 pb-8 text-center text-lg font-bold text-foreground sm:px-8">
         <span lang="en">Dungeon World</span> è un gioco di ruolo da tavolo.
         Raccogli alcuni amici e intraprendi l&apos;avventura. Gioca per scoprire
         cosa succede!
