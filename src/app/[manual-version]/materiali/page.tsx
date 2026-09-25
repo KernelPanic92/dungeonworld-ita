@@ -125,9 +125,6 @@ export default async function MaterialsPage({ params, searchParams }: Props) {
         <aside className="hidden w-64 shrink-0 lg:block">
           <div className="sticky top-24 rounded-lg border bg-card p-5">
             <div className="mb-4 flex items-center justify-between gap-3 border-b pb-4">
-              <span className="text-sm text-muted-foreground">
-                Versione del manuale
-              </span>
               <VersionSwitcher current={version} versions={versionOptions} />
             </div>
             <MaterialsFilters

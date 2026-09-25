@@ -47,7 +47,7 @@ export function VersionSwitcher({
 
   return (
     <Select value={current} onValueChange={onChange}>
-      <SelectTrigger size="sm" className="w-auto gap-2" aria-label="Versione del manuale">
+      <SelectTrigger size="sm" className="gap-2" aria-label="Versione del manuale">
         <span>{versions.find((v) => v.slug === current)?.name ?? current}</span>
       </SelectTrigger>
       <SelectContent>
