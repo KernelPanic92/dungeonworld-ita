@@ -22,10 +22,10 @@ export function ManualSearchProvider({ version, versions, children }: Props) {
     <SearchProvider
       options={
         {
-          api: "/manuale/search",
+          allowClear: true,
+          api: `/manuale/search`,
           type: "static",
           defaultTag: version,
-          tags: versions.map((v) => ({ name: v.name, value: v.slug })),
         } as Partial<DefaultSearchDialogProps>
       }
     >
