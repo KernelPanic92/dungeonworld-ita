@@ -40,6 +40,56 @@ const LICENSE_SCOPE_OPTIONS = [
   { label: "Dataset", value: "dati" },
 ] as const;
 
+// Shared SEO metadata block used by materials and manual pages.
+function seoSchema() {
+  return fields.object({
+    title: fields.text({
+      label: "SEO Title (Opzionale)",
+      description:
+        "Sovrascrive il nome della pagina nel tag <title>. Consigliato: max 60 caratteri.",
+      validation: { length: { max: 60 } },
+    }),
+    description: fields.text({
+      label: "SEO Meta Description (Opzionale)",
+      description:
+        "Sovrascrive il summary per i motori di ricerca. Consigliato: max 160 caratteri.",
+      multiline: true,
+      validation: { length: { max: 160 } },
+    }),
+    image: fields.image({
+      label: "Open Graph Image (Opzionale)",
+      description: "Immagine per la condivisione social (1200x630)",
+      directory: "public/images/seo",
+      publicPath: "/images/seo/",
+    }),
+    noIndex: fields.checkbox({
+      label: "Nascondi ai motori di ricerca (noindex)",
+      defaultValue: false,
+    }),
+  });
+}
+
+// Shared LLM metadata block used by materials and manual pages.
+function llmSchema() {
+  return fields.object({
+    description: fields.text({
+      label: "LLM List Description",
+      description:
+        "La frase che appare dopo il link nel file llms.txt. Se vuoto, usa il summary.",
+    }),
+    notes: fields.array(fields.text({ label: "Nota" }), {
+      label: "LLM Important Notes",
+      description:
+        "Dettagli tecnici o avvertenze specifiche per l'AI riguardo a questa pagina o classe.",
+      itemLabel: (props) => String(props.value ?? ""),
+    }),
+    exclude: fields.checkbox({
+      label: "Escludi da llms.txt",
+      defaultValue: false,
+    }),
+  });
+}
+
 const CREDIT_KIND_OPTIONS = [
   { label: "Autore", value: "author" },
   { label: "Illustratore", value: "illustrator" },
@@ -164,8 +214,14 @@ export default config({
               "Il primo segmento è la versione, seguito dal percorso della pagina (es. 2.0-beta/introduzione/regole-base).",
           },
         }),
-        description: fields.text({ label: "Descrizione", multiline: true }),
+        summary: fields.text({
+          label: "Sommario",
+          description: "Un sommario secco, informativo e conciso.",
+          multiline: true,
+        }),
         image: fields.image({ label: "Immagine di copertina" }),
+        seo: seoSchema(),
+        llm: llmSchema(),
         licenses: fields.array(
           fields.object({
             license: fields.relationship({
@@ -216,11 +272,18 @@ export default config({
           options: MATERIAL_SOURCE_OPTIONS,
           defaultValue: "official",
         }),
-        shortDescription: fields.text({
-          label: "Descrizione breve",
+        summary: fields.text({
+          label: "Sommario",
+          description: "Un sommario secco, informativo e conciso.",
           multiline: true,
         }),
-        description: fields.text({ label: "Descrizione", multiline: true }),
+        flavor: fields.text({
+          label: "Flavor",
+          description: "Il testo evocativo e narrativo che vuole trasmettere l'autore.",
+          multiline: true,
+        }),
+        seo: seoSchema(),
+        llm: llmSchema(),
         date: fields.date({ label: "Data" }),
         licenses: fields.array(
           fields.object({

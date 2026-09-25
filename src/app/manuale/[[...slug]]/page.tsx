@@ -60,10 +60,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const navPages = await getManualNavPages(version);
   const entrySlug = `${version}/${rest.join("/") || "index"}`;
   const isOrphan = !navPages.some((p) => p.entrySlug === entrySlug);
+  const seo = page?.seo;
   return {
-    title: page?.title ?? "Manuale",
-    description: page?.description,
-    ...(isOrphan ? { robots: { index: false, follow: false } } : {}),
+    title: seo?.title || page?.title || "Manuale",
+    description: seo?.description || page?.summary,
+    ...(seo?.image
+      ? {
+          openGraph: {
+            title: seo.title || page?.title || "Manuale",
+            description: seo.description || page?.summary,
+            images: [{ url: seo.image }],
+          },
+        }
+      : {}),
+    ...(isOrphan || seo?.noIndex
+      ? { robots: { index: false, follow: false } }
+      : {}),
   };
 }
 

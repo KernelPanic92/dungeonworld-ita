@@ -52,15 +52,19 @@ async function createManualLoader(version: string, defaultVersion: string) {
       async files() {
         const pages = await getManualPages(version);
 
-        const pageFiles = pages.map((page) => ({
-          type: "page" as const,
-          path: [...page.slugs, "index.mdoc"].join("/"),
-          data: {
-            title: page.title,
-            description: page.description,
-            structuredData: () => structure(page.content),
-          },
-        }));
+        const pageFiles = pages
+          .filter((page) => !page.llm.exclude)
+          .map((page) => ({
+            type: "page" as const,
+            path: [...page.slugs, "index.mdoc"].join("/"),
+            data: {
+              title: page.title,
+              // the LLM-specific description overrides the summary when set
+              description: page.llm.description || page.summary,
+              notes: page.llm.notes,
+              structuredData: () => structure(page.content),
+            },
+          }));
 
         return pageFiles;
       },
@@ -233,7 +237,7 @@ export async function getLlms(version: string) {
       renderPage: async (page: {
         slugs: string[];
         url: string;
-        data: { title?: string; description?: string };
+        data: { title?: string; description?: string; notes?: string[] };
       }) => {
         const raw = contentMap.get(page.slugs.join("/")) ?? "";
         const content = markdocToLlmText(raw);
@@ -243,6 +247,9 @@ export async function getLlms(version: string) {
         // the content usually opens with the same H1: drop it to avoid duplication
         const h1 = new RegExp(`^#\\s+${title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*\\n+`);
         parts.push(content.replace(h1, ""));
+        for (const note of page.data.notes ?? []) {
+          if (note) parts.push(`Nota per l'AI: ${note}`);
+        }
         return parts.join("\n");
       },
     }),
@@ -311,7 +318,7 @@ async function createManualSearchLoader() {
                 : `${version.slug}/${page.slugs.join("/")}/index.mdoc`,
             data: {
               title: page.title,
-              description: page.description,
+              description: page.summary,
               structuredData: structure(page.content),
               url: nav.url,
               version: version.slug,

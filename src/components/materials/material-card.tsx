@@ -83,7 +83,7 @@ export function MaterialCard({
         </CardHeader>
         <CardContent>
           <CardDescription className="line-clamp-3 text-sm">
-            {material.shortDescription || material.description}
+            {material.summary || material.flavor}
           </CardDescription>
         </CardContent>
         <CardFooter className="gap-2 text-xs text-muted-foreground">

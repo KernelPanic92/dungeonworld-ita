@@ -82,17 +82,65 @@ export async function resolveManualVersion(slug?: string[]): Promise<string> {
 // ---------------------------------------------------------------------------
 // Manual pages (per version)
 // ---------------------------------------------------------------------------
+// SEO / LLM metadata (shared by manual pages and materials)
+// ---------------------------------------------------------------------------
+export interface SeoData {
+  title: string;
+  description: string;
+  image: string | null;
+  noIndex: boolean;
+}
+
+export interface LlmData {
+  description: string;
+  notes: string[];
+  exclude: boolean;
+}
+
+function readSeo(value: unknown): SeoData {
+  const v = (value ?? {}) as {
+    title?: string | null;
+    description?: string | null;
+    image?: string | null;
+    noIndex?: boolean | null;
+  };
+  return {
+    title: v.title ?? "",
+    description: v.description ?? "",
+    image: v.image ?? null,
+    noIndex: v.noIndex ?? false,
+  };
+}
+
+function readLlm(value: unknown): LlmData {
+  const v = (value ?? {}) as {
+    description?: string | null;
+    notes?: string[] | null;
+    exclude?: boolean | null;
+  };
+  return {
+    description: v.description ?? "",
+    notes: v.notes ?? [],
+    exclude: v.exclude ?? false,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Manual pages (per version)
+// ---------------------------------------------------------------------------
 export interface ManualPage {
   /** Slugs relative to the manual root (e.g. [] for the index page, ['game-master', 'gm']) */
   slugs: string[];
   /** Keystatic entry slug, e.g. `1.0/game-master/gm` */
   entrySlug: string;
   title: string;
-  description: string;
+  summary: string;
   /** Raw MarkDoc content */
   content: string;
   /** Licenses referenced by the page (stored but not rendered yet) */
   licenses: MaterialLicense[];
+  seo: SeoData;
+  llm: LlmData;
 }
 
 export function getManualPages(version: string): Promise<ManualPage[]> {
@@ -112,7 +160,7 @@ export function getManualPages(version: string): Promise<ManualPage[]> {
             slugs,
             entrySlug: e.slug,
             title: e.entry.title,
-            description: e.entry.description ?? "",
+            summary: e.entry.summary ?? "",
             content: await readMdocBody(`docs/manuale/pagine/${e.slug}/index.mdoc`),
             licenses: (e.entry.licenses ?? []).map((l) => {
               const license = l.license ? licenseBySlug.get(l.license) : undefined;
@@ -123,6 +171,8 @@ export function getManualPages(version: string): Promise<ManualPage[]> {
                 scope: l.scope,
               };
             }),
+            seo: readSeo(e.entry.seo),
+            llm: readLlm(e.entry.llm),
           };
         }),
     );
@@ -203,8 +253,8 @@ export interface Material {
   version: string;
   type: string;
   source: string;
-  shortDescription: string;
-  description: string;
+  summary: string;
+  flavor: string;
   /** The collection this material belongs to, resolved from the collection
    *  materials' `contains` lists (single source of truth). */
   collection: { slug: string; name: string } | null;
@@ -216,6 +266,8 @@ export interface Material {
   credits: MaterialCredit[];
   assets: MaterialAsset[];
   content: string;
+  seo: SeoData;
+  llm: LlmData;
 }
 
 export function getMaterials(version: string): Promise<Material[]> {
@@ -262,11 +314,13 @@ export function getMaterials(version: string): Promise<Material[]> {
           version: string;
           type: string;
           source: string;
-          shortDescription: string;
-          description: string;
+          summary: string;
+          flavor: string;
           date: string | null;
           licenses: Array<{ license: string; scope: string }> | null;
           contains: string[] | null;
+          seo?: unknown;
+          llm?: unknown;
           showcase: { image: string | null; heroName: string | null } | null;
           credits: Array<{ discriminant: string; value: { author: string | null; kind: string; url: string | null } }>;
           assets: Array<{
@@ -282,8 +336,8 @@ export function getMaterials(version: string): Promise<Material[]> {
           version: entry.version,
           type: entry.type,
           source: entry.source,
-          shortDescription: entry.shortDescription ?? "",
-          description: entry.description ?? "",
+          summary: entry.summary ?? "",
+          flavor: entry.flavor ?? "",
           collection: collectionByMaterial.get(e.slug) ?? null,
           date: entry.date,
           licenses: (entry.licenses ?? []).map((l) => {
@@ -315,6 +369,8 @@ export function getMaterials(version: string): Promise<Material[]> {
             thumbnail: a.value.thumbnail ?? null,
           })),
           content: await readMdocBody(`docs/materiali/${e.slug}/index.mdoc`),
+          seo: readSeo(entry.seo),
+          llm: readLlm(entry.llm),
         };
       }),
     );

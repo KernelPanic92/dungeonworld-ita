@@ -23,8 +23,8 @@ export function filterMaterials(materials: Material[], query: Omit<MaterialsQuer
     if (q) {
       const haystack = [
         m.name,
-        m.description,
-        m.shortDescription,
+        m.flavor,
+        m.summary,
         m.collection?.name ?? "",
         ...m.credits.map((c) => c.authorName),
       ]

@@ -177,7 +177,7 @@ async function main() {
           version: VERSION,
           type: "collection",
           source: "homebrew",
-          shortDescription: `Collezione di ${members.length} materiali: ${members
+          summary: `Collezione di ${members.length} materiali: ${members
             .map((m) => String(m.data.name ?? m.slug))
             .join(", ")}`,
           date: members

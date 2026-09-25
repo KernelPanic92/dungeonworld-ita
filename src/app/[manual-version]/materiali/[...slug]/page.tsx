@@ -39,8 +39,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const material = await getMaterial(version, (slug ?? []).join("/"));
   if (!material) return {};
   return {
-    title: material.name,
-    description: material.shortDescription || material.description,
+    title: material.seo.title || material.name,
+    description: material.seo.description || material.summary || material.flavor,
+    ...(material.seo.image
+      ? {
+          openGraph: {
+            title: material.seo.title || material.name,
+            description: material.seo.description || material.summary,
+            images: [{ url: material.seo.image }],
+          },
+        }
+      : {}),
+    ...(material.seo.noIndex ? { robots: { index: false, follow: false } } : {}),
   };
 }
 
@@ -127,13 +137,18 @@ export default async function MaterialDetailPage({ params }: Props) {
             </p>
           ) : null}
 
-          {material.description ? (
+          {material.flavor ? (
             <p className="mt-4 text-lg text-muted-foreground">
-              {material.description}
+              {material.flavor}
             </p>
           ) : null}
         </div>
       </div>
+
+      {/* dry, informative summary on its own line, before the downloads */}
+      {material.summary ? (
+        <p className="mb-8 text-base">{material.summary}</p>
+      ) : null}
 
       {material.assets.length > 0 ? (
         <section className="mb-8">
