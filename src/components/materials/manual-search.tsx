@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Search } from "lucide-react";
 import DefaultSearchDialog from "fumadocs-ui/components/dialog/search-default";
 
-export function ManualSearch({ version }: { version: string }) {
+export function ManualSearch() {
   const [open, setOpen] = useState(false);
-  const api = `/${version}/manuale/search`;
+  const api = "/manuale/search";
 
   return (
     <>

@@ -1,19 +1,14 @@
-import { notFound } from "next/navigation";
-import { isValidManualVersion } from "@/lib/keystatic";
 import { getManualPageTree } from "@/lib/source";
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import { Logo } from "@/components/site/logo";
 
 interface Props {
   children: React.ReactNode;
-  params: Promise<{ "manual-version": string }>;
 }
 
-export default async function ManualLayout({ children, params }: Props) {
-  const { "manual-version": version } = await params;
-  if (!(await isValidManualVersion(version))) notFound();
-
-  const tree = await getManualPageTree(version);
+export default async function ManualLayout({ children }: Props) {
+  // one root folder per version: fumadocs renders them as version tabs
+  const tree = await getManualPageTree();
 
   return (
     <DocsLayout

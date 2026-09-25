@@ -8,14 +8,6 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/manuale",
-        destination: `/${DEFAULT_MANUAL_VERSION}/manuale`,
-      },
-      {
-        source: "/manuale/:path*",
-        destination: `/${DEFAULT_MANUAL_VERSION}/manuale/:path*`,
-      },
-      {
         source: "/materiali",
         destination: `/${DEFAULT_MANUAL_VERSION}/materiali`,
       },

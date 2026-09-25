@@ -2,9 +2,9 @@ import { dynamicLoader, llms } from "fumadocs-core/source";
 import type * as PageTree from "fumadocs-core/page-tree";
 import { structure } from "fumadocs-core/mdx-plugins";
 import {
-  getDefaultManualVersion,
   getManualNav,
   getManualPages,
+  getManualVersions,
   isValidManualVersion,
 } from "./keystatic";
 
@@ -18,25 +18,24 @@ export interface ManualPageData {
   structuredData: ReturnType<typeof structure>;
 }
 
-/** Public URL prefix of a version's manual. The default version is versionless. */
-export function manualBaseUrl(version: string, defaultVersion: string) {
-  return version === defaultVersion ? `/manuale` : `/${version}/manuale`;
+/** Public URL prefix of a manual version: the version is part of the URL. */
+export function manualBaseUrl(version: string) {
+  return `/manuale/${version}`;
 }
 
 /**
  * Fumadocs source for a manual version, backed by Keystatic content.
  * One loader instance per version, cached for the lifetime of the process.
+ * Only used for the LLM endpoints; navigation is derived from navGroups.
  */
 const loaders = new Map<string, Awaited<ReturnType<typeof createManualLoader>>>();
 
 async function createManualLoader(version: string) {
-  const defaultVersion = await getDefaultManualVersion();
-
   return dynamicLoader(
     {
       // paths are relative to the virtual root of this source; slugs derive
       // from them (index.mdoc is stripped), so keep them version-free and
-      // let baseUrl carry the /<version>/manuale prefix.
+      // let baseUrl carry the /manuale/<version> prefix.
       async files() {
         const pages = await getManualPages(version);
 
@@ -54,7 +53,7 @@ async function createManualLoader(version: string) {
       },
     },
     {
-      baseUrl: manualBaseUrl(version, defaultVersion),
+      baseUrl: manualBaseUrl(version),
     },
   );
 }
@@ -87,12 +86,11 @@ export interface ManualNavPage {
  * prev/next, search index and orphan detection all consume this.
  */
 export async function getManualNavPages(version: string): Promise<ManualNavPage[]> {
-  const [defaultVersion, nav, pages] = await Promise.all([
-    getDefaultManualVersion(),
+  const [nav, pages] = await Promise.all([
     getManualNav(version),
     getManualPages(version),
   ]);
-  const baseUrl = manualBaseUrl(version, defaultVersion);
+  const baseUrl = manualBaseUrl(version);
   const pageBySlug = new Map(pages.map((p) => [p.entrySlug, p]));
 
   return nav.flatMap((entry) => {
@@ -114,52 +112,74 @@ async function getManualNavExternalUrls(version: string) {
 }
 
 /**
- * Builds the Fumadocs page tree from the version's navGroups. Pages not in
+ * Builds the Fumadocs page tree with one root folder per manual version
+ * (same root type, so fumadocs renders them as interchangeable tabs).
+ * Each folder's children come from the version's navGroups; pages not in
  * navGroups (orphans) are absent from the tree: no sidebar entry, no
- * breadcrumb, no highlight.
+ * breadcrumb, no highlight. The version index page becomes the folder's
+ * index instead of a child item.
+ * Versions without nav pages are left out entirely: no tab to an empty tree.
  */
-export async function getManualPageTree(version: string): Promise<PageTree.Root> {
-  const [navPages, externalUrls] = await Promise.all([
-    getManualNavPages(version),
-    getManualNavExternalUrls(version),
-  ]);
+export async function getManualPageTree(): Promise<PageTree.Root> {
+  const versions = await getManualVersions();
 
-  type Entry = { node: PageTree.Item; group: string };
-  const entries: Entry[] = [
-    ...navPages.map((p) => ({
-      group: p.group,
-      node: { type: "page" as const, name: p.title, url: p.url },
-    })),
-    ...externalUrls.map((u) => ({
-      group: u.group,
-      node: { type: "page" as const, name: u.name, url: u.url, external: true },
-    })),
-  ];
+  const folders: PageTree.Folder[] = [];
+  for (const version of versions) {
+    const [navPages, externalUrls] = await Promise.all([
+      getManualNavPages(version.slug),
+      getManualNavExternalUrls(version.slug),
+    ]);
+    if (navPages.length === 0) continue;
 
-  const groups = new Map<string, PageTree.Item[]>();
-  const rootChildren: PageTree.Item[] = [];
+    const baseUrl = manualBaseUrl(version.slug);
 
-  for (const { group, node } of entries) {
-    if (group === "") {
-      rootChildren.push(node);
-    } else {
-      const items = groups.get(group);
-      if (items) items.push(node);
-      else groups.set(group, [node]);
+    type Entry = { node: PageTree.Item; group: string };
+    const entries: Entry[] = [
+      ...navPages
+        .filter((p) => p.url !== baseUrl)
+        .map((p) => ({
+          group: p.group,
+          node: { type: "page" as const, name: p.title, url: p.url },
+        })),
+      ...externalUrls.map((u) => ({
+        group: u.group,
+        node: { type: "page" as const, name: u.name, url: u.url, external: true },
+      })),
+    ];
+
+    const groups = new Map<string, PageTree.Item[]>();
+    const rootChildren: PageTree.Item[] = [];
+
+    for (const { group, node } of entries) {
+      if (group === "") {
+        rootChildren.push(node);
+      } else {
+        const items = groups.get(group);
+        if (items) items.push(node);
+        else groups.set(group, [node]);
+      }
     }
+
+    folders.push({
+      type: "folder",
+      name: version.name,
+      root: "version",
+      index: { type: "page", name: version.name, url: baseUrl },
+      children: [
+        ...rootChildren,
+        ...[...groups.entries()].map(([name, children]) => ({
+          type: "folder" as const,
+          name,
+          children,
+        })),
+      ],
+    });
   }
 
   return {
     type: "root",
     name: "Manuale",
-    children: [
-      ...rootChildren,
-      ...[...groups.entries()].map(([name, children]) => ({
-        type: "folder" as const,
-        name,
-        children,
-      })),
-    ],
+    children: folders,
   };
 }
 
