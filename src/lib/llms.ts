@@ -7,26 +7,10 @@ import type {
   Page,
   VirtualFile,
 } from "fumadocs-core/source";
-import {
-  getDefaultManualVersion,
-  getManualPages,
-  getManualVersions,
-  getMaterials,
-  getSiteSettings,
-  readMdocBody,
-} from "./keystatic";
-import type { Material } from "./keystatic";
-import { getManualNavPages } from "./source";
-
-/**
- * Raw MarkDoc content of a page, lightly cleaned for LLM consumption
- * (custom tags are stripped of their {% %} markers).
- */
-function markdocToLlmText(content: string): string {
-  return content
-    .replace(/\{%\s*(\/)?(callout|steps)[^%]*%\}/g, () => "")
-    .trim();
-}
+import ruleSetRepository from "@/lib/content";
+import type { Material } from "@/lib/content/models";
+import { markdocSource } from "@/lib/content/markdoc/render";
+import { getProgettoNode } from "@/lib/content/progetto";
 
 interface SiteLlmPageData {
   title: string;
@@ -67,12 +51,12 @@ export async function getSiteLlms() {
 export async function getSiteLlmSource(): Promise<SiteLlmLoader> {
   if (!loaderPromise) {
     const [defaultVersion, settings] = await Promise.all([
-      getDefaultManualVersion(),
-      getSiteSettings(),
+      ruleSetRepository.getDefaultVersion(),
+      ruleSetRepository.getSettings(),
     ]);
     const siteTitle = settings?.title ?? "";
     const siteDescription = settings?.description || "";
-    const files = await buildSiteFiles(defaultVersion, siteTitle, siteDescription);
+    const files = await buildSiteFiles(siteTitle, siteDescription);
     const input: DynamicSource<SiteLlmSourceConfig> = {
       async files(): Promise<VirtualFile<SiteLlmSourceConfig>[]> {
         return files;
@@ -90,8 +74,8 @@ export async function getSiteLlmSource(): Promise<SiteLlmLoader> {
 
 async function createSiteLlms() {
   const [settings, versions, loader] = await Promise.all([
-    getSiteSettings(),
-    getManualVersions(),
+    ruleSetRepository.getSettings(),
+    ruleSetRepository.getVersions(),
     getSiteLlmSource(),
   ]);
   const siteTitle = settings?.title ?? "";
@@ -156,11 +140,10 @@ function siteSlugToUrl(slugs: string[], defaultVersion: string): string {
 }
 
 async function buildSiteFiles(
-  defaultVersion: string,
   siteTitle: string,
   siteDescription: string,
 ): Promise<VirtualFile<SiteLlmSourceConfig>[]> {
-  const versions = await getManualVersions();
+  const ruleSets = await ruleSetRepository.findAll();
   const files: VirtualFile<SiteLlmSourceConfig>[] = [];
 
   // Home: the site itself, as the root index entry.
@@ -175,19 +158,22 @@ async function buildSiteFiles(
     },
   });
 
-  // Manual: every version, only nav-referenced (indexed) pages.
-  for (const version of versions) {
-    const [navPages, pages] = await Promise.all([
-      getManualNavPages(version.slug),
-      getManualPages(version.slug),
-    ]);
-    const navSlugs = new Set(navPages.map((p) => p.entrySlug));
-    for (const page of pages) {
-      if (page.llm.exclude || !navSlugs.has(page.entrySlug)) continue;
+  // Manual: every version, pages in navGroups order (nav-referenced only).
+  for (const ruleSet of ruleSets) {
+    const version = ruleSet.version.slug;
+    const pageByEntrySlug = new Map(
+      ruleSet.pages.map((p) => [p.entrySlug, p] as const),
+    );
+    // getNavPages walks navGroups, so it yields the intended page order while
+    // ruleSet.pages is in storage (filename) order.
+    const navPages = await ruleSetRepository.getNavPages(version);
+    for (const navPage of navPages) {
+      const page = pageByEntrySlug.get(navPage.entrySlug);
+      if (!page || page.llm.exclude) continue;
       const path =
         page.slugs.length === 0
-          ? ["manuale", version.slug, "index.mdoc"].join("/")
-          : ["manuale", version.slug, ...leafSegments(page.slugs)].join("/");
+          ? ["manuale", version, "index.mdoc"].join("/")
+          : ["manuale", version, ...leafSegments(page.slugs)].join("/");
       files.push({
         type: "page",
         path,
@@ -195,28 +181,29 @@ async function buildSiteFiles(
           title: page.title,
           description: page.llm.description || page.summary,
           notes: page.llm.notes,
-          body: markdocToLlmText(page.content),
+          body: markdocSource(await page.content()),
         },
       });
     }
   }
 
   // Materials: every version.
-  for (const version of versions) {
-    const materials = await getMaterials(version.slug);
-    for (const material of materials) {
+  for (const ruleSet of ruleSets) {
+    for (const material of ruleSet.materials) {
       if (material.llm.exclude) continue;
       files.push({
         type: "page",
-        path: ["materiali", version.slug, ...leafSegments(material.slug.split("/"))].join("/"),
+        path: [
+          "materiali",
+          ruleSet.version.slug,
+          ...leafSegments(material.slug.split("/")),
+        ].join("/"),
         data: {
           title: material.name,
           description:
             material.llm.description || material.summary || material.flavor,
           notes: material.llm.notes,
-          body: material.content
-            ? markdocToLlmText(material.content)
-            : renderMaterialSynthetic(material),
+          body: await materialBody(material),
         },
       });
     }
@@ -231,7 +218,7 @@ async function buildSiteFiles(
       title: "Progetto",
       description: "Il progetto di traduzione di Dungeon World in italiano.",
       notes: [],
-      body: markdocToLlmText(await readMdocBody("docs/progetto.mdoc")),
+      body: markdocSource(await getProgettoNode()),
     },
   });
 
@@ -249,7 +236,11 @@ function leafSegments(segments: string[]): string[] {
  * Structured Markdown description for materials without textual content
  * (classes, monsters, equipment, ...): they have no body to render.
  */
-function renderMaterialSynthetic(material: Material): string {
+async function materialBody(material: Material): Promise<string> {
+  const node = await material.content();
+  const rendered = markdocSource(node);
+  if (rendered) return rendered;
+
   const lines: string[] = [];
   if (material.summary) lines.push(material.summary);
   if (material.flavor) lines.push(`> ${material.flavor}`);

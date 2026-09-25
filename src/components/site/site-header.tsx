@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Heart } from "lucide-react";
-import { getSiteSettings } from "@/lib/keystatic";
+import ruleSetRepository from "@/lib/content";
 import { KOFI_PAGE_URL } from "@/lib/kofi";
 import { GithubIcon } from "./github-icon";
 import { Logo } from "./logo";
@@ -8,7 +8,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { MobileNav, type NavLink } from "./mobile-nav";
 
 export async function SiteHeader() {
-  const settings = await getSiteSettings();
+  const settings = await ruleSetRepository.getSettings();
 
   const links: NavLink[] = [
     { href: "/manuale", label: "Manuale" },

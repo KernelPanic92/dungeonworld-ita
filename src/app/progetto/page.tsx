@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { readMdocBody } from "@/lib/keystatic";
-import { compiler, markdocToMdx, mdxComponents } from "@/components/mdx";
+import { getProgettoNode } from "@/lib/content/progetto";
+import { renderMarkdoc } from "@/lib/content/markdoc/render";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
 import { JsonLd } from "@/components/site/json-ld";
@@ -16,11 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ProgettoPage() {
-  const content = await readMdocBody("docs/progetto.mdoc");
-  const { body: MdxContent } = await compiler.compile({
-    source: markdocToMdx(content),
-    filePath: "docs/progetto.mdoc",
-  });
+  const { content } = renderMarkdoc(await getProgettoNode());
 
   return (
     <>
@@ -34,7 +30,7 @@ export default async function ProgettoPage() {
           })}
         />
         <article className="prose prose-neutral dark:prose-invert max-w-none">
-          <MdxContent components={mdxComponents} />
+          {content}
         </article>
       </main>
       <SiteFooter />

@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  getDefaultManualVersion,
-  getMaterial,
-  getMaterials,
-  getSiteSettings,
-  isValidManualVersion,
-} from "@/lib/keystatic";
+import ruleSetRepository from "@/lib/content";
 import { materialFileUrl } from "@/lib/materials";
+import { renderMarkdoc } from "@/lib/content/markdoc/render";
 import { cn } from "cn";
-import { mdxComponents, compiler, markdocToMdx } from "@/components/mdx";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { MaterialCard } from "@/components/materials/material-card";
@@ -48,9 +42,9 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { "manual-version": version, slug } = await params;
-  const material = await getMaterial(version, (slug ?? []).join("/"));
+  const material = await ruleSetRepository.findMaterial(version, (slug ?? []).join("/"));
   if (!material) return {};
-  const defaultVersion = await getDefaultManualVersion();
+  const defaultVersion = await ruleSetRepository.getDefaultVersion();
   const prefix = version === defaultVersion ? "" : `/${version}`;
   const canonical = `${prefix}/materiali/${material.slug}`;
   const title = material.seo.title || material.name;
@@ -80,21 +74,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function MaterialDetailPage({ params }: Props) {
   const { "manual-version": version, slug } = await params;
-  if (!(await isValidManualVersion(version))) notFound();
+  if (!(await ruleSetRepository.isValidVersion(version))) notFound();
 
-  const material = await getMaterial(version, (slug ?? []).join("/"));
+  const material = await ruleSetRepository.findMaterial(version, (slug ?? []).join("/"));
   if (!material) notFound();
 
-  const defaultVersion = await getDefaultManualVersion();
+  const defaultVersion = await ruleSetRepository.getDefaultVersion();
   const prefix = version === defaultVersion ? "" : `/${version}`;
   const canonical = `${prefix}/materiali/${material.slug}`;
 
-  const settings = await getSiteSettings();
+  const settings = await ruleSetRepository.getSettings();
   const publisherName = settings?.title || "Dungeon World Italia";
 
   // member materials of a collection, rendered as a card grid
   const contained = material.type === "collection"
-    ? (await getMaterials(version)).filter((m) =>
+    ? ((await ruleSetRepository.findOne(version))?.materials ?? []).filter((m) =>
         material.contains.some((c) => c.slug === m.slug),
       )
     : [];
@@ -110,10 +104,9 @@ export default async function MaterialDetailPage({ params }: Props) {
     ? materialFileUrl(material, version, material.showcase.image)
     : null;
 
-  const { body: MdxContent } = await compiler.compile({
-    source: markdocToMdx(material.content),
-    filePath: `docs/materiali/${version}/${material.slug}/index.mdoc`,
-  });
+  const materialNode = await material.content();
+  const materialHasContent = materialNode.children.length > 0;
+  const { content: materialContent } = renderMarkdoc(materialNode);
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
@@ -319,9 +312,9 @@ export default async function MaterialDetailPage({ params }: Props) {
         </section>
       ) : null}
 
-      {material.content ? (
+      {materialHasContent ? (
         <article className="prose prose-neutral dark:prose-invert max-w-none">
-          <MdxContent components={mdxComponents} />
+          {materialContent}
         </article>
       ) : null}
     </div>

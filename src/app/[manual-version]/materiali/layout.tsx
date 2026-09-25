@@ -1,14 +1,11 @@
 import { notFound } from "next/navigation";
-import {
-  isValidManualVersion,
-} from "@/lib/keystatic";
+import ruleSetRepository from "@/lib/content";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { AdSenseScript } from "@/components/ads/adsense";
 
 export async function generateStaticParams() {
-  const { getManualVersions } = await import("@/lib/keystatic");
-  const versions = await getManualVersions();
+  const versions = await ruleSetRepository.getVersions();
   return versions.map((v) => ({ "manual-version": v.slug }));
 }
 
@@ -20,7 +17,7 @@ interface Props {
 export default async function ManualVersionLayout({ children, params }: Props) {
   const { "manual-version": version } = await params;
 
-  if (!(await isValidManualVersion(version))) {
+  if (!(await ruleSetRepository.isValidVersion(version))) {
     notFound();
   }
 

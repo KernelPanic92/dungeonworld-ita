@@ -1,71 +1,28 @@
 import { dynamicLoader } from "fumadocs-core/source";
-import type {
-  DynamicSource,
-  LoaderOutput,
-  Meta,
-  MetaData,
-  Page,
-  VirtualFile,
-} from "fumadocs-core/source";
 import type * as PageTree from "fumadocs-core/page-tree";
-import { structure } from "fumadocs-core/mdx-plugins";
-import {
-  getDefaultManualVersion,
-  getManualNav,
-  getManualPages,
-  getManualVersions,
-} from "./keystatic";
+import ruleSetRepository, { manualBaseUrl } from "@/lib/content";
+import type { RuleSet } from "@/lib/content/models";
+import manualSourceProvider from "@/lib/content/manual-source-provider";
+
+export { manualBaseUrl };
 
 /**
- * Public URL prefix of a manual version. The default version is versionless
- * (served at /manuale/...), mirroring how fumadocs group folders hide the
- * default root folder from URLs; other versions keep /manuale/<version>.
+ * One Fumadocs source covering every version, used by the search endpoint
+ * (`createFromSource`). Only nav-referenced pages are indexed (orphan drafts
+ * stay out of search), and each page is tagged with its version so the
+ * client can scope results to the current version.
  */
-export function manualBaseUrl(version: string, defaultVersion: string) {
-  return version === defaultVersion ? `/manuale` : `/manuale/${version}`;
+let searchSource: Awaited<ReturnType<typeof buildManualSearchSource>> | undefined;
+
+async function buildManualSearchSource() {
+  const source = await manualSourceProvider.build();
+  const loader = dynamicLoader(source, { baseUrl: "/manuale" });
+  return loader.get();
 }
 
-// ---------------------------------------------------------------------------
-// Page tree (sidebar / active item / breadcrumb) — derived from navGroups
-// ---------------------------------------------------------------------------
-export interface ManualNavPage {
-  /** Keystatic entry slug, e.g. `1.0/game-master/gm` */
-  entrySlug: string;
-  title: string;
-  url: string;
-  group: string;
-}
-
-/**
- * The ordered list of pages referenced by the version's navGroups, with
- * titles and public URLs. Single source for URL derivation: sidebar tree,
- * prev/next, search index and orphan detection all consume this.
- */
-export async function getManualNavPages(version: string): Promise<ManualNavPage[]> {
-  const [defaultVersion, nav, pages] = await Promise.all([
-    getDefaultManualVersion(),
-    getManualNav(version),
-    getManualPages(version),
-  ]);
-  const baseUrl = manualBaseUrl(version, defaultVersion);
-  const pageBySlug = new Map(pages.map((p) => [p.entrySlug, p]));
-
-  return nav.flatMap((entry) => {
-    if (entry.kind !== "page") return [];
-    const page = pageBySlug.get(entry.slug);
-    if (!page) return [];
-    const rest = entry.slug.slice(version.length + 1);
-    const url = rest === "index" ? baseUrl : `${baseUrl}/${rest}`;
-    return [{ entrySlug: entry.slug, title: page.title, url, group: entry.group }];
-  });
-}
-
-/** Urls of external (non-page) nav entries, keyed by their label. */
-async function getManualNavExternalUrls(version: string) {
-  const nav = await getManualNav(version);
-  return nav
-    .filter((e): e is Extract<typeof e, { kind: "url" }> => e.kind === "url")
-    .map((e) => ({ name: e.label, url: e.url, group: e.group }));
+export async function getManualSearchSource() {
+  searchSource ??= await buildManualSearchSource();
+  return searchSource;
 }
 
 /**
@@ -83,59 +40,14 @@ async function getManualNavExternalUrls(version: string) {
  * shows up in the switcher and is reachable by URL.
  */
 export async function getManualPageTree(): Promise<PageTree.Root> {
-  const [versions, defaultVersion] = await Promise.all([
-    getManualVersions(),
-    getDefaultManualVersion(),
+  const [ruleSets, defaultVersion] = await Promise.all([
+    ruleSetRepository.findAll(),
+    ruleSetRepository.getDefaultVersion(),
   ]);
 
   const folders: PageTree.Folder[] = [];
-  for (const version of versions) {
-    const [navPages, externalUrls] = await Promise.all([
-      getManualNavPages(version.slug),
-      getManualNavExternalUrls(version.slug),
-    ]);
-
-    const baseUrl = manualBaseUrl(version.slug, defaultVersion);
-
-    type Entry = { node: PageTree.Item; group: string };
-    const entries: Entry[] = [
-      ...navPages.map((p) => ({
-        group: p.group,
-        node: { type: "page" as const, name: p.title, url: p.url },
-      })),
-      ...externalUrls.map((u) => ({
-        group: u.group,
-        node: { type: "page" as const, name: u.name, url: u.url, external: true },
-      })),
-    ];
-
-    const groups = new Map<string, PageTree.Item[]>();
-    const rootChildren: PageTree.Item[] = [];
-
-    for (const { group, node } of entries) {
-      if (group === "") {
-        rootChildren.push(node);
-      } else {
-        const items = groups.get(group);
-        if (items) items.push(node);
-        else groups.set(group, [node]);
-      }
-    }
-
-    folders.push({
-      type: "folder",
-      name: version.name,
-      root: "version",
-      index: { type: "page", name: version.name, url: baseUrl },
-      children: [
-        ...rootChildren,
-        ...[...groups.entries()].map(([name, children]) => ({
-          type: "folder" as const,
-          name,
-          children,
-        })),
-      ],
-    });
+  for (const ruleSet of ruleSets) {
+    folders.push(folderOf(ruleSet, defaultVersion));
   }
 
   return {
@@ -145,93 +57,65 @@ export async function getManualPageTree(): Promise<PageTree.Root> {
   };
 }
 
-// ---------------------------------------------------------------------------
-// Unified search source
-// ---------------------------------------------------------------------------
+function folderOf(ruleSet: RuleSet, defaultVersion: string): PageTree.Folder {
+  const version = ruleSet.version.slug;
+  const baseUrl = manualBaseUrl(version, defaultVersion);
 
-export interface ManualSearchPageData {
-  title: string;
-  description: string;
-  structuredData: ReturnType<typeof structure>;
-  /** Public URL (versionless for the default version) */
-  url: string;
-  /** Version slug; used as the search `tag` so results can be scoped per version */
-  version: string;
-  /** Version display name */
-  versionName: string;
-  /** navGroups group of the page ("" for root-level pages) */
-  group: string;
-}
+  type Entry = { node: PageTree.Item; group: string };
+  const entries: Entry[] = [];
 
-type ManualSearchSourceConfig = {
-  pageData: ManualSearchPageData;
-  metaData: MetaData;
-};
-
-type ManualSearchLoaderConfig = {
-  i18n: undefined;
-  meta: Meta<undefined, MetaData>;
-  page: Page<undefined, ManualSearchPageData>;
-  source: undefined;
-};
-
-/**
- * One Fumadocs source covering every version, used by the search endpoint
- * (`createFromSource`). Only nav-referenced pages are indexed (orphan drafts
- * stay out of search), and each page is tagged with its version so the
- * client can scope results to the current version.
- */
-let searchSource: LoaderOutput<ManualSearchLoaderConfig> | undefined;
-
-async function createManualSearchLoader() {
-  const input: DynamicSource<ManualSearchSourceConfig> = {
-    async files(): Promise<VirtualFile<ManualSearchSourceConfig>[]> {
-      const versions = await getManualVersions();
-      const pageFiles: VirtualFile<ManualSearchSourceConfig>[] = [];
-
-      for (const version of versions) {
-        const [navPages, pages] = await Promise.all([
-          getManualNavPages(version.slug),
-          getManualPages(version.slug),
-        ]);
-        const pageBySlug = new Map(pages.map((p) => [p.entrySlug, p]));
-
-        for (const nav of navPages) {
-          const page = pageBySlug.get(nav.entrySlug);
-          if (!page) continue;
-          pageFiles.push({
+  for (const group of ruleSet.manual) {
+    const groupName = group.groupName ?? "";
+    for (const item of group.items) {
+      if (item.type === "url") {
+        entries.push({
+          group: groupName,
+          node: {
             type: "page",
-            path:
-              page.slugs.length === 0
-                ? `${version.slug}/index.mdoc`
-                : `${version.slug}/${page.slugs.join("/")}/index.mdoc`,
-            data: {
-              title: page.title,
-              description: page.summary,
-              structuredData: structure(page.content),
-              url: nav.url,
-              version: version.slug,
-              versionName: version.name,
-              group: nav.group,
-            },
-          });
-        }
+            name: item.label,
+            url: item.url,
+            external: true,
+          },
+        });
+        continue;
       }
-      return pageFiles;
-    },
-  };
-  return dynamicLoader(input, { baseUrl: "/manuale" });
-}
-
-/**
- * The unified search source. Memoised: `createFromSource` keeps the built
- * search server per loader instance, so returning the same instance avoids
- * re-indexing on every request.
- */
-export async function getManualSearchSource() {
-  if (!searchSource) {
-    const loader = await createManualSearchLoader();
-    searchSource = await loader.get();
+      const rest = item.page.entrySlug.slice(version.length + 1);
+      entries.push({
+        group: groupName,
+        node: {
+          type: "page",
+          name: item.page.title,
+          url: rest === "index" ? baseUrl : `${baseUrl}/${rest}`,
+        },
+      });
+    }
   }
-  return searchSource;
+
+  const groups = new Map<string, PageTree.Item[]>();
+  const rootChildren: PageTree.Item[] = [];
+
+  for (const { group, node } of entries) {
+    if (group === "") {
+      rootChildren.push(node);
+    } else {
+      const items = groups.get(group);
+      if (items) items.push(node);
+      else groups.set(group, [node]);
+    }
+  }
+
+  return {
+    type: "folder",
+    name: ruleSet.version.name,
+    root: "version",
+    index: { type: "page", name: ruleSet.version.name, url: baseUrl },
+    children: [
+      ...rootChildren,
+      ...[...groups.entries()].map(([name, children]) => ({
+        type: "folder" as const,
+        name,
+        children,
+      })),
+    ],
+  };
 }

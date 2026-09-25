@@ -7,7 +7,7 @@ import { CREATIVE_WORK_STATUS_OPTIONS } from "./src/lib/creative-work-status";
 // Custom MarkDoc tags used by the content ({% callout %}, {% steps %}), also
 // converted at render time by markdocToMdx. Keystatic needs these component
 // definitions to parse and validate the stored content in the admin.
-const contentComponents = {
+export const contentComponents = {
   callout: wrapper({
     label: "Callout",
     description: "Un riquadro di nota o avviso.",
@@ -29,6 +29,81 @@ const contentComponents = {
     label: "Steps",
     description: "Un elenco di passaggi numerati.",
     schema: {},
+    ContentView: ({ children }) => children,
+  }),
+  "media-block": wrapper({
+    label: "Media block",
+    description:
+      "Un'immagine affiancata al testo, a sinistra o a destra (come in un documento di testo).",
+    schema: {
+      image: fields.image({
+        label: "Immagine",
+        directory: "public/images",
+        publicPath: "/images/",
+      }),
+    position: fields.select({
+      label: "Posizione immagine",
+      options: [
+        { label: "Sinistra", value: "left" },
+        { label: "Destra", value: "right" },
+      ],
+      defaultValue: "right",
+      description:
+        "Su schermi piccoli l'ordine segue questa scelta: immagine prima se è a sinistra, testo prima se è a destra.",
+    }),
+    align: fields.select({
+      label: "Allineamento verticale",
+      options: [
+        { label: "In alto", value: "top" },
+        { label: "Centro", value: "center" },
+        { label: "In basso", value: "bottom" },
+        { label: "Stretch", value: "stretch" },
+      ],
+      defaultValue: "top",
+      description:
+        "Come si allineano verticalmente immagine e testo rispetto l'una all'altro.",
+    }),
+    justify: fields.select({
+      label: "Allineamento orizzontale",
+      options: [
+        { label: "Inizio", value: "start" },
+        { label: "Centro", value: "center" },
+        { label: "Fine", value: "end" },
+        { label: "Spazio tra", value: "space-between" },
+        { label: "Spazio attorno", value: "space-around" },
+        { label: "Spazio uniforme", value: "space-evenly" },
+      ],
+      defaultValue: "start",
+      description:
+        "Come si dispongono orizzontalmente le due colonne nella riga.",
+    }),
+    mobileOrder: fields.select({
+      label: "Ordine su schermi piccoli",
+      options: [
+        { label: "Segui posizione", value: "follow" },
+        { label: "Immagine sempre prima", value: "image-first" },
+      ],
+      defaultValue: "follow",
+      description:
+        "Su mobile l'immagine e il testo vengono impilati. Puoi mantenerne l'ordine della posizione desktop oppure mettere sempre l'immagine sopra.",
+    }),
+    },
+    ContentView: ({ children }) => children,
+  }),
+  // Nota a piè di pagina (endnote), pattern raccomandato da Markdoc:
+  // - {% note #id /%} self-closing → riferimento nel testo
+  // - {% note #id %}contenuto{% /note %} → la nota, in fondo al documento
+  note: wrapper({
+    label: "Nota",
+    description:
+      "Riferimento a piè di pagina: self-closing nel testo, aperto e chiuso con il contenuto in fondo alla pagina.",
+    schema: {
+      id: fields.text({
+        label: "Identificativo",
+        description:
+          "Chiave della nota (es. assalire). Usa {% note #assalire /%} per il riferimento e {% note #assalire %}…{% /note %} per la nota.",
+      }),
+    },
     ContentView: ({ children }) => children,
   }),
 };

@@ -14,11 +14,10 @@ externalIdentifiers:
     externalId: Q15221892
     url: https://www.wikidata.org/wiki/Q15221892
   - platform: rpggeek
-    externalId: "11105"
+    externalId: '11105'
     url: https://rpggeek.com/rpg/11105/dungeon-world
 navGroups:
-  - groupName: ""
-    items:
+  - items:
       - discriminant: page
         value:
           page: 1.0/index
@@ -37,9 +36,6 @@ navGroups:
       - discriminant: page
         value:
           page: 1.0/equipaggiamento
-      - discriminant: page
-        value:
-          page: 1.0/classi
   - groupName: Game Master
     items:
       - discriminant: page
@@ -59,6 +55,9 @@ navGroups:
           page: 1.0/game-master/avventure-avanzate
   - groupName: Mostri
     items:
+      - discriminant: page
+        value:
+          page: 1.0/mostri/panoramica
       - discriminant: page
         value:
           page: 1.0/mostri/ambientazioni/abitanti-delle-caverne
@@ -86,9 +85,6 @@ navGroups:
       - discriminant: page
         value:
           page: 1.0/mostri/ambientazioni/profondita-della-terra
-      - discriminant: page
-        value:
-          page: 1.0/mostri/panoramica
   - groupName: Appendici
     items:
       - discriminant: page
@@ -106,4 +102,3 @@ navGroups:
       - discriminant: page
         value:
           page: 1.0/appendici/png-istantanei
-

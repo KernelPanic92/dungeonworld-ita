@@ -9,7 +9,7 @@ import {
   IubendaCookieSolution,
 } from "@/components/site/iubenda";
 import { JsonLd } from "@/components/site/json-ld";
-import { getManualVersions, getSiteSettings } from "@/lib/keystatic";
+import ruleSetRepository from "@/lib/content";
 import {
   organizationJsonLd,
   tabletopGameJsonLd,
@@ -31,7 +31,7 @@ const geistMono = Geist_Mono({
 const SITE_NAME = "Dungeon World Italia";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const settings = await getSiteSettings();
+  const settings = await ruleSetRepository.getSettings();
   return {
     metadataBase: new URL(getSiteBaseUrl()),
     title: {
@@ -53,8 +53,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   const dm = await draftMode();
   const isPreviewing = dm.isEnabled;
   const branch = (await cookies()).get("ks-branch")?.value;
-  const settings = await getSiteSettings();
-  const versions = await getManualVersions();
+  const settings = await ruleSetRepository.getSettings();
+  const versions = await ruleSetRepository.getVersions();
 
   return (
     <html

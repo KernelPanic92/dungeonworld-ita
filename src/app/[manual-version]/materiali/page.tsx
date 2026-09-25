@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import {
-  getDefaultManualVersion,
-  getLicenses,
-  getManualVersions,
-  getMaterials,
-  isValidManualVersion,
-} from "@/lib/keystatic";
+import ruleSetRepository from "@/lib/content";
 import { materialsCache } from "@/lib/materials-query";
 import {
   MATERIALS_PAGE_SIZE,
@@ -33,8 +27,8 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { "manual-version": version } = await params;
-  if (!(await isValidManualVersion(version))) return {};
-  const defaultVersion = await getDefaultManualVersion();
+  if (!(await ruleSetRepository.isValidVersion(version))) return {};
+  const defaultVersion = await ruleSetRepository.getDefaultVersion();
   const prefix = version === defaultVersion ? "" : `/${version}`;
   return {
     title: "Materiali",
@@ -45,17 +39,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function MaterialsPage({ params, searchParams }: Props) {
   const { "manual-version": version } = await params;
-  if (!(await isValidManualVersion(version))) notFound();
+  if (!(await ruleSetRepository.isValidVersion(version))) notFound();
 
-  const defaultVersion = await getDefaultManualVersion();
+  const defaultVersion = await ruleSetRepository.getDefaultVersion();
   const prefix = version === defaultVersion ? "" : `/${version}`;
 
   const query = materialsCache.parse(await searchParams);
 
-  const [all, versions, licenses] = await Promise.all([
-    getMaterials(version),
-    getManualVersions(),
-    getLicenses(),
+  const ruleSet = await ruleSetRepository.findOne(version);
+  const all = ruleSet?.materials ?? [];
+  const [versions, licenses] = await Promise.all([
+    ruleSetRepository.getVersions(),
+    ruleSetRepository.getLicenses(),
   ]);
 
   // Filter options reflect the values actually used by this version.

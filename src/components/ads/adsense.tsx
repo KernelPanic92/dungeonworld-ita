@@ -1,7 +1,6 @@
 import type { CSSProperties } from "react";
 import {
   ADSENSE_CLIENT,
-  ADSENSE_SLOT_MANUAL,
   ADSENSE_SLOT_TOC,
   consentScriptProps,
 } from "@/lib/consent";
@@ -95,19 +94,5 @@ export function AdSenseAd({
         }}
       />
     </div>
-  );
-}
-
-/**
- * In-article unit injected between the sections of manual pages
- * (see src/lib/manual-ads.ts); rendered through the MDX component map.
- */
-export function ManualAdSlot() {
-  return (
-    <AdSenseAd
-      slot={ADSENSE_SLOT_MANUAL ?? ADSENSE_SLOT_TOC}
-      format="in-article"
-      containerClassName="not-prose my-8"
-    />
   );
 }

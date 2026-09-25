@@ -1,11 +1,11 @@
 import { redirect } from "next/navigation";
 import { cookies, draftMode } from "next/headers";
-import { getManualVersions } from "@/lib/keystatic";
+import ruleSetRepository from "@/lib/content";
 
 /**
  * Enables Next.js draft mode for a Keystatic preview: remembers the GitHub
  * branch in a cookie and redirects to the requested page, which will then be
- * rendered from the branch content (see the draft-aware reader in keystatic.ts).
+ * rendered from the branch content (see the draft-aware ReaderFactory).
  */
 export async function GET(req: Request) {
   const url = new URL(req.url);
@@ -23,7 +23,7 @@ export async function GET(req: Request) {
   // /{version}/materiali/{rest} so the detail page can resolve it.
   let target = to;
   try {
-    const versions = (await getManualVersions()).map((v) => v.slug);
+    const versions = (await ruleSetRepository.getVersions()).map((v) => v.slug);
     const segs = to.split("/").filter(Boolean);
     if (segs[0] === "materiali" && segs.length > 1 && versions.includes(segs[1])) {
       target = `/${segs[1]}/materiali/${segs.slice(2).join("/")}`;

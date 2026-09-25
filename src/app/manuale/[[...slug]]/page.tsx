@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
-import {
-  getDefaultManualVersion,
-  getManualPage,
-  getManualVersions,
-  getSiteSettings,
-  isValidManualVersion,
-} from "@/lib/keystatic";
-import { getManualNavPages, manualBaseUrl } from "@/lib/source";
-import { compiler, markdocToMdx, mdxComponents } from "@/components/mdx";
-import { AdSenseAd, ManualAdSlot } from "@/components/ads/adsense";
+import ruleSetRepository from "@/lib/content";
+import { manualBaseUrl } from "@/lib/content";
+import { renderMarkdoc } from "@/lib/content/markdoc/render";
+import { AdSenseAd } from "@/components/ads/adsense";
 import { ADSENSE_SLOT_BANNER } from "@/lib/consent";
-import { injectManualAdSlots } from "@/lib/manual-ads";
 import { JsonLd } from "@/components/site/json-ld";
 import { breadcrumbJsonLd, manualPageJsonLd } from "@/lib/schema-org";
 import {
@@ -33,7 +26,7 @@ interface Props {
  */
 async function resolveManualSlug(slug?: string[]) {
   const segments = slug ?? [];
-  const defaultVersion = await getDefaultManualVersion();
+  const defaultVersion = await ruleSetRepository.getDefaultVersion();
 
   if (segments.length === 0) {
     return { version: defaultVersion, rest: [] };
@@ -44,7 +37,7 @@ async function resolveManualSlug(slug?: string[]) {
     // canonical URLs of the default version are versionless
     permanentRedirect(`/manuale${rest.length ? `/${rest.join("/")}` : ""}`);
   }
-  if (await isValidManualVersion(version)) {
+  if (await ruleSetRepository.isValidVersion(version)) {
     return { version, rest };
   }
 
@@ -55,13 +48,15 @@ async function resolveManualSlug(slug?: string[]) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const { version, rest } = await resolveManualSlug(slug);
-  const page = await getManualPage(version, rest);
-  const defaultVersion = await getDefaultManualVersion();
+  const page = await ruleSetRepository.findPage(version, rest);
+  const defaultVersion = await ruleSetRepository.getDefaultVersion();
   const baseUrl = manualBaseUrl(version, defaultVersion);
   const pagePath = rest.length === 0 ? baseUrl : `${baseUrl}/${rest.join("/")}`;
   if (!page && rest.length === 0) {
     // version landing (no content yet): from the version entry
-    const entry = (await getManualVersions()).find((v) => v.slug === version);
+    const entry = (await ruleSetRepository.getVersions()).find(
+      (v) => v.slug === version,
+    );
     return {
       title: entry?.name ?? "Manuale",
       description: entry?.description,
@@ -70,7 +65,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
   // Orphan page (not in any navGroups): reachable for direct link or drafts,
   // but kept out of search engines.
-  const navPages = await getManualNavPages(version);
+  const navPages = await ruleSetRepository.getNavPages(version);
   const entrySlug = `${version}/${rest.join("/") || "index"}`;
   const isOrphan = !navPages.some((p) => p.entrySlug === entrySlug);
   const seo = page?.seo;
@@ -94,7 +89,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: image ? "summary_large_image" : "summary",
       title,
       description,
-      ...(image ? { images: [image] } : {}),
+      ...(image ? { images: [{ url: image }] } : {}),
     },
     ...(isOrphan || seo?.noIndex
       ? { robots: { index: false, follow: false } }
@@ -106,11 +101,13 @@ export default async function ManualPage({ params }: Props) {
   const { slug } = await params;
   const { version, rest } = await resolveManualSlug(slug);
 
-  const manualPage = await getManualPage(version, rest);
+  const manualPage = await ruleSetRepository.findPage(version, rest);
   if (!manualPage) {
     // version with no content yet: landing page from the version entry
     if (rest.length === 0) {
-      const entry = (await getManualVersions()).find((v) => v.slug === version);
+      const entry = (await ruleSetRepository.getVersions()).find(
+        (v) => v.slug === version,
+      );
       if (entry) {
         return (
           <DocsPage>
@@ -122,7 +119,7 @@ export default async function ManualPage({ params }: Props) {
     notFound();
   }
 
-  const navPages = await getManualNavPages(version);
+  const navPages = await ruleSetRepository.getNavPages(version);
   const entrySlug = `${version}/${rest.join("/") || "index"}`;
   const index = navPages.findIndex((p) => p.entrySlug === entrySlug);
 
@@ -131,23 +128,20 @@ export default async function ManualPage({ params }: Props) {
   const next =
     index >= 0 && index < navPages.length - 1 ? navPages[index + 1] : undefined;
 
-  const defaultVersion = await getDefaultManualVersion();
+  const defaultVersion = await ruleSetRepository.getDefaultVersion();
   const baseUrl = manualBaseUrl(version, defaultVersion);
   const pagePath = rest.length === 0 ? baseUrl : `${baseUrl}/${rest.join("/")}`;
   const isOrphan = index === -1;
   const isIndexed = !isOrphan && !manualPage.seo.noIndex;
 
-  const settings = await getSiteSettings();
+  const settings = await ruleSetRepository.getSettings();
   const publisherName = settings?.title || "Dungeon World Italia";
 
   const image = manualPage.seo.image || manualPage.image
     ? manualPage.seo.image || `/files/manuale/pagine/${entrySlug}/${manualPage.image}`
     : null;
 
-  const { body: MdxContent, toc } = await compiler.compile({
-    source: markdocToMdx(injectManualAdSlots(manualPage.content)),
-    filePath: `docs/manuale/pagine/${version}/${rest.join("/")}/index.mdoc`,
-  });
+  const { content, toc } = renderMarkdoc(await manualPage.content());
 
   return (
     <DocsPage
@@ -188,9 +182,7 @@ export default async function ManualPage({ params }: Props) {
           ]}
         />
       ) : null}
-      <DocsBody>
-        <MdxContent components={{ ...mdxComponents, ManualAdSlot }} />
-      </DocsBody>
+      <DocsBody>{content}</DocsBody>
       {/* horizontal banner between the manual body and the prev/next footer */}
       <AdSenseAd
         slot={ADSENSE_SLOT_BANNER}

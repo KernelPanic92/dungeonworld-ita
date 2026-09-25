@@ -12,7 +12,7 @@ import type {
   WebSiteLeaf,
   WithContext,
 } from "schema-dts";
-import type { Material, ManualPage, ManualVersion, SiteSettings } from "./keystatic";
+import type { Material, ManualPage, ManualVersion, SiteSettings } from "@/lib/content/models";
 import { absoluteUrl } from "./site";
 
 const SITE_NAME = "Dungeon World Italia";

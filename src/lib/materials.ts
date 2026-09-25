@@ -1,4 +1,4 @@
-import type { Material } from "./keystatic";
+import type { Material } from "@/lib/content/models";
 
 export interface MaterialsQuery {
   search: string;

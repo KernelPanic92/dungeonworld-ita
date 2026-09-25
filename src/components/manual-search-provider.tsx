@@ -2,7 +2,7 @@
 
 import { SearchProvider } from "fumadocs-ui/contexts/search";
 import type { DefaultSearchDialogProps } from "fumadocs-ui/components/dialog/search-default";
-import type { ManualVersion } from "@/lib/keystatic";
+import type { ManualVersion } from "@/lib/content/models";
 
 interface Props {
   /** Current version: the search dialog's default tag. */

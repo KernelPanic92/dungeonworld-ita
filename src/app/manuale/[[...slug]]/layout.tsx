@@ -1,5 +1,5 @@
 import { getManualPageTree } from "@/lib/source";
-import { getManualVersions, resolveManualVersion } from "@/lib/keystatic";
+import ruleSetRepository from "@/lib/content";
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import { ManualSearchProvider } from "@/components/manual-search-provider";
 import { AdSenseScript } from "@/components/ads/adsense";
@@ -15,8 +15,8 @@ export default async function ManualLayout({ children, params }: Props) {
   // one root folder per version: fumadocs renders them as version tabs
   const tree = await getManualPageTree();
   const [version, versions] = await Promise.all([
-    resolveManualVersion(slug),
-    getManualVersions(),
+    ruleSetRepository.resolveVersion(slug),
+    ruleSetRepository.getVersions(),
   ]);
 
   return (

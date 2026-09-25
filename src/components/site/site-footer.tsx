@@ -1,11 +1,7 @@
 import Link from "next/link";
 import { Heart } from "lucide-react";
-import {
-  getLicenses,
-  getManualVersions,
-  getSiteSettings,
-  type ManualVersion,
-} from "@/lib/keystatic";
+import ruleSetRepository from "@/lib/content";
+import type { ManualVersion } from "@/lib/content/models";
 import { creativeWorkStatusLabel } from "@/lib/creative-work-status";
 import { KOFI_PAGE_URL } from "@/lib/kofi";
 import { IubendaPolicyLink } from "@/components/site/iubenda";
@@ -43,9 +39,9 @@ function defaultVersionOf(versions: ManualVersion[]): ManualVersion | null {
 
 export async function SiteFooter() {
   const [settings, versions, licenses] = await Promise.all([
-    getSiteSettings(),
-    getManualVersions(),
-    getLicenses(),
+    ruleSetRepository.getSettings(),
+    ruleSetRepository.getVersions(),
+    ruleSetRepository.getLicenses(),
   ]);
   const githubUrl = settings?.githubUrl ?? null;
   const defaultVersion = defaultVersionOf(versions);

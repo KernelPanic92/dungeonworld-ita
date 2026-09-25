@@ -1,8 +1,5 @@
 import { notFound } from "next/navigation";
-import {
-  getDefaultManualVersion,
-  getManualVersions,
-} from "@/lib/keystatic";
+import ruleSetRepository from "@/lib/content";
 import { getSiteLlms, getSiteLlmSource } from "@/lib/llms";
 
 // cached forever: content is static per deployment
@@ -42,8 +39,8 @@ async function resolveSlugs(
   segments: string[],
 ): Promise<string[] | undefined> {
   const [defaultVersion, versions] = await Promise.all([
-    getDefaultManualVersion(),
-    getManualVersions(),
+    ruleSetRepository.getDefaultVersion(),
+    ruleSetRepository.getVersions(),
   ]);
   const versionSlugs = new Set(versions.map((v) => v.slug));
   const [first, ...rest] = segments;

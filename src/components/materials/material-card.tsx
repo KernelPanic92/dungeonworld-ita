@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { materialThumbnail } from "@/lib/materials";
-import type { Material } from "@/lib/keystatic";
+import type { Material } from "@/lib/content/models";
 import { MATERIAL_SOURCE_OPTIONS, MATERIAL_TYPE_OPTIONS } from "../../../keystatic.config";
 
 export function MaterialCard({

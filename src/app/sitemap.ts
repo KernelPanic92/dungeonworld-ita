@@ -1,19 +1,17 @@
 import type { MetadataRoute } from "next";
-import {
-  getDefaultManualVersion,
-  getManualPages,
-  getManualVersions,
-  getMaterials,
-} from "@/lib/keystatic";
-import { getManualNavPages, manualBaseUrl } from "@/lib/source";
+import ruleSetRepository, {
+  manualBaseUrl,
+} from "@/lib/content";
 import { getSiteBaseUrl } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [versions, defaultVersion] = await Promise.all([
-    getManualVersions(),
-    getDefaultManualVersion(),
+    ruleSetRepository.getVersions(),
+    ruleSetRepository.getDefaultVersion(),
   ]);
-  const materials = await getMaterials(defaultVersion);
+  const materials = await ruleSetRepository
+    .findOne(defaultVersion)
+    .then((r) => r?.materials ?? []);
   const BASE_URL = getSiteBaseUrl();
 
   // Every version with nav pages. Orphans (not in navGroups) and pages marked
@@ -21,8 +19,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const manualEntries = await Promise.all(
     versions.map(async (version) => {
       const [navPages, pages] = await Promise.all([
-        getManualNavPages(version.slug),
-        getManualPages(version.slug),
+        ruleSetRepository.getNavPages(version.slug),
+        ruleSetRepository.findOne(version.slug).then((r) => r?.pages ?? []),
       ]);
       if (navPages.length === 0) return [];
 
