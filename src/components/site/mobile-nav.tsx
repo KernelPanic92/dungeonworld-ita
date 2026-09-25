@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Heart, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { KOFI_PAGE_URL } from "@/lib/kofi";
 import {
   Sheet,
   SheetContent,
@@ -50,6 +51,16 @@ export function MobileNav({
                 {link.label}
               </Link>
             ))}
+            <a
+              href={KOFI_PAGE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Supportaci su Ko-fi"
+              className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium hover:text-dw transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dw"
+            >
+              <Heart className="size-4 fill-dw text-dw" aria-hidden="true" />
+              Supportaci
+            </a>
           </nav>
           <div className="mt-4 flex items-center gap-2 border-t px-4 pt-4">
             <ThemeToggle />

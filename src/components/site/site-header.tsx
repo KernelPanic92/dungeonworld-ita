@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { Heart } from "lucide-react";
 import { getSiteSettings } from "@/lib/keystatic";
+import { KOFI_PAGE_URL } from "@/lib/kofi";
 import { GithubIcon } from "./github-icon";
 import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
@@ -36,6 +38,16 @@ export async function SiteHeader() {
               {link.label}
             </Link>
           ))}
+          <a
+            href={KOFI_PAGE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Supportaci su Ko-fi"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-md hover:text-dw transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dw"
+          >
+            <Heart className="size-4 fill-dw text-dw" aria-hidden="true" />
+            Supportaci
+          </a>
           <ThemeToggle />
           {settings?.githubUrl ? (
             <Link
