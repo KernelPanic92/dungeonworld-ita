@@ -534,6 +534,8 @@ export interface SiteSettings {
   description: string;
   donateUrl: string | null;
   githubUrl: string | null;
+  originalGameUrl: string | null;
+  licenseSlug: string | null;
 }
 
 export function getSiteSettings(): Promise<SiteSettings | null> {
@@ -545,6 +547,8 @@ export function getSiteSettings(): Promise<SiteSettings | null> {
       description: s.description ?? "",
       donateUrl: s.donateUrl ?? null,
       githubUrl: s.githubUrl ?? null,
+      originalGameUrl: s.originalGameUrl ?? null,
+      licenseSlug: s.license ?? null,
     };
   });
 }

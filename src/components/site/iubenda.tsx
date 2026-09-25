@@ -53,7 +53,6 @@ interface IubendaPolicyLinkProps {
  * the `iubenda-embed` class opens the policy in a modal.
  */
 export function IubendaPolicyLink({ kind, className }: IubendaPolicyLinkProps) {
-  if (!consentEnabled) return null;
   const base = `https://www.iubenda.com/privacy-policy/${IUBENDA_SITE_ID}`;
   const href =
     kind === "privacy"

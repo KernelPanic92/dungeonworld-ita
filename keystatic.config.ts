@@ -2,6 +2,7 @@ import { collection, config, fields, singleton } from "@keystatic/core";
 import { wrapper } from "@keystatic/core/content-components";
 
 import { extendedImage } from "./src/keystatic/fields/extended-image";
+import { CREATIVE_WORK_STATUS_OPTIONS } from "./src/lib/creative-work-status";
 
 // Custom MarkDoc tags used by the content ({% callout %}, {% steps %}), also
 // converted at render time by markdocToMdx. Keystatic needs these component
@@ -259,10 +260,7 @@ export default config({
         creativeWorkStatus: fields.select({
           label: "Stato di pubblicazione",
           description: "Stato di release della versione.",
-          options: [
-            { label: "Pubblicato", value: "Published" },
-            { label: "Bozza", value: "Draft" },
-          ],
+          options: CREATIVE_WORK_STATUS_OPTIONS,
           defaultValue: "Published",
         }),
         url: fields.url({
@@ -608,6 +606,17 @@ export default config({
         }),
         donateUrl: fields.url({ label: "URL donazioni" }),
         githubUrl: fields.url({ label: "URL repository GitHub" }),
+        originalGameUrl: fields.url({
+          label: "URL del gioco originale",
+          description:
+            "Sito ufficiale di Dungeon World, linkato nella riga di attribuzione del footer.",
+        }),
+        license: fields.relationship({
+          label: "Licenza dei contenuti",
+          description:
+            "Licenza dei contenuti del sito, mostrata nel footer (es. CC BY-SA 4.0).",
+          collection: "licenses",
+        }),
       },
     }),
   },
