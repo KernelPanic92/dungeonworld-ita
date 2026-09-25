@@ -118,7 +118,9 @@ async function getManualNavExternalUrls(version: string) {
  * navGroups (orphans) are absent from the tree: no sidebar entry, no
  * breadcrumb, no highlight. The version index page becomes the folder's
  * index instead of a child item.
- * Versions without nav pages are left out entirely: no tab to an empty tree.
+ * A version without nav pages still gets a folder with just an index
+ * (the landing page rendered from the version entry), so every version
+ * shows up in the switcher and is reachable by URL.
  */
 export async function getManualPageTree(): Promise<PageTree.Root> {
   const versions = await getManualVersions();
@@ -129,7 +131,6 @@ export async function getManualPageTree(): Promise<PageTree.Root> {
       getManualNavPages(version.slug),
       getManualNavExternalUrls(version.slug),
     ]);
-    if (navPages.length === 0) continue;
 
     const baseUrl = manualBaseUrl(version.slug);
 

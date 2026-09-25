@@ -3,6 +3,7 @@ import { notFound, permanentRedirect } from "next/navigation";
 import {
   getDefaultManualVersion,
   getManualPage,
+  getManualVersions,
   isValidManualVersion,
 } from "@/lib/keystatic";
 import { getManualNavPages } from "@/lib/source";
@@ -49,6 +50,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const { version, rest } = await resolveManualSlug(slug);
   const page = await getManualPage(version, rest);
+  if (!page && rest.length === 0) {
+    // version landing (no content yet): from the version entry
+    const entry = (await getManualVersions()).find((v) => v.slug === version);
+    return { title: entry?.name ?? "Manuale", description: entry?.description };
+  }
   // Orphan page (not in any navGroups): reachable for direct link or drafts,
   // but kept out of search engines.
   const navPages = await getManualNavPages(version);
@@ -66,7 +72,27 @@ export default async function ManualPage({ params }: Props) {
   const { version, rest } = await resolveManualSlug(slug);
 
   const manualPage = await getManualPage(version, rest);
-  if (!manualPage) notFound();
+  if (!manualPage) {
+    // version with no content yet: landing page from the version entry
+    if (rest.length === 0) {
+      const entry = (await getManualVersions()).find((v) => v.slug === version);
+      if (entry) {
+        return (
+          <DocsPage>
+            <DocsBody>
+              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                {entry.name}
+              </h1>
+              {entry.description ? (
+                <p className="text-lg text-muted-foreground">{entry.description}</p>
+              ) : null}
+            </DocsBody>
+          </DocsPage>
+        );
+      }
+    }
+    notFound();
+  }
 
   const navPages = await getManualNavPages(version);
   const entrySlug = `${version}/${rest.join("/") || "index"}`;

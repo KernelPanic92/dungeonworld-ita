@@ -1,4 +1,19 @@
 name: Dungeon World 2 Beta
-description: La seconda edizione di Dungeon World, attualmente in beta. Contenuti in arrivo.
+description: >-
+  La seconda edizione di Dungeon World, attualmente in beta. Contenuti in
+  arrivo.
 isDefault: false
-navGroups: []
+navGroups:
+  - groupName: ""
+    items:
+      - discriminant: page
+        value:
+          page: 2.0-beta/index
+      - discriminant: page
+        value:
+          page: 2.0-beta/come-giocare
+  - groupName: Game Master
+    items:
+      - discriminant: page
+        value:
+          page: 2.0-beta/game-master/gm
