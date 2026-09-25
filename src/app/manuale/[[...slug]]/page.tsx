@@ -8,6 +8,7 @@ import {
 } from "@/lib/keystatic";
 import { getManualNavPages } from "@/lib/source";
 import { compiler, markdocToMdx, mdxComponents } from "@/components/mdx";
+import { AdSenseAd } from "@/components/ads/adsense";
 import {
   DocsBody,
   DocsPage,
@@ -116,6 +117,8 @@ export default async function ManualPage({ params }: Props) {
   return (
     <DocsPage
       toc={toc}
+      // ad unit at the top of the table of contents
+      tableOfContent={{ header: <AdSenseAd /> }}
       footer={{
         items: {
           previous: previous

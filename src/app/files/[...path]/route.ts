@@ -51,11 +51,17 @@ export async function GET(_request: Request, { params }: Params) {
   const ext = path.extname(resolved).toLowerCase();
   const contentType = MIME_TYPES[ext] ?? "application/octet-stream";
 
+  // serve as a download: the browser saves the file instead of navigating
+  const filename = path.basename(resolved);
+  const asciiFilename = filename.replace(/[^\x20-\x7E]/g, "_").replace(/["\\]/g, "_");
+  const disposition = `attachment; filename="${asciiFilename}"; filename*=UTF-8''${encodeURIComponent(filename)}`;
+
   const stream = createReadStream(resolved);
   return new Response(stream as unknown as ReadableStream, {
     headers: {
       "Content-Type": contentType,
       "Content-Length": String(stats.size),
+      "Content-Disposition": disposition,
       "Cache-Control": "public, max-age=31536000, immutable",
     },
   });

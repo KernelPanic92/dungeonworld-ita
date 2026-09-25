@@ -8,6 +8,7 @@ import { mdxComponents, compiler, markdocToMdx } from "@/components/mdx";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { MaterialCard } from "@/components/materials/material-card";
+import { DownloadLink } from "@/components/materials/download-link";
 import { BackButton } from "@/components/site/back-button";
 import {
   MATERIAL_SOURCE_OPTIONS,
@@ -15,7 +16,6 @@ import {
   licenseScopeLabel,
 } from "@/lib/materials-parsers";
 import {
-  Download,
   ExternalLink,
   FileText,
   Calendar,
@@ -161,26 +161,31 @@ export default async function MaterialDetailPage({ params }: Props) {
                   ? `/files/${asset.file}`
                   : asset.url;
               if (!href) return null;
+              if (asset.type === "file") {
+                return (
+                  <DownloadLink
+                    key={`${asset.type}-${asset.name}`}
+                    href={href}
+                    name={asset.name}
+                  >
+                    <FileText className="size-4 shrink-0" />
+                    <span className="truncate">{asset.name}</span>
+                  </DownloadLink>
+                );
+              }
               return (
                 <a
                   key={`${asset.type}-${asset.name}`}
                   href={href}
-                  target={asset.type === "external" ? "_blank" : undefined}
+                  target="_blank"
                   rel="noreferrer"
                   className={cn(
                     buttonVariants({ variant: "outline" }),
                     "justify-start gap-2",
                   )}
                 >
-                  {asset.type === "file" ? (
-                    <FileText className="size-4 shrink-0" />
-                  ) : (
-                    <ExternalLink className="size-4 shrink-0" />
-                  )}
+                  <ExternalLink className="size-4 shrink-0" />
                   <span className="truncate">{asset.name}</span>
-                  {asset.type === "file" ? (
-                    <Download className="ml-auto size-4 shrink-0 text-muted-foreground" />
-                  ) : null}
                 </a>
               );
             })}

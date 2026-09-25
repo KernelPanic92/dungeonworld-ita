@@ -2,6 +2,7 @@ import { getManualPageTree } from "@/lib/source";
 import { getManualVersions, resolveManualVersion } from "@/lib/keystatic";
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import { ManualSearchProvider } from "@/components/manual-search-provider";
+import { AdSenseScript } from "@/components/ads/adsense";
 import { Logo } from "@/components/site/logo";
 
 interface Props {
@@ -20,6 +21,7 @@ export default async function ManualLayout({ children, params }: Props) {
 
   return (
     <ManualSearchProvider version={version} versions={versions}>
+      <AdSenseScript />
       <DocsLayout
         tree={tree}
         githubUrl="https://github.com/KernelPanic92/dungeonworld-ita"

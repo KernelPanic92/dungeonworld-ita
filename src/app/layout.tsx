@@ -4,6 +4,10 @@ import { cookies, draftMode } from "next/headers";
 import { NuqsAdapter } from "nuqs/adapters/next";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import { ThemeProvider } from "@/components/theme-provider";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+import {
+  IubendaCookieSolution,
+} from "@/components/site/iubenda";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -37,6 +41,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
+        <GoogleAnalytics />
+        <IubendaCookieSolution />
         {isPreviewing ? (
           <div className="flex items-center justify-center gap-3 bg-dw px-4 py-1.5 text-sm text-on-dw">
             <span>

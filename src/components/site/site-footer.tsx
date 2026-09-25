@@ -1,5 +1,8 @@
 import Link from "next/link";
+import { Coffee } from "lucide-react";
 import { getSiteSettings } from "@/lib/keystatic";
+import { KOFI_URL } from "@/lib/consent";
+import { IubendaPolicyLink } from "@/components/site/iubenda";
 import { GithubIcon } from "./github-icon";
 
 export async function SiteFooter() {
@@ -18,6 +21,27 @@ export async function SiteFooter() {
             CC BY-SA 4.0
           </Link>
         </p>
+        <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm">
+          {KOFI_URL ? (
+            <a
+              href={KOFI_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+            >
+              <Coffee className="size-4" />
+              Supportaci su Ko-fi
+            </a>
+          ) : null}
+          <IubendaPolicyLink
+            kind="privacy"
+            className="transition-colors hover:text-foreground"
+          />
+          <IubendaPolicyLink
+            kind="cookie"
+            className="transition-colors hover:text-foreground"
+          />
+        </nav>
         {settings?.githubUrl ? (
           <Link
             href={settings.githubUrl}
