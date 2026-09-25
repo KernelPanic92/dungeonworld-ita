@@ -21,7 +21,7 @@ const SITE_NAME = "Dungeon World Italia";
 // are CollectionPage (their `contains` list becomes hasPart), everything else
 // stays a generic CreativeWork.
 const MATERIAL_TYPE_TO_SCHEMA: Record<string, MaterialSchemaType> = {
-  insight: "Article",
+  guide: "Article",
   setting: "Article",
   campaign: "Article",
   oneshot: "Article",

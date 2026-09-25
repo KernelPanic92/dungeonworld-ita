@@ -40,18 +40,99 @@ const isGithubStorage =
   process.env.KEYSTATIC_GITHUB_CLIENT_ID !== undefined;
 
 export const MATERIAL_TYPE_OPTIONS = [
-  { label: "Classe", value: "class" },
-  { label: "Classe compendio", value: "compendium-class" },
-  { label: "Campagna", value: "campaign" },
-  { label: "One shot", value: "oneshot" },
-  { label: "Approfondimento", value: "insight" },
-  { label: "Ambientazione", value: "setting" },
-  { label: "Mostro", value: "monster" },
-  { label: "Equipaggiamento", value: "equipment" },
-  { label: "Collezione", value: "collection" },
-  { label: "Supplementi", value: "sourcebooks" },
-  { label: "Avventure", value: "adventures" },
-  { label: "Play Kit", value: "playkit"}
+  // --- Personaggi e Meccaniche Giocatore ---
+  {
+    label: "Classe",
+    value: "class",
+    description:
+      "Classe di personaggio completa di libretto (Playbook), mosse iniziali, avanzate, allineamento/impulsi e legami.",
+  },
+  {
+    label: "Classe compendio",
+    value: "compendium-class",
+    description:
+      "Mini-classe specialistica (3-5 mosse) accessibile solo dopo aver soddisfatto specifici requisiti di storia durante l'avventura.",
+  },
+  {
+    label: "Mossa / Pacchetto Mosse",
+    value: "move",
+    description:
+      "Singola mossa custom o set di mosse tematiche (es. mosse per il viaggio, mosse di navigazione, mosse di fine sessione) da integrare nel gioco.",
+  },
+
+  // --- Avventure e Strutture di Gioco ---
+  {
+    label: "Campagna",
+    value: "campaign",
+    description:
+      "Struttura d'avventura a lungo termine, con più Fronti collegati, archi narrativi complessi e materiale per molte sessioni.",
+  },
+  {
+    label: "One shot",
+    value: "oneshot",
+    description:
+      "Avventura autoconclusiva pensata per 1-2 sessioni, spesso fornita di domande di avvio rapido, situazione d'incipit e Fronti immediati.",
+  },
+  {
+    label: "Modulo di Avventura",
+    value: "adventure",
+    description:
+      "Starter kit, dungeon, spunti d'avventura o Hex Crawl di media durata che non costituiscono una campagna completa ma offrono materiale pronto all'uso.",
+  },
+
+  // --- Espansioni, Mondi e Regolamenti ---
+  {
+    label: "Ambientazione",
+    value: "setting",
+    description:
+      "Descrizione di un mondo di gioco, regioni, fazioni, cosmologia ed elementi narrativi senza necessariamente includere mod al regolamento.",
+  },
+  {
+    label: "Supplemento / Espansione",
+    value: "sourcebook",
+    description:
+      "Manuale di espansione complesso (es. *Gli Ultimi Giorni di Anglekite*) che combina ambientazione, nuove classi, mostri, Fronti e regole aggiuntive.",
+  },
+
+  // --- Elementi di Gioco Singoli ---
+  {
+    label: "Mostro",
+    value: "monster",
+    description:
+      "Statistiche, mosse, istinto, descrizioni ed elementi tattici per avversari, creature o PNG ostili.",
+  },
+  {
+    label: "Equipaggiamento",
+    value: "equipment",
+    description:
+      "Oggetti magici, armi, armature, veicoli, relic o equipaggiamento speciale dotato di tag e mosse dedicate.",
+  },
+  {
+    label: "Fronte",
+    value: "front",
+    description:
+      "Struttura d'avventura specifica di DW con Pericoli, Cast di PNJ/Fazioni, Oscuri Presagi e Catastrofi imminenti.",
+  },
+
+  // --- Risorse GM e Materiali da Tavolo ---
+  {
+    label: "Guida",
+    value: "guide",
+    description:
+      "Guide teoriche, consigli di conduzione (es. *La Guida a Dungeon World*), saggi sulla filosofia PbtA",
+  },
+  {
+    label: "Play Kit / Stampabili",
+    value: "playkit",
+    description:
+      "Materiale pronto da stampare per il tavolo di gioco: schede giocatore, schede del GM, mappe mute, plance di riferimento rapido.",
+  },
+  {
+    label: "Collezione",
+    value: "collection",
+    description:
+      "Fascicolo o pacchetto che raccoglie più elementi eterogenei (es. un'antologia contenente 3 classi, 5 mostri e 2 avventure brevi).",
+  },
 ] as const;
 
 export const MATERIAL_SOURCE_OPTIONS = [
@@ -317,7 +398,7 @@ export default config({
         }),
       },
     }),
-    // Materials (classes, campaigns, insights, settings, monsters, equipment,
+    // Materials (classes, campaigns, guides, settings, monsters, equipment,
     // collections). Entry slug = "<version>/<material-slug>" (e.g. "1.0/barbaro").
     // A collection is a material with type "collection" whose `contains` field
     // lists the materials it groups; membership is stored only here.
