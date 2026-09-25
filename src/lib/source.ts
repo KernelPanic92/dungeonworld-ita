@@ -116,8 +116,11 @@ async function getManualNavExternalUrls(version: string) {
  * (same root type, so fumadocs renders them as interchangeable tabs).
  * Each folder's children come from the version's navGroups; pages not in
  * navGroups (orphans) are absent from the tree: no sidebar entry, no
- * breadcrumb, no highlight. The version index page becomes the folder's
- * index instead of a child item.
+ * breadcrumb, no highlight.
+ * The version index page stays a child item (the sidebar's layout tabs
+ * only consider folder children to decide whether the version switcher is
+ * active), while the folder's `index` keeps pointing at it so the switcher
+ * and the structural projection fall back to it.
  * A version without nav pages still gets a folder with just an index
  * (the landing page rendered from the version entry), so every version
  * shows up in the switcher and is reachable by URL.
@@ -136,12 +139,10 @@ export async function getManualPageTree(): Promise<PageTree.Root> {
 
     type Entry = { node: PageTree.Item; group: string };
     const entries: Entry[] = [
-      ...navPages
-        .filter((p) => p.url !== baseUrl)
-        .map((p) => ({
-          group: p.group,
-          node: { type: "page" as const, name: p.title, url: p.url },
-        })),
+      ...navPages.map((p) => ({
+        group: p.group,
+        node: { type: "page" as const, name: p.title, url: p.url },
+      })),
       ...externalUrls.map((u) => ({
         group: u.group,
         node: { type: "page" as const, name: u.name, url: u.url, external: true },
