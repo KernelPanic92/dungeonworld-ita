@@ -1,3 +1,120 @@
 name: Dungeon World
 description: La prima edizione di Dungeon World, tradotta in italiano.
 isDefault: true
+navGroups:
+  - groupName: ""
+    items:
+      - discriminant: page
+        value:
+          page: 1.0/index
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/come-giocare
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/esempio-partita
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/creazione-personaggi
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/mosse
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/equipaggiamento
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/classi
+          status: default
+  - groupName: Game Master
+    items:
+      - discriminant: page
+        value:
+          page: 1.0/game-master/gm
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/game-master/prima-sessione
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/game-master/fronti
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/game-master/mondo
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/game-master/avventure-avanzate
+          status: default
+  - groupName: Mostri
+    items:
+      - discriminant: group
+        value:
+          label: ambientazioni
+          items:
+            - discriminant: page
+              value:
+                page: 1.0/mostri/ambientazioni/abitanti-delle-caverne
+                status: default
+            - discriminant: page
+              value:
+                page: 1.0/mostri/ambientazioni/abitanti-delle-paludi
+                status: default
+            - discriminant: page
+              value:
+                page: 1.0/mostri/ambientazioni/esperimenti-perversi
+                status: default
+            - discriminant: page
+              value:
+                page: 1.0/mostri/ambientazioni/foreste-intricate
+                status: default
+            - discriminant: page
+              value:
+                page: 1.0/mostri/ambientazioni/genti-del-reame
+                status: default
+            - discriminant: page
+              value:
+                page: 1.0/mostri/ambientazioni/legioni-dei-non-morti
+                status: default
+            - discriminant: page
+              value:
+                page: 1.0/mostri/ambientazioni/orde-fameliche
+                status: default
+            - discriminant: page
+              value:
+                page: 1.0/mostri/ambientazioni/poteri-planari
+                status: default
+            - discriminant: page
+              value:
+                page: 1.0/mostri/ambientazioni/profondita-della-terra
+                status: default
+      - discriminant: page
+        value:
+          page: 1.0/mostri/panoramica
+          status: default
+  - groupName: Appendici
+    items:
+      - discriminant: page
+        value:
+          page: 1.0/appendici/adattare-avventure
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/appendici/etichette
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/appendici/insegnare-gioco
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/appendici/png-istantanei
+          status: default
