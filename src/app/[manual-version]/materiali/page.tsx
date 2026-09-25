@@ -11,7 +11,7 @@ import {
   MATERIAL_SOURCE_OPTIONS,
   MATERIAL_TYPE_OPTIONS,
 } from "@/lib/materials-parsers";
-import { filterMaterials, paginate, sortMaterials } from "@/lib/materials";
+import { AI_ILLUSTRATOR_SLUG, filterMaterials, paginate, sortMaterials } from "@/lib/materials";
 import { MaterialsSearchInput } from "@/components/materials/materials-search-input";
 import { MaterialsFilterDrawer } from "@/components/materials/materials-filter-drawer";
 import { MaterialsFilters, type FilterAuthor, type FilterLicense, type FilterOption } from "@/components/materials/materials-filters";
@@ -53,12 +53,13 @@ export default async function MaterialsPage({ params, searchParams }: Props) {
     usedSources.has(o.value),
   ).map((o) => ({ label: o.label, value: o.value }));
 
-  // Author filter options: anyone with a credit on a material of this version.
+  // Author filter options: anyone with a credit on a material of this
+  // version, except the AI illustrator (excludable via a dedicated checkbox).
   const authorOptions: FilterAuthor[] = [
     ...new Map(
       all
         .flatMap((m) => m.credits)
-        .filter((c) => c.authorSlug)
+        .filter((c) => c.authorSlug && c.authorSlug !== AI_ILLUSTRATOR_SLUG)
         .map((c) => [c.authorSlug, c.authorName || c.authorSlug] as const),
     ).entries(),
   ]
@@ -79,7 +80,8 @@ export default async function MaterialsPage({ params, searchParams }: Props) {
     query.type.length > 0 ||
     query.source.length > 0 ||
     query.authors.length > 0 ||
-    query.licenses.length > 0;
+    query.licenses.length > 0 ||
+    query.excludeAi;
   const filtered = filterMaterials(all, query);
   const sorted = sortMaterials(filtered, hasActiveQuery);
   const { items, page, pageCount, total } = paginate(

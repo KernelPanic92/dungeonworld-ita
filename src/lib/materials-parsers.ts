@@ -1,4 +1,4 @@
-import { parseAsArrayOf, parseAsInteger, parseAsString } from "nuqs/server";
+import { parseAsArrayOf, parseAsBoolean, parseAsInteger, parseAsString } from "nuqs/server";
 
 export const materialsParsers = {
   search: parseAsString.withDefault(""),
@@ -6,6 +6,7 @@ export const materialsParsers = {
   source: parseAsArrayOf(parseAsString, ",").withDefault([]),
   authors: parseAsArrayOf(parseAsString, ",").withDefault([]),
   licenses: parseAsArrayOf(parseAsString, ",").withDefault([]),
+  excludeAi: parseAsBoolean.withDefault(false),
   page: parseAsInteger.withDefault(1),
 };
 
