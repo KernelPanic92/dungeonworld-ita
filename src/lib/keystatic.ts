@@ -111,11 +111,25 @@ async function readContentBody(relPath: string): Promise<string> {
 // ---------------------------------------------------------------------------
 // Manual versions
 // ---------------------------------------------------------------------------
+export interface ExternalIdentifier {
+  platform: string;
+  externalId: string;
+  url: string | null;
+}
+
 export interface ManualVersion {
   slug: string;
   name: string;
   description: string;
   isDefault: boolean;
+  /** Slug of the previous edition (only set on subsequent versions, e.g. the beta). */
+  predecessor: string | null;
+  /** schema.org release status (e.g. "Published", "Draft"). */
+  creativeWorkStatus: string;
+  /** URL of the version's site page (optional). */
+  url: string | null;
+  /** External references (Wikipedia, Wikidata, RPGGeek, ...). */
+  externalIdentifiers: ExternalIdentifier[];
 }
 
 export function getManualVersions(): Promise<ManualVersion[]> {
@@ -127,6 +141,14 @@ export function getManualVersions(): Promise<ManualVersion[]> {
         name: e.entry.name,
         description: e.entry.description ?? "",
         isDefault: e.entry.isDefault,
+        predecessor: e.entry.predecessor ?? null,
+        creativeWorkStatus: e.entry.creativeWorkStatus ?? "Published",
+        url: e.entry.url ?? null,
+        externalIdentifiers: (e.entry.externalIdentifiers ?? []).map((i) => ({
+          platform: i.platform ?? "",
+          externalId: i.externalId ?? "",
+          url: i.url ?? null,
+        })),
       }))
       .sort((a, b) => Number(b.isDefault) - Number(a.isDefault) || a.slug.localeCompare(b.slug));
   });
@@ -213,6 +235,11 @@ export interface ManualPage {
   entrySlug: string;
   title: string;
   summary: string;
+  /**
+   * Cover image, as a path relative to the entry directory (keystatic
+   * `fields.image`); resolve against `/files/manuale/pagine/<entrySlug>/`.
+   */
+  image: string | null;
   /** Raw MarkDoc content */
   content: string;
   /** Licenses referenced by the page (stored but not rendered yet) */
@@ -239,6 +266,7 @@ export function getManualPages(version: string): Promise<ManualPage[]> {
             entrySlug: e.slug,
             title: e.entry.title,
             summary: e.entry.summary ?? "",
+            image: e.entry.image ?? null,
             content: await readContentBody(`docs/manuale/pagine/${e.slug}/index.mdoc`),
             licenses: (e.entry.licenses ?? []).map((l) => {
               const license = l.license ? licenseBySlug.get(l.license) : undefined;

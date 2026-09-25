@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const BASE_URL = "https://www.dungeonworld-italia.it";
+import { getSiteBaseUrl } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -10,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       // the Keystatic admin is for editors only
       disallow: ["/keystatic", "/api/keystatic"],
     },
-    sitemap: `${BASE_URL}/sitemap.xml`,
+    sitemap: `${getSiteBaseUrl()}/sitemap.xml`,
   };
 }

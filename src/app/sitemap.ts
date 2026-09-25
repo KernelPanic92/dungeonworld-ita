@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
 import {
   getDefaultManualVersion,
+  getManualPages,
   getManualVersions,
   getMaterials,
 } from "@/lib/keystatic";
 import { getManualNavPages, manualBaseUrl } from "@/lib/source";
-
-const BASE_URL = "https://www.dungeonworld-italia.it";
+import { getSiteBaseUrl } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [versions, defaultVersion] = await Promise.all([
@@ -14,12 +14,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getDefaultManualVersion(),
   ]);
   const materials = await getMaterials(defaultVersion);
+  const BASE_URL = getSiteBaseUrl();
 
-  // Every version with nav pages, orphans excluded (they are noindex).
+  // Every version with nav pages. Orphans (not in navGroups) and pages marked
+  // noindex are excluded: they carry a robots noindex meta.
   const manualEntries = await Promise.all(
     versions.map(async (version) => {
-      const navPages = await getManualNavPages(version.slug);
+      const [navPages, pages] = await Promise.all([
+        getManualNavPages(version.slug),
+        getManualPages(version.slug),
+      ]);
       if (navPages.length === 0) return [];
+
+      const noIndexSlugs = new Set(
+        pages.filter((p) => p.seo.noIndex).map((p) => p.entrySlug),
+      );
+      const indexed = navPages.filter((p) => !noIndexSlugs.has(p.entrySlug));
+      if (indexed.length === 0) return [];
 
       const isDefault = version.slug === defaultVersion;
       const priority = isDefault ? 0.7 : 0.5;
@@ -31,7 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           changeFrequency: "yearly" as const,
           priority: isDefault ? 0.9 : 0.5,
         },
-        ...navPages
+        ...indexed
           .filter((p) => p.url !== baseUrl)
           .map((p) => ({
             url: `${BASE_URL}${p.url}`,
@@ -54,11 +65,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     ...manualEntries.flat(),
-    // material detail pages (default version)
-    ...materials.map((material) => ({
-      url: `${BASE_URL}/materiali/${material.slug}`,
-      changeFrequency: "weekly" as const,
-      priority: 0.6,
-    })),
+    // material detail pages (default version), noindex ones excluded
+    ...materials
+      .filter((material) => !material.seo.noIndex)
+      .map((material) => ({
+        url: `${BASE_URL}/materiali/${material.slug}`,
+        changeFrequency: "weekly" as const,
+        priority: 0.6,
+      })),
   ];
 }

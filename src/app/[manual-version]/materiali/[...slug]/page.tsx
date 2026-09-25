@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getMaterial, getMaterials, isValidManualVersion } from "@/lib/keystatic";
+import {
+  getDefaultManualVersion,
+  getMaterial,
+  getMaterials,
+  getSiteSettings,
+  isValidManualVersion,
+} from "@/lib/keystatic";
 import { materialFileUrl } from "@/lib/materials";
 import { cn } from "cn";
 import { mdxComponents, compiler, markdocToMdx } from "@/components/mdx";
@@ -9,11 +15,13 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { MaterialCard } from "@/components/materials/material-card";
 import { DownloadLink } from "@/components/materials/download-link";
-import { KoFiEmbed } from "@/components/site/kofi";
 import { BackButton } from "@/components/site/back-button";
+import { JsonLd } from "@/components/site/json-ld";
 import {
-  MATERIAL_SOURCE_OPTIONS,
-  MATERIAL_TYPE_OPTIONS,
+  breadcrumbJsonLd,
+  materialJsonLd,
+} from "@/lib/schema-org";
+import {
   licenseScopeLabel,
 } from "@/lib/materials-parsers";
 import {
@@ -23,6 +31,7 @@ import {
   LinkIcon,
   FolderOpen,
 } from "lucide-react";
+import { MATERIAL_SOURCE_OPTIONS, MATERIAL_TYPE_OPTIONS } from "../../../../../keystatic.config";
 
 interface Props {
   params: Promise<{
@@ -31,26 +40,40 @@ interface Props {
   }>;
 }
 
-export async function generateStaticParams() {
-  return [];
-}
+// The route renders Keystatic content (which changes in draft mode) and reads
+// draftMode/cookies through the reader, so it must render dynamically. The
+// previous empty generateStaticParams marked it as static (SSG), which made
+// Next throw DYNAMIC_SERVER_USAGE on every request.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { "manual-version": version, slug } = await params;
   const material = await getMaterial(version, (slug ?? []).join("/"));
   if (!material) return {};
+  const defaultVersion = await getDefaultManualVersion();
+  const prefix = version === defaultVersion ? "" : `/${version}`;
+  const canonical = `${prefix}/materiali/${material.slug}`;
+  const title = material.seo.title || material.name;
+  const description =
+    material.seo.description || material.summary || material.flavor;
+  const image = material.seo.image || material.thumbnail;
   return {
-    title: material.seo.title || material.name,
-    description: material.seo.description || material.summary || material.flavor,
-    ...(material.seo.image
-      ? {
-          openGraph: {
-            title: material.seo.title || material.name,
-            description: material.seo.description || material.summary,
-            images: [{ url: material.seo.image }],
-          },
-        }
-      : {}),
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: "article",
+      ...(image ? { images: [{ url: image }] } : {}),
+    },
+    twitter: {
+      card: image ? "summary_large_image" : "summary",
+      title,
+      description,
+      ...(image ? { images: [image] } : {}),
+    },
     ...(material.seo.noIndex ? { robots: { index: false, follow: false } } : {}),
   };
 }
@@ -61,6 +84,13 @@ export default async function MaterialDetailPage({ params }: Props) {
 
   const material = await getMaterial(version, (slug ?? []).join("/"));
   if (!material) notFound();
+
+  const defaultVersion = await getDefaultManualVersion();
+  const prefix = version === defaultVersion ? "" : `/${version}`;
+  const canonical = `${prefix}/materiali/${material.slug}`;
+
+  const settings = await getSiteSettings();
+  const publisherName = settings?.title || "Dungeon World Italia";
 
   // member materials of a collection, rendered as a card grid
   const contained = material.type === "collection"
@@ -87,6 +117,31 @@ export default async function MaterialDetailPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
+      {!material.seo.noIndex ? (
+        <JsonLd
+          data={[
+            ...materialJsonLd({
+              material,
+              url: canonical,
+              publisherName,
+              prefix,
+            }),
+            breadcrumbJsonLd([
+              { name: "Home", url: "/" },
+              { name: "Materiali", url: `${prefix}/materiali` },
+              ...(material.collection
+                ? [
+                    {
+                      name: material.collection.name,
+                      url: `${prefix}/materiali/${material.collection.slug}`,
+                    },
+                  ]
+                : []),
+              { name: material.name, url: canonical },
+            ]),
+          ]}
+        />
+      ) : null}
       <nav className="mb-6 text-sm text-muted-foreground">
         <BackButton fallbackHref={`/${version}/materiali`} />
       </nav>

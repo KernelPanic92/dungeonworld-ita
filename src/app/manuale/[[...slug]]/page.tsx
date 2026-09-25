@@ -4,12 +4,15 @@ import {
   getDefaultManualVersion,
   getManualPage,
   getManualVersions,
+  getSiteSettings,
   isValidManualVersion,
 } from "@/lib/keystatic";
-import { getManualNavPages } from "@/lib/source";
+import { getManualNavPages, manualBaseUrl } from "@/lib/source";
 import { compiler, markdocToMdx, mdxComponents } from "@/components/mdx";
 import { AdSenseAd } from "@/components/ads/adsense";
 import { KoFiButton } from "@/components/site/kofi";
+import { JsonLd } from "@/components/site/json-ld";
+import { breadcrumbJsonLd, manualPageJsonLd } from "@/lib/schema-org";
 import {
   DocsBody,
   DocsPage,
@@ -52,10 +55,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const { version, rest } = await resolveManualSlug(slug);
   const page = await getManualPage(version, rest);
+  const defaultVersion = await getDefaultManualVersion();
+  const baseUrl = manualBaseUrl(version, defaultVersion);
+  const pagePath = rest.length === 0 ? baseUrl : `${baseUrl}/${rest.join("/")}`;
   if (!page && rest.length === 0) {
     // version landing (no content yet): from the version entry
     const entry = (await getManualVersions()).find((v) => v.slug === version);
-    return { title: entry?.name ?? "Manuale", description: entry?.description };
+    return {
+      title: entry?.name ?? "Manuale",
+      description: entry?.description,
+      alternates: { canonical: pagePath },
+    };
   }
   // Orphan page (not in any navGroups): reachable for direct link or drafts,
   // but kept out of search engines.
@@ -63,18 +73,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const entrySlug = `${version}/${rest.join("/") || "index"}`;
   const isOrphan = !navPages.some((p) => p.entrySlug === entrySlug);
   const seo = page?.seo;
+  const title = seo?.title || page?.title || "Manuale";
+  const description = seo?.description || page?.summary;
+  const image = seo?.image || page?.image
+    ? seo?.image || `/files/manuale/pagine/${entrySlug}/${page?.image}`
+    : null;
   return {
-    title: seo?.title || page?.title || "Manuale",
-    description: seo?.description || page?.summary,
-    ...(seo?.image
-      ? {
-          openGraph: {
-            title: seo.title || page?.title || "Manuale",
-            description: seo.description || page?.summary,
-            images: [{ url: seo.image }],
-          },
-        }
-      : {}),
+    title,
+    description,
+    alternates: { canonical: pagePath },
+    openGraph: {
+      title,
+      description,
+      url: pagePath,
+      type: "article",
+      ...(image ? { images: [{ url: image }] } : {}),
+    },
+    twitter: {
+      card: image ? "summary_large_image" : "summary",
+      title,
+      description,
+      ...(image ? { images: [image] } : {}),
+    },
     ...(isOrphan || seo?.noIndex
       ? { robots: { index: false, follow: false } }
       : {}),
@@ -110,6 +130,19 @@ export default async function ManualPage({ params }: Props) {
   const next =
     index >= 0 && index < navPages.length - 1 ? navPages[index + 1] : undefined;
 
+  const defaultVersion = await getDefaultManualVersion();
+  const baseUrl = manualBaseUrl(version, defaultVersion);
+  const pagePath = rest.length === 0 ? baseUrl : `${baseUrl}/${rest.join("/")}`;
+  const isOrphan = index === -1;
+  const isIndexed = !isOrphan && !manualPage.seo.noIndex;
+
+  const settings = await getSiteSettings();
+  const publisherName = settings?.title || "Dungeon World Italia";
+
+  const image = manualPage.seo.image || manualPage.image
+    ? manualPage.seo.image || `/files/manuale/pagine/${entrySlug}/${manualPage.image}`
+    : null;
+
   const { body: MdxContent, toc } = await compiler.compile({
     source: markdocToMdx(manualPage.content),
     filePath: `docs/manuale/pagine/${version}/${rest.join("/")}/index.mdoc`,
@@ -135,6 +168,24 @@ export default async function ManualPage({ params }: Props) {
         },
       }}
     >
+      {isIndexed ? (
+        <JsonLd
+          data={[
+            manualPageJsonLd({
+              page: manualPage,
+              url: pagePath,
+              version,
+              image,
+              publisherName,
+            }),
+            breadcrumbJsonLd([
+              { name: "Home", url: "/" },
+              { name: "Manuale", url: baseUrl },
+              ...(rest.length > 0 ? [{ name: manualPage.title, url: pagePath }] : []),
+            ]),
+          ]}
+        />
+      ) : null}
       <DocsBody>
         <MdxContent components={mdxComponents} />
       </DocsBody>

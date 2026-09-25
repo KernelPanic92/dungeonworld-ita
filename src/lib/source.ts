@@ -1,4 +1,4 @@
-import { dynamicLoader, llms } from "fumadocs-core/source";
+import { dynamicLoader } from "fumadocs-core/source";
 import type {
   DynamicSource,
   LoaderOutput,
@@ -14,18 +14,7 @@ import {
   getManualNav,
   getManualPages,
   getManualVersions,
-  isValidManualVersion,
 } from "./keystatic";
-
-export interface ManualPageData {
-  title: string;
-  description: string;
-  /**
-   * Structured data for TOC/search, computed from the raw MarkDoc content.
-   * MarkDoc is a markdown superset, so headings are extracted as usual.
-   */
-  structuredData: ReturnType<typeof structure>;
-}
 
 /**
  * Public URL prefix of a manual version. The default version is versionless
@@ -34,56 +23,6 @@ export interface ManualPageData {
  */
 export function manualBaseUrl(version: string, defaultVersion: string) {
   return version === defaultVersion ? `/manuale` : `/manuale/${version}`;
-}
-
-/**
- * Fumadocs source for a manual version, backed by Keystatic content.
- * One loader instance per version, cached for the lifetime of the process.
- * Only used for the LLM endpoints; navigation is derived from navGroups.
- */
-const loaders = new Map<string, Awaited<ReturnType<typeof createManualLoader>>>();
-
-async function createManualLoader(version: string, defaultVersion: string) {
-  return dynamicLoader(
-    {
-      // paths are relative to the virtual root of this source; slugs derive
-      // from them (index.mdoc is stripped), so keep them version-free and
-      // let baseUrl carry the /manuale or /manuale/<version> prefix.
-      async files() {
-        const pages = await getManualPages(version);
-
-        const pageFiles = pages
-          .filter((page) => !page.llm.exclude)
-          .map((page) => ({
-            type: "page" as const,
-            path: [...page.slugs, "index.mdoc"].join("/"),
-            data: {
-              title: page.title,
-              // the LLM-specific description overrides the summary when set
-              description: page.llm.description || page.summary,
-              notes: page.llm.notes,
-              structuredData: () => structure(page.content),
-            },
-          }));
-
-        return pageFiles;
-      },
-    },
-    {
-      baseUrl: manualBaseUrl(version, defaultVersion),
-    },
-  );
-}
-
-export async function getManualSource(version: string) {
-  if (!loaders.has(version)) {
-    if (!(await isValidManualVersion(version))) {
-      throw new Error(`Unknown manual version: ${version}`);
-    }
-    const loader = await createManualLoader(version, await getDefaultManualVersion());
-    loaders.set(version, loader);
-  }
-  return loaders.get(version)!;
 }
 
 // ---------------------------------------------------------------------------
@@ -204,56 +143,6 @@ export async function getManualPageTree(): Promise<PageTree.Root> {
     name: "Manuale",
     children: folders,
   };
-}
-
-// ---------------------------------------------------------------------------
-// LLMs helpers
-// ---------------------------------------------------------------------------
-/**
- * Raw MarkDoc content of a page, lightly cleaned for LLM consumption
- * (custom tags are stripped of their {% %} markers).
- */
-export function markdocToLlmText(content: string): string {
-  return content
-    .replace(/\{%\s*(\/)?(callout|steps)[^%]*%\}/g, (_m, closing: string | undefined) =>
-      closing ? "" : "",
-    )
-    .trim();
-}
-
-async function withContentMap<T>(
-  version: string,
-  fn: (map: Map<string, string>) => T | Promise<T>,
-): Promise<T> {
-  const pages = await getManualPages(version);
-  const map = new Map(pages.map((p) => [p.slugs.join("/"), p.content]));
-  return fn(map);
-}
-
-export async function getLlms(version: string) {
-  const source = await getManualSource(version);
-  return withContentMap(version, (contentMap) =>
-    llms(() => source.get(), {
-      renderPage: async (page: {
-        slugs: string[];
-        url: string;
-        data: { title?: string; description?: string; notes?: string[] };
-      }) => {
-        const raw = contentMap.get(page.slugs.join("/")) ?? "";
-        const content = markdocToLlmText(raw);
-        const title = page.data.title ?? "";
-        const parts: string[] = [`# ${title}`];
-        if (page.data.description) parts.push(page.data.description);
-        // the content usually opens with the same H1: drop it to avoid duplication
-        const h1 = new RegExp(`^#\\s+${title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*\\n+`);
-        parts.push(content.replace(h1, ""));
-        for (const note of page.data.notes ?? []) {
-          if (note) parts.push(`Nota per l'AI: ${note}`);
-        }
-        return parts.join("\n");
-      },
-    }),
-  );
 }
 
 // ---------------------------------------------------------------------------

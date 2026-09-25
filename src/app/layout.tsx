@@ -8,6 +8,14 @@ import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import {
   IubendaCookieSolution,
 } from "@/components/site/iubenda";
+import { JsonLd } from "@/components/site/json-ld";
+import { getManualVersions, getSiteSettings } from "@/lib/keystatic";
+import {
+  organizationJsonLd,
+  tabletopGameJsonLd,
+  webSiteJsonLd,
+} from "@/lib/schema-org";
+import { getSiteBaseUrl } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,19 +28,33 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Dungeon World Italia",
-    template: "%s | Dungeon World Italia",
-  },
-  description:
-    "Il manuale e i materiali di Dungeon World in italiano: classi, regole, schede e risorse per giocare.",
-};
+const SITE_NAME = "Dungeon World Italia";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+  return {
+    metadataBase: new URL(getSiteBaseUrl()),
+    title: {
+      default: settings?.title || SITE_NAME,
+      template: `%s | ${settings?.title || SITE_NAME}`,
+    },
+    description:
+      settings?.description ||
+      "Il manuale e i materiali di Dungeon World in italiano: classi, regole, schede e risorse per giocare.",
+    openGraph: {
+      siteName: settings?.title || SITE_NAME,
+      locale: "it_IT",
+      type: "website",
+    },
+  };
+}
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const dm = await draftMode();
   const isPreviewing = dm.isEnabled;
   const branch = (await cookies()).get("ks-branch")?.value;
+  const settings = await getSiteSettings();
+  const versions = await getManualVersions();
 
   return (
     <html
@@ -41,6 +63,14 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
+        <link rel="describedby" href="/llms.txt" />
+        <JsonLd
+          data={[
+            webSiteJsonLd(settings),
+            organizationJsonLd(settings),
+            ...versions.map((v) => tabletopGameJsonLd(v)),
+          ]}
+        />
         <GoogleAnalytics />
         <IubendaCookieSolution />
         {isPreviewing ? (

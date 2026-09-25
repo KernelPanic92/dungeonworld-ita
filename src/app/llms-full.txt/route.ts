@@ -1,12 +1,10 @@
-import { getDefaultManualVersion } from "@/lib/keystatic";
-import { getLlms } from "@/lib/source";
+import { getSiteLlms } from "@/lib/llms";
 
 // cached forever: content is static per deployment
 export const revalidate = false;
 
 export async function GET() {
-  const version = await getDefaultManualVersion();
-  const generator = await getLlms(version);
+  const generator = await getSiteLlms();
   return new Response(await generator.full(), {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",

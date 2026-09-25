@@ -8,11 +8,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { materialThumbnail } from "@/lib/materials";
-import {
-  MATERIAL_SOURCE_OPTIONS,
-  MATERIAL_TYPE_OPTIONS,
-} from "@/lib/materials-parsers";
 import type { Material } from "@/lib/keystatic";
+import { MATERIAL_SOURCE_OPTIONS, MATERIAL_TYPE_OPTIONS } from "../../../keystatic.config";
 
 export function MaterialCard({
   material,

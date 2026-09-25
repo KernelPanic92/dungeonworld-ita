@@ -39,7 +39,7 @@ const isGithubStorage =
   process.env.NODE_ENV === "production" &&
   process.env.KEYSTATIC_GITHUB_CLIENT_ID !== undefined;
 
-const MATERIAL_TYPE_OPTIONS = [
+export const MATERIAL_TYPE_OPTIONS = [
   { label: "Classe", value: "class" },
   { label: "Classe compendio", value: "compendium-class" },
   { label: "Campagna", value: "campaign" },
@@ -49,16 +49,19 @@ const MATERIAL_TYPE_OPTIONS = [
   { label: "Mostro", value: "monster" },
   { label: "Equipaggiamento", value: "equipment" },
   { label: "Collezione", value: "collection" },
+  { label: "Supplementi", value: "sourcebooks" },
+  { label: "Avventure", value: "adventures" },
+  { label: "Play Kit", value: "playkit"}
 ] as const;
 
-const MATERIAL_SOURCE_OPTIONS = [
+export const MATERIAL_SOURCE_OPTIONS = [
   { label: "Ufficiale", value: "official" },
   { label: "Homebrew", value: "homebrew" },
 ] as const;
 
 // Target of a license entry: what part of the material/document it applies to.
 // A single PDF can mix several (e.g. text under one license, images under another).
-const LICENSE_SCOPE_OPTIONS = [
+export const LICENSE_SCOPE_OPTIONS = [
   { label: "Tutto il contenuto", value: "tutto" },
   { label: "Contenuti testuali", value: "testo" },
   { label: "Traduzione", value: "traduzione" },
@@ -164,6 +167,41 @@ export default config({
           label: "Versione predefinita",
           defaultValue: false,
         }),
+        // Editions of the game (TabletopGame): the beta points to the previous
+        // edition, release status and external identifiers feed schema.org.
+        predecessor: fields.relationship({
+          label: "Versione precedente",
+          description:
+            "La versione da cui questa deriva. Valorizzato solo per le versioni successive alla prima (es. la beta).",
+          collection: "manualVersions",
+        }),
+        creativeWorkStatus: fields.select({
+          label: "Stato di pubblicazione",
+          description: "Stato di release della versione.",
+          options: [
+            { label: "Pubblicato", value: "Published" },
+            { label: "Bozza", value: "Draft" },
+          ],
+          defaultValue: "Published",
+        }),
+        url: fields.url({
+          label: "URL",
+          description: "URL del sito di questa versione (opzionale).",
+        }),
+        externalIdentifiers: fields.array(
+          fields.object({
+            platform: fields.text({ label: "Piattaforma" }),
+            externalId: fields.text({ label: "ID esterno" }),
+            url: fields.url({ label: "URL" }),
+          }),
+          {
+            label: "Identificatori esterni",
+            description:
+              "Riferimenti esterni (Wikipedia, Wikidata, RPGGeek, ...) mostrati come sameAs in schema.org.",
+            itemLabel: (props) =>
+              String(props.fields.platform.value || "Identificatore"),
+          },
+        ),
         // The whole sidebar is defined here, as an ordered structure.
         // Each navGroup is a sidebar section; items are pages or external
         // urls only (flat, no subgroups).

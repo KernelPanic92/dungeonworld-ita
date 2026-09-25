@@ -5,6 +5,19 @@ import type { NextConfig } from "next";
 const DEFAULT_MANUAL_VERSION = "1.0";
 
 const nextConfig: NextConfig = {
+  async headers() {
+    return [
+      {
+        // Let agents discover /llms.txt even without prior knowledge of the
+        // convention (https://llmstxt.org): the `Link` header form of the
+        // `describedby` relation works for HTML pages and non-HTML resources.
+        source: "/:path*",
+        headers: [
+          { key: "Link", value: "</llms.txt>; rel=\"describedby\"" },
+        ],
+      },
+    ];
+  },
   async rewrites() {
     return [
       {

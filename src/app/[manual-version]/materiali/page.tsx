@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
+  getDefaultManualVersion,
   getLicenses,
   getManualVersions,
   getMaterials,
@@ -8,8 +10,6 @@ import {
 import { materialsCache } from "@/lib/materials-query";
 import {
   MATERIALS_PAGE_SIZE,
-  MATERIAL_SOURCE_OPTIONS,
-  MATERIAL_TYPE_OPTIONS,
 } from "@/lib/materials-parsers";
 import { filterMaterials, paginate, sortMaterials } from "@/lib/materials";
 import { MaterialsSearchInput } from "@/components/materials/materials-search-input";
@@ -18,22 +18,37 @@ import { MaterialsFilters, type FilterAuthor, type FilterLicense, type FilterOpt
 import { MaterialCard } from "@/components/materials/material-card";
 import { MaterialsPagination } from "@/components/materials/materials-pagination";
 import { VersionSwitcher } from "@/components/site/version-switcher";
+import { JsonLd } from "@/components/site/json-ld";
+import { materialsIndexJsonLd } from "@/lib/schema-org";
 import { PackageSearch } from "lucide-react";
+import { MATERIAL_SOURCE_OPTIONS, MATERIAL_TYPE_OPTIONS } from "../../../../keystatic.config";
 
-export const metadata = {
-  title: "Materiali",
-  description:
-    "Materiali ufficiali e homebrew per Dungeon World: classi, campagne, mostri, ambientazioni, approfondimenti e collezioni in italiano.",
-};
+const MATERIALS_META_DESCRIPTION =
+  "Materiali ufficiali e homebrew per Dungeon World: classi, campagne, mostri, ambientazioni, approfondimenti e collezioni in italiano.";
 
 interface Props {
   params: Promise<{ "manual-version": string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { "manual-version": version } = await params;
+  if (!(await isValidManualVersion(version))) return {};
+  const defaultVersion = await getDefaultManualVersion();
+  const prefix = version === defaultVersion ? "" : `/${version}`;
+  return {
+    title: "Materiali",
+    description: MATERIALS_META_DESCRIPTION,
+    alternates: { canonical: `${prefix}/materiali` },
+  };
+}
+
 export default async function MaterialsPage({ params, searchParams }: Props) {
   const { "manual-version": version } = await params;
   if (!(await isValidManualVersion(version))) notFound();
+
+  const defaultVersion = await getDefaultManualVersion();
+  const prefix = version === defaultVersion ? "" : `/${version}`;
 
   const query = materialsCache.parse(await searchParams);
 
@@ -53,8 +68,6 @@ export default async function MaterialsPage({ params, searchParams }: Props) {
     usedSources.has(o.value),
   ).map((o) => ({ label: o.label, value: o.value }));
 
-  // Author filter options: anyone with a credit on a material of this
-  // version whose author entry is marked filtrable.
   const authorOptions: FilterAuthor[] = [
     ...new Map(
       all
@@ -97,6 +110,14 @@ export default async function MaterialsPage({ params, searchParams }: Props) {
 
   return (
     <div className="mx-auto max-w-[90rem] px-4 py-10 sm:px-8">
+      <JsonLd
+        data={materialsIndexJsonLd({
+          materials: all,
+          url: `${prefix}/materiali`,
+          description: MATERIALS_META_DESCRIPTION,
+          prefix,
+        })}
+      />
       <header className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
           Materiali
