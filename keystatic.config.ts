@@ -229,6 +229,7 @@ export default config({
       slugField: "title",
       format: { data: "yaml", contentField: "content" },
       template: "1.0/come-giocare",
+      previewUrl: "/preview/start?branch={branch}&to=/manuale/{slug}",
       schema: {
         title: fields.slug({
           name: { label: "Titolo" },
@@ -279,6 +280,7 @@ export default config({
       label: "Materiali",
       path: "docs/materiali/**/",
       slugField: "name",
+      previewUrl: "/preview/start?branch={branch}&to=/materiali/{slug}",
       format: { data: "yaml", contentField: "content" },
       schema: {
         type: fields.select({

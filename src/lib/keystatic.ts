@@ -1,16 +1,67 @@
 import { createReader } from "@keystatic/core/reader";
+import { createGitHubReader } from "@keystatic/core/reader/github";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import config from "../../keystatic.config";
 
-export const reader = createReader(".", config);
+const REPO = "KernelPanic92/dungeonworld-ita";
+
+type LocalReader = ReturnType<
+  typeof createReader<typeof config["collections"], typeof config["singletons"]>
+>;
+type DraftReader = ReturnType<
+  typeof createGitHubReader<typeof config["collections"], typeof config["singletons"]>
+>;
+
+let localReader: LocalReader | null = null;
+const draftReaders = new Map<string, DraftReader>();
+
+/** True while Next.js draft mode is on (real-time previews). */
+async function isDraftMode(): Promise<boolean> {
+  try {
+    const { draftMode } = await import("next/headers");
+    return (await draftMode()).isEnabled;
+  } catch {
+    // draftMode() throws outside a request (e.g. static generation, scripts)
+    return false;
+  }
+}
+
+/**
+ * Draft-mode-aware reader: when draft mode is enabled it reads from the
+ * GitHub branch stored in the `ks-branch` cookie (Keystatic previews);
+ * otherwise it reads the local repo content.
+ */
+async function getReader() {
+  if (await isDraftMode()) {
+    const { cookies } = await import("next/headers");
+    const c = await cookies();
+    const branch = c.get("ks-branch")?.value;
+    if (branch) {
+      let reader = draftReaders.get(branch);
+      if (!reader) {
+        reader = createGitHubReader(config, {
+          repo: REPO,
+          ref: branch,
+          token: c.get("keystatic-gh-access-token")?.value,
+        });
+        draftReaders.set(branch, reader);
+      }
+      return reader;
+    }
+  }
+  localReader ??= createReader(".", config);
+  return localReader;
+}
 
 /**
  * All content is static at runtime (repo-based Keystatic storage),
- * so we memoise reads for the lifetime of the process.
+ * so we memoise reads for the lifetime of the process — except in draft
+ * mode, where previews must reflect the saved changes immediately.
  */
 const memo = new Map<string, unknown>();
 async function memoized<T>(key: string, fn: () => Promise<T>): Promise<T> {
+  if (await isDraftMode()) return fn();
   if (!memo.has(key)) {
     memo.set(key, await fn());
   }
@@ -30,6 +81,33 @@ export async function readMdocBody(relPath: string): Promise<string> {
   }
 }
 
+/**
+ * Reads a MarkDoc file body, honouring draft mode: when a preview is active
+ * the raw file is fetched from the GitHub branch (the local disk only has
+ * the committed content), otherwise it reads the local file.
+ */
+async function readContentBody(relPath: string): Promise<string> {
+  if (await isDraftMode()) {
+    const { cookies } = await import("next/headers");
+    const branch = (await cookies()).get("ks-branch")?.value;
+    if (branch) {
+      try {
+        const res = await fetch(
+          `https://raw.githubusercontent.com/${REPO}/${encodeURIComponent(branch)}/${relPath}`,
+        );
+        if (res.ok) {
+          const raw = await res.text();
+          const m = raw.match(/^---\r?\n[\s\S]*?\r?\n---\r?\n?([\s\S]*)$/);
+          return (m ? m[1] : raw).trim();
+        }
+      } catch {
+        // fall through to the local file
+      }
+    }
+  }
+  return readMdocBody(relPath);
+}
+
 // ---------------------------------------------------------------------------
 // Manual versions
 // ---------------------------------------------------------------------------
@@ -42,7 +120,7 @@ export interface ManualVersion {
 
 export function getManualVersions(): Promise<ManualVersion[]> {
   return memoized("manualVersions", async () => {
-    const entries = await reader.collections.manualVersions.all();
+    const entries = await (await getReader()).collections.manualVersions.all();
     return entries
       .map((e) => ({
         slug: e.slug,
@@ -146,7 +224,7 @@ export interface ManualPage {
 export function getManualPages(version: string): Promise<ManualPage[]> {
   return memoized(`manual:${version}`, async () => {
     const [entries, licenses] = await Promise.all([
-      reader.collections.manualPages.all(),
+      (await getReader()).collections.manualPages.all(),
       getLicenses(),
     ]);
     const licenseBySlug = new Map(licenses.map((l) => [l.slug, l]));
@@ -161,7 +239,7 @@ export function getManualPages(version: string): Promise<ManualPage[]> {
             entrySlug: e.slug,
             title: e.entry.title,
             summary: e.entry.summary ?? "",
-            content: await readMdocBody(`docs/manuale/pagine/${e.slug}/index.mdoc`),
+            content: await readContentBody(`docs/manuale/pagine/${e.slug}/index.mdoc`),
             licenses: (e.entry.licenses ?? []).map((l) => {
               const license = l.license ? licenseBySlug.get(l.license) : undefined;
               return {
@@ -200,7 +278,7 @@ export interface License {
 
 export function getLicenses(): Promise<License[]> {
   return memoized("licenses", async () => {
-    const entries = await reader.collections.licenses.all();
+    const entries = await (await getReader()).collections.licenses.all();
     return entries.map((e) => ({
       slug: e.slug,
       name: e.entry.name,
@@ -272,9 +350,10 @@ export interface Material {
 
 export function getMaterials(version: string): Promise<Material[]> {
   return memoized(`materials:${version}`, async () => {
+    const r = await getReader();
     const [entries, authors, licenses] = await Promise.all([
-      reader.collections.materials.all(),
-      reader.collections.authors.all(),
+      r.collections.materials.all(),
+      r.collections.authors.all(),
       getLicenses(),
     ]);
     const authorNames = new Map(authors.map((a) => [a.slug, a.entry.completeName]));
@@ -368,7 +447,7 @@ export function getMaterials(version: string): Promise<Material[]> {
             url: a.value.url ?? null,
             thumbnail: a.value.thumbnail ?? null,
           })),
-          content: await readMdocBody(`docs/materiali/${e.slug}/index.mdoc`),
+          content: await readContentBody(`docs/materiali/${e.slug}/index.mdoc`),
           seo: readSeo(entry.seo),
           llm: readLlm(entry.llm),
         };
@@ -394,7 +473,7 @@ export interface Author {
 
 export function getAuthors(): Promise<Author[]> {
   return memoized("authors", async () => {
-    const entries = await reader.collections.authors.all();
+    const entries = await (await getReader()).collections.authors.all();
     return entries.map((e) => ({
       slug: e.slug,
       completeName: e.entry.completeName,
@@ -416,7 +495,7 @@ export interface SiteSettings {
 
 export function getSiteSettings(): Promise<SiteSettings | null> {
   return memoized("siteSettings", async () => {
-    const s = await reader.singletons.siteSettings.read();
+    const s = await (await getReader()).singletons.siteSettings.read();
     if (!s) return null;
     return {
       title: s.title ?? "",
@@ -443,7 +522,7 @@ export type ManualNavEntry =
  */
 export function getManualNav(version: string): Promise<ManualNavEntry[]> {
   return memoized(`manual-nav:${version}`, async () => {
-    const versions = await reader.collections.manualVersions.all();
+    const versions = await (await getReader()).collections.manualVersions.all();
     const entry = versions.find((v) => v.slug === version);
     const navGroups = entry?.entry.navGroups ?? [];
 
