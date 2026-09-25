@@ -48,7 +48,6 @@ export function MaterialsFilterDrawer({
         </DrawerHeader>
         <div className="flex flex-col gap-4 px-4 pb-6">
           <div className="flex items-center justify-between gap-3">
-            <span className="text-sm text-muted-foreground">Versione</span>
             <VersionSwitcher current={version} versions={versions} />
           </div>
           <MaterialsFilters

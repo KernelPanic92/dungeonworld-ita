@@ -84,6 +84,9 @@ navGroups:
           page: 1.0/appendici/etichette
       - discriminant: page
         value:
+          page: 1.0/appendici/glossario-differenze
+      - discriminant: page
+        value:
           page: 1.0/appendici/insegnare-gioco
       - discriminant: page
         value:
