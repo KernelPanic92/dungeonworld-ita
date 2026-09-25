@@ -6,11 +6,15 @@ import {
   isValidManualVersion,
 } from "@/lib/keystatic";
 import { materialsCache } from "@/lib/materials-query";
-import { MATERIALS_PAGE_SIZE } from "@/lib/materials-parsers";
+import {
+  MATERIALS_PAGE_SIZE,
+  MATERIAL_SOURCE_OPTIONS,
+  MATERIAL_TYPE_OPTIONS,
+} from "@/lib/materials-parsers";
 import { filterMaterials, paginate, sortMaterials } from "@/lib/materials";
 import { MaterialsSearchInput } from "@/components/materials/materials-search-input";
 import { MaterialsFilterDrawer } from "@/components/materials/materials-filter-drawer";
-import { MaterialsFilters, type FilterAuthor, type FilterLicense } from "@/components/materials/materials-filters";
+import { MaterialsFilters, type FilterAuthor, type FilterLicense, type FilterOption } from "@/components/materials/materials-filters";
 import { MaterialCard } from "@/components/materials/material-card";
 import { MaterialsPagination } from "@/components/materials/materials-pagination";
 import { VersionSwitcher } from "@/components/site/version-switcher";
@@ -38,6 +42,16 @@ export default async function MaterialsPage({ params, searchParams }: Props) {
     getManualVersions(),
     getLicenses(),
   ]);
+
+  // Filter options reflect the values actually used by this version.
+  const usedTypes = new Set(all.map((m) => m.type));
+  const typeOptions: FilterOption[] = MATERIAL_TYPE_OPTIONS.filter((o) =>
+    usedTypes.has(o.value),
+  ).map((o) => ({ label: o.label, value: o.value }));
+  const usedSources = new Set(all.map((m) => m.source));
+  const sourceOptions: FilterOption[] = MATERIAL_SOURCE_OPTIONS.filter((o) =>
+    usedSources.has(o.value),
+  ).map((o) => ({ label: o.label, value: o.value }));
 
   // Author filter options: anyone with a credit on a material of this version.
   const authorOptions: FilterAuthor[] = [
@@ -100,6 +114,8 @@ export default async function MaterialsPage({ params, searchParams }: Props) {
         <MaterialsFilterDrawer
           version={version}
           versions={versionOptions}
+          types={typeOptions}
+          sources={sourceOptions}
           authors={authorOptions}
           licenses={licenseOptions}
         />
@@ -114,7 +130,12 @@ export default async function MaterialsPage({ params, searchParams }: Props) {
               </span>
               <VersionSwitcher current={version} versions={versionOptions} />
             </div>
-            <MaterialsFilters authors={authorOptions} licenses={licenseOptions} />
+            <MaterialsFilters
+              types={typeOptions}
+              sources={sourceOptions}
+              authors={authorOptions}
+              licenses={licenseOptions}
+            />
           </div>
         </aside>
 

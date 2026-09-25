@@ -9,8 +9,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  MATERIAL_SOURCE_OPTIONS,
-  MATERIAL_TYPE_OPTIONS,
   materialsParsers,
 } from "@/lib/materials-parsers";
 
@@ -22,6 +20,11 @@ export interface FilterAuthor {
 export interface FilterLicense {
   slug: string;
   label: string;
+}
+
+export interface FilterOption {
+  label: string;
+  value: string;
 }
 
 // all groups start collapsed
@@ -37,9 +40,14 @@ function ActiveCount({ count }: { count: number }) {
 }
 
 export function MaterialsFilters({
+  types,
+  sources,
   authors,
   licenses,
 }: {
+  /** Values actually used by materials of the selected version. */
+  types: FilterOption[];
+  sources: FilterOption[];
   authors: FilterAuthor[];
   licenses: FilterLicense[];
 }) {
@@ -85,7 +93,7 @@ export function MaterialsFilters({
           </AccordionTrigger>
           <AccordionContent>
             <div className="flex flex-col gap-2">
-              {MATERIAL_TYPE_OPTIONS.map((option) => (
+              {types.map((option) => (
                 <label
                   key={option.value}
                   className="flex cursor-pointer items-center gap-2 text-sm"
@@ -112,7 +120,7 @@ export function MaterialsFilters({
           </AccordionTrigger>
           <AccordionContent>
             <div className="flex flex-col gap-2">
-              {MATERIAL_SOURCE_OPTIONS.map((option) => (
+              {sources.map((option) => (
                 <label
                   key={option.value}
                   className="flex cursor-pointer items-center gap-2 text-sm"
