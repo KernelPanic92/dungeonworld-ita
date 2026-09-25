@@ -19,8 +19,7 @@ export function HomeProject() {
           alla comunità.
         </p>
         <ButtonLink
-          href="https://github.com/KernelPanic92/dungeonworld-ita"
-          target="_blank"
+          href="/progetto"
         >
           Scopri il progetto
         </ButtonLink>
