@@ -33,6 +33,22 @@ const CREDIT_KIND_OPTIONS = [
   { label: "Creatore originale", value: "originalCreator" },
 ] as const;
 
+const NAV_STATUS_OPTIONS = [
+  { label: "Predefinita", value: "default" },
+  { label: "Nuova", value: "nuovo" },
+  { label: "Deprecata", value: "deprecato" },
+] as const;
+
+const NAV_KIND_LEAF_OPTIONS = [
+  { label: "Pagina", value: "page" },
+  { label: "URL esterno", value: "url" },
+] as const;
+
+const NAV_KIND_GROUP_OPTIONS = [
+  ...NAV_KIND_LEAF_OPTIONS,
+  { label: "Sottogruppo", value: "group" },
+] as const;
+
 export default config({
   storage: isGithubStorage
     ? {
@@ -61,6 +77,96 @@ export default config({
           label: "Versione predefinita",
           defaultValue: false,
         }),
+        // The whole sidebar is defined here, as an ordered structure.
+        // Two nesting levels max: navGroup -> subgroup -> pages/urls.
+        navGroups: fields.array(
+          fields.object({
+            groupName: fields.text({
+              label: "Nome del gruppo",
+              description:
+                "Etichetta libera mostrata nella sidebar (non fa parte degli URL). Lascia vuoto per le voci di primo livello.",
+            }),
+            items: fields.array(
+              fields.conditional(
+                fields.select({
+                  label: "Tipo di voce",
+                  options: NAV_KIND_GROUP_OPTIONS,
+                  defaultValue: "page",
+                }),
+                {
+                  page: fields.object({
+                    page: fields.relationship({
+                      label: "Pagina",
+                      collection: "manualPages",
+                      validation: { isRequired: true },
+                    }),
+                    status: fields.select({
+                      label: "Stato",
+                      options: NAV_STATUS_OPTIONS,
+                      defaultValue: "default",
+                    }),
+                  }),
+                  url: fields.object({
+                    label: fields.text({
+                      label: "Etichetta",
+                      validation: { isRequired: true },
+                    }),
+                    url: fields.url({
+                      label: "URL",
+                      validation: { isRequired: true },
+                    }),
+                  }),
+                  group: fields.object({
+                    label: fields.text({
+                      label: "Etichetta",
+                      validation: { isRequired: true },
+                    }),
+                    items: fields.array(
+                      fields.conditional(
+                        fields.select({
+                          label: "Tipo di voce",
+                          options: NAV_KIND_LEAF_OPTIONS,
+                          defaultValue: "page",
+                        }),
+                        {
+                          page: fields.object({
+                            page: fields.relationship({
+                              label: "Pagina",
+                              collection: "manualPages",
+                              validation: { isRequired: true },
+                            }),
+                            status: fields.select({
+                              label: "Stato",
+                              options: NAV_STATUS_OPTIONS,
+                              defaultValue: "default",
+                            }),
+                          }),
+                          url: fields.object({
+                            label: fields.text({
+                              label: "Etichetta",
+                              validation: { isRequired: true },
+                            }),
+                            url: fields.url({
+                              label: "URL",
+                              validation: { isRequired: true },
+                            }),
+                          }),
+                        },
+                      ),
+                      { label: "Voci" },
+                    ),
+                  }),
+                },
+              ),
+              { label: "Voci" },
+            ),
+          }),
+          {
+            label: "Gruppi di navigazione",
+            itemLabel: (props) =>
+              String(props.fields.groupName.value || "Gruppo"),
+          },
+        ),
       },
     }),
     // Manual pages. Entry slug = "<version>/<path>" (e.g. "1.0/classi/barbaro").
@@ -69,10 +175,15 @@ export default config({
       path: "docs/manuale/pagine/**/",
       slugField: "title",
       format: { data: "yaml", contentField: "content" },
+      template: "1.0/come-giocare",
       schema: {
         title: fields.slug({
           name: { label: "Titolo" },
-          slug: { label: "Slug (versione/percorso, es. 1.0/classi/barbaro)" },
+          slug: {
+            label: "Slug",
+            description:
+              "Il primo segmento è la versione, seguito dal percorso della pagina (es. 2.0-beta/introduzione/regole-base).",
+          },
         }),
         description: fields.text({ label: "Descrizione", multiline: true }),
         order: fields.integer({ label: "Ordine nella sidebar" }),
