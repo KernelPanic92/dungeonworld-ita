@@ -10,6 +10,7 @@ import { buttonVariants } from "@/components/ui/button";
 import {
   MATERIAL_SOURCE_OPTIONS,
   MATERIAL_TYPE_OPTIONS,
+  licenseScopeLabel,
 } from "@/lib/materials-parsers";
 import {
   Download,
@@ -18,6 +19,7 @@ import {
   Calendar,
   LinkIcon,
   ArrowLeft,
+  FolderOpen,
 } from "lucide-react";
 
 interface Props {
@@ -110,7 +112,13 @@ export default async function MaterialDetailPage({ params }: Props) {
           </h1>
           {material.collection ? (
             <p className="mt-1 text-sm font-medium text-muted-foreground">
-              {material.collection}
+              <Link
+                href={`/${version}/materiali/${material.collection.slug}`}
+                className="inline-flex items-center gap-1 underline-offset-4 hover:text-foreground hover:underline"
+              >
+                <FolderOpen className="size-4" />
+                {material.collection.name}
+              </Link>
             </p>
           ) : null}
 
@@ -187,21 +195,52 @@ export default async function MaterialDetailPage({ params }: Props) {
         </section>
       ) : null}
 
-      {material.license ? (
+      {material.type === "collection" && material.contains.length > 0 ? (
+        <section className="mb-8">
+          <h2 className="mb-3 text-xl font-semibold">
+            Materiali contenuti ({material.contains.length})
+          </h2>
+          <ul className="flex flex-col gap-1.5 text-sm">
+            {material.contains.map((member) => (
+              <li key={member.entrySlug}>
+                <Link
+                  href={`/${version}/materiali/${member.slug}`}
+                  className="font-medium underline-offset-4 hover:text-dw hover:underline"
+                >
+                  {member.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {material.licenses.length > 0 ? (
         <section className="mb-8 text-sm text-muted-foreground">
-          Licenza:{" "}
-          {material.license.url ? (
-            <a
-              href={material.license.url}
-              target="_blank"
-              rel="noreferrer"
-              className="underline underline-offset-4 hover:text-foreground"
-            >
-              {material.license.name}
-            </a>
-          ) : (
-            material.license.name
-          )}
+          <h2 className="mb-2 text-xl font-semibold text-foreground">
+            Licenze
+          </h2>
+          <ul className="flex flex-col gap-1">
+            {material.licenses.map((license, i) => (
+              <li key={`${license.licenseSlug}-${i}`}>
+                <span className="text-muted-foreground">
+                  {licenseScopeLabel(license.scope)}:
+                </span>{" "}
+                {license.licenseUrl ? (
+                  <a
+                    href={license.licenseUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline underline-offset-4 hover:text-foreground"
+                  >
+                    {license.licenseName}
+                  </a>
+                ) : (
+                  license.licenseName
+                )}
+              </li>
+            ))}
+          </ul>
         </section>
       ) : null}
 

@@ -24,6 +24,8 @@ import { parse } from "yaml";
 const ROOT = process.cwd();
 const VERSIONS_DIR = path.join(ROOT, "docs", "manuale", "versioni");
 const PAGES_DIR = path.join(ROOT, "docs", "manuale", "pagine");
+const MATERIALS_DIR = path.join(ROOT, "docs", "materiali");
+const LICENSES_DIR = path.join(ROOT, "docs", "licenze");
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -31,6 +33,15 @@ const warnings: string[] = [];
 async function existsPage(version: string, rest: string) {
   try {
     await stat(path.join(PAGES_DIR, version, rest, "index.mdoc"));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function existsMaterial(entrySlug: string) {
+  try {
+    await stat(path.join(MATERIALS_DIR, entrySlug, "index.mdoc"));
     return true;
   } catch {
     return false;
@@ -144,6 +155,83 @@ async function main() {
           `pagina orfana: "${full}" esiste ma non è referenziata da nessun navGroups della versione (noindex)`,
         );
       }
+    });
+  }
+
+  // --- licenses & material collections ---
+  const licenseSlugs = new Set(
+    (await readdir(LICENSES_DIR, { withFileTypes: true }))
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name),
+  );
+
+  async function checkLicenses(filePath: string, what: string) {
+    let raw: string;
+    try {
+      raw = await readFile(filePath, "utf8");
+    } catch {
+      return;
+    }
+    const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    if (!m) return;
+    const data = parse(m[1]) as {
+      licenses?: Array<{ license?: string }>;
+    };
+    for (const l of data.licenses ?? []) {
+      if (!l.license) {
+        errors.push(`${what}: licenza non selezionata`);
+      } else if (!licenseSlugs.has(l.license)) {
+        errors.push(`${what}: la licenza "${l.license}" non esiste`);
+      }
+    }
+  }
+
+  const materialVersionDirs = (await readdir(MATERIALS_DIR, { withFileTypes: true }))
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name);
+
+  for (const version of materialVersionDirs) {
+    const versionMaterials = await readdir(path.join(MATERIALS_DIR, version), {
+      withFileTypes: true,
+    });
+    for (const entry of versionMaterials) {
+      if (!entry.isDirectory()) continue;
+      const filePath = path.join(MATERIALS_DIR, version, entry.name, "index.mdoc");
+      let raw: string;
+      try {
+        raw = await readFile(filePath, "utf8");
+      } catch {
+        continue;
+      }
+      const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+      if (!m) continue;
+      const data = parse(m[1]) as {
+        type?: string;
+        licenses?: Array<{ license?: string }>;
+        contains?: string[];
+      };
+      const what = `materiale ${version}/${entry.name}`;
+      for (const l of data.licenses ?? []) {
+        if (!l.license) errors.push(`${what}: licenza non selezionata`);
+        else if (!licenseSlugs.has(l.license)) errors.push(`${what}: la licenza "${l.license}" non esiste`);
+      }
+      if (data.type === "collection") {
+        for (const member of data.contains ?? []) {
+          if (!(await existsMaterial(member))) {
+            errors.push(`${what}: contiene il materiale inesistente "${member}"`);
+          }
+        }
+      } else if (data.contains && data.contains.length > 0) {
+        warnings.push(`${what}: ha "contains" ma non è di tipo Collezione`);
+      }
+    }
+  }
+
+  // licenses on manual pages (stored, not rendered)
+  for (const dir of versionsWithPages) {
+    await walkPages(dir, "", async (slug) => {
+      const filePath = path.join(PAGES_DIR, dir, slug, "index.mdoc");
+      await checkLicenses(filePath, `pagina ${dir}/${slug}`);
     });
   }
 

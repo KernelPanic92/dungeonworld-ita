@@ -1,19 +1,25 @@
 import { notFound } from "next/navigation";
-import { getMaterials, isValidManualVersion } from "@/lib/keystatic";
+import {
+  getLicenses,
+  getManualVersions,
+  getMaterials,
+  isValidManualVersion,
+} from "@/lib/keystatic";
 import { materialsCache } from "@/lib/materials-query";
 import { MATERIALS_PAGE_SIZE } from "@/lib/materials-parsers";
 import { filterMaterials, paginate, sortMaterials } from "@/lib/materials";
 import { MaterialsSearchInput } from "@/components/materials/materials-search-input";
 import { MaterialsFilterDrawer } from "@/components/materials/materials-filter-drawer";
-import { MaterialsFilters } from "@/components/materials/materials-filters";
+import { MaterialsFilters, type FilterAuthor, type FilterLicense } from "@/components/materials/materials-filters";
 import { MaterialCard } from "@/components/materials/material-card";
 import { MaterialsPagination } from "@/components/materials/materials-pagination";
+import { VersionSwitcher } from "@/components/site/version-switcher";
 import { PackageSearch } from "lucide-react";
 
 export const metadata = {
   title: "Materiali",
   description:
-    "Materiali ufficiali e homebrew per Dungeon World: classi, campagne, mostri, ambientazioni e approfondimenti in italiano.",
+    "Materiali ufficiali e homebrew per Dungeon World: classi, campagne, mostri, ambientazioni, approfondimenti e collezioni in italiano.",
 };
 
 interface Props {
@@ -27,9 +33,39 @@ export default async function MaterialsPage({ params, searchParams }: Props) {
 
   const query = materialsCache.parse(await searchParams);
 
-  const all = await getMaterials(version);
+  const [all, versions, licenses] = await Promise.all([
+    getMaterials(version),
+    getManualVersions(),
+    getLicenses(),
+  ]);
+
+  // Author filter options: anyone with a credit on a material of this version.
+  const authorOptions: FilterAuthor[] = [
+    ...new Map(
+      all
+        .flatMap((m) => m.credits)
+        .filter((c) => c.authorSlug)
+        .map((c) => [c.authorSlug, c.authorName || c.authorSlug] as const),
+    ).entries(),
+  ]
+    .map(([slug, name]) => ({ slug, name }))
+    .sort((a, b) => a.name.localeCompare(b.name, "it"));
+
+  // License filter options: licenses actually referenced by this version.
+  const usedLicenseSlugs = new Set(
+    all.flatMap((m) => m.licenses).map((l) => l.licenseSlug),
+  );
+  const licenseOptions: FilterLicense[] = licenses
+    .filter((l) => usedLicenseSlugs.has(l.slug))
+    .map((l) => ({ slug: l.slug, label: l.label }))
+    .sort((a, b) => a.label.localeCompare(b.label, "it"));
+
   const hasActiveQuery =
-    query.search.trim().length > 0 || query.type.length > 0 || query.source.length > 0;
+    query.search.trim().length > 0 ||
+    query.type.length > 0 ||
+    query.source.length > 0 ||
+    query.authors.length > 0 ||
+    query.licenses.length > 0;
   const filtered = filterMaterials(all, query);
   const sorted = sortMaterials(filtered, hasActiveQuery);
   const { items, page, pageCount, total } = paginate(
@@ -38,30 +74,47 @@ export default async function MaterialsPage({ params, searchParams }: Props) {
     MATERIALS_PAGE_SIZE,
   );
 
+  const versionOptions = versions.map((v) => ({
+    slug: v.slug,
+    name: v.name,
+    isDefault: v.isDefault,
+  }));
+
   return (
     <div className="mx-auto max-w-[90rem] px-4 py-10 sm:px-8">
       <header className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
           Materiali
         </h1>
-        <p className="mt-2 max-w-2xl text-muted-foreground">
+        <p className="mt-2 text-muted-foreground">
           {total} materiali per la versione {version} del manuale: classi,
-          campagne, mostri, ambientazioni e approfondimenti ufficiali e
-          homebrew.
+          campagne, mostri, ambientazioni, approfondimenti e collezioni
+          ufficiali e homebrew.
         </p>
       </header>
 
-      <div className="mb-8 flex items-center gap-3">
-        <div className="max-w-xl flex-1">
+      <div className="mb-6 flex items-center gap-3">
+        <div className="min-w-0 flex-1">
           <MaterialsSearchInput />
         </div>
-        <MaterialsFilterDrawer />
+        <MaterialsFilterDrawer
+          version={version}
+          versions={versionOptions}
+          authors={authorOptions}
+          licenses={licenseOptions}
+        />
       </div>
 
       <div className="flex gap-8">
         <aside className="hidden w-64 shrink-0 lg:block">
           <div className="sticky top-24 rounded-lg border bg-card p-5">
-            <MaterialsFilters />
+            <div className="mb-4 flex items-center justify-between gap-3 border-b pb-4">
+              <span className="text-sm text-muted-foreground">
+                Versione del manuale
+              </span>
+              <VersionSwitcher current={version} versions={versionOptions} />
+            </div>
+            <MaterialsFilters authors={authorOptions} licenses={licenseOptions} />
           </div>
         </aside>
 

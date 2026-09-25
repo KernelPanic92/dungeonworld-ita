@@ -29,6 +29,7 @@ export function MaterialCard({
   const sourceLabel =
     MATERIAL_SOURCE_OPTIONS.find((s) => s.value === material.source)?.label ??
     material.source;
+  const isCollection = material.type === "collection";
 
   return (
     <Link
@@ -70,8 +71,14 @@ export function MaterialCard({
           <CardTitle className="text-lg group-hover:text-dw transition-colors">
             {material.name}
           </CardTitle>
-          {material.collection ? (
-            <p className="text-xs text-muted-foreground">{material.collection}</p>
+          {isCollection ? (
+            <p className="text-xs text-muted-foreground">
+              {material.contains.length > 0
+                ? `${material.contains.length} materiali`
+                : "Collezione vuota"}
+            </p>
+          ) : material.collection ? (
+            <p className="text-xs text-muted-foreground">{material.collection.name}</p>
           ) : null}
         </CardHeader>
         <CardContent>

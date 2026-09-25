@@ -11,9 +11,20 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { MaterialsFilters } from "./materials-filters";
+import { VersionSwitcher, type VersionOption } from "@/components/site/version-switcher";
+import { MaterialsFilters, type FilterAuthor, type FilterLicense } from "./materials-filters";
 
-export function MaterialsFilterDrawer() {
+export function MaterialsFilterDrawer({
+  version,
+  versions,
+  authors,
+  licenses,
+}: {
+  version: string;
+  versions: VersionOption[];
+  authors: FilterAuthor[];
+  licenses: FilterLicense[];
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -31,8 +42,12 @@ export function MaterialsFilterDrawer() {
           <DrawerTitle>Filtri</DrawerTitle>
           <DrawerDescription>Affina la ricerca dei materiali.</DrawerDescription>
         </DrawerHeader>
-        <div className="px-4 pb-6">
-          <MaterialsFilters />
+        <div className="flex flex-col gap-4 px-4 pb-6">
+          <div className="flex items-center justify-between gap-3">
+            <span className="text-sm text-muted-foreground">Versione del manuale</span>
+            <VersionSwitcher current={version} versions={versions} />
+          </div>
+          <MaterialsFilters authors={authors} licenses={licenses} />
         </div>
       </DrawerContent>
     </Drawer>

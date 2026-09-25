@@ -4,6 +4,8 @@ export interface MaterialsQuery {
   search: string;
   type: string[];
   source: string[];
+  authors: string[];
+  licenses: string[];
   page: number;
 }
 
@@ -12,8 +14,20 @@ export function filterMaterials(materials: Material[], query: Omit<MaterialsQuer
   return materials.filter((m) => {
     if (query.type.length > 0 && !query.type.includes(m.type)) return false;
     if (query.source.length > 0 && !query.source.includes(m.source)) return false;
+    if (query.authors.length > 0) {
+      if (!m.credits.some((c) => query.authors.includes(c.authorSlug))) return false;
+    }
+    if (query.licenses.length > 0) {
+      if (!m.licenses.some((l) => query.licenses.includes(l.licenseSlug))) return false;
+    }
     if (q) {
-      const haystack = [m.name, m.description, m.shortDescription, m.collection]
+      const haystack = [
+        m.name,
+        m.description,
+        m.shortDescription,
+        m.collection?.name ?? "",
+        ...m.credits.map((c) => c.authorName),
+      ]
         .join(" ")
         .toLowerCase();
       if (!haystack.includes(q)) return false;

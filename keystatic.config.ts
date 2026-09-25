@@ -16,11 +16,28 @@ const MATERIAL_TYPE_OPTIONS = [
   { label: "Ambientazione", value: "setting" },
   { label: "Mostro", value: "monster" },
   { label: "Equipaggiamento", value: "equipment" },
+  { label: "Collezione", value: "collection" },
 ] as const;
 
 const MATERIAL_SOURCE_OPTIONS = [
   { label: "Ufficiale", value: "official" },
   { label: "Homebrew", value: "homebrew" },
+] as const;
+
+// Target of a license entry: what part of the material/document it applies to.
+// A single PDF can mix several (e.g. text under one license, images under another).
+const LICENSE_SCOPE_OPTIONS = [
+  { label: "Tutto il contenuto", value: "tutto" },
+  { label: "Contenuti testuali", value: "testo" },
+  { label: "Traduzione", value: "traduzione" },
+  { label: "Prefazioni, postfazioni e saggi", value: "testi-secondari" },
+  { label: "Snippet di codice", value: "codice" },
+  { label: "Immagini interne (foto, illustrazioni, grafici)", value: "immagini" },
+  { label: "Copertina", value: "copertina" },
+  { label: "Design e impaginazione", value: "layout" },
+  { label: "Font incorporati", value: "font" },
+  { label: "Script e interattività", value: "script" },
+  { label: "Dataset", value: "dati" },
 ] as const;
 
 const CREDIT_KIND_OPTIONS = [
@@ -149,11 +166,32 @@ export default config({
         }),
         description: fields.text({ label: "Descrizione", multiline: true }),
         image: fields.image({ label: "Immagine di copertina" }),
+        licenses: fields.array(
+          fields.object({
+            license: fields.relationship({
+              label: "Licenza",
+              collection: "licenses",
+            }),
+            scope: fields.select({
+              label: "Applicabile a",
+              description:
+                "A quale parte del contenuto si applica questa licenza.",
+              options: LICENSE_SCOPE_OPTIONS,
+              defaultValue: "tutto",
+            }),
+          }),
+          {
+            label: "Licenze",
+            itemLabel: (props) => `${props.fields.scope.value} - ${props.fields.license.value}`,
+          },
+        ),
         content: fields.markdoc({ label: "Contenuto" }),
       },
     }),
-    // Materials (classes, campaigns, insights, settings, monsters, equipment).
-    // Entry slug = "<version>/<material-slug>" (e.g. "1.0/barbaro").
+    // Materials (classes, campaigns, insights, settings, monsters, equipment,
+    // collections). Entry slug = "<version>/<material-slug>" (e.g. "1.0/barbaro").
+    // A collection is a material with type "collection" whose `contains` field
+    // lists the materials it groups; membership is stored only here.
     materials: collection({
       label: "Materiali",
       path: "docs/materiali/**/",
@@ -183,11 +221,31 @@ export default config({
           multiline: true,
         }),
         description: fields.text({ label: "Descrizione", multiline: true }),
-        collection: fields.text({ label: "Collezione" }),
         date: fields.date({ label: "Data" }),
-        license: fields.object({
-          name: fields.text({ label: "Nome licenza" }),
-          url: fields.url({ label: "URL licenza" }),
+        licenses: fields.array(
+          fields.object({
+            license: fields.relationship({
+              label: "Licenza",
+              collection: "licenses",
+            }),
+            scope: fields.select({
+              label: "Applicabile a",
+              description:
+                "A quale parte del materiale si applica questa licenza.",
+              options: LICENSE_SCOPE_OPTIONS,
+              defaultValue: "tutto",
+            }),
+          }),
+          {
+            label: "Licenze",
+            itemLabel: (props) => `${props.fields.scope.value} - ${props.fields.license.value}`,
+          },
+        ),
+        contains: fields.multiRelationship({
+          label: "Materiali contenuti",
+          collection: "materials",
+          description:
+            "Solo per i materiali di tipo Collezione: l'elenco dei materiali che raggruppa.",
         }),
         showcase: fields.object({
           image: fields.image({ label: "Immagine showcase" }),
@@ -273,6 +331,27 @@ export default config({
           facebook: fields.url({ label: "Facebook" }),
           behance: fields.url({ label: "Behance" }),
           github: fields.url({ label: "GitHub" }),
+        }),
+      },
+    }),
+    // Licenses referenced by materials and manual pages.
+    licenses: collection({
+      label: "Licenze",
+      path: "docs/licenze/*/",
+      slugField: "name",
+      format: { data: "yaml" },
+      schema: {
+        name: fields.slug({
+          name: { label: "Nome" },
+          slug: { label: "Slug" },
+        }),
+        label: fields.text({
+          label: "Etichetta breve",
+          description: "Testo mostrato nei filtri e nelle pagine (es. CC BY 4.0)",
+        }),
+        url: fields.url({
+          label: "URL",
+          description: "Pagina ufficiale della licenza (opzionale)",
         }),
       },
     }),

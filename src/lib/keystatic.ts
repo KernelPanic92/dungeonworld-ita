@@ -91,11 +91,17 @@ export interface ManualPage {
   description: string;
   /** Raw MarkDoc content */
   content: string;
+  /** Licenses referenced by the page (stored but not rendered yet) */
+  licenses: MaterialLicense[];
 }
 
 export function getManualPages(version: string): Promise<ManualPage[]> {
   return memoized(`manual:${version}`, async () => {
-    const entries = await reader.collections.manualPages.all();
+    const [entries, licenses] = await Promise.all([
+      reader.collections.manualPages.all(),
+      getLicenses(),
+    ]);
+    const licenseBySlug = new Map(licenses.map((l) => [l.slug, l]));
     return Promise.all(
       entries
         .filter((e) => e.slug.startsWith(`${version}/`))
@@ -108,6 +114,15 @@ export function getManualPages(version: string): Promise<ManualPage[]> {
             title: e.entry.title,
             description: e.entry.description ?? "",
             content: await readMdocBody(`docs/manuale/pagine/${e.slug}/index.mdoc`),
+            licenses: (e.entry.licenses ?? []).map((l) => {
+              const license = l.license ? licenseBySlug.get(l.license) : undefined;
+              return {
+                licenseSlug: l.license ?? "",
+                licenseName: license?.name ?? l.license ?? "",
+                licenseUrl: license?.url ?? null,
+                scope: l.scope,
+              };
+            }),
           };
         }),
     );
@@ -121,6 +136,28 @@ export async function getManualPage(
   const pages = await getManualPages(version);
   const key = slugs.join("/");
   return pages.find((p) => (slugs.length === 0 ? p.slugs.length === 0 : p.slugs.join("/") === key));
+}
+
+// ---------------------------------------------------------------------------
+// Licenses
+// ---------------------------------------------------------------------------
+export interface License {
+  slug: string;
+  name: string;
+  label: string;
+  url: string | null;
+}
+
+export function getLicenses(): Promise<License[]> {
+  return memoized("licenses", async () => {
+    const entries = await reader.collections.licenses.all();
+    return entries.map((e) => ({
+      slug: e.slug,
+      name: e.entry.name,
+      label: e.entry.label ?? e.entry.name,
+      url: e.entry.url ?? null,
+    }));
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -143,6 +180,21 @@ export interface MaterialCredit {
   url: string | null;
 }
 
+export interface MaterialLicense {
+  licenseSlug: string;
+  licenseName: string;
+  licenseUrl: string | null;
+  scope: string;
+}
+
+export interface ContainedMaterial {
+  /** Entry slug (version-prefixed) */
+  entrySlug: string;
+  /** Version-free slug, for building the detail URL */
+  slug: string;
+  name: string;
+}
+
 export interface Material {
   slug: string;
   /** Slugs relative to the materials root (e.g. ['barbaro']) */
@@ -153,9 +205,13 @@ export interface Material {
   source: string;
   shortDescription: string;
   description: string;
-  collection: string;
+  /** The collection this material belongs to, resolved from the collection
+   *  materials' `contains` lists (single source of truth). */
+  collection: { slug: string; name: string } | null;
   date: string | null;
-  license: { name: string; url: string } | null;
+  licenses: MaterialLicense[];
+  /** Materials contained by this material (only for type "collection") */
+  contains: ContainedMaterial[];
   showcase: { image: string | null; heroName: string | null } | null;
   credits: MaterialCredit[];
   assets: MaterialAsset[];
@@ -164,17 +220,43 @@ export interface Material {
 
 export function getMaterials(version: string): Promise<Material[]> {
   return memoized(`materials:${version}`, async () => {
-    const [entries, authors] = await Promise.all([
+    const [entries, authors, licenses] = await Promise.all([
       reader.collections.materials.all(),
       reader.collections.authors.all(),
+      getLicenses(),
     ]);
     const authorNames = new Map(authors.map((a) => [a.slug, a.entry.completeName]));
+    const licenseBySlug = new Map(licenses.map((l) => [l.slug, l]));
+    const versionEntries = entries.filter((e) => e.slug.startsWith(`${version}/`));
+    const nameByEntry = new Map(
+      versionEntries.map((e) => [
+        e.slug,
+        (e.entry as unknown as { name: string }).name,
+      ]),
+    );
+
+    const restOf = (entrySlug: string) => entrySlug.slice(version.length + 1);
+
+    // Reverse lookup: which collection material contains each material.
+    // Membership is single-source on the collection (its `contains` field).
+    const collectionByMaterial = new Map<string, { slug: string; name: string }>();
+    for (const e of versionEntries) {
+      const entry = e.entry as unknown as { type?: string; contains?: string[] };
+      if (entry.type === "collection" && Array.isArray(entry.contains)) {
+        for (const member of entry.contains) {
+          if (!collectionByMaterial.has(member)) {
+            collectionByMaterial.set(member, {
+              slug: restOf(e.slug),
+              name: nameByEntry.get(e.slug) ?? e.slug,
+            });
+          }
+        }
+      }
+    }
 
     return Promise.all(
-      entries
-        .filter((e) => e.slug.startsWith(`${version}/`))
-        .map(async (e) => {
-        const rest = e.slug.slice(version.length + 1);
+      versionEntries.map(async (e) => {
+        const rest = restOf(e.slug);
         const entry = e.entry as unknown as {
           name: string;
           version: string;
@@ -182,16 +264,15 @@ export function getMaterials(version: string): Promise<Material[]> {
           source: string;
           shortDescription: string;
           description: string;
-          collection: string;
           date: string | null;
-          license: { name: string; url: string } | null;
+          licenses: Array<{ license: string; scope: string }> | null;
+          contains: string[] | null;
           showcase: { image: string | null; heroName: string | null } | null;
           credits: Array<{ discriminant: string; value: { author: string | null; kind: string; url: string | null } }>;
           assets: Array<{
             discriminant: "file" | "external";
             value: { name: string; file: string | null; url: string | null; thumbnail: string | null };
           }>;
-
         };
 
         return {
@@ -203,9 +284,22 @@ export function getMaterials(version: string): Promise<Material[]> {
           source: entry.source,
           shortDescription: entry.shortDescription ?? "",
           description: entry.description ?? "",
-          collection: entry.collection ?? "",
+          collection: collectionByMaterial.get(e.slug) ?? null,
           date: entry.date,
-          license: entry.license?.name ? entry.license : null,
+          licenses: (entry.licenses ?? []).map((l) => {
+            const license = l.license ? licenseBySlug.get(l.license) : undefined;
+            return {
+              licenseSlug: l.license ?? "",
+              licenseName: license?.name ?? l.license ?? "",
+              licenseUrl: license?.url ?? null,
+              scope: l.scope,
+            };
+          }),
+          contains: (entry.contains ?? []).map((member) => ({
+            entrySlug: member,
+            slug: restOf(member),
+            name: nameByEntry.get(member) ?? member,
+          })),
           showcase: entry.showcase?.image || entry.showcase?.heroName ? entry.showcase : null,
           credits: (entry.credits ?? []).map((c) => ({
             authorSlug: c.value.author ?? "",
@@ -222,7 +316,7 @@ export function getMaterials(version: string): Promise<Material[]> {
           })),
           content: await readMdocBody(`docs/materiali/${e.slug}/index.mdoc`),
         };
-        }),
+      }),
     );
   });
 }
