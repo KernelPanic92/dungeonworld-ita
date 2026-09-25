@@ -24,7 +24,8 @@ export interface FilterLicense {
   label: string;
 }
 
-const DEFAULT_OPEN = ["tipo", "provenienza", "autori", "licenze"];
+// all groups start collapsed
+const DEFAULT_OPEN: string[] = [];
 
 function ActiveCount({ count }: { count: number }) {
   if (count === 0) return null;

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getMaterial, isValidManualVersion } from "@/lib/keystatic";
+import { getMaterial, getMaterials, isValidManualVersion } from "@/lib/keystatic";
 import { materialFileUrl } from "@/lib/materials";
 import { cn } from "cn";
 import { mdxComponents, compiler, markdocToMdx } from "@/components/mdx";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import { MaterialCard } from "@/components/materials/material-card";
+import { BackButton } from "@/components/site/back-button";
 import {
   MATERIAL_SOURCE_OPTIONS,
   MATERIAL_TYPE_OPTIONS,
@@ -18,7 +20,6 @@ import {
   FileText,
   Calendar,
   LinkIcon,
-  ArrowLeft,
   FolderOpen,
 } from "lucide-react";
 
@@ -50,6 +51,13 @@ export default async function MaterialDetailPage({ params }: Props) {
   const material = await getMaterial(version, (slug ?? []).join("/"));
   if (!material) notFound();
 
+  // member materials of a collection, rendered as a card grid
+  const contained = material.type === "collection"
+    ? (await getMaterials(version)).filter((m) =>
+        material.contains.some((c) => c.slug === m.slug),
+      )
+    : [];
+
   const typeLabel =
     MATERIAL_TYPE_OPTIONS.find((t) => t.value === material.type)?.label ??
     material.type;
@@ -69,10 +77,7 @@ export default async function MaterialDetailPage({ params }: Props) {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-8">
       <nav className="mb-6 text-sm text-muted-foreground">
-        <Link href={`/${version}/materiali`} className="inline-flex items-center gap-1.5 hover:text-foreground">
-          <ArrowLeft className="size-4" />
-          Tutti i materiali
-        </Link>
+        <BackButton fallbackHref={`/${version}/materiali`} />
       </nav>
 
       <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-start">
@@ -195,23 +200,16 @@ export default async function MaterialDetailPage({ params }: Props) {
         </section>
       ) : null}
 
-      {material.type === "collection" && material.contains.length > 0 ? (
+      {material.type === "collection" && contained.length > 0 ? (
         <section className="mb-8">
-          <h2 className="mb-3 text-xl font-semibold">
-            Materiali contenuti ({material.contains.length})
+          <h2 className="mb-4 text-xl font-semibold">
+            Materiali contenuti ({contained.length})
           </h2>
-          <ul className="flex flex-col gap-1.5 text-sm">
-            {material.contains.map((member) => (
-              <li key={member.entrySlug}>
-                <Link
-                  href={`/${version}/materiali/${member.slug}`}
-                  className="font-medium underline-offset-4 hover:text-dw hover:underline"
-                >
-                  {member.name}
-                </Link>
-              </li>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {contained.map((m) => (
+              <MaterialCard key={m.slug} material={m} version={version} />
             ))}
-          </ul>
+          </div>
         </section>
       ) : null}
 
