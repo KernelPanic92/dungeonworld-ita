@@ -11,8 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { cn } from "cn";
-
-const KOFI_URL = process.env.NEXT_PUBLIC_KOFI_URL;
+import { KOFI_PAGE_URL } from "@/lib/kofi";
 
 interface DownloadLinkProps {
   href: string;
@@ -60,17 +59,15 @@ export function DownloadLink({ href, name, className, children }: DownloadLinkPr
           della taverna.
         </DialogDescription>
         <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:justify-end">
-          {KOFI_URL ? (
-            <a
-              href={KOFI_URL}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(buttonVariants(), "gap-2")}
-            >
-              <HeartHandshake className="size-4" />
-              Supportaci su Ko-fi
-            </a>
-          ) : null}
+          <a
+            href={KOFI_PAGE_URL}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(buttonVariants(), "gap-2")}
+          >
+            <HeartHandshake className="size-4" />
+            Supportaci su Ko-fi
+          </a>
           <DialogClose
             className={cn(buttonVariants({ variant: "outline" }))}
           >

@@ -1,5 +1,4 @@
 /** Third-party integration ids from env; components degrade when unset. */
-export const KOFI_URL = process.env.NEXT_PUBLIC_KOFI_URL;
 
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 

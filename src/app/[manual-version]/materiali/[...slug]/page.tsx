@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { MaterialCard } from "@/components/materials/material-card";
 import { DownloadLink } from "@/components/materials/download-link";
+import { KoFiEmbed } from "@/components/site/kofi";
 import { BackButton } from "@/components/site/back-button";
 import {
   MATERIAL_SOURCE_OPTIONS,
@@ -192,6 +193,16 @@ export default async function MaterialDetailPage({ params }: Props) {
           </div>
         </section>
       ) : null}
+
+      <section className="mb-8">
+        <h2 className="mb-3 text-xl font-semibold">Supporta il progetto</h2>
+        <p className="mb-3 text-sm text-muted-foreground">
+          Dungeon World Italia è gratuito e lo sarà sempre. Se vuoi aiutarci a
+          tenere aperte le porte della taverna, puoi lasciare una piccola
+          donazione.
+        </p>
+        <KoFiEmbed />
+      </section>
 
       {material.credits.length > 0 ? (
         <section className="mb-8">

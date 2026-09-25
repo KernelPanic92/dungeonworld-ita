@@ -9,6 +9,7 @@ import {
 import { getManualNavPages } from "@/lib/source";
 import { compiler, markdocToMdx, mdxComponents } from "@/components/mdx";
 import { AdSenseAd } from "@/components/ads/adsense";
+import { KoFiButton } from "@/components/site/kofi";
 import {
   DocsBody,
   DocsPage,
@@ -117,8 +118,15 @@ export default async function ManualPage({ params }: Props) {
   return (
     <DocsPage
       toc={toc}
-      // ad unit at the top of the table of contents
-      tableOfContent={{ header: <AdSenseAd /> }}
+      // support button + ad unit at the top of the table of contents
+      tableOfContent={{
+        header: (
+          <div className="flex flex-col items-start gap-4 pb-4">
+            <KoFiButton />
+            <AdSenseAd />
+          </div>
+        ),
+      }}
       footer={{
         items: {
           previous: previous
