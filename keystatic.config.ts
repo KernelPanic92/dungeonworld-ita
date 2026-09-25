@@ -421,6 +421,12 @@ export default config({
           name: { label: "Nome completo" },
           slug: { label: "Slug" },
         }),
+        filtrable: fields.checkbox({
+          label: "Filtrabile",
+          description:
+            "Se attivo, l'autore compare tra i filtri della pagina Materiali.",
+          defaultValue: true,
+        }),
         avatar: fields.image({ label: "Avatar" }),
         urls: fields.object({
           site: fields.url({ label: "Sito" }),

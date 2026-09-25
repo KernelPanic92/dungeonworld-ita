@@ -51,26 +51,14 @@ export function MaterialsFilters({
   authors: FilterAuthor[];
   licenses: FilterLicense[];
 }) {
-  const [
-    {
-      type,
-      source,
-      authors: selectedAuthors,
-      licenses: selectedLicenses,
-      excludeAi,
-    },
-    setQuery,
-  ] = useQueryStates(materialsParsers, { shallow: false });
+  const [{ type, source, authors: selectedAuthors, licenses: selectedLicenses }, setQuery] =
+    useQueryStates(materialsParsers, { shallow: false });
 
   const toggle = (list: string[], value: string) =>
     list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
 
   const hasFilters =
-    type.length > 0 ||
-    source.length > 0 ||
-    selectedAuthors.length > 0 ||
-    selectedLicenses.length > 0 ||
-    excludeAi;
+    type.length > 0 || source.length > 0 || selectedAuthors.length > 0 || selectedLicenses.length > 0;
 
   return (
     <div className="flex flex-col gap-4">
@@ -86,7 +74,6 @@ export function MaterialsFilters({
                 source: null,
                 authors: null,
                 licenses: null,
-                excludeAi: null,
                 page: null,
               })
             }
@@ -155,7 +142,7 @@ export function MaterialsFilters({
           <AccordionTrigger className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
             <span className="flex items-center gap-2">
               Autori
-              <ActiveCount count={selectedAuthors.length + (excludeAi ? 1 : 0)} />
+              <ActiveCount count={selectedAuthors.length} />
             </span>
           </AccordionTrigger>
           <AccordionContent>
@@ -178,16 +165,6 @@ export function MaterialsFilters({
                     {author.name}
                   </label>
                 ))}
-                {/* the AI illustrator is not a filter option, only an exclusion */}
-                <label className="flex cursor-pointer items-center gap-2 border-t pt-3 text-sm">
-                  <Checkbox
-                    checked={excludeAi}
-                    onCheckedChange={() =>
-                      void setQuery({ excludeAi: !excludeAi, page: null })
-                    }
-                  />
-                  Escludi immagini AI (DeepAI)
-                </label>
               </div>
             ) : (
               <p className="text-sm text-muted-foreground">Nessun autore.</p>

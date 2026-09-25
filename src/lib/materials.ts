@@ -1,15 +1,11 @@
 import type { Material } from "./keystatic";
 
-/** Author slug used for AI-generated illustrations (excludable via filter). */
-export const AI_ILLUSTRATOR_SLUG = "deepai-org";
-
 export interface MaterialsQuery {
   search: string;
   type: string[];
   source: string[];
   authors: string[];
   licenses: string[];
-  excludeAi: boolean;
   page: number;
 }
 
@@ -23,9 +19,6 @@ export function filterMaterials(materials: Material[], query: Omit<MaterialsQuer
     }
     if (query.licenses.length > 0) {
       if (!m.licenses.some((l) => query.licenses.includes(l.licenseSlug))) return false;
-    }
-    if (query.excludeAi) {
-      if (m.credits.some((c) => c.authorSlug === AI_ILLUSTRATOR_SLUG)) return false;
     }
     if (q) {
       const haystack = [

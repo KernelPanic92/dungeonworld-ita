@@ -304,6 +304,8 @@ export interface MaterialAsset {
 export interface MaterialCredit {
   authorSlug: string;
   authorName: string;
+  /** Whether the author can appear among the materials filter options. */
+  authorFiltrable: boolean;
   kind: string;
   url: string | null;
 }
@@ -356,7 +358,12 @@ export function getMaterials(version: string): Promise<Material[]> {
       r.collections.authors.all(),
       getLicenses(),
     ]);
-    const authorNames = new Map(authors.map((a) => [a.slug, a.entry.completeName]));
+    const authorInfo = new Map(
+      authors.map((a) => [
+        a.slug,
+        { name: a.entry.completeName, filtrable: a.entry.filtrable !== false },
+      ]),
+    );
     const licenseBySlug = new Map(licenses.map((l) => [l.slug, l]));
     const versionEntries = entries.filter((e) => e.slug.startsWith(`${version}/`));
     const nameByEntry = new Map(
@@ -434,12 +441,16 @@ export function getMaterials(version: string): Promise<Material[]> {
             name: nameByEntry.get(member) ?? member,
           })),
           showcase: entry.showcase?.image || entry.showcase?.heroName ? entry.showcase : null,
-          credits: (entry.credits ?? []).map((c) => ({
-            authorSlug: c.value.author ?? "",
-            authorName: c.value.author ? authorNames.get(c.value.author) ?? c.value.author : "",
-            kind: c.value.kind,
-            url: c.value.url,
-          })),
+          credits: (entry.credits ?? []).map((c) => {
+            const info = authorInfo.get(c.value.author ?? "");
+            return {
+              authorSlug: c.value.author ?? "",
+              authorName: info?.name ?? c.value.author ?? "",
+              authorFiltrable: info?.filtrable ?? true,
+              kind: c.value.kind,
+              url: c.value.url,
+            };
+          }),
           assets: (entry.assets ?? []).map((a) => ({
             type: a.discriminant,
             name: a.value.name,
