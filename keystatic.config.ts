@@ -39,14 +39,9 @@ const NAV_STATUS_OPTIONS = [
   { label: "Deprecata", value: "deprecato" },
 ] as const;
 
-const NAV_KIND_LEAF_OPTIONS = [
+const NAV_KIND_OPTIONS = [
   { label: "Pagina", value: "page" },
   { label: "URL esterno", value: "url" },
-] as const;
-
-const NAV_KIND_GROUP_OPTIONS = [
-  ...NAV_KIND_LEAF_OPTIONS,
-  { label: "Sottogruppo", value: "group" },
 ] as const;
 
 export default config({
@@ -78,7 +73,8 @@ export default config({
           defaultValue: false,
         }),
         // The whole sidebar is defined here, as an ordered structure.
-        // Two nesting levels max: navGroup -> subgroup -> pages/urls.
+        // Each navGroup is a sidebar section; items are pages or external
+        // urls only (flat, no subgroups).
         navGroups: fields.array(
           fields.object({
             groupName: fields.text({
@@ -90,7 +86,7 @@ export default config({
               fields.conditional(
                 fields.select({
                   label: "Tipo di voce",
-                  options: NAV_KIND_GROUP_OPTIONS,
+                  options: NAV_KIND_OPTIONS,
                   defaultValue: "page",
                 }),
                 {
@@ -116,49 +112,24 @@ export default config({
                       validation: { isRequired: true },
                     }),
                   }),
-                  group: fields.object({
-                    label: fields.text({
-                      label: "Etichetta",
-                      validation: { isRequired: true },
-                    }),
-                    items: fields.array(
-                      fields.conditional(
-                        fields.select({
-                          label: "Tipo di voce",
-                          options: NAV_KIND_LEAF_OPTIONS,
-                          defaultValue: "page",
-                        }),
-                        {
-                          page: fields.object({
-                            page: fields.relationship({
-                              label: "Pagina",
-                              collection: "manualPages",
-                              validation: { isRequired: true },
-                            }),
-                            status: fields.select({
-                              label: "Stato",
-                              options: NAV_STATUS_OPTIONS,
-                              defaultValue: "default",
-                            }),
-                          }),
-                          url: fields.object({
-                            label: fields.text({
-                              label: "Etichetta",
-                              validation: { isRequired: true },
-                            }),
-                            url: fields.url({
-                              label: "URL",
-                              validation: { isRequired: true },
-                            }),
-                          }),
-                        },
-                      ),
-                      { label: "Voci" },
-                    ),
-                  }),
                 },
               ),
-              { label: "Voci" },
+              {
+                label: "Voci",
+                itemLabel: (props) => {
+                  const p = props as {
+                    discriminant: string;
+                    value: { fields: Record<string, { value: unknown }> };
+                  };
+                  if (p.discriminant === "url") {
+                    return (
+                      String(p.value.fields.label.value || "") ||
+                      String(p.value.fields.url.value || "Link")
+                    );
+                  }
+                  return String(p.value.fields.page.value || "Pagina non selezionata");
+                },
+              },
             ),
           }),
           {

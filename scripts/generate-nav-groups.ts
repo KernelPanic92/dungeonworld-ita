@@ -2,10 +2,10 @@
  * One-shot migration: derive `navGroups` for every version entry from the
  * legacy sources (folder structure + meta.json + the per-page `order` field).
  *
- * Mapping (2 levels of grouping, matching the navGroups schema):
+ * Mapping (flat, no subgroups):
  * - top-level folders  -> navGroups entries (groupName from meta.json title)
- * - nested folders     -> `group` items inside a navGroup (label from meta.json)
- * - pages              -> `page` items with status "default"
+ * - pages inside them  -> `page` items with status "default"; deeper folders
+ *   are flattened into the same navGroup (order-preserving walk)
  * - root loose pages   -> a leading navGroup with an empty groupName
  *
  * Item order follows the meta.json `pages` arrays (what the site actually
@@ -29,11 +29,7 @@ interface NavLeaf {
   discriminant: "page" | "url";
   value: Record<string, unknown>;
 }
-interface NavGroupItem {
-  discriminant: "group";
-  value: { label: string; items: NavLeaf[] };
-}
-type NavItem = NavLeaf | NavGroupItem;
+type NavItem = NavLeaf;
 interface NavGroup {
   groupName: string;
   items: NavItem[];
@@ -109,8 +105,8 @@ function pageItem(version: string, relSlug: string): NavLeaf {
   };
 }
 
-/** Items INSIDE a navGroup: pages plus at most one more level of `group` items. */
-async function buildNavGroupItems(version: string, dir: string, relBase: string): Promise<NavItem[]> {
+/** Pages of `dir` and its subfolders, flattened in sidebar order (meta.json lists first, unlisted appended by `order`). */
+async function collectLeafPages(version: string, dir: string, relBase: string): Promise<NavItem[]> {
   const items: NavItem[] = [];
   for (const { name } of await orderedEntries(dir)) {
     const childDir = path.join(dir, name);
@@ -119,24 +115,8 @@ async function buildNavGroupItems(version: string, dir: string, relBase: string)
       items.push(pageItem(version, childRel));
       continue;
     }
-    // nested folder -> `group` item (label from meta.json title, fallback: folder name)
-    const nestedItems: NavLeaf[] = [];
-    for (const { name: n2 } of await orderedEntries(childDir)) {
-      const d2 = path.join(childDir, n2);
-      const rel2 = `${childRel}/${n2}`;
-      if (await isPage(d2)) {
-        nestedItems.push(pageItem(version, rel2));
-        continue;
-      }
-      throw new Error(
-        `Gerarchia troppo profonda: ${version}/${rel2}/ è una cartella dentro un sottogruppo ` +
-          `(navGroups supporta solo 2 livelli: navGroup -> group).`,
-      );
-    }
-    items.push({
-      discriminant: "group",
-      value: { label: (await readMetaJson(childDir))?.title ?? name, items: nestedItems },
-    });
+    // nested folder: flatten its pages into the same navGroup
+    items.push(...(await collectLeafPages(version, childDir, childRel)));
   }
   return items;
 }
@@ -158,20 +138,17 @@ async function buildNavGroups(version: string): Promise<NavGroup[]> {
       root.items.push(pageItem(version, name));
       continue;
     }
-    // top-level folder -> its own navGroup
+    // top-level folder -> its own navGroup (nested folders flattened inside)
     groups.push({
       groupName: (await readMetaJson(childDir))?.title ?? name,
-      items: await buildNavGroupItems(version, childDir, name),
+      items: await collectLeafPages(version, childDir, name),
     });
   }
   return groups;
 }
 
 function countItems(items: NavItem[]): number {
-  return items.reduce(
-    (acc, i) => acc + (i.discriminant === "group" ? countItems(i.value.items) : 1),
-    0,
-  );
+  return items.length;
 }
 
 async function migrateVersion(version: string) {

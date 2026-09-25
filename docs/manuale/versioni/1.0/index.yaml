@@ -56,46 +56,42 @@ navGroups:
           status: default
   - groupName: Mostri
     items:
-      - discriminant: group
+      - discriminant: page
         value:
-          label: ambientazioni
-          items:
-            - discriminant: page
-              value:
-                page: 1.0/mostri/ambientazioni/abitanti-delle-caverne
-                status: default
-            - discriminant: page
-              value:
-                page: 1.0/mostri/ambientazioni/abitanti-delle-paludi
-                status: default
-            - discriminant: page
-              value:
-                page: 1.0/mostri/ambientazioni/esperimenti-perversi
-                status: default
-            - discriminant: page
-              value:
-                page: 1.0/mostri/ambientazioni/foreste-intricate
-                status: default
-            - discriminant: page
-              value:
-                page: 1.0/mostri/ambientazioni/genti-del-reame
-                status: default
-            - discriminant: page
-              value:
-                page: 1.0/mostri/ambientazioni/legioni-dei-non-morti
-                status: default
-            - discriminant: page
-              value:
-                page: 1.0/mostri/ambientazioni/orde-fameliche
-                status: default
-            - discriminant: page
-              value:
-                page: 1.0/mostri/ambientazioni/poteri-planari
-                status: default
-            - discriminant: page
-              value:
-                page: 1.0/mostri/ambientazioni/profondita-della-terra
-                status: default
+          page: 1.0/mostri/ambientazioni/abitanti-delle-caverne
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/abitanti-delle-paludi
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/esperimenti-perversi
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/foreste-intricate
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/genti-del-reame
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/legioni-dei-non-morti
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/orde-fameliche
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/poteri-planari
+          status: default
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/profondita-della-terra
+          status: default
       - discriminant: page
         value:
           page: 1.0/mostri/panoramica
