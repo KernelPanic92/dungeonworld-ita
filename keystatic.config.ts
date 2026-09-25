@@ -33,12 +33,6 @@ const CREDIT_KIND_OPTIONS = [
   { label: "Creatore originale", value: "originalCreator" },
 ] as const;
 
-const NAV_STATUS_OPTIONS = [
-  { label: "Predefinita", value: "default" },
-  { label: "Nuova", value: "nuovo" },
-  { label: "Deprecata", value: "deprecato" },
-] as const;
-
 const NAV_KIND_OPTIONS = [
   { label: "Pagina", value: "page" },
   { label: "URL esterno", value: "url" },
@@ -96,11 +90,6 @@ export default config({
                       collection: "manualPages",
                       validation: { isRequired: true },
                     }),
-                    status: fields.select({
-                      label: "Stato",
-                      options: NAV_STATUS_OPTIONS,
-                      defaultValue: "default",
-                    }),
                   }),
                   url: fields.object({
                     label: fields.text({
@@ -134,8 +123,10 @@ export default config({
           }),
           {
             label: "Gruppi di navigazione",
-            itemLabel: (props) =>
-              String(props.fields.groupName.value || "Gruppo"),
+            itemLabel: (props) => [
+              props.fields.groupName.value,
+              `${props.fields.items.elements.length}`,
+            ].filter(Boolean).join(' - '),
           },
         ),
       },
@@ -157,7 +148,6 @@ export default config({
           },
         }),
         description: fields.text({ label: "Descrizione", multiline: true }),
-        order: fields.integer({ label: "Ordine nella sidebar" }),
         image: fields.image({ label: "Immagine di copertina" }),
         content: fields.markdoc({ label: "Contenuto" }),
       },

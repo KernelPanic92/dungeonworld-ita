@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "tsx scripts/validate-content.ts && next build",
+    "validate": "tsx scripts/validate-content.ts",
     "start": "next start",
     "lint": "eslint"
   },

@@ -1,5 +1,5 @@
 import { createReader } from "@keystatic/core/reader";
-import { readFile, readdir } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import config from "../../keystatic.config";
 
@@ -74,7 +74,6 @@ export interface ManualPage {
   entrySlug: string;
   title: string;
   description: string;
-  order: number | null;
   /** Raw MarkDoc content */
   content: string;
 }
@@ -93,7 +92,6 @@ export function getManualPages(version: string): Promise<ManualPage[]> {
             entrySlug: e.slug,
             title: e.entry.title,
             description: e.entry.description ?? "",
-            order: e.entry.order,
             content: await readMdocBody(`docs/manuale/pagine/${e.slug}/index.mdoc`),
           };
         }),
@@ -265,46 +263,41 @@ export function getSiteSettings(): Promise<SiteSettings | null> {
 }
 
 // ---------------------------------------------------------------------------
-// Folder meta.json helpers (page tree structure, Fumadocs-style)
+// Manual navigation (single source of truth: the version entry's navGroups)
 // ---------------------------------------------------------------------------
-export interface FolderMeta {
-  path: string; // e.g. 'game-master/meta.json' (relative to version dir)
-  title?: string;
-  pages?: string[];
-}
+export type ManualNavEntry =
+  | { kind: "page"; slug: string; group: string }
+  | { kind: "url"; label: string; url: string; group: string };
 
-export async function getManualFolderMetas(version: string): Promise<FolderMeta[]> {
-  return memoized(`manual-meta:${version}`, async () => {
-    const rootDir = path.join(process.cwd(), "docs", "manuale", "pagine", version);
-    const result: FolderMeta[] = [];
+/**
+ * Flattens a version entry's navGroups into an ordered list.
+ * Everything nav-related (sidebar tree, active item, breadcrumbs,
+ * prev/next, search index) derives from this list.
+ * External url entries are kept (they show in the sidebar); page-specific
+ * consumers filter by `kind === "page"`.
+ */
+export function getManualNav(version: string): Promise<ManualNavEntry[]> {
+  return memoized(`manual-nav:${version}`, async () => {
+    const versions = await reader.collections.manualVersions.all();
+    const entry = versions.find((v) => v.slug === version);
+    const navGroups = entry?.entry.navGroups ?? [];
 
-    async function walk(dir: string, rel: string) {
-      let dirents;
-      try {
-        dirents = await readdir(dir, { withFileTypes: true });
-      } catch {
-        return;
-      }
-      for (const d of dirents) {
-        if (d.isDirectory()) {
-          await walk(path.join(dir, d.name), rel ? `${rel}/${d.name}` : d.name);
+    const items: ManualNavEntry[] = [];
+    for (const group of navGroups) {
+      const groupName = group.groupName ?? "";
+      for (const item of group.items ?? []) {
+        if (item.discriminant === "url") {
+          items.push({
+            kind: "url",
+            label: item.value.label || item.value.url || "",
+            url: item.value.url ?? "",
+            group: groupName,
+          });
+        } else if (item.value.page) {
+          items.push({ kind: "page", slug: item.value.page, group: groupName });
         }
       }
-      const metaPath = path.join(dir, "meta.json");
-      try {
-        const raw = await readFile(metaPath, "utf8");
-        const parsed = JSON.parse(raw) as { title?: string; pages?: string[] };
-        result.push({
-          path: rel ? `${rel}/meta.json` : "meta.json",
-          title: parsed.title,
-          pages: parsed.pages,
-        });
-      } catch {
-        // no meta.json in this folder
-      }
     }
-
-    await walk(rootDir, "");
-    return result;
+    return items;
   });
 }

@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
 import { isValidManualVersion } from "@/lib/keystatic";
-import { getManualSource } from "@/lib/source";
+import { getManualPageTree } from "@/lib/source";
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
-import { GithubIcon } from "@/components/site/github-icon";
 import { Logo } from "@/components/site/logo";
 
 interface Props {
@@ -14,9 +13,7 @@ export default async function ManualLayout({ children, params }: Props) {
   const { "manual-version": version } = await params;
   if (!(await isValidManualVersion(version))) notFound();
 
-  const source = await getManualSource(version);
-  const loader = await source.get();
-  const tree = await loader.getPageTree();
+  const tree = await getManualPageTree(version);
 
   return (
     <DocsLayout
