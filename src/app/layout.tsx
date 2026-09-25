@@ -4,10 +4,8 @@ import { cookies, draftMode } from "next/headers";
 import { NuqsAdapter } from "nuqs/adapters/next";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import { ThemeProvider } from "@/components/theme-provider";
-import { GoogleAnalytics } from "@/components/analytics/google-analytics";
-import {
-  IubendaCookieSolution,
-} from "@/components/site/iubenda";
+import { GoogleAnalyticsConsent } from "@/components/tracking/GoogleAnalyticsConsent";
+import { IubendaCookieSolution } from "@/components/tracking/IubendaCookieSolution";
 import { JsonLd } from "@/components/site/json-ld";
 import ruleSetRepository from "@/lib/content";
 import {
@@ -71,7 +69,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             ...versions.map((v) => tabletopGameJsonLd(v)),
           ]}
         />
-        <GoogleAnalytics />
+        <GoogleAnalyticsConsent />
         <IubendaCookieSolution />
         {isPreviewing ? (
           <div className="flex items-center justify-center gap-3 bg-dw px-4 py-1.5 text-sm text-on-dw">

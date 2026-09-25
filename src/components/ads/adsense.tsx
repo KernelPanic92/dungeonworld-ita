@@ -3,7 +3,7 @@ import {
   ADSENSE_CLIENT,
   ADSENSE_SLOT_TOC,
   consentScriptProps,
-} from "@/lib/consent";
+} from "@/lib/tracking";
 import { cn } from "cn";
 
 /**

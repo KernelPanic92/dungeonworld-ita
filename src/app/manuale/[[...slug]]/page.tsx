@@ -4,7 +4,7 @@ import ruleSetRepository from "@/lib/content";
 import { manualBaseUrl } from "@/lib/content";
 import { renderMarkdoc } from "@/lib/content/markdoc/render";
 import { AdSenseAd } from "@/components/ads/adsense";
-import { ADSENSE_SLOT_BANNER } from "@/lib/consent";
+import { ADSENSE_SLOT_BANNER } from "@/lib/tracking";
 import { JsonLd } from "@/components/site/json-ld";
 import { breadcrumbJsonLd, manualPageJsonLd } from "@/lib/schema-org";
 import {
