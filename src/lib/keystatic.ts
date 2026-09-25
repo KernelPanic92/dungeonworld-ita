@@ -335,6 +335,8 @@ export interface Material {
   source: string;
   summary: string;
   flavor: string;
+  /** Public URL of the 1:1 card thumbnail (from the `thumbnail` field) */
+  thumbnail: string | null;
   /** The collection this material belongs to, resolved from the collection
    *  materials' `contains` lists (single source of truth). */
   collection: { slug: string; name: string } | null;
@@ -403,6 +405,7 @@ export function getMaterials(version: string): Promise<Material[]> {
           summary: string;
           flavor: string;
           date: string | null;
+          thumbnail: string | null;
           licenses: Array<{ license: string; scope: string }> | null;
           contains: string[] | null;
           seo?: unknown;
@@ -424,6 +427,7 @@ export function getMaterials(version: string): Promise<Material[]> {
           source: entry.source,
           summary: entry.summary ?? "",
           flavor: entry.flavor ?? "",
+          thumbnail: entry.thumbnail ?? null,
           collection: collectionByMaterial.get(e.slug) ?? null,
           date: entry.date,
           licenses: (entry.licenses ?? []).map((l) => {

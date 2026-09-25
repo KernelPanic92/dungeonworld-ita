@@ -1,6 +1,8 @@
 import { collection, config, fields, singleton } from "@keystatic/core";
 import { wrapper } from "@keystatic/core/content-components";
 
+import { extendedImage } from "./src/keystatic/fields/extended-image";
+
 // Custom MarkDoc tags used by the content ({% callout %}, {% steps %}), also
 // converted at render time by markdocToMdx. Keystatic needs these component
 // definitions to parse and validate the stored content in the admin.
@@ -39,7 +41,9 @@ const isGithubStorage =
 
 const MATERIAL_TYPE_OPTIONS = [
   { label: "Classe", value: "class" },
+  { label: "Classe compendio", value: "compendium-class" },
   { label: "Campagna", value: "campaign" },
+  { label: "One shot", value: "oneshot" },
   { label: "Approfondimento", value: "insight" },
   { label: "Ambientazione", value: "setting" },
   { label: "Mostro", value: "monster" },
@@ -83,11 +87,14 @@ const seoSchema = fields.object({
     multiline: true,
     validation: { length: { max: 160 } },
   }),
-  image: fields.image({
+  image: extendedImage({
     label: "Open Graph Image (Opzionale)",
-    description: "Immagine per la condivisione social (1200x630)",
+    description: "Immagine per la condivisione social, ritaglio 1200×630.",
     directory: "public/images/seo",
     publicPath: "/images/seo/",
+    cropper: {
+      aspectRatio: 1200 / 630,
+    },
   }),
   noIndex: fields.checkbox({
     label: "Nascondi ai motori di ricerca (noindex)",
@@ -297,6 +304,15 @@ export default config({
         version: fields.text({
           label: "Versione del materiale",
           defaultValue: "1.0",
+        }),
+        thumbnail: extendedImage({
+          label: "Thumbnail",
+          description: "Immagine 16:9 mostrata nella card del materiale.",
+          directory: "public/images/materials/thumbnails",
+          publicPath: "/images/materials/thumbnails/",
+          cropper: {
+            aspectRatio: 16/9,
+          },
         }),
         name: fields.slug({
           name: { label: "Nome" },

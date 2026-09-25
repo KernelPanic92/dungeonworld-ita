@@ -194,16 +194,6 @@ export default async function MaterialDetailPage({ params }: Props) {
         </section>
       ) : null}
 
-      <section className="mb-8">
-        <h2 className="mb-3 text-xl font-semibold">Supporta il progetto</h2>
-        <p className="mb-3 text-sm text-muted-foreground">
-          Dungeon World Italia è gratuito e lo sarà sempre. Se vuoi aiutarci a
-          tenere aperte le porte della taverna, puoi lasciare una piccola
-          donazione.
-        </p>
-        <KoFiEmbed />
-      </section>
-
       {material.credits.length > 0 ? (
         <section className="mb-8">
           <h2 className="mb-3 text-xl font-semibold">Crediti</h2>

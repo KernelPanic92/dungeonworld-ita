@@ -67,6 +67,10 @@ export function paginate<T>(items: T[], page: number, pageSize: number) {
 }
 
 export function materialThumbnail(m: Material, version: string): string | null {
+  // 1:1 thumbnail uploaded via the `thumbnail` field (already a public URL)
+  if (m.thumbnail) {
+    return m.thumbnail;
+  }
   if (m.showcase?.image) {
     return `/files/materiali/${version}/${m.slug}/${m.showcase.image}`;
   }

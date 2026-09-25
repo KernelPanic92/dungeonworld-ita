@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -36,8 +35,9 @@ export function MaterialCard({
       href={`/${version}/materiali/${material.slug}`}
       className="group block h-full"
     >
-      <Card className="h-full overflow-hidden transition-all duration-300 group-hover:border-dw/60 group-hover:shadow-lg group-hover:shadow-dw/5 group-focus-visible:ring-2 group-focus-visible:ring-dw/50">
-        <div className="relative aspect-3/4 w-full overflow-hidden bg-muted">
+      {/* full-bleed media: pt-0 covers both the thumbnail and the placeholder branch */}
+      <Card className="pt-0 h-full overflow-hidden transition-all duration-300 group-hover:border-dw/60 group-hover:shadow-lg group-hover:shadow-dw/5 group-focus-visible:ring-2 group-focus-visible:ring-dw/50">
+        <div className="relative aspect-16/9 w-full overflow-hidden bg-muted">
           {thumbnail ? (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
@@ -86,12 +86,6 @@ export function MaterialCard({
             {material.summary || material.flavor}
           </CardDescription>
         </CardContent>
-        <CardFooter className="gap-2 text-xs text-muted-foreground">
-          {material.date ? (
-            <span>{new Date(material.date).toLocaleDateString("it-IT")}</span>
-          ) : null}
-          {material.version ? <span>v{material.version}</span> : null}
-        </CardFooter>
       </Card>
     </Link>
   );

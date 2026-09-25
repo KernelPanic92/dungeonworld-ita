@@ -21,7 +21,7 @@ export function BackButton({ fallbackHref }: { fallbackHref: string }) {
       className="inline-flex items-center gap-1.5 hover:text-foreground"
     >
       <ArrowLeft className="size-4" />
-      Tutti i materiali
+      Indietro
     </button>
   );
 }

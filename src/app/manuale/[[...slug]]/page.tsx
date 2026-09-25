@@ -122,7 +122,6 @@ export default async function ManualPage({ params }: Props) {
       tableOfContent={{
         header: (
           <div className="flex flex-col items-start gap-4 pb-4">
-            <KoFiButton />
             <AdSenseAd />
           </div>
         ),
@@ -130,9 +129,9 @@ export default async function ManualPage({ params }: Props) {
       footer={{
         items: {
           previous: previous
-            ? { name: previous.title, url: previous.url }
+            ? { name: previous.title, url: previous.url,  description: 'Precedente' }
             : undefined,
-          next: next ? { name: next.title, url: next.url } : undefined,
+          next: next ? { name: next.title, url: next.url, description: 'Successiva' } : undefined,
         },
       }}
     >
