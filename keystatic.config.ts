@@ -1,6 +1,34 @@
 import { collection, config, fields, singleton } from "@keystatic/core";
+import { wrapper } from "@keystatic/core/content-components";
 
-export const markdocConfig = fields.markdoc.createMarkdocConfig({});
+// Custom MarkDoc tags used by the content ({% callout %}, {% steps %}), also
+// converted at render time by markdocToMdx. Keystatic needs these component
+// definitions to parse and validate the stored content in the admin.
+const contentComponents = {
+  callout: wrapper({
+    label: "Callout",
+    description: "Un riquadro di nota o avviso.",
+    schema: {
+      type: fields.select({
+        label: "Tipo",
+        options: [
+          { label: "Info", value: "info" },
+          { label: "Avviso", value: "warning" },
+          { label: "Errore", value: "error" },
+        ],
+        defaultValue: "info",
+      }),
+      title: fields.text({ label: "Titolo" }),
+    },
+    ContentView: ({ children }) => children,
+  }),
+  steps: wrapper({
+    label: "Steps",
+    description: "Un elenco di passaggi numerati.",
+    schema: {},
+    ContentView: ({ children }) => children,
+  }),
+};
 
 // Conditional storage: local in development, GitHub in production.
 // Production requires a Keystatic GitHub App (see https://keystatic.com)
@@ -41,54 +69,50 @@ const LICENSE_SCOPE_OPTIONS = [
 ] as const;
 
 // Shared SEO metadata block used by materials and manual pages.
-function seoSchema() {
-  return fields.object({
-    title: fields.text({
-      label: "SEO Title (Opzionale)",
-      description:
-        "Sovrascrive il nome della pagina nel tag <title>. Consigliato: max 60 caratteri.",
-      validation: { length: { max: 60 } },
-    }),
-    description: fields.text({
-      label: "SEO Meta Description (Opzionale)",
-      description:
-        "Sovrascrive il summary per i motori di ricerca. Consigliato: max 160 caratteri.",
-      multiline: true,
-      validation: { length: { max: 160 } },
-    }),
-    image: fields.image({
-      label: "Open Graph Image (Opzionale)",
-      description: "Immagine per la condivisione social (1200x630)",
-      directory: "public/images/seo",
-      publicPath: "/images/seo/",
-    }),
-    noIndex: fields.checkbox({
-      label: "Nascondi ai motori di ricerca (noindex)",
-      defaultValue: false,
-    }),
-  });
-}
+const seoSchema = fields.object({
+  title: fields.text({
+    label: "SEO Title (Opzionale)",
+    description:
+      "Sovrascrive il nome della pagina nel tag <title>. Consigliato: max 60 caratteri.",
+    validation: { length: { max: 60 } },
+  }),
+  description: fields.text({
+    label: "SEO Meta Description (Opzionale)",
+    description:
+      "Sovrascrive il summary per i motori di ricerca. Consigliato: max 160 caratteri.",
+    multiline: true,
+    validation: { length: { max: 160 } },
+  }),
+  image: fields.image({
+    label: "Open Graph Image (Opzionale)",
+    description: "Immagine per la condivisione social (1200x630)",
+    directory: "public/images/seo",
+    publicPath: "/images/seo/",
+  }),
+  noIndex: fields.checkbox({
+    label: "Nascondi ai motori di ricerca (noindex)",
+    defaultValue: false,
+  }),
+});
 
 // Shared LLM metadata block used by materials and manual pages.
-function llmSchema() {
-  return fields.object({
-    description: fields.text({
-      label: "LLM List Description",
-      description:
-        "La frase che appare dopo il link nel file llms.txt. Se vuoto, usa il summary.",
-    }),
-    notes: fields.array(fields.text({ label: "Nota" }), {
-      label: "LLM Important Notes",
-      description:
-        "Dettagli tecnici o avvertenze specifiche per l'AI riguardo a questa pagina o classe.",
-      itemLabel: (props) => String(props.value ?? ""),
-    }),
-    exclude: fields.checkbox({
-      label: "Escludi da llms.txt",
-      defaultValue: false,
-    }),
-  });
-}
+const llmSchema = fields.object({
+  description: fields.text({
+    label: "LLM List Description",
+    description:
+      "La frase che appare dopo il link nel file llms.txt. Se vuoto, usa il summary.",
+  }),
+  notes: fields.array(fields.text({ label: "Nota" }), {
+    label: "LLM Important Notes",
+    description:
+      "Dettagli tecnici o avvertenze specifiche per l'AI riguardo a questa pagina o classe.",
+    itemLabel: (props) => String(props.value ?? ""),
+  }),
+  exclude: fields.checkbox({
+    label: "Escludi da llms.txt",
+    defaultValue: false,
+  }),
+});
 
 const CREDIT_KIND_OPTIONS = [
   { label: "Autore", value: "author" },
@@ -108,12 +132,12 @@ const NAV_KIND_OPTIONS = [
 export default config({
   storage: isGithubStorage
     ? {
-        kind: "github",
-        repo: {
-          owner: "KernelPanic92",
-          name: "dungeonworld-ita",
-        },
-      }
+      kind: "github",
+      repo: {
+        owner: "KernelPanic92",
+        name: "dungeonworld-ita",
+      },
+    }
     : { kind: "local" },
   collections: {
     // Registry of manual versions (drives the [manual-version] URL segment).
@@ -220,8 +244,8 @@ export default config({
           multiline: true,
         }),
         image: fields.image({ label: "Immagine di copertina" }),
-        seo: seoSchema(),
-        llm: llmSchema(),
+        seo: seoSchema,
+        llm: llmSchema,
         licenses: fields.array(
           fields.object({
             license: fields.relationship({
@@ -241,7 +265,10 @@ export default config({
             itemLabel: (props) => `${props.fields.scope.value} - ${props.fields.license.value}`,
           },
         ),
-        content: fields.markdoc({ label: "Contenuto" }),
+        content: fields.markdoc({
+          label: "Contenuto",
+          components: contentComponents,
+        }),
       },
     }),
     // Materials (classes, campaigns, insights, settings, monsters, equipment,
@@ -254,14 +281,6 @@ export default config({
       slugField: "name",
       format: { data: "yaml", contentField: "content" },
       schema: {
-        name: fields.slug({
-          name: { label: "Nome" },
-          slug: { label: "Slug (versione/nome, es. 1.0/barbaro)" },
-        }),
-        version: fields.text({
-          label: "Versione del materiale",
-          defaultValue: "1.0",
-        }),
         type: fields.select({
           label: "Tipo",
           options: MATERIAL_TYPE_OPTIONS,
@@ -271,6 +290,15 @@ export default config({
           label: "Provenienza",
           options: MATERIAL_SOURCE_OPTIONS,
           defaultValue: "official",
+        }),
+        date: fields.date({ label: "Data" }),
+        version: fields.text({
+          label: "Versione del materiale",
+          defaultValue: "1.0",
+        }),
+        name: fields.slug({
+          name: { label: "Nome" },
+          slug: { label: "Slug (versione/nome, es. 1.0/barbaro)" },
         }),
         summary: fields.text({
           label: "Sommario",
@@ -282,37 +310,15 @@ export default config({
           description: "Il testo evocativo e narrativo che vuole trasmettere l'autore.",
           multiline: true,
         }),
-        seo: seoSchema(),
-        llm: llmSchema(),
-        date: fields.date({ label: "Data" }),
-        licenses: fields.array(
-          fields.object({
-            license: fields.relationship({
-              label: "Licenza",
-              collection: "licenses",
-            }),
-            scope: fields.select({
-              label: "Applicabile a",
-              description:
-                "A quale parte del materiale si applica questa licenza.",
-              options: LICENSE_SCOPE_OPTIONS,
-              defaultValue: "tutto",
-            }),
-          }),
-          {
-            label: "Licenze",
-            itemLabel: (props) => `${props.fields.scope.value} - ${props.fields.license.value}`,
-          },
-        ),
-        contains: fields.multiRelationship({
-          label: "Materiali contenuti",
-          collection: "materials",
-          description:
-            "Solo per i materiali di tipo Collezione: l'elenco dei materiali che raggruppa.",
-        }),
         showcase: fields.object({
           image: fields.image({ label: "Immagine showcase" }),
           heroName: fields.text({ label: "Nome del personaggio" }),
+        }),
+        content: fields.markdoc({
+          label: "Contenuto",
+          description:
+            "Solo per materiali testuali (approfondimenti, campagne, ambientazioni)",
+          components: contentComponents,
         }),
         credits: fields.blocks(
           {
@@ -368,10 +374,32 @@ export default config({
           },
           { label: "Asset" },
         ),
-        content: fields.markdoc({
-          label: "Contenuto",
+        seo: seoSchema,
+        llm: llmSchema,
+        licenses: fields.array(
+          fields.object({
+            license: fields.relationship({
+              label: "Licenza",
+              collection: "licenses",
+            }),
+            scope: fields.select({
+              label: "Applicabile a",
+              description:
+                "A quale parte del materiale si applica questa licenza.",
+              options: LICENSE_SCOPE_OPTIONS,
+              defaultValue: "tutto",
+            }),
+          }),
+          {
+            label: "Licenze",
+            itemLabel: (props) => `${props.fields.scope.value} - ${props.fields.license.value}`,
+          },
+        ),
+        contains: fields.multiRelationship({
+          label: "Materiali contenuti",
+          collection: "materials",
           description:
-            "Solo per materiali testuali (approfondimenti, campagne, ambientazioni)",
+            "Solo per i materiali di tipo Collezione: l'elenco dei materiali che raggruppa.",
         }),
       },
     }),
