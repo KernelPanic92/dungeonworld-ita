@@ -20,7 +20,6 @@ async function main() {
     manualPages.map((m) => ({
       slug: m.slug,
       title: m.entry.title,
-      order: m.entry.order,
       contentType: typeof m.entry.content,
       astType: (m.entry.content as unknown as () => { type?: string })()?.type,
     })),
