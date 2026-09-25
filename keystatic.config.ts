@@ -369,7 +369,12 @@ export default config({
               itemLabel: (props) => String(props.fields.name.value || "Asset"),
               schema: fields.object({
                 name: fields.text({ label: "Nome" }),
-                file: fields.file({ label: "File" }),
+                file: fields.pathReference({
+                  label: "File",
+                  description:
+                    "File della cartella design/ (i designer lavorano lì, i copy fanno riferimento senza duplicare).",
+                  pattern: "design/**",
+                }),
                 thumbnail: fields.file({ label: "Thumbnail" }),
               }),
             },

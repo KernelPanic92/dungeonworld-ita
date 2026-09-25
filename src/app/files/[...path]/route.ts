@@ -15,8 +15,12 @@ const MIME_TYPES: Record<string, string> = {
   ".yaml": "text/yaml; charset=utf-8",
 };
 
-/** Directories allowed to be served (relative to repo root). */
-const ALLOWED_ROOTS = [path.join("docs", "materiali"), path.join("docs", "manuale")];
+/** Maps a URL root segment to its directory in the repo. */
+const ROOT_MAP: Record<string, string> = {
+  materiali: path.join("docs", "materiali"),
+  manuale: path.join("docs", "manuale"),
+  design: "design",
+};
 
 // cached forever: content is static per deployment
 export const revalidate = false;
@@ -27,15 +31,14 @@ interface Params {
 
 export async function GET(_request: Request, { params }: Params) {
   const { path: segments } = await params;
-  const rel = segments.join("/");
+  const [root, ...rest] = segments;
+  const dir = ROOT_MAP[root];
+  if (!dir) notFound();
 
-  // no traversal: the resolved path must stay inside an allowed root
-  const resolved = path.resolve(process.cwd(), "docs", rel);
-  const allowed = ALLOWED_ROOTS.some((root) => {
-    const absRoot = path.resolve(process.cwd(), root);
-    return resolved === absRoot || resolved.startsWith(absRoot + path.sep);
-  });
-  if (!allowed) notFound();
+  // no traversal: the resolved path must stay inside the mapped directory
+  const absRoot = path.resolve(process.cwd(), dir);
+  const resolved = path.resolve(absRoot, ...rest);
+  if (!(resolved === absRoot || resolved.startsWith(absRoot + path.sep))) notFound();
 
   let stats;
   try {

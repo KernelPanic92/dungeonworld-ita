@@ -155,9 +155,10 @@ export default async function MaterialDetailPage({ params }: Props) {
           <h2 className="mb-3 text-xl font-semibold">Download</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             {material.assets.map((asset) => {
+              // file assets reference the design/ folder (repo-relative path)
               const href =
                 asset.type === "file" && asset.file
-                  ? materialFileUrl(material, version, asset.file)
+                  ? `/files/${asset.file}`
                   : asset.url;
               if (!href) return null;
               return (
