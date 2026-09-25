@@ -4,7 +4,7 @@ import {
   getManualVersions,
   getMaterials,
 } from "@/lib/keystatic";
-import { getManualNavPages } from "@/lib/source";
+import { getManualNavPages, manualBaseUrl } from "@/lib/source";
 
 const BASE_URL = "https://www.dungeonworld-italia.it";
 
@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       const isDefault = version.slug === defaultVersion;
       const priority = isDefault ? 0.7 : 0.5;
-      const baseUrl = `/manuale/${version.slug}`;
+      const baseUrl = manualBaseUrl(version.slug, defaultVersion);
 
       return [
         {

@@ -21,29 +21,30 @@ interface Props {
 }
 
 /**
- * The version is the first slug segment: /manuale/1.0/game-master/gm.
- * - no segments → the default version's index
- * - first segment is not a version → legacy versionless URL
- *   (/manuale/come-giocare): permanent-redirect to the versioned form when
- *   the page exists in the default version, 404 otherwise
+ * Resolves a manual URL. The default version is versionless: its pages live
+ * at /manuale/<path>. A leading segment that matches a version is the version
+ * (except the default one, which redirects to its versionless canonical URL);
+ * anything else belongs to the default version.
  */
 async function resolveManualSlug(slug?: string[]) {
   const segments = slug ?? [];
+  const defaultVersion = await getDefaultManualVersion();
+
   if (segments.length === 0) {
-    permanentRedirect(`/manuale/${await getDefaultManualVersion()}`);
+    return { version: defaultVersion, rest: [] };
   }
 
   const [version, ...rest] = segments;
-  if (!(await isValidManualVersion(version))) {
-    const defaultVersion = await getDefaultManualVersion();
-    const path = segments[0] === "index" ? [] : segments;
-    if (await getManualPage(defaultVersion, path)) {
-      permanentRedirect(`/manuale/${defaultVersion}/${path.join("/")}`);
-    }
-    notFound();
+  if (version === defaultVersion) {
+    // canonical URLs of the default version are versionless
+    permanentRedirect(`/manuale${rest.length ? `/${rest.join("/")}` : ""}`);
+  }
+  if (await isValidManualVersion(version)) {
+    return { version, rest };
   }
 
-  return { version, rest };
+  // no version prefix: default version
+  return { version: defaultVersion, rest: segments };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

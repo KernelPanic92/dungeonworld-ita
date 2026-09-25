@@ -2,6 +2,7 @@ import { dynamicLoader, llms } from "fumadocs-core/source";
 import type * as PageTree from "fumadocs-core/page-tree";
 import { structure } from "fumadocs-core/mdx-plugins";
 import {
+  getDefaultManualVersion,
   getManualNav,
   getManualPages,
   getManualVersions,
@@ -18,9 +19,13 @@ export interface ManualPageData {
   structuredData: ReturnType<typeof structure>;
 }
 
-/** Public URL prefix of a manual version: the version is part of the URL. */
-export function manualBaseUrl(version: string) {
-  return `/manuale/${version}`;
+/**
+ * Public URL prefix of a manual version. The default version is versionless
+ * (served at /manuale/...), mirroring how fumadocs group folders hide the
+ * default root folder from URLs; other versions keep /manuale/<version>.
+ */
+export function manualBaseUrl(version: string, defaultVersion: string) {
+  return version === defaultVersion ? `/manuale` : `/manuale/${version}`;
 }
 
 /**
@@ -30,12 +35,12 @@ export function manualBaseUrl(version: string) {
  */
 const loaders = new Map<string, Awaited<ReturnType<typeof createManualLoader>>>();
 
-async function createManualLoader(version: string) {
+async function createManualLoader(version: string, defaultVersion: string) {
   return dynamicLoader(
     {
       // paths are relative to the virtual root of this source; slugs derive
       // from them (index.mdoc is stripped), so keep them version-free and
-      // let baseUrl carry the /manuale/<version> prefix.
+      // let baseUrl carry the /manuale or /manuale/<version> prefix.
       async files() {
         const pages = await getManualPages(version);
 
@@ -53,7 +58,7 @@ async function createManualLoader(version: string) {
       },
     },
     {
-      baseUrl: manualBaseUrl(version),
+      baseUrl: manualBaseUrl(version, defaultVersion),
     },
   );
 }
@@ -63,7 +68,7 @@ export async function getManualSource(version: string) {
     if (!(await isValidManualVersion(version))) {
       throw new Error(`Unknown manual version: ${version}`);
     }
-    const loader = await createManualLoader(version);
+    const loader = await createManualLoader(version, await getDefaultManualVersion());
     loaders.set(version, loader);
   }
   return loaders.get(version)!;
@@ -86,11 +91,12 @@ export interface ManualNavPage {
  * prev/next, search index and orphan detection all consume this.
  */
 export async function getManualNavPages(version: string): Promise<ManualNavPage[]> {
-  const [nav, pages] = await Promise.all([
+  const [defaultVersion, nav, pages] = await Promise.all([
+    getDefaultManualVersion(),
     getManualNav(version),
     getManualPages(version),
   ]);
-  const baseUrl = manualBaseUrl(version);
+  const baseUrl = manualBaseUrl(version, defaultVersion);
   const pageBySlug = new Map(pages.map((p) => [p.entrySlug, p]));
 
   return nav.flatMap((entry) => {
@@ -126,7 +132,10 @@ async function getManualNavExternalUrls(version: string) {
  * shows up in the switcher and is reachable by URL.
  */
 export async function getManualPageTree(): Promise<PageTree.Root> {
-  const versions = await getManualVersions();
+  const [versions, defaultVersion] = await Promise.all([
+    getManualVersions(),
+    getDefaultManualVersion(),
+  ]);
 
   const folders: PageTree.Folder[] = [];
   for (const version of versions) {
@@ -135,7 +144,7 @@ export async function getManualPageTree(): Promise<PageTree.Root> {
       getManualNavExternalUrls(version.slug),
     ]);
 
-    const baseUrl = manualBaseUrl(version.slug);
+    const baseUrl = manualBaseUrl(version.slug, defaultVersion);
 
     type Entry = { node: PageTree.Item; group: string };
     const entries: Entry[] = [
