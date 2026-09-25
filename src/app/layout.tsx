@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next";
+import { RootProvider } from "fumadocs-ui/provider/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
@@ -31,9 +32,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <ThemeProvider>
-          <NuqsAdapter>{children}</NuqsAdapter>
-        </ThemeProvider>
+        <RootProvider theme={{ enabled: false }} search={{ enabled: false }}>
+          <ThemeProvider>
+            <NuqsAdapter>{children}</NuqsAdapter>
+          </ThemeProvider>
+        </RootProvider>
       </body>
     </html>
   );

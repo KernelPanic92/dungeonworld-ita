@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getManualPage, isValidManualVersion } from "@/lib/keystatic";
 import { getManualSource } from "@/lib/source";
+import { compiler, markdocToMdx, mdxComponents } from "@/components/mdx";
+import {
+  DocsBody,
+  DocsPage,
+} from "fumadocs-ui/layouts/docs/page";
+import { ManualSearch } from "@/components/materials/manual-search";
 
 interface Props {
   params: Promise<{
@@ -31,14 +37,25 @@ export default async function ManualPage({ params }: Props) {
 
   const manualPage = await getManualPage(version, slug ?? []);
 
+  const { body: MdxContent, toc } = await compiler.compile({
+    source: markdocToMdx(manualPage?.content ?? ""),
+    filePath: `docs/manuale/${version}/${(slug ?? []).join("/")}/index.mdoc`,
+  });
+
   return (
-    <main className="prose prose-neutral dark:prose-invert max-w-none">
-      <p className="text-xs text-muted-foreground">versione {version}</p>
-      <h1>{page.data.title}</h1>
-      {page.data.description ? <p>{page.data.description}</p> : null}
-      <pre className="mt-8 whitespace-pre-wrap rounded-lg border bg-muted/50 p-4 text-sm">
-        {manualPage?.content}
-      </pre>
-    </main>
+    <DocsPage toc={toc}>
+      <div className="mb-6 flex justify-end">
+        <ManualSearch version={version} />
+      </div>
+      <DocsBody>
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          {page.data.title}
+        </h1>
+        {page.data.description ? (
+          <p className="text-lg text-muted-foreground">{page.data.description}</p>
+        ) : null}
+        <MdxContent components={mdxComponents} />
+      </DocsBody>
+    </DocsPage>
   );
 }

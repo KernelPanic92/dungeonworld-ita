@@ -21,9 +21,16 @@ export interface ManualPageData {
  * Fumadocs source for a manual version, backed by Keystatic content.
  * One loader instance per version, cached for the lifetime of the process.
  */
-const loaders = new Map<string, ReturnType<typeof createManualLoader>>();
+const loaders = new Map<string, Awaited<ReturnType<typeof createManualLoader>>>();
 
-function createManualLoader(version: string) {
+async function createManualLoader(version: string) {
+  const defaultVersion = await getDefaultManualVersion();
+  // The default manual version is served without the version segment in the
+  // URL (rewrites in next.config.ts fill it in), so its pages keep versionless
+  // URLs in the page tree as well.
+  const baseUrl =
+    version === defaultVersion ? `/manuale` : `/${version}/manuale`;
+
   return dynamicLoader(
     {
       // paths are relative to the virtual root of this source; slugs derive
@@ -58,7 +65,7 @@ function createManualLoader(version: string) {
       },
     },
     {
-      baseUrl: `/${version}/manuale`,
+      baseUrl,
     },
   );
 }
@@ -68,7 +75,8 @@ export async function getManualSource(version: string) {
     if (!(await isValidManualVersion(version))) {
       throw new Error(`Unknown manual version: ${version}`);
     }
-    loaders.set(version, createManualLoader(version));
+    const loader = await createManualLoader(version);
+    loaders.set(version, loader);
   }
   return loaders.get(version)!;
 }
