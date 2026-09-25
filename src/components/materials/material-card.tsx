@@ -37,7 +37,7 @@ export function MaterialCard({
       className="group block h-full"
     >
       <Card className="h-full overflow-hidden transition-all duration-300 group-hover:border-dw/60 group-hover:shadow-lg group-hover:shadow-dw/5 group-focus-visible:ring-2 group-focus-visible:ring-dw/50">
-        <div className="relative aspect-square w-full overflow-hidden bg-muted">
+        <div className="relative aspect-3/4 w-full overflow-hidden bg-muted">
           {thumbnail ? (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img

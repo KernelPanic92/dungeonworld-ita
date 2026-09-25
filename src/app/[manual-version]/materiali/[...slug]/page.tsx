@@ -205,7 +205,7 @@ export default async function MaterialDetailPage({ params }: Props) {
           <h2 className="mb-4 text-xl font-semibold">
             Materiali contenuti ({contained.length})
           </h2>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {contained.map((m) => (
               <MaterialCard key={m.slug} material={m} version={version} />
             ))}
