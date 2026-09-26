@@ -5,9 +5,12 @@ import type { NextConfig } from "next";
 const DEFAULT_MANUAL_VERSION = "1.0";
 
 const nextConfig: NextConfig = {
-  // The files route reads docs/ at runtime; keep the 326MB design/ source
-  // archive (indd, fonts) out of the serverless bundle: Vercel caps functions
-  // at 250MB uncompressed.
+  // Content is read from docs/ at runtime (manual pages, materials, settings,
+  // downloads): include it in every serverless bundle, otherwise pages 404 on
+  // Vercel. The files route additionally excludes the design/ archive.
+  outputFileTracingIncludes: {
+    "/**": ["./docs/**/*"],
+  },
   outputFileTracingExcludes: {
     "/files/**": ["design/**/*"],
   },
