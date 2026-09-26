@@ -3,8 +3,6 @@ import { notFound, permanentRedirect } from "next/navigation";
 import ruleSetRepository from "@/lib/content";
 import { manualBaseUrl } from "@/lib/content";
 import { renderMarkdoc } from "@/lib/content/markdoc/render";
-import { AdSenseAd } from "@/components/ads/adsense";
-import { ADSENSE_SLOT_BANNER } from "@/lib/tracking";
 import { JsonLd } from "@/components/site/json-ld";
 import { breadcrumbJsonLd, manualPageJsonLd } from "@/lib/schema-org";
 import {
@@ -145,16 +143,6 @@ export default async function ManualPage({ params }: Props) {
 
   return (
     <DocsPage
-      toc={toc}
-      // ad unit at the top of the table of contents, with reserved height
-      // to avoid layout shift while the unit loads
-      tableOfContent={{
-        header: (
-          <div className="flex flex-col items-start gap-4 pb-4">
-            <AdSenseAd containerClassName="w-full min-h-[250px]" />
-          </div>
-        ),
-      }}
       footer={{
         items: {
           previous: previous
@@ -183,12 +171,6 @@ export default async function ManualPage({ params }: Props) {
         />
       ) : null}
       <DocsBody>{content}</DocsBody>
-      {/* horizontal banner between the manual body and the prev/next footer */}
-      <AdSenseAd
-        slot={ADSENSE_SLOT_BANNER}
-        format="horizontal"
-        containerClassName="mt-8 min-h-[90px]"
-      />
     </DocsPage>
   );
 }
