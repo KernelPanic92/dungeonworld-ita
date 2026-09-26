@@ -16,10 +16,16 @@ export function IubendaPolicyLink({ kind, className }: IubendaPolicyLinkProps) {
   const id = kind === "privacy" ? IUBENDA_PRIVACY_POLICY_ID : IUBENDA_COOKIE_POLICY_ID;
   if (!id) return null;
 
-  const href = `https://www.iubenda.com/privacy-policy/${id}`;
+  let href = `https://www.iubenda.com/privacy-policy/${id}`;
+
+  if (kind === 'cookie') {
+    href += '/cookie-policy';
+  }
+
   return (
     <a
       href={href}
+      target="_blank"
       className={`iubenda-embed ${className ?? ""}`}
       title={kind === "privacy" ? "Privacy Policy" : "Cookie Policy"}
     >
