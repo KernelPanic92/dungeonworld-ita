@@ -1,0 +1,104 @@
+name: Dungeon World
+description: La prima edizione di Dungeon World, tradotta in italiano.
+isDefault: true
+creativeWorkStatus: Published
+url: /manuale
+externalIdentifiers:
+  - platform: wikipedia
+    externalId: Dungeon_World
+    url: https://en.wikipedia.org/wiki/Dungeon_World
+  - platform: wikipedia
+    externalId: Dungeon_World
+    url: https://it.wikipedia.org/wiki/Dungeon_World
+  - platform: wikidata
+    externalId: Q15221892
+    url: https://www.wikidata.org/wiki/Q15221892
+  - platform: rpggeek
+    externalId: '11105'
+    url: https://rpggeek.com/rpg/11105/dungeon-world
+navGroups:
+  - items:
+      - discriminant: page
+        value:
+          page: 1.0/index
+      - discriminant: page
+        value:
+          page: 1.0/come-giocare
+      - discriminant: page
+        value:
+          page: 1.0/esempio-partita
+      - discriminant: page
+        value:
+          page: 1.0/creazione-personaggi
+      - discriminant: page
+        value:
+          page: 1.0/mosse
+      - discriminant: page
+        value:
+          page: 1.0/equipaggiamento
+  - groupName: Game Master
+    items:
+      - discriminant: page
+        value:
+          page: 1.0/game-master/gm
+      - discriminant: page
+        value:
+          page: 1.0/game-master/prima-sessione
+      - discriminant: page
+        value:
+          page: 1.0/game-master/fronti
+      - discriminant: page
+        value:
+          page: 1.0/game-master/mondo
+      - discriminant: page
+        value:
+          page: 1.0/game-master/avventure-avanzate
+  - groupName: Mostri
+    items:
+      - discriminant: page
+        value:
+          page: 1.0/mostri/panoramica
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/abitanti-delle-caverne
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/abitanti-delle-paludi
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/esperimenti-perversi
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/foreste-intricate
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/genti-del-reame
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/legioni-dei-non-morti
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/orde-fameliche
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/poteri-planari
+      - discriminant: page
+        value:
+          page: 1.0/mostri/ambientazioni/profondita-della-terra
+  - groupName: Appendici
+    items:
+      - discriminant: page
+        value:
+          page: 1.0/appendici/adattare-avventure
+      - discriminant: page
+        value:
+          page: 1.0/appendici/etichette
+      - discriminant: page
+        value:
+          page: 1.0/appendici/glossario-differenze
+      - discriminant: page
+        value:
+          page: 1.0/appendici/insegnare-gioco
+      - discriminant: page
+        value:
+          page: 1.0/appendici/png-istantanei
