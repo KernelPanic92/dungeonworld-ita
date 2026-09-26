@@ -1,15 +1,12 @@
 import type { CSSProperties } from "react";
-import {
-  ADSENSE_CLIENT,
-  ADSENSE_SLOT_TOC,
-  consentScriptProps,
-} from "@/lib/tracking";
+import { ADSENSE_CLIENT, ADSENSE_SLOT_TOC } from "@/lib/tracking";
 import { cn } from "cn";
 
 /**
- * AdSense loader. Place it only on pages where ads may appear
- * (manual TOC, materials): the home page must not load it.
- * Automatic ads are managed from the AdSense dashboard.
+ * AdSense loader. Doubles as the delivery vehicle for Google's CMP message
+ * (Privacy & messaging), so it lives in the root layout and loads on every
+ * page: ad serving itself respects the user's consent choice (without
+ * consent, Google serves at most cookieless "Limited ads").
  */
 export function AdSenseScript() {
   if (!ADSENSE_CLIENT) return null;
@@ -18,7 +15,6 @@ export function AdSenseScript() {
       async
       src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
       crossOrigin="anonymous"
-      {...consentScriptProps([5])}
     />
   );
 }
@@ -65,7 +61,8 @@ interface AdSenseAdProps {
  * A manual, responsive AdSense unit (top of the manual TOC, between the
  * manual sections, footer banner). The container is an "advertisement"
  * landmark so assistive tech can identify or skip it; nothing is rendered
- * when AdSense is not configured.
+ * when AdSense is not configured. Ad serving respects the consent choice
+ * collected by Google's CMP (see AdSenseScript).
  */
 export function AdSenseAd({
   slot = ADSENSE_SLOT_TOC,
@@ -74,10 +71,18 @@ export function AdSenseAd({
   format = "auto",
 }: AdSenseAdProps) {
   if (!ADSENSE_CLIENT || !slot) return null;
-  const { "data-ad-format": adFormat, "data-ad-layout": adLayout, style, responsive } =
-    formatAttrs[format];
+  const {
+    "data-ad-format": adFormat,
+    "data-ad-layout": adLayout,
+    style,
+    responsive,
+  } = formatAttrs[format];
   return (
-    <div role="complementary" aria-label="Pubblicità" className={containerClassName}>
+    <div
+      role="complementary"
+      aria-label="Pubblicità"
+      className={containerClassName}
+    >
       <ins
         className={cn("adsbygoogle block", className)}
         style={style}
@@ -87,12 +92,7 @@ export function AdSenseAd({
         {...(adLayout ? { "data-ad-layout": adLayout } : {})}
         {...(responsive ? { "data-full-width-responsive": "true" } : {})}
       />
-      <script
-        {...consentScriptProps([5])}
-        dangerouslySetInnerHTML={{
-          __html: "(adsbygoogle = window.adsbygoogle || []).push({});",
-        }}
-      />
+      <script dangerouslySetInnerHTML={{ __html: "(adsbygoogle = window.adsbygoogle || []).push({});" }} />
     </div>
   );
 }
