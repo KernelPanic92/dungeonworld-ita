@@ -111,9 +111,14 @@ export const contentComponents = {
 // Conditional storage: local in development, GitHub in production.
 // Production requires a Keystatic GitHub App (see https://keystatic.com)
 // and the KEYSTATIC_GITHUB_CLIENT_ID / KEYSTATIC_GITHUB_CLIENT_SECRET / KEYSTATIC_SECRET env vars.
+// The flag is read on both sides: server runtime (route handler, plain env
+// vars) and the client bundle of the /keystatic UI, where Turbopack inlines
+// only NEXT_PUBLIC_* vars — hence the build also passes the NEXT_PUBLIC_
+// variant (see the CI workflow).
 const isGithubStorage =
   process.env.NODE_ENV === "production" &&
-  process.env.KEYSTATIC_GITHUB_CLIENT_ID !== undefined;
+  (process.env.KEYSTATIC_GITHUB_CLIENT_ID !== undefined ||
+    process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_CLIENT_ID !== undefined);
 
 export const MATERIAL_TYPE_OPTIONS = [
   // --- Personaggi e Meccaniche Giocatore ---
