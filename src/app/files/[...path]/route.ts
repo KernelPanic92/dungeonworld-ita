@@ -19,6 +19,10 @@ const MIME_TYPES: Record<string, string> = {
 const ROOT_MAP: Record<string, string> = {
   materiali: path.join("docs", "materiali"),
   manuale: path.join("docs", "manuale"),
+  // Material downloads reference design/ sources directly (see the
+  // `file` asset field in keystatic.config): only the PDFs are bundled
+  // for the route (see outputFileTracing in next.config).
+  design: "design",
 };
 
 // cached forever: content is static per deployment

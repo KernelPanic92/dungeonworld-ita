@@ -5,14 +5,24 @@ import type { NextConfig } from "next";
 const DEFAULT_MANUAL_VERSION = "1.0";
 
 const nextConfig: NextConfig = {
-  // Content is read from docs/ at runtime (manual pages, materials, settings,
-  // downloads): include it in every serverless bundle, otherwise pages 404 on
-  // Vercel. The files route additionally excludes the design/ archive.
+  // Content is read at runtime: docs/ everywhere (manual, materials,
+  // settings), and design/ PDFs for material downloads (/files route).
+  // The design/ sources (.indd, .tif, fonts, ...) are never served: they
+  // are excluded so the function stays under Vercel's 250MB limit.
   outputFileTracingIncludes: {
     "/**": ["./docs/**/*"],
+    "/files/**": ["./docs/**/*", "./design/**/*.pdf"],
   },
   outputFileTracingExcludes: {
-    "/files/**": ["design/**/*"],
+    "/files/**": [
+      "design/**/*.indd",
+      "design/**/*.idml",
+      "design/**/*.otf",
+      "design/**/*.lst",
+      "design/**/*.tif",
+      "design/**/*.jpeg",
+      "design/**/*.jpg",
+    ],
   },
   async headers() {
     return [
