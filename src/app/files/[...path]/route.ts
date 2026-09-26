@@ -19,7 +19,6 @@ const MIME_TYPES: Record<string, string> = {
 const ROOT_MAP: Record<string, string> = {
   materiali: path.join("docs", "materiali"),
   manuale: path.join("docs", "manuale"),
-  design: "design",
 };
 
 // cached forever: content is static per deployment
