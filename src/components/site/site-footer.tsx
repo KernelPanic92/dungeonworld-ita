@@ -4,7 +4,7 @@ import ruleSetRepository from "@/lib/content";
 import type { ManualVersion } from "@/lib/content/models";
 import { creativeWorkStatusLabel } from "@/lib/creative-work-status";
 import { KOFI_PAGE_URL } from "@/lib/kofi";
-import { IubendaPolicyLink } from "@/components/site/iubenda";
+import { PrivacyPreferencesLink } from "@/components/tracking/PrivacyPreferencesLink";
 import { BackToTop } from "./back-to-top";
 import { GithubIcon } from "./github-icon";
 import { Logo } from "./logo";
@@ -127,16 +127,23 @@ export async function SiteFooter() {
               </a>
             </li>
             <li>
-              <IubendaPolicyLink
-                kind="privacy"
+              <Link
+                href="/privacy"
                 className="transition-colors hover:text-dw"
-              />
+              >
+                Privacy Policy
+              </Link>
             </li>
             <li>
-              <IubendaPolicyLink
-                kind="cookie"
+              <Link
+                href="/cookie-policy"
                 className="transition-colors hover:text-dw"
-              />
+              >
+                Cookie Policy
+              </Link>
+            </li>
+            <li>
+              <PrivacyPreferencesLink className="transition-colors hover:text-dw" />
             </li>
           </FooterColumn>
         </div>

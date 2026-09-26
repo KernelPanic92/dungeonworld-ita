@@ -1,0 +1,72 @@
+intro: >-
+  Questo documento descrive i cookie e gli strumenti di tracciamento utilizzati
+  da www.dungeonworld-italia.it: cosa li installa, con quali finalità e come
+  gestirli. Per il trattamento dei dati personali consulta la Privacy Policy.
+groups:
+  - title: Necessari
+    description: >-
+      Servono al funzionamento del sito e alla gestione delle tue preferenze;
+      non raccolgono dati per altri scopi e non richiedono consenso.
+    requiresConsent: false
+    cookies:
+      - name: FCCDCF
+        provider: Google Ireland Ltd (CMP Privacy & messaging)
+        purpose: >-
+          Memorizza le tue scelte di consenso (finalità e vendor), così il
+          messaggio non ricompare ad ogni visita.
+        duration: 13 mesi
+      - name: FCNEC
+        provider: Google Ireland Ltd (CMP Privacy & messaging)
+        purpose: >-
+          Memorizza lo stato delle preferenze di consenso collegate ai tag
+          Google.
+        duration: 365 giorni
+      - name: theme (localStorage)
+        provider: il sito stesso
+        purpose: Ricorda il tema chiaro/scuro scelto. Non è un cookie e resta sul dispositivo.
+        duration: fino a cancellazione
+      - name: cookie di redazione
+        provider: il sito stesso
+        purpose: >-
+          Usati solo dagli editor del sito (anteprime delle bozze e pannello di
+          gestione contenuti). Non sono installati per i visitatori.
+        duration: sessione
+  - title: Misurazione
+    description: >-
+      Attivati solo con il tuo consenso alla categoria Misurazioni: servono a
+      capire in forma aggregata come viene usato il sito (pagine visitate,
+      provenienza, dispositivo).
+    requiresConsent: true
+    cookies:
+      - name: _ga, _ga_*
+        provider: Google Ireland Ltd (Google Analytics 4)
+        purpose: >-
+          Statistiche aggregate e pseudonimizzate di navigazione. Gli indirizzi
+          IP sono utilizzati al momento della raccolta e poi troncati.
+        duration: 2 anni
+  - title: Pubblicità
+    description: >-
+      Attivate solo con il tuo consenso alla categoria Pubblicità: gli annunci
+      Google AdSense finanziano i costi di hosting e la gratuità del sito. In
+      assenza di consenso Google non installa cookie pubblicitari e può al
+      massimo erogare annunci limitati senza cookie ("Limited ads").
+    requiresConsent: true
+    cookies:
+      - name: IDE
+        provider: Google Ireland Ltd (AdSense / DoubleClick)
+        purpose: >-
+          Selezione e limitazione della frequenza degli annunci; con gli
+          annunci personalizzati, ricorda il profilo pubblicitario.
+        duration: 13 mesi (EEA, UK, Svizzera); 24 mesi altrove
+      - name: __gads
+        provider: Google Ireland Ltd (AdSense)
+        purpose: Misurazione degli annunci e frequenza di esposizione.
+        duration: circa 13 mesi
+      - name: __gpi
+        provider: Google Ireland Ltd (AdSense)
+        purpose: Misurazione delle conversioni e delle interazioni con gli annunci.
+        duration: circa 13 mesi
+      - name: test_cookie
+        provider: Google Ireland Ltd (AdSense)
+        purpose: Verifica del supporto ai cookie del browser.
+        duration: 15 minuti

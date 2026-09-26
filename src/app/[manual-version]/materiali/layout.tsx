@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import ruleSetRepository from "@/lib/content";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
-import { AdSenseScript } from "@/components/ads/adsense";
 
 export async function generateStaticParams() {
   const versions = await ruleSetRepository.getVersions();
@@ -24,8 +23,6 @@ export default async function ManualVersionLayout({ children, params }: Props) {
   return (
     <>
       <SiteHeader />
-      {/* AdSense automatic ads for the materials section (not the home page) */}
-      <AdSenseScript />
       <main className="flex-1">{children}</main>
       <SiteFooter />
     </>

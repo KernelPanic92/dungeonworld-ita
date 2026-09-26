@@ -699,5 +699,50 @@ export default config({
         }),
       },
     }),
+    cookiePolicy: singleton({
+      label: "Cookie Policy",
+      path: "docs/policy/cookie-policy/",
+      format: { data: "yaml" },
+      schema: {
+        intro: fields.text({ label: "Introduzione", multiline: true }),
+        groups: fields.array(
+          fields.object({
+            title: fields.text({ label: "Titolo categoria" }),
+            description: fields.text({ label: "Descrizione", multiline: true }),
+            requiresConsent: fields.checkbox({
+              label: "Richiede consenso",
+              defaultValue: false,
+            }),
+            cookies: fields.array(
+              fields.object({
+                name: fields.text({ label: "Cookie" }),
+                provider: fields.text({ label: "Fornitore" }),
+                purpose: fields.text({ label: "Finalità" }),
+                duration: fields.text({ label: "Durata" }),
+              }),
+              {
+                label: "Cookie",
+                itemLabel: (props) =>
+                  String(props.fields.name.value || "Cookie"),
+              },
+            ),
+          }),
+          {
+            label: "Categorie",
+            itemLabel: (props) =>
+              String(props.fields.title.value || "Categoria"),
+          },
+        ),
+      },
+    }),
+    privacyPolicy: singleton({
+      label: "Privacy Policy",
+      path: "docs/policy/privacy-policy/",
+      format: { data: "yaml", contentField: "content" },
+      schema: {
+        updated: fields.date({ label: "Ultimo aggiornamento" }),
+        content: fields.markdoc({ label: "Informativa" }),
+      },
+    }),
   },
 });

@@ -62,6 +62,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: `${BASE_URL}/cookie-policy`,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/privacy`,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
     ...manualEntries.flat(),
     // material detail pages (default version), noindex ones excluded
     ...materials
