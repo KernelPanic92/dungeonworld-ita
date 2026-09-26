@@ -67,6 +67,12 @@ export function iubendaCsConfiguration() {
       textColor: "#FFFFFF",
     },
     perPurposeConsent: true,
+    // Purposes shown in the "Personalizza" panel. By default iubenda derives
+    // them from the cookie policy's services; the policy only declares
+    // measurement, so the advertising toggle must be forced here to let
+    // users grant purpose 5 (AdSense, safe-mode `data-iub-purposes="5"`).
+    // Requires perPurposeConsent. Docs: iubenda.com/en/help/1205
+    purposes: "1,4,5",
     googleAdditionalConsentMode: true,
     consentOnContinuedBrowsing: false,
     whitelabel: false,
