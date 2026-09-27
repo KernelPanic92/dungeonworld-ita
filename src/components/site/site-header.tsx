@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Heart } from "lucide-react";
 import ruleSetRepository from "@/lib/content";
 import { KOFI_PAGE_URL } from "@/lib/kofi";
@@ -21,8 +22,7 @@ export async function SiteHeader() {
       <div className="mx-auto flex h-14 max-w-[90rem] items-center justify-between px-4 sm:px-8">
         {/* Brand: DW mark on small screens, full text on md+ (mutually exclusive) */}
         <Link href="/" className="flex items-center gap-3" aria-label="Dungeon World Italia">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/square-logo.svg" alt="" className="size-8 md:hidden" />
+          <Image src="/square-logo.svg" alt="" width={32} height={32} className="size-8 md:hidden" />
           <span className="hidden md:inline">
             <Logo />
           </span>

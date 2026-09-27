@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import ruleSetRepository from "@/lib/content";
-import { materialFileUrl } from "@/lib/materials";
 import { renderMarkdoc } from "@/lib/content/markdoc/render";
 import { cn } from "cn";
 import { Badge } from "@/components/ui/badge";
@@ -100,9 +100,7 @@ export default async function MaterialDetailPage({ params }: Props) {
     MATERIAL_SOURCE_OPTIONS.find((s) => s.value === material.source)?.label ??
     material.source;
 
-  const showcaseUrl = material.showcase?.image
-    ? materialFileUrl(material, version, material.showcase.image)
-    : null;
+  const showcaseUrl = material.showcase?.image;
 
   const materialNode = await material.content();
   const materialHasContent = materialNode.children.length > 0;
@@ -142,13 +140,15 @@ export default async function MaterialDetailPage({ params }: Props) {
       <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-start">
         {showcaseUrl ? (
           <div className="w-full max-w-sm shrink-0 overflow-hidden rounded-lg border bg-muted">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={showcaseUrl}
-              alt={material.showcase?.heroName ?? material.name}
-              className="w-full object-cover"
-            />
-          </div>
+              <Image
+                src={showcaseUrl}
+                alt={material.showcase?.heroName ?? material.name}
+                width={384}
+                height={576}
+                sizes="(max-width: 768px) 100vw, 384px"
+                className="h-auto w-full"
+              />
+            </div>
         ) : null}
 
         <div className="min-w-0 flex-1">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -7,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { materialThumbnail } from "@/lib/materials";
 import type { Material } from "@/lib/content/models";
 import { MATERIAL_SOURCE_OPTIONS, MATERIAL_TYPE_OPTIONS } from "../../../keystatic.config";
 
@@ -18,7 +18,8 @@ export function MaterialCard({
   material: Material;
   version: string;
 }) {
-  const thumbnail = materialThumbnail(material, version);
+  // extendedImage fields already store the final /images/... public path
+  const image = material.thumbnail ?? material.showcase?.image;
   const typeLabel =
     MATERIAL_TYPE_OPTIONS.find((t) => t.value === material.type)?.label ??
     material.type;
@@ -35,13 +36,13 @@ export function MaterialCard({
       {/* full-bleed media: pt-0 covers both the thumbnail and the placeholder branch */}
       <Card className="pt-0 h-full overflow-hidden transition-all duration-300 group-hover:border-dw/60 group-hover:shadow-lg group-hover:shadow-dw/5 group-focus-visible:ring-2 group-focus-visible:ring-dw/50">
         <div className="relative aspect-16/9 w-full overflow-hidden bg-muted">
-          {thumbnail ? (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
-              src={thumbnail}
+          {image ? (
+            <Image
+              src={image}
               alt={material.showcase?.heroName ?? material.name}
-              loading="lazy"
-              className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+              fill
+              sizes="(max-width: 768px) 100vw, 384px"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
           ) : (
             <div className="flex size-full items-center justify-center bg-linear-to-br from-dw/20 via-muted to-muted text-4xl font-bold text-dw/60">

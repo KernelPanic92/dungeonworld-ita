@@ -433,7 +433,6 @@ export class ReaderRuleSetRepository implements RuleSetRepository {
             name: string;
             file: string | null;
             url: string | null;
-            thumbnail: string | null;
           };
         }>;
       };
@@ -456,7 +455,6 @@ export class ReaderRuleSetRepository implements RuleSetRepository {
           name: a.value.name,
           file: a.value.file ?? null,
           url: a.value.url ?? null,
-          thumbnail: a.value.thumbnail ?? null,
         }),
       );
 

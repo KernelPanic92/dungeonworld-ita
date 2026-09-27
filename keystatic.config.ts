@@ -448,7 +448,11 @@ export default config({
           description: "Un sommario secco, informativo e conciso.",
           multiline: true,
         }),
-        image: fields.image({ label: "Immagine di copertina" }),
+        image: extendedImage({
+          label: "Immagine di copertina",
+          directory: "public/images/manuale",
+          publicPath: "/images/manuale",
+        }),
         seo: seoSchema,
         llm: llmSchema,
         licenses: fields.array(
@@ -526,7 +530,13 @@ export default config({
           multiline: true,
         }),
         showcase: fields.object({
-          image: fields.image({ label: "Immagine showcase" }),
+          image: extendedImage({
+            label: "Immagine showcase",
+            description: "Formato 2:3 (verticale): il ritaglio guidato lo impone a upload.",
+            directory: "public/images/materials/showcase",
+            publicPath: "/images/materials/showcase",
+            cropper: { aspectRatio: 2 / 3 },
+          }),
           heroName: fields.text({ label: "Nome del personaggio" }),
         }),
         content: fields.markdoc({
@@ -588,7 +598,6 @@ export default config({
                     "File della cartella design/ (i designer lavorano lì, i copy fanno riferimento senza duplicare).",
                   pattern: "design/**",
                 }),
-                thumbnail: fields.file({ label: "Thumbnail" }),
               }),
             },
           },
@@ -640,7 +649,11 @@ export default config({
             "Se attivo, l'autore compare tra i filtri della pagina Materiali.",
           defaultValue: true,
         }),
-        avatar: fields.image({ label: "Avatar" }),
+        avatar: extendedImage({
+          label: "Avatar",
+          directory: "public/images/authors",
+          publicPath: "/images/authors",
+        }),
         urls: fields.object({
           site: fields.url({ label: "Sito" }),
           linkedin: fields.url({ label: "LinkedIn" }),

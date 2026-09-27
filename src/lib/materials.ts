@@ -65,24 +65,3 @@ export function paginate<T>(items: T[], page: number, pageSize: number) {
     total,
   };
 }
-
-export function materialThumbnail(m: Material, version: string): string | null {
-  // 1:1 thumbnail uploaded via the `thumbnail` field (already a public URL)
-  if (m.thumbnail) {
-    return m.thumbnail;
-  }
-  if (m.showcase?.image) {
-    return `/files/materiali/${version}/${m.slug}/${m.showcase.image}`;
-  }
-  const firstWithThumb = m.assets.find((a) => a.thumbnail);
-  if (firstWithThumb?.thumbnail) {
-    return firstWithThumb.type === "file"
-      ? `/files/materiali/${version}/${m.slug}/${firstWithThumb.thumbnail}`
-      : firstWithThumb.thumbnail;
-  }
-  return null;
-}
-
-export function materialFileUrl(m: Material, version: string, fileName: string) {
-  return `/files/materiali/${version}/${m.slug}/${fileName}`;
-}
