@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { imageSize } from "image-size";
 import ruleSetRepository from "@/lib/content";
 import { materialFileUrl } from "@/lib/materials";
 import { renderMarkdoc } from "@/lib/content/markdoc/render";
@@ -104,6 +108,27 @@ export default async function MaterialDetailPage({ params }: Props) {
     ? materialFileUrl(material, version, material.showcase.image)
     : null;
 
+  // Intrinsic size for next/image: the showcase lives in the entry directory
+  // (served by the /files route), read it from disk at request time.
+  let showcaseSize: { width: number; height: number } | undefined;
+  if (material.showcase?.image) {
+    try {
+      const file = readFileSync(
+        path.join(
+          process.cwd(),
+          "docs",
+          "materiali",
+          version,
+          material.slug,
+          material.showcase.image,
+        ),
+      );
+      showcaseSize = imageSize(file);
+    } catch {
+      // unreadable/missing file: render the plain img fallback below
+    }
+  }
+
   const materialNode = await material.content();
   const materialHasContent = materialNode.children.length > 0;
   const { content: materialContent } = renderMarkdoc(materialNode);
@@ -142,12 +167,24 @@ export default async function MaterialDetailPage({ params }: Props) {
       <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-start">
         {showcaseUrl ? (
           <div className="w-full max-w-sm shrink-0 overflow-hidden rounded-lg border bg-muted">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={showcaseUrl}
-              alt={material.showcase?.heroName ?? material.name}
-              className="w-full object-cover"
-            />
+            {showcaseSize ? (
+              <Image
+                src={showcaseUrl}
+                alt={material.showcase?.heroName ?? material.name}
+                width={showcaseSize.width}
+                height={showcaseSize.height}
+                sizes="(max-width: 768px) 100vw, 384px"
+                className="h-auto w-full"
+              />
+            ) : (
+              // fallback: next/image requires the intrinsic size
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={showcaseUrl}
+                alt={material.showcase?.heroName ?? material.name}
+                className="w-full object-cover"
+              />
+            )}
           </div>
         ) : null}
 
