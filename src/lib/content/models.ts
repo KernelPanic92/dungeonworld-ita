@@ -76,8 +76,8 @@ export interface ManualPage {
   title: string;
   summary: string;
   /**
-   * Cover image, as a path relative to the entry directory (keystatic
-   * `fields.image`); resolve against `/files/manuale/pagine/<entrySlug>/`.
+   * Cover image as a public path (extendedImage, e.g.
+   * `/images/manuale/<entrySlug>/<file>`).
    */
   image: string | null;
   /** MarkDoc body as a lazy AST accessor. */
@@ -98,7 +98,6 @@ export interface MaterialAsset {
   file: string | null;
   /** External URL (external assets) */
   url: string | null;
-  thumbnail: string | null;
 }
 
 export interface MaterialCredit {
