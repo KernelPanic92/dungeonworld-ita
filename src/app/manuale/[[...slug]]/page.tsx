@@ -143,6 +143,7 @@ export default async function ManualPage({ params }: Props) {
 
   return (
     <DocsPage
+      toc={toc}
       footer={{
         items: {
           previous: previous
